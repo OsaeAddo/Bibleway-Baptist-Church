@@ -17,41 +17,92 @@ A web app to help churches safely keep records of their members
 
 ## PROJECT SETUP
 ### Software required
-*Python3.8.10
-*VSCode
-*MySql
-*MySql client
-*Django
+* Python3.8.10
+* VSCode
+* MySql
+* MySql client
+* Django
+* Pipenv
 
-### Install pipenv on your computer
+
+
+# Install pipenv on your computer
 ```
 pip install pipenv
 ```
 
-### Install packages (including dev)
+### Install Packages (including dev)
 ```
 pipenv install --dev
 ```
 
-Run this instruction to install the packages (including dev packages) associated with the project
 
-### Install packages (without dev)
+
+# Install MySQL on your computer(Linux)
+## A more comprehensive guide: 
+
+https://phoenixnap.com/kb/install-mysql-ubuntu-20-04
+
 ```
-pipenv install --dev
+sudo apt-get update
+sudo apt-get install mysql-server libmysqlclient-dev
 ```
-Run this instruction to install the packages (without the dev packages) associated with the project
+
+## Secure the installation
+```
+sudo mysql_secure_installation
+```
 
 
-### Create a database
+## Create a DataBase Instance
+### In the terminal:
+Login to an interactive session with the mysql software
 
+```
+mysql -u root -p
+```
 
-### Perform database migrations
+### In the MySQL shell:
+```
+CREATE DATABASE database_name CHARACTER SET UTF8;
+```
+## Create a User
+To connect to & interact with the database
+```
+CREATE USER mydatabase_user@localhost IDENTIFIED BY 'password';
+```
+
+## Give Access rights to the DataBase User
+```
+GRANT ALL PRIVILEGES ON database_name.* TO mydatabase_user@localhost;
+```
+
+## Flush Changes
+Make changes available during the current session and exit
+```
+FLUSH PRIVILEGES;
+exit;
+```
+
+## Update settings.py to use MySQL database
+Add these lines to the default in DATABASES. Replace database_name, database_user & password with their respective values
+```
+'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'database_name',
+        'USER': 'database_user',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '',
+}
+```
+# Perform Database Migrations
 ```
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-### Runserver to test the app
+# Run Server To Test the App
 ```
 python manage.py runserver
 ```
