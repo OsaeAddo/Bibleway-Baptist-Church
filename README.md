@@ -24,20 +24,21 @@ A web app to help churches safely keep records of their members
 *Django
 
 ### Install pipenv on your computer
-'''
+```
 pip install pipenv
-'''
+```
 
 ### Install packages (including dev)
-'''
+```
 pipenv install --dev
-'''
+```
+
 Run this instruction to install the packages (including dev packages) associated with the project
 
 ### Install packages (without dev)
-'''
+```
 pipenv install --dev
-'''
+```
 Run this instruction to install the packages (without the dev packages) associated with the project
 
 
@@ -45,12 +46,12 @@ Run this instruction to install the packages (without the dev packages) associat
 
 
 ### Perform database migrations
-'''
+```
 python manage.py makemigrations
 python manage.py migrate
-'''
+```
 
 ### Runserver to test the app
-''' 
+```
 python manage.py runserver
-'''
+```
