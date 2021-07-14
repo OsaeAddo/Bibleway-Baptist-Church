@@ -8,3 +8,6 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 def home(request):
     return render(request, 'records_management/access-level-page.html')
+
+def accesslevel_view(request):
+    return render(request, 'RecordsManagement/access-level-page.html')
