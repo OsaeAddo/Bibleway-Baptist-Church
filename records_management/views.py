@@ -12,6 +12,7 @@ def home(request):
 def accesslevel_view(request):
     return render(request, 'records_management/access-level-page.html')
 
+
 #Shows the signup/login for Church Admin
 def churchAdminClick_view(request):
     # if request.user.is_authenticated:
@@ -23,6 +24,7 @@ def churchExecClick_view(request):
     # if request.user.is_authenticated:
     #     return HttpResponseRedirect('afterlogin')
     return render(request, 'records_management/churchexec-click.html')
+
 
 #shows the credentials-entry page
 def churchMemberClick_view(request):
@@ -86,6 +88,8 @@ def member_signup_view(request):
         return HttpResponseRedirect('memberlogin')
 
     return render(request, 'records_management/churchmember_signup.html', context)
+
+
 
 
 # checks if user is an admin or a church executive
