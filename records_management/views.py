@@ -88,3 +88,11 @@ def member_signup_view(request):
     return render(request, 'RecordsManagement/churchmember_signup.html', context)
 
 
+# checks if user is an admin or a church executive
+def is_churchadmin(user):
+    return user.groups.filter(name='ADMIN').exists()
+
+def is_churchexecutive(user):
+    return user.groups.filter(name='EXECUTIVE / CHURCH LEADER').exists()
+def is_churchmember(user):
+    return user.groups.filter(name='CHURCH MEMBER').exists()
