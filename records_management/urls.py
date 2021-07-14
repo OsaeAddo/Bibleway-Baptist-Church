@@ -12,4 +12,9 @@ url_patterns = [
     path('church-admin-click/', views.churchAdminClick_view, name='admin-click'),
     path('church-exec-click/', views.churchExecClick_view, name='exec-click'),
     path('church-member-click/', views.churchMemberClick_view, name='member-click'),
+
+    #<-------------SignUp Related----------->
+    path('church-admin-signup/', views.churchAdminSignup_view, name='adminsignup'),
+    path('church-exec-signup/', views.churchExecSignup_view, name='execsignup'),
+    path('church-member-signup/', views.member_signup_view, name='member-signup'),
 ]
