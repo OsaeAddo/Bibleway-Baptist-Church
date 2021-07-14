@@ -24,4 +24,8 @@ url_patterns = [
     path('church-member-login/',LoginView.as_view(template_name='RecordsManagement/memberlogin.html'), name='memberlogin'),
 
     path('afterlogin/', views.afterloginview, name='afterlogin'),
+
+    #<-------------Dashboard Related------------>
+    path('churchadmin-dashboard/', views.churchadmin_dashboard_view, name='churchadmin-dashboard'),
+    path('church-exec-dashboard/', views.church_exec_dashboard_view, name='church-exec-dashboard'),
 ]
