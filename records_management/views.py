@@ -96,3 +96,15 @@ def is_churchexecutive(user):
     return user.groups.filter(name='EXECUTIVE / CHURCH LEADER').exists()
 def is_churchmember(user):
     return user.groups.filter(name='CHURCH MEMBER').exists()
+
+
+#------- AFTER ENTERING CREDENTIALS, CHECK IF USERNAME & PASSWORD IS THAT OF CHURCH ADMIN OR EXECUTIVE
+def afterloginview(request):
+    if is_churchadmin(request.user):
+        return redirect('churchadmin-dashboard')
+    elif is_churchexecutive(request.user):
+        accountapproval = models.ChurchLeader.objects.all().filter(user_id=request.user.id, status = True)
+        if accountapproval:
+            return redirect('church-exec-dashboard')
+        else:
+            return render(request, 'RecordsManagement/exec_await_approval.html')
