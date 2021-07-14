@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'RecordsManagement/home.css' %}">
+    <link rel="stylesheet" href="{% static 'RecordsManagement/admin_executive_member_card.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'RecordsManagement/searchbar.css' %}">
+    <link rel="stylesheet" href="{% static 'RecordsManagement/navbar.css' %}">
+    <title>Home | Bible Way Baptist Church</title>
+</head>
+<body>
+    {% include "RecordsManagement/navbar.html" %}
+
+    <main>
+
+        <center>
+            <span>
+                you must have admin access to see the search results
+            </span>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        {% include "RecordsManagement/search_bar.html" %}    
+                    </div>
+                </div>
+            </div>
+        </center>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        
+        {% include "RecordsManagement/admin_executive_member_card.html" %}
+
+        <div class="container">
+            <div class="row row-cols-2">
+              <div class="col">
+                <span>
+                    Not an Admin? <a href="">Explore our page</a>
+                </span>
+              </div>
+        </div>
+    </main>
+
+    {% include "RecordsManagement/footer.html" %}
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'bootstrap.min.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.menu-toggle').click(function(){
+                $('.menu-toggle').toggleClass('active')
+                $('nav').toggleClass('active')
+            })
+        })
+    </script>
+</body>
+</html>

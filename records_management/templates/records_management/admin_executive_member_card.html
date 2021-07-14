@@ -1,0 +1,73 @@
+<!-- Carded images of Stay, Dine, Experience -->
+{% load static %}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <a href="{% url 'admin-click' %}">
+        <div class="card">
+            <img src="{% static 'admin.png' %}" class="card-img-top" alt="...">
+            <div class="card-body text-center">
+                <p class="card-title">ADMIN</p>
+            </div>
+        </div>
+      </a>
+    </div>
+    <div class="col">
+      <a href="{% url 'exec-click' %}">
+        <div class="card">
+            <img src="{% static 'executive.jpeg' %}" class="card-img-top" alt="...">
+            <div class="card-body text-center">
+                <p class="card-title">CHURCH EXECUTIVE</p>
+            </div>
+        </div>
+      </a>
+    </div>
+    <div class="col">
+      <a href="{% url 'member-click' %}">
+        <div class="card">
+          <img src="{% static 'members2.webp' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-title text-center">CHURCH MEMBER</p>
+            </div>
+        </div>
+      </a>
+    </div>
+</div>
+
+<!-- {% load static %}
+<div class="cards">
+    <div class="cardd">
+        <div class="details">
+            <img src="{% static 'admin.png' %}" alt="ADMIN" style="
+            width: 100%">
+            <p class="title">
+                <button>
+                    <a href="{% url 'admin-click' %}">ADMIN</a>
+                </button>
+            </p>
+        </div>
+    </div>
+    <div class="cardd">
+        <div class="details">
+            <img src="{% static 'executive1.jpeg' %}" alt="ADMIN" style="
+            width: 100%">
+            <p class="title">
+                <button>
+                    <a href="{% url 'exec-click' %}">CHURCH EXECUTIVE</a>
+                </button>
+            </p>
+        </div>
+    </div>
+    <div class="cardd">
+        <div class="details">
+            <img src="{% static 'members1.png' %}" alt="MEMBER" style="
+            width: 100%">
+            <p class="title">
+                <button>
+                    <a href="{% url 'member-click' %}">
+                        CHURCH MEMBER
+                    </a>
+                </button>
+            </p>
+        </div>
+    </div>
+</div> -->
