@@ -27,3 +27,18 @@ def churchExecClick_view(request):
 #shows the credentials-entry page
 def churchMemberClick_view(request):
     return render(request, 'records_management/churchmember-click.html')
+
+
+def churchAdminSignup_view(request):
+    if request.method == "POST":
+        adminForm = forms.AdminSignupForm(request.POST)
+        if adminForm.is_valid():
+            user = adminForm.save()
+            user.set_password(user.password)
+            user.save()
+            my_admin_group = Group.objects.get_or_create(name="ADMIN")
+            my_admin_group[0].user_set.add(user)
+            return HttpResponseRedirect('/church-admin-login/')
+    else:
+        adminForm = forms.AdminSignupForm()
+    return render(request, 'RecordsManagement/adminsignup.html', {'adminForm': adminForm})
