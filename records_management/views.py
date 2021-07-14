@@ -42,3 +42,27 @@ def churchAdminSignup_view(request):
     else:
         adminForm = forms.AdminSignupForm()
     return render(request, 'RecordsManagement/adminsignup.html', {'adminForm': adminForm})
+
+
+def churchExecSignup_view(request):
+    context = {'userForm': 'userForm', 'executiveForm': 'executiveForm'}
+    if request.method == 'POST':
+        userForm = forms.ExecutiveUserForm(request.POST)
+        executiveForm = forms.ExecutiveForm(request.POST, request.FILES)
+        if userForm.is_valid() and executiveForm.is_valid():
+            exec_user = userForm.save()
+            exec_user.set_password(exec_user.password)
+            exec_user.save()
+
+            executive = executiveForm.save(commit=False)
+            executive.user = exec_user
+            executive = executive.save()
+            my_executive_group = Group.objects.get_or_create(name='EXECUTIVE / CHURCH LEADER')
+            my_executive_group[0].user_set.add(exec_user)
+
+    else:
+        userForm = forms.ExecutiveUserForm()
+        executiveForm = forms.ExecutiveForm()
+    return render(request, 'RecordsManagement/execsignup.html', context)
+
+
