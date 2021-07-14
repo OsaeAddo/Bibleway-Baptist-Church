@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db.models import Q #for more sophisticated/realistic queries
 from . import models, forms
 from django.contrib.auth.models import Group
@@ -94,6 +94,7 @@ def is_churchadmin(user):
 
 def is_churchexecutive(user):
     return user.groups.filter(name='EXECUTIVE / CHURCH LEADER').exists()
+
 def is_churchmember(user):
     return user.groups.filter(name='CHURCH MEMBER').exists()
 
@@ -108,3 +109,24 @@ def afterloginview(request):
             return redirect('church-exec-dashboard')
         else:
             return render(request, 'RecordsManagement/exec_await_approval.html')
+
+
+#<-----------------Views For Church Admin Only----------->
+@login_required(login_url='church-admin-login')
+@user_passes_test(is_churchadmin)
+def churchadmin_dashboard_view(request):
+    leaders = models.ChurchLeader.objects.all().order_by('-id')
+    members = models.ChurchMember.objects.all().order_by('-id')
+    count_church_members = models.ChurchMember.objects.all().count()
+    count_executives = models.ChurchLeader.objects.all().filter().count()
+    total_members = count_church_members + count_executives
+    context = {
+        'leaders':leaders,
+        'members':members,
+        'count_church_members':count_church_members,
+        'count_executives':count_executives,
+        'total_members':total_members,
+        'executive':models.ChurchLeader.objects.get(user_id=request.user.id)
+        #for profile picture of admin in the sidebar
+    }
+    return render(request, 'RecordsManagement/admin_dashboard.html', context)
