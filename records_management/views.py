@@ -41,7 +41,7 @@ def churchAdminSignup_view(request):
             return HttpResponseRedirect('/church-admin-login/')
     else:
         adminForm = forms.AdminSignupForm()
-    return render(request, 'RecordsManagement/adminsignup.html', {'adminForm': adminForm})
+    return render(request, 'records_management/adminsignup.html', {'adminForm': adminForm})
 
 
 def churchExecSignup_view(request):
@@ -63,7 +63,7 @@ def churchExecSignup_view(request):
     else:
         userForm = forms.ExecutiveUserForm()
         executiveForm = forms.ExecutiveForm()
-    return render(request, 'RecordsManagement/execsignup.html', context)
+    return render(request, 'records_management/execsignup.html', context)
 
 
 def member_signup_view(request):
@@ -85,7 +85,7 @@ def member_signup_view(request):
             my_churchmember_group[0].user_set.add(user)
         return HttpResponseRedirect('memberlogin')
 
-    return render(request, 'RecordsManagement/churchmember_signup.html', context)
+    return render(request, 'records_management/churchmember_signup.html', context)
 
 
 # checks if user is an admin or a church executive
@@ -108,7 +108,7 @@ def afterloginview(request):
         if accountapproval:
             return redirect('church-exec-dashboard')
         else:
-            return render(request, 'RecordsManagement/exec_await_approval.html')
+            return render(request, 'records_management/exec_await_approval.html')
 
 
 #<-----------------Views For Church Admin Only----------->
@@ -129,4 +129,22 @@ def churchadmin_dashboard_view(request):
         'executive':models.ChurchLeader.objects.get(user_id=request.user.id)
         #for profile picture of admin in the sidebar
     }
-    return render(request, 'RecordsManagement/admin_dashboard.html', context)
+    return render(request, 'records_management/admin_dashboard.html', context)
+
+
+#<-----------------Views For Church Executive/Leader Only----------->
+@login_required(login_url='church-exec-login')
+@user_passes_test(is_churchexecutive)
+def church_exec_dashboard_view(request):
+    #to create three cards 
+    count_church_members = models.ChurchMember.objects.all().count()
+    count_executives = models.ChurchLeader.objects.all().filter().count()
+    total_members = count_church_members + count_executives
+    context = {
+        'count_church_members':count_church_members,
+        'count_executives':count_executives,
+        'total_members':total_members,
+        'executive':models.ChurchLeader.objects.get(user_id=request.user.id)
+        #for profile picture of church executive in the sidebar
+    }
+    return render(request, 'records_management/exec_dashboard.html', context)
