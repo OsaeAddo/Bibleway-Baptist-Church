@@ -22,4 +22,6 @@ url_patterns = [
     path('church-admin-login/', LoginView.as_view(template_name='RecordsManagement/adminlogin.html'), name='adminlogin'),
     path('church-exec-login/', LoginView.as_view(template_name='RecordsManagement/execlogin.html'), name='execlogin'),
     path('church-member-login/',LoginView.as_view(template_name='RecordsManagement/memberlogin.html'), name='memberlogin'),
+
+    path('afterlogin/', views.afterloginview, name='afterlogin'),
 ]
