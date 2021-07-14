@@ -28,4 +28,12 @@ url_patterns = [
     #<-------------Dashboard Related------------>
     path('churchadmin-dashboard/', views.churchadmin_dashboard_view, name='churchadmin-dashboard'),
     path('church-exec-dashboard/', views.church_exec_dashboard_view, name='church-exec-dashboard'),
+
+    #<------------Search related --------->
+    #search church members
+    path('search-members/', views.search_members, name='search-members'),
+    #list church members
+    path('list-members/', views.list_members, name='list-members'),
+    #show church member
+    path('show-member/', views.show_member, name='show-member'),
 ]
