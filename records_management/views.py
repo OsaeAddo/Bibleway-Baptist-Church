@@ -152,3 +152,20 @@ def church_exec_dashboard_view(request):
         #for profile picture of church executive in the sidebar
     }
     return render(request, 'records_management/exec_dashboard.html', context)
+
+
+#<----------Views to Search for Church Members--------->
+def search_members(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        members = models.ChurchMember.objects.filter(member_role=searched)
+        context = {
+            'searched': searched,
+            'members': members
+        }
+        return render(request, 'RecordsManagement/searchresults_member.html', context)
+    else:
+        return render(request, 'RecordsManagement/searchresults_member.html')
+
+
+
