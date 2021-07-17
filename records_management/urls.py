@@ -4,7 +4,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 app_name = 'records_management'
 
-url_patterns = [
+urlpatterns = [
     path('', views.home, name='home-page'),
     path('access-level/',views.accesslevel_view, name='access-level'),
 
