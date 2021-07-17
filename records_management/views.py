@@ -168,4 +168,8 @@ def search_members(request):
         return render(request, 'RecordsManagement/searchresults_member.html')
 
 
+def list_members(request):
+    pass
 
+def show_member(request):
+    pass
