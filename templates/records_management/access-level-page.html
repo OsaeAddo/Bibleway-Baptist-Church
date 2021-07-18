@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="{% static '' %}">
+
+</head>
+
+<body style="background:linear-gradient(#141e30, #243b55); min-height: 100vh">
+ 
+  <div class="">
+    <nav class="">
+      <a href="/" class="" style="color: black; text-align: center;">Church Records Management</a>
+
+      <div class="">
+        <div class="">
+          <ul style="list-style: none;">
+            <li>
+              <a href="{% url 'admin-click' %}" class="" style="color: black;">Church Admin</a>
+            </li>
+            <li>
+              <a href="{% url 'exec-click' %}" class="" style="color: black;">Church Executive</a>
+            </li>
+          </ul>
+        </div>
+        <div class="">
+          <ul style="list-style: none;">
+            <li>
+              <a href="/aboutus" class="" style="color: black;">About Us</a>
+            </li>
+            <li>
+              <a href="/contactus" class="" style="color: black;">Get In Touch</a>
+            </li>
+            <li>
+              <a href="/worshipwithus" class="" style="color: black;">Worship With Us</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+  </div>
+
+  <!--
+  developed By : Osae
+  -->
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>
