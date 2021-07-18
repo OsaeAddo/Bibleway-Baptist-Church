@@ -19,9 +19,9 @@ urlpatterns = [
     path('church-member-signup/', views.member_signup_view, name='member-signup'),
 
     #<-------------LogIn Related----------->
-    path('church-admin-login/', LoginView.as_view(template_name='RecordsManagement/adminlogin.html'), name='adminlogin'),
-    path('church-exec-login/', LoginView.as_view(template_name='RecordsManagement/execlogin.html'), name='execlogin'),
-    path('church-member-login/',LoginView.as_view(template_name='RecordsManagement/memberlogin.html'), name='memberlogin'),
+    path('church-admin-login/', LoginView.as_view(template_name='records_management/adminlogin.html'), name='adminlogin'),
+    path('church-exec-login/', LoginView.as_view(template_name='records_management/execlogin.html'), name='execlogin'),
+    path('church-member-login/',LoginView.as_view(template_name='records_management/memberlogin.html'), name='memberlogin'),
 
     path('afterlogin/', views.afterloginview, name='afterlogin'),
 
