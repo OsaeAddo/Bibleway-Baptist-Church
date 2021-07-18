@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #My Apps
     'records_management',
+
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [
