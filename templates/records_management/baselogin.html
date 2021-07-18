@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'RecordsManagement/baselogin.css' %}">
+    {% block styles %}{% endblock styles %}
+    <title>Login || New Way Baptist Church</title>
+</head>
+<body>
+
+  <script>0</script>
+  <div class="login-box" style="background: linear-gradient(#e66465, #9198e5);">
+    <h2>
+      {% block logintype %}{% endblock logintype %}
+    </h2>
+
+    <form>
+      <div class="user-box">
+        
+        <input type="text" name="" required="">
+        <label>Username</label>
+      </div>
+      <div class="user-box">
+        <input type="password" name="" required="True">
+        <label>Password</label>
+      </div>
+      <a href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Sign In
+      </a>
+    </form>
+  </div>
+
+</body>
+</html>

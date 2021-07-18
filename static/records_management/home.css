@@ -1,0 +1,27 @@
+body{
+    background: linear-gradient(#c4ccdb, #925dce);
+}   
+main{
+    min-height: 100vh;
+}
+a{
+    color: rgba(.2, .2, .3, .9) !important;
+}
+a:link{
+    color: #e1ecec;
+}
+a:hover{
+    color:#925dce !important;
+    text-decoration: none !important;
+}
+.txt{
+    text-align: center;
+}
+.ftr{
+    text-align: center;
+    color: #f8f4f4;
+    font-family: "Josefin Sans", Sans-serif;
+    font-size: 15px;
+    padding-top: 2rem;
+    margin-bottom: 1rem;
+}

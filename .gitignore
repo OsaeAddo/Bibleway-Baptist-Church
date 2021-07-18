@@ -1,4 +1,4 @@
 #Django
 README.md
-
-records_management/admin.py
+migrations/
+db.sqlite3
