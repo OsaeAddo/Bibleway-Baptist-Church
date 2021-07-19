@@ -8,6 +8,7 @@ class AdminSignupForm(forms.ModelForm):
         model = User
         fields = [
             'first_name',
+            'username',
             'last_name',
             'password'
         ]
@@ -22,6 +23,7 @@ class ExecutiveUserForm(forms.ModelForm):
         model = User
         fields = [
             'first_name',
+            'username',
             'last_name',
             'password'
         ]
