@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'RecordsManagement/adminsignup.css' %}">
-  <title>Admin SignUp | Church Control Panel</title>
+  <title>Admin SignUp/SignIn | Church Control Panel</title>
   
 
 </head>
@@ -25,7 +25,10 @@
 
 
 
-
+  <h1 class="" style="text-align:center;">Hello, Admin</h1>
+  <p class="">Welcome to Church Management System.</p>
+  <hr class="">
+  <p>You can access admin features after Login/SignUp.</p>
   <!--- signup page for admin by admin  ---------->
   <form method="post">
     {% csrf_token %}
