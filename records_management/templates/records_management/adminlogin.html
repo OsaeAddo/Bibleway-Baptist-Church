@@ -9,4 +9,11 @@
 
 {% block logintype %}
     Admin Page
+    <form method="post">
+        {% csrf_token %}
+        <div class="user-box">
+          {{ form }}
+        </div>
+        <button type="submit">Sign In</button>
+    </form>
 {% endblock logintype %}
