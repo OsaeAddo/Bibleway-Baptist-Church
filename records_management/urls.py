@@ -23,6 +23,7 @@ urlpatterns = [
     path('church-exec-login/', LoginView.as_view(template_name='records_management/execlogin.html'), name='execlogin'),
     path('church-member-login/',LoginView.as_view(template_name='records_management/memberlogin.html'), name='memberlogin'),
 
+    #<-----AfterLogin Related------>
     path('afterlogin/', views.afterloginview, name='afterlogin'),
 
     #<-------------Dashboard Related------------>
