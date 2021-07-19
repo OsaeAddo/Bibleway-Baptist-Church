@@ -116,7 +116,7 @@ def afterloginview(request):
 
 
 #<-----------------Views For Church Admin Only----------->
-@login_required(login_url='church-admin-login')
+@login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
 def churchadmin_dashboard_view(request):
     leaders = models.ChurchLeader.objects.all().order_by('-id')
@@ -130,14 +130,14 @@ def churchadmin_dashboard_view(request):
         'count_church_members':count_church_members,
         'count_executives':count_executives,
         'total_members':total_members,
-        'executive':models.ChurchLeader.objects.get(user_id=request.user.id)
+        # 'executive':models.ChurchLeader.objects.get(user_id=request.user.id)
         #for profile picture of admin in the sidebar
     }
     return render(request, 'records_management/admin_dashboard.html', context)
 
 
 #<-----------------Views For Church Executive/Leader Only----------->
-@login_required(login_url='church-exec-login')
+@login_required(login_url='execlogin')
 @user_passes_test(is_churchexecutive)
 def church_exec_dashboard_view(request):
     #to create three cards 
