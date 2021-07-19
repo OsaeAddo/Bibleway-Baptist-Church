@@ -17,7 +17,8 @@
       {% block logintype %}{% endblock logintype %}
     </h2>
 
-    <form>
+    <form method="post">
+      {% csrf_token %}
       <div class="user-box">
         
         <input type="text" name="" required="">
@@ -27,13 +28,7 @@
         <input type="password" name="" required="True">
         <label>Password</label>
       </div>
-      <a href="#">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        Sign In
-      </a>
+      <button type="submit">Sign In</button>
     </form>
   </div>
 
