@@ -17,7 +17,7 @@ def accesslevel_view(request):
 def churchAdminClick_view(request):
     # if request.user.is_authenticated:
     #     return HttpResponseRedirect('afterlogin')
-    return render(request, 'records_management/churchadmin-click.html')
+    return render(request, 'records_management/admin_login_signup.html')
 
 #Shows the signup/login page for Church Executive
 def churchExecClick_view(request):
@@ -32,6 +32,7 @@ def churchMemberClick_view(request):
 
 
 def churchAdminSignup_view(request):
+    print("test adminForm")
     if request.method == "POST":
         adminForm = forms.AdminSignupForm(request.POST)
         if adminForm.is_valid():
@@ -43,7 +44,7 @@ def churchAdminSignup_view(request):
             return HttpResponseRedirect('/church-admin-login/')
     else:
         adminForm = forms.AdminSignupForm()
-    return render(request, 'records_management/adminsignup.html', {'adminForm': adminForm})
+    return render(request, 'records_management/admin_login_signup.html', {'adminForm': adminForm})
 
 
 def churchExecSignup_view(request):
