@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Log in/Sign up Form - Desktop Only</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'>
+  <link rel="stylesheet" href="{% static 'records_management/base_signup_login.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<h2>User type Access Page</h2>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		{% block signupform %}{% endblock signupform %}
+		<form action="#">
+			<h1>Signup to create account</h1>
+			<input type="text" placeholder="Name" />
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<button>Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		{% block signinform %}{% endblock signinform %}
+		<form action="#">
+			<input type="password" placeholder="Password" />
+			<a href="#">Forgot your password?</a>
+			<button>Log In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To access classified data please login with your personal info</p>
+				<button class="ghost" id="signIn">Log In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, {% block usertype %}{% endblock usertype %}!</h1>
+				<p>Create an account and start a journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer>
+	
+</footer>
+<!-- partial -->
+  <script  src="{% static 'records_management/base_signup_login.js' %}"></script>
+
+</body>
+</html>
