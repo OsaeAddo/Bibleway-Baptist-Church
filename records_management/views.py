@@ -47,7 +47,6 @@ def churchAdminSignup_view(request):
 
 
 def churchExecSignup_view(request):
-    context = {'userForm': 'userForm', 'executiveForm': 'executiveForm'}
     if request.method == 'POST':
         userForm = forms.ExecutiveUserForm(request.POST)
         executiveForm = forms.ExecutiveForm(request.POST, request.FILES)
@@ -65,7 +64,8 @@ def churchExecSignup_view(request):
     else:
         userForm = forms.ExecutiveUserForm()
         executiveForm = forms.ExecutiveForm()
-    return render(request, 'records_management/execsignup.html', context)
+    # context = {'userForm': 'userForm', 'executiveForm': 'executiveForm'}
+    return render(request, 'records_management/execsignup.html', {'userForm': 'userForm', 'executiveForm': 'executiveForm'})
 
 
 def member_signup_view(request):
