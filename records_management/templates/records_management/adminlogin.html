@@ -1,12 +1,19 @@
 <title>LogIn | Chuch Admin</title>
-{% load static %}
 {% extends "records_management/baselogin.html" %}
 
 
+{% load static %}
 {% block styles %}
 
 {% endblock styles %}
 
 {% block logintype %}
-    Admin Login
+    Admin Page
+    <form method="post">
+        {% csrf_token %}
+        <div class="user-box">
+          {{ form }}
+        </div>
+        <button type="submit">Sign In</button>
+    </form>
 {% endblock logintype %}
