@@ -3,7 +3,7 @@
 {% block usertypeheader %}Admin{% endblock usertypeheader %}
 
 {% block signupform %}
-  <form method="post">
+  <form method="post" action="{% url 'adminsignup' %}">
     {% csrf_token %}
     <h1>Signup</h1>
     {{adminForm.first_name}}
@@ -16,7 +16,7 @@
 {% endblock signupform %}
 
 {% block loginform %}
-  <form method="post">
+  <form method="post" action="{% url 'adminlogin' %}">
     {% csrf_token %}
     <h1>Log In</h1>
     {{adminForm.username}}
