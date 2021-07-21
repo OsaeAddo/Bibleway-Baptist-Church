@@ -1,5 +1,5 @@
 from django.test import TestCase
-from . import views
+from records_management import views
 class ViewsTestCase(TestCase):
     def test_index_loads_properly(self):
         """If index page loads properly"""
