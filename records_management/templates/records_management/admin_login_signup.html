@@ -1,21 +1,22 @@
 {% extends "records_management/base_login_signup.html" %}
 {% load static %}
-<h2>Admin Login & Signup page</h2>
+{% block usertypeheader %}Admin{% endblock usertypeheader %}
 
 {% block signupform %}
-  <form method="post">
+  <form method="post" action="{% url 'adminsignup' %}">
     {% csrf_token %}
-    <h1>Log In</h1>
+    <h1>Signup</h1>
     {{adminForm.first_name}}
     {{adminForm.last_name}}
+    {{adminForm.username}}
     {{adminForm.password}}
     <a href="#">Forgot your password?</a>
-    <button type="submit">Log In</button>
+    <button type="submit">SignUp</button>
   </form>
 {% endblock signupform %}
 
-{% block signinform %}
-  <form method="post">
+{% block loginform %}
+  <form method="post" action="{% url 'adminlogin' %}">
     {% csrf_token %}
     <h1>Log In</h1>
     {{adminForm.username}}
@@ -23,4 +24,8 @@
     <a href="#">Forgot your password?</a>
     <button type="submit">Log In</button>
   </form>
-{% endblock signinform %}
+{% endblock loginform %}
+
+{% block usertype %}
+  Admin
+{% endblock usertype %}
