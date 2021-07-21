@@ -40,7 +40,7 @@ def churchAdminSignup_view(request):
             user.save()
             my_admin_group = Group.objects.get_or_create(name="ADMIN")
             my_admin_group[0].user_set.add(user)
-            return HttpResponseRedirect('/church-admin-login/')
+            return redirect('/church-admin-login/')
     else:
         adminForm = forms.AdminSignupForm()
     return render(request, 'records_management/admin_login_signup.html', {'adminForm': adminForm})
