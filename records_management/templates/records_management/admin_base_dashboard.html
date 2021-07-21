@@ -5,9 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% url 'admin_base_dashboard.css'} %">
     {% block title %}{% endblock title %}
 </head>
 <body>
-    
+    <div class="admin">
+        <header class="admin_header">
+            <a href="#" class="logo">
+                <h1>Church Admin</h1>
+            </a>
+        </header>
+    </div>
 </body>
 </html>
