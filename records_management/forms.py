@@ -31,6 +31,7 @@ class ExecutiveUserForm(forms.ModelForm):
             'password'
         ]
         widgets = {
+            'first_name': forms.CharField(max_length=100, attrs={'placeholder':'First name'}),
             'password': forms.PasswordInput()
         }
 
