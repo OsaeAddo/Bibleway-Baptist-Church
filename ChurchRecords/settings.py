@@ -86,6 +86,9 @@ DATABASES = {
         'PASSWORD': 'crmpassword',
         'HOST': 'localhost',
         'PORT': '',
+        'TEST': {
+            'NAME': 'test_database',
+        },
     }
 }
 
