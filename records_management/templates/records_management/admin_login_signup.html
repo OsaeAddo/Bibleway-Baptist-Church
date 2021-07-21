@@ -1,6 +1,19 @@
 {% extends "records_management/base_login_signup.html" %}
 {% load static %}
 <h2>Admin Login & Signup page</h2>
+
+{% block signupform %}
+  <form method="post">
+    {% csrf_token %}
+    <h1>Log In</h1>
+    {{adminForm.first_name}}
+    {{adminForm.last_name}}
+    {{adminForm.password}}
+    <a href="#">Forgot your password?</a>
+    <button type="submit">Log In</button>
+  </form>
+{% endblock signupform %}
+
 {% block signinform %}
   <form method="post">
     {% csrf_token %}
