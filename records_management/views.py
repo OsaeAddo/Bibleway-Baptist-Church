@@ -32,7 +32,6 @@ def churchMemberClick_view(request):
 
 
 def churchAdminSignup_view(request):
-    print("test adminForm")
     if request.method == "POST":
         adminForm = forms.AdminSignupForm(request.POST)
         if adminForm.is_valid():
