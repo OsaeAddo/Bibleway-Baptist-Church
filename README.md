@@ -106,3 +106,23 @@ python manage.py migrate
 ```
 python manage.py runserver
 ```
+# Writing tests
+On the CLI:
+```
+cd records_management
+mkdir tests
+touch __init__.py
+```
+```
+touch test_models.py
+touch test_views.py
+```
+## Open settings.py
+Add 
+```
+'TEST': {
+        'NAME':'test_database',
+}, 
+``` 
+to DATABASES
+
