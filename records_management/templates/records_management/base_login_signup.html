@@ -10,13 +10,13 @@
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<h2>User type Access Page</h2>
+<h2>{% block usertypeheader %}{% endblock usertypeheader %} Access Page</h2>
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
 		{% block signupform %}{% endblock signupform %}
 	</div>
 	<div class="form-container sign-in-container">
-		{% block signinform %}{% endblock signinform %}
+		{% block loginform %}{% endblock loginform %}
 	</div>
 	<div class="overlay-container">
 		<div class="overlay">
