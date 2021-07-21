@@ -6,4 +6,5 @@ migrations/
 
 #Pycache
 *.pyc
-records_management/__pycache__
+records_management/__pycache__/
+
