@@ -107,7 +107,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 # Writing tests
-On the CLI:
+## In the terminal:
 ```
 cd records_management
 mkdir tests
@@ -117,12 +117,26 @@ touch __init__.py
 touch test_models.py
 touch test_views.py
 ```
-## Open settings.py
-Add 
+## In settings.py
+Add:
 ```
 'TEST': {
         'NAME':'test_database',
 }, 
 ``` 
-to DATABASES
+to 'default' in DATABASES.
 
+## In the terminal:
+```
+mysql -u root -p
+```
+## Grant all privileges to the non-existing database added above
+```
+GRANT ALL PRIVILEGES ON test_database.*TO 'database_user'@'localhost';
+```
+NB: database_user must be same as that set in default in above.
+
+## In the terminal:
+```
+python manage.py test 
+```
