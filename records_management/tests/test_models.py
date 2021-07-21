@@ -1,5 +1,5 @@
 from django.test import TestCase
-from  . import models
+from  records_management import models
 
 
 class ModelsTestCase(TestCase):
