@@ -13,7 +13,8 @@ class AdminSignupForm(forms.ModelForm):
             'password'
         ]
         widgets = {
-            'password': forms.PasswordInput()
+            'first_name': forms.CharField(max_length=100, attrs={'placeholder':'First name'}),
+            'password': forms.PasswordInput(attrs={'placeholder':"Password"}),
         }
 
 #for church leaders to create an account
