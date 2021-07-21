@@ -13,7 +13,10 @@ class AdminSignupForm(forms.ModelForm):
             'password'
         ]
         widgets = {
-            'password': forms.PasswordInput()
+            'first_name': forms.TextInput(attrs={'placeholder':"First name"}),
+            'username': forms.TextInput(attrs={'placeholder':"Username"}),
+            'last_name': forms.TextInput(attrs={'placeholder':"Last name"}),
+            'password': forms.PasswordInput(attrs={'placeholder':"Password"}),
         }
 
 #for church leaders to create an account
@@ -28,7 +31,10 @@ class ExecutiveUserForm(forms.ModelForm):
             'password'
         ]
         widgets = {
-            'password': forms.PasswordInput()
+            'first_name': forms.TextInput(attrs={'placeholder':"First name"}),
+            'username': forms.TextInput(attrs={'placeholder':"Username"}),
+            'last_name': forms.TextInput(attrs={'placeholder':"Last name"}),
+            'password': forms.PasswordInput(attrs={'placeholder':"Password"}),
         }
 
 
@@ -48,6 +54,13 @@ class ChurchMemberUserForm(forms.ModelForm):
             'username',
             'password'
         ]
+        widgets = {
+            'first_name': forms.TextInput(attrs={'placeholder':"First name"}),
+            'username': forms.TextInput(attrs={'placeholder':"Username"}),
+            'last_name': forms.TextInput(attrs={'placeholder':"Last name"}),
+            'password': forms.PasswordInput(attrs={'placeholder':"Password"}),
+        }
+
         
 class ChurchMemberForm(forms.ModelForm):
     class Meta:

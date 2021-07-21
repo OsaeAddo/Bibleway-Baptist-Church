@@ -2,3 +2,7 @@
 README.md
 migrations/
 db.sqlite3
+
+
+#Pycache
+*.pyc
