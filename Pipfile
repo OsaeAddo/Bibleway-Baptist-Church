@@ -9,6 +9,7 @@ mysqlclient = "*"
 asgiref = "*"
 django-widget-tweaks = "*"
 pillow = "*"
+black = "*"
 
 [dev-packages]
 
