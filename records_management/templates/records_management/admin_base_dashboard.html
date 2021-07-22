@@ -286,12 +286,19 @@
       <h2>{{request.user.first_name}}</h2>
     </header>
     <ul>
-    <li tabindex="0" class="icon-dashboard"> <a style="color:white; text-decoration:none;"
-            href="/admin-dashboard"><span>Dashboard</span></a> </li>
-    <li tabindex="0" class="icon-customers"> <a style="color:white; text-decoration:none;" href="/admin-doctor"><span>Church
-                Leader</span></a></li>
-    <li tabindex="0" class="icon-users"> <a style="color:white; text-decoration:none;" href="#"><span>Church
-                Member</span></a></li>
+    <li tabindex="0" class="icon-dashboard"> 
+        <a style="color:white; text-decoration:none;" href="#">
+            <span>Dashboard</span>
+        </a> 
+    </li>
+    <li tabindex="0" class="icon-customers"> 
+        <a style="color:white; text-decoration:none;" href="#"><span>Church Leader</span>
+        </a>
+    </li>
+    <li tabindex="0" class="icon-users"> 
+        <a style="color:white; text-decoration:none;" href="#"><span>Church Member</span>
+        </a>
+    </li>
     <li tabindex="0" class="icon-calendar"> 
         <a style="color:white; text-decoration:none;" href="">
             <span>Appointment</span>
@@ -306,19 +313,18 @@
     <!-- nav section -->
     <div class="bs-example">
       <nav class="navbar navbar-expand-md  navbar-dark fixed-top" style="background:#337AB7;">
-        <a href="/admin-dashboard" class="navbar-brand">HOSPITAL MANAGEMENT</a>
+        <a href="{% url 'churchadmin-dashboard' %}" class="navbar-brand">CHURCH MANAGEMENT</a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
           <div class="navbar-nav" style=" margin-left: 90%;">
-
-            <a href="/logout" class="nav-item nav-link">Logout</a>
+            <a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a>
           </div>
         </div>
       </nav>
     </div>
-    <!-- nav end -->
+    <!-- end nav-->
 
 
 
@@ -345,7 +351,7 @@
           <div class="col-md-12 col-sm-12">
             <div style="color:#ffffff;" class="wow fadeInUp footer-copyright">
               <p>Made in India <br>
-                Copyright &copy; 2020 LazyCoder </p>
+                Copyright &copy; 2021 Bible Way Baptist Church</p>
             </div>
           </div>
         </div>
@@ -353,12 +359,8 @@
     </footer>
 
   </main>
-  <!--
-  developed By : sumit kumar
-  facebook : fb.com/sumit.luv
-  youtube : youtube.com/lazycoders
-  -->
 
 </body>
 
 </html>
+<!-- Built by Osae -->
