@@ -169,13 +169,3 @@ img {
   background-color: #56bf89;
 }
 
-.ticker {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-}
-.ticker_item {
-  margin-right: 1rem;
-}
