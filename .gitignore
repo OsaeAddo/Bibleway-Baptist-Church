@@ -1,8 +1,10 @@
 #Django
 README.md
 migrations/
-db.sqlite3
+
 
 
 #Pycache
 *.pyc
+records_management/__pycache__/
+

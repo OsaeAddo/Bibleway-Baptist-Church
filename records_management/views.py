@@ -40,7 +40,7 @@ def churchAdminSignup_view(request):
             user.save()
             my_admin_group = Group.objects.get_or_create(name="ADMIN")
             my_admin_group[0].user_set.add(user)
-            return HttpResponseRedirect('/church-admin-login/')
+            return redirect('/church-admin-login/')
     else:
         adminForm = forms.AdminSignupForm()
     return render(request, 'records_management/admin_login_signup.html', {'adminForm': adminForm})
@@ -90,7 +90,9 @@ def member_signup_view(request):
     return render(request, 'records_management/churchmember_signup.html', context)
 
 
-
+#To Do later
+def customize_churchadmin_login_view(user):
+    pass
 
 # checks if user is an admin or a church executive
 def is_churchadmin(user):
@@ -106,7 +108,7 @@ def is_churchmember(user):
 #------- AFTER ENTERING CREDENTIALS, CHECK IF USERNAME & PASSWORD IS THAT OF CHURCH ADMIN OR EXECUTIVE
 def afterloginview(request):
     if is_churchadmin(request.user):
-        return redirect('churchadmin-dashboard')
+        return redirect('churchadmin-dashboard/')
     elif is_churchexecutive(request.user):
         accountapproval = models.ChurchLeader.objects.all().filter(user_id=request.user.id, status = True)
         if accountapproval:
