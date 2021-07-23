@@ -124,9 +124,9 @@ def churchadmin_dashboard_view(request):
     leaders = models.ChurchLeader.objects.all().order_by('-id')
     members = models.ChurchMember.objects.all().order_by('-id')
     count_church_members = models.ChurchMember.objects.all().count()
-    pending_members_count = models.ChurchMember.objects.all().filter_by(status=False)
+    pending_members_count = models.ChurchMember.objects.all().filter(status=False)
     count_leaders = models.ChurchLeader.objects.all().filter().count()
-    pending_leaders_count = models.ChurchLeader.objects.all().filter_by(status=False)
+    pending_leaders_count = models.ChurchLeader.objects.all().filter(status=False)
     total_members = count_church_members + count_leaders
     context = {
         'leaders':leaders,
