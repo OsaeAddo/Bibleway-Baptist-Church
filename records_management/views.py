@@ -124,13 +124,15 @@ def churchadmin_dashboard_view(request):
     leaders = models.ChurchLeader.objects.all().order_by('-id')
     members = models.ChurchMember.objects.all().order_by('-id')
     count_church_members = models.ChurchMember.objects.all().count()
-    count_executives = models.ChurchLeader.objects.all().filter().count()
-    total_members = count_church_members + count_executives
+    count_leaders = models.ChurchLeader.objects.all().filter().count()
+    pending_leaders_count = models.ChurchLeader.objects.all().filter_by(status=False)
+    total_members = count_church_members + count_leaders
     context = {
         'leaders':leaders,
         'members':members,
         'count_church_members':count_church_members,
-        'count_executives':count_executives,
+        'count_leaders':count_leaders,
+        'pending_leaders_count':pending_leaders_count,
         'total_members':total_members,
         # 'executive':models.ChurchLeader.objects.get(user_id=request.user.id)
         #for profile picture of admin in the sidebar
