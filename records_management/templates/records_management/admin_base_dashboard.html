@@ -42,7 +42,6 @@
 
 
     #ftr {
-
       padding: 20px;
     }
 
@@ -87,14 +86,6 @@
 
     }
 
-
-
-
-
-    body {
-
-      padding-left: 240px;
-    }
     main {
       position: relative;
       height: 100vh;
@@ -272,37 +263,7 @@
 </head>
 
 <body>
-
-  <!-- partial:index.partial.html -->
-  <nav class="menu" tabindex="0">
-    <div class="smartphone-menu-trigger"></div>
-    <header class="avatar">
-      <img src="{% static "images/adminpropic.png" %}" />
-      <br><br>
-      <h6>Church Admin</h6>
-      <h2>{{request.user.first_name}}</h2>
-    </header>
-    <ul>
-      <li tabindex="0" class="icon-dashboard"> 
-          <a style="color:white; text-decoration:none;" href="#">
-              <span>Dashboard</span>
-          </a> 
-      </li>
-      <li tabindex="0" class="icon-customers"> 
-          <a style="color:white; text-decoration:none;" href="#"><span>Church Leader</span>
-          </a>
-      </li>
-      <li tabindex="0" class="icon-users"> 
-          <a style="color:white; text-decoration:none;" href="#">
-            <span>Church Member</span>
-          </a>
-      </li>
-    </ul>
-  </nav>
-
-  <main>
-
-
+  <div class="central-layout">
     <!-- nav section -->
     <div class="bs-example">
       <nav class="navbar navbar-expand-md  navbar-dark fixed-top" style="background:#337AB7;">
@@ -319,17 +280,45 @@
     </div>
     <!-- end nav-->
 
+    <!-- Sidebar section-->
+    <nav class="menu" tabindex="0">
+      <div class="smartphone-menu-trigger"></div>
+      <header class="avatar">
+        <img src="{% static "images/adminpropic.png" %}" />
+        <br><br>
+        <h6>Church Admin</h6>
+        <h2>{{request.user.first_name}}</h2>
+      </header>
+      <ul>
+        <li tabindex="0" class="icon-dashboard"> 
+            <a style="color:white; text-decoration:none;" href="#">
+                <span>Dashboard</span>
+            </a> 
+        </li>
+        <li tabindex="0" class="icon-customers"> 
+            <a style="color:white; text-decoration:none;" href="#"><span>Church Leader</span>
+            </a>
+        </li>
+        <li tabindex="0" class="icon-users"> 
+            <a style="color:white; text-decoration:none;" href="#">
+              <span>Church Member</span>
+            </a>
+        </li>
+      </ul>
+    </nav>
 
+    <main>
+      <br><br>
+    
+    
+      {% block content %}
+    
+      {% endblock content %}
+    
+    
+      <br><br><br><br>
+    </main>
 
-    <br><br>
-
- 
-    {% block content %}
-
-    {% endblock content %}
-  
-
-    <br><br><br><br>
     <footer>
       <p>
         <a id="ftr" href="https://facebook.com/sumit.luv/" class="fa fa-facebook"></a>
@@ -337,7 +326,7 @@
         <a id="ftr" href="https://instagram.com/sumit.luv" class="fa fa-instagram"></a>
         <a id="ftr" href="https://twitter.com/sumitkumar1503" class="fa fa-twitter"></a>
       </p>
-
+  
       <br>
       <div class="container">
         <div class="row">
@@ -350,7 +339,7 @@
       </div>
     </footer>
 
-  </main>
+  </div>
 
 </body>
 
