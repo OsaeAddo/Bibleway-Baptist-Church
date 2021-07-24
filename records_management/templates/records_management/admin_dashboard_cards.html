@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -133,40 +134,44 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{% static 'admin_dashboard_cards.css'} %">
+  <link rel="stylesheet" href="{% static 'records_management/admin_dashboard_cards.css' %}">
 </head>
 
 <body>
-  <div class="market-updates">
-    <div class="col-md-4 market-update-gd">
-      <div class="market-update-block clr-block-1">
-        <div class="col-md-8 market-update-left">
-          <h3>{{count_leaders}}</h3>
-          <h4>Total Church Leaders</h4>
-          <p>Total Approval Required : {{pending_leaders_count}}</p>
+    <div class="market-updates">
+        <div class="col-md-4 market-update-gd">
+        <div class="market-update-block clr-block-1">
+            <div class="col-md-8 market-update-left">
+            <h3>{{count_leaders}}</h3>
+            <h4>Total Church Leaders</h4>
+            <p>Total Approval Required : {{pending_leaders_count}}</p>
+            </div>
+            <div class="col-md-4 market-update-right">
+            <i class="fa fa-user-md"></i>
+            </div>
+            <div class="clearfix"> </div>
         </div>
-        <div class="col-md-4 market-update-right">
-          <i class="fa fa-user-md"></i>
         </div>
+        <div class="col-md-4 market-update-gd">
+        <div class="market-update-block clr-block-2">
+            <div class="col-md-8 market-update-left">
+            <h3>{{count_church_members}}</h3>
+            <h4>Total Church Members</h4>
+            <p>Total Approval Required: {{pending_members_count}}</p>
+            </div>
+            <div class="col-md-4 market-update-right">
+            <i class="fa fa-user-o"></i>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        </div>
+        
         <div class="clearfix"> </div>
-      </div>
     </div>
-    <div class="col-md-4 market-update-gd">
-      <div class="market-update-block clr-block-2">
-        <div class="col-md-8 market-update-left">
-          <h3>{{count_church_members}}</h3>
-          <h4>Total Church Members</h4>
-          <p>Total Approval Required: {{pending_members_count}}</p>
-        </div>
-        <div class="col-md-4 market-update-right">
-          <i class="fa fa-user-o"></i>
-        </div>
-        <div class="clearfix"> </div>
-      </div>
+    <div class="card-container">
+        <div class="card1 card-items">Lorem ipsum dolor sit amet consectetur adipisicing elit. In dolor facilis suscipit, deleniti aut hic sed atque nesciunt eos odio aperiam corrupti fugit. Labore amet magni laboriosam debitis libero accusamus.</div>
+        <div class="card2 card-items">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa esse incidunt provident rerum nostrum enim deserunt inventore? Obcaecati ipsam at quis, consequatur distinctio, voluptatum mollitia similique, ea quos facilis voluptatem.</div>
     </div>
-    
-    <div class="clearfix"> </div>
-  </div>
 </body>
 
 </html>
