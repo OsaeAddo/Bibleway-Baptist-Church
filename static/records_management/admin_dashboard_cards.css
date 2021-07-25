@@ -1,15 +1,16 @@
 .card-container{
-    max-width: 1100px;
-    display: grid;
+    max-width: 900px;
     margin: 20px auto;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    display: grid;
+    grid-template-columns: .5fr .5fr;
+    grid-template-areas: 
+        "leaders-area members-area";
     gap: 20px;
 } 
 .card-container img{
     width: 70px;
 }
 .card-items{
-
     padding: 20px;
     color: rgb(234, 245, 240);
     font-family: 'Carrois Gothic', sans-serif;
@@ -19,29 +20,32 @@
 
 .card-items{
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: .6fr .4fr;
     grid-template-areas: 
         "count icon"
-        "total total"
+        "total ."
         "approval_required approval_required";
 }
 h3{
     grid-area: count;
-    align-self: center;
+    justify-self: center;
 }
 img{
     grid-area: icon;
-    align-self: right;
+    justify-self: end;
 }
-.total_label{
+.total-label{
     grid-area: total;
+    justify-self: center;
 }
 .required{
     grid-area: approval_required;
+    justify-self: center;
 }
 
 .members-card{
     background: linear-gradient(#26630e,#685d3b );
+    grid-area: members-area;
 }
 .members-card:hover{
     background: #3C3C3C;
@@ -51,6 +55,7 @@ img{
     -o-transition: 0.5s all;
 }
 .leaders-card{
+    grid-area: leaders-area;
     background: linear-gradient(#194b5f,#454e34);
 }
 .leaders-card:hover{
