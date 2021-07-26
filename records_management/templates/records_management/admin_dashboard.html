@@ -1,6 +1,6 @@
 {% extends 'records_management/admin_base_dashboard.html' %}
 {% load static %}
-{% block content %}
+<!-- {% block content %}
   {% include 'records_management/admin_dashboard_cards.html' %}
   <br><br><br><br>
   <div class="container">
@@ -52,15 +52,15 @@
           </thead>
           {% for member in members %}
               <tr>
-              <td> {{member.get_name}}</td>
-              <td>{{member.member_role}}</td>
-              <td>{{member.mobile}}</td>
-              <td>{{member.residential_address}}</td>
-              {%if member.status%}
-                  <td> <span class="label label-primary">Approved</span></td>
-              {% else %}
-                  <td> <span class="label label-success">On Hold</span></td>
-              {% endif %}
+                <td> {{member.get_name}}</td>
+                <td>{{member.member_role}}</td>
+                <td>{{member.mobile}}</td>
+                <td>{{member.residential_address}}</td>
+                {%if member.status%}
+                    <td> <span class="label label-primary">Approved</span></td>
+                {% else %}
+                    <td> <span class="label label-success">On Hold</span></td>
+                {% endif %}
 
               </tr>
           {% endfor %}
@@ -68,8 +68,7 @@
       </div>
     </div>
   </div>
+{% endblock content %} -->
 
-
-{% endblock content %}
 
 <!-- Built by Osae -->
