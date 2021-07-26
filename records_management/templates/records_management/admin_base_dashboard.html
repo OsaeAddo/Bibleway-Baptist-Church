@@ -1,89 +1,173 @@
-<!DOCTYPE html>
 {% load static %}
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title>Admin Dashboard | New Way Baptist Church</title>
-
-  <link rel="stylesheet" href="{% static 'records_management/admin_base_dashboard.css' %}">
-
-</head>
-
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsive Sidebar Menu  | CodingLab </title>
+    <link rel="stylesheet" href="{% static 'records_management/admin_base_dashboard.css' %}">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
 <body>
-  <div class="central-layout">
-    <!-- nav section -->
-    <nav class="admin-navbar">
-      <div>
-        <div class="navbar-logo">
-          <a href="{% url 'churchadmin-dashboard' %}" class="navbar-logo">CHURCH MANAGEMENT</a>
-        </div>
-        <div class="navbar-logout">
-          <a href="{% url 'logout' %}" class="">Logout</a>
-        </div>
+  <div class="sidebar">
+    <ul class="nav-list">
+      <div class="logo-details">
+        <img class="bx icon" src="{% static 'images/logo.jpg' %}" alt="logo">
+        <div class="logo_name">Bible Way<br>Baptist Church</div>
+        <i class='bx bx-menu' id="btn" ></i>
       </div>
-    </nav>
-    <!-- end nav-->
-
-    <!-- Sidebar section-->
-    <nav class="menu admin-sidebar" tabindex="0">
-      <div class="smartphone-menu-trigger"></div>
-      <header class="avatar">
-        <img src="{% static "images/adminpropic.png" %}" />
-        <br><br>
-        <h6>Church Admin</h6>
-        <h2>{{request.user.first_name}}</h2>
-      </header>
-      <ul>
-        <li tabindex="0" class="icon-dashboard"> 
-            <a style="color:white; text-decoration:none;" href="#">
-                <span>Dashboard</span>
-            </a> 
-        </li>
-        <li tabindex="0" class="icon-customers"> 
-            <a style="color:white; text-decoration:none;" href="#"><span>Church Leader</span>
-            </a>
-        </li>
-        <li tabindex="0" class="icon-users"> 
-            <a style="color:white; text-decoration:none;" href="#">
-              <span>Church Member</span>
-            </a>
-        </li>
-      </ul>
-    </nav>
-
-    <main class="admin-main">
-      <br><br>
-    
-    
-      {% block content %}
-    
-      {% endblock content %}
-    
-    
-    </main>
-    <br><br><br><br>
-    <footer class="admin-footer">
-      <p>
-        <a id="ftr" href="" class="fa fa-facebook"></a>
-        <a id="ftr" href="" class="fa fa-whatsapp"></a>
-        <a id="ftr" href="" class="fa fa-instagram"></a>
-        <a id="ftr" href="" class="fa fa-twitter"></a>
-      </p>
-  
-      <br>
-      <div class="container">
-
-            <div style="color:#ffffff;" class="footer-copyright">
-                Copyright &copy; 2021 Bible Way Baptist Church</p>
-            </div>
-      </div>
-    </footer>
-
-
+      <li class="profile">
+        <div class="profile-details">
+          <img src="{% static 'images/os1.jpg' %}" alt="profilepic">
+          <div class="name_job">
+            <div class="name">Osae Addo</div>
+            <div class="job">Admin</div>
+          </div>
+        </div>
+      </li>
+      <!-- <li>
+          <i class='bx bx-search' ></i>
+         <input type="text" placeholder="Search...">
+         <span class="tooltip">Search</span>
+        </li> -->
+      <li>
+        <a href="#">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+        <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+       <a href="#">
+         <i class='bx bx-user' ></i>
+         <span class="links_name">User</span>
+       </a>
+       <span class="tooltip">User</span>
+     </li>
+     <li>
+       <a href="#">
+         <i class='bx bx-chat' ></i>
+         <span class="links_name">Messages</span>
+       </a>
+       <span class="tooltip">Messages</span>
+     </li>
+     <li>
+       <a href="#">
+         <i class='bx bx-pie-chart-alt-2' ></i>
+         <span class="links_name">Analytics</span>
+        </a>
+       <span class="tooltip">Analytics</span>
+     </li>
+     <li>
+       <a href="#">
+         <i class='bx bx-folder' ></i>
+         <span class="links_name">File Manager</span>
+       </a>
+       <span class="tooltip">Files</span>
+     </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-heart' ></i>
+          <span class="links_name">Saved</span>
+        </a>
+        <span class="tooltip">Saved</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-cog' ></i>
+          <span class="links_name">Setting</span>
+        </a>
+        <span class="tooltip">Settings</span>
+      </li>
+    </ul>
   </div>
 
-</body>
+  <section class="home-section">
+    <div class="nav-section">
+      <div class="logout">Logout<i class='bx bx-log-out' id="log_out" ></i></div>
+    </div>
 
+    <div class="main-layout">
+      <div class="card-items leaders-card">
+        <h3>{{count_leaders}}</h3>
+        <div class="card-data total-label">Total Church Leaders</div>
+        <div class="card-data required">Approvals Required : {{pending_leaders_count}}</div>
+        <img src="{% static 'images/businessman1.svg' %}" alt="CLIcon">
+      </div>
+      <div class="card-items members-card">
+        <h3>{{count_church_members}}</h3>
+        <div class="card-data total-label">Total Church Members</div>
+        <div class="card-data required">Approvals Required: {{pending_members_count}}</div>
+        <img src="{% static 'images/teamwork.svg' %}" alt="MI">
+      </div>
+      <div class="card-items total-congregation">
+        <h3>{{count_all}}</h3>
+        <div class="card-data total-label">Total Church</div>
+        <div class="card-data required">Total Approval Required : {{pending_total_count}}</div>
+        <img src="{% static 'images/teamwork.svg' %}" alt="CI">
+      </div>
+
+    </div>
+    <div class="user-details">
+      <table class="table leaders-table">
+        <caption>Leaders List</caption>
+        <tr>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Mobile</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td>Emmanuel</td>
+          <td>Deacon</td>
+          <td>0550125552</td>
+          <td>True</td>
+        </tr>
+      </table>
+      
+      <table class="table members-table">
+        <caption>Members List</caption>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Mobile</th>
+          <th>Address</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <tr>
+            <td>Emmanuel Osae-Addo</td>
+            <td>Deacon</td>
+            <td>0550125552</td>
+            <td>Pokuase, Street 5</td>
+            <td>True</td>
+          </tr>
+        </tr>
+      </table>
+    </div>
+    <div class="footer-section">
+        <div class="socials">
+          <a href="" class="bx bx-cog"></a>
+          <a href="" class="bxl-whatsapp"></a>
+          <a href="" class="bxl-twitter"></a>
+          <a href="" class="bxl-markdown"></a>
+        </div>
+    
+        <br>
+        <div class="footer-copyright">
+          <div class="copyright">
+            Copyright &copy; 2021 Bible Way Baptist Church</p>
+          </div>
+        </div>
+    </div>
+      
+  </section>
+  <script src="{% static 'records_management/toggle-admin.js' %}"></script>
+
+</body>
 </html>
+
+
+
 <!-- Built by Osae -->
