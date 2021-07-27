@@ -1,74 +1,18 @@
 {% extends 'records_management/admin_base_dashboard.html' %}
 {% load static %}
-<!-- {% block content %}
-  {% include 'records_management/admin_dashboard_cards.html' %}
-  <br><br><br><br>
-  <div class="container">
-    <div class="row">
-      <div class="panel panel-primary col-md-5" style="margin-left:2%;">
-        <div class="panel-heading" style="text-align:center;">
-          <h6 class="panel-title">Recently added Leaders</h6>
-        </div>
-        <table class="table table-hover" id="dev-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Leadershiptype</th>
-              <th>Mobile</th>
-              <th>Status</th>
-
-            </tr>
-          </thead>
-          {% for leader in leaders %}
-              <tr>
-                  <td> {{leader.get_name}}</td>
-                  <td>{{leader.leadershiptype}}</td>
-                  <td>{{leader.mobile}}</td>
-                  {%if leader.status%}
-                      <td> <span class="label label-primary">Permanent</span></td>
-                  {% else %}
-                      <td> <span class="label label-success">On Hold</span></td>
-                  {% endif %}
-
-              </tr>
-          {% endfor %}
-        </table>
-      </div>
-
-      <div class="panel panel-primary col-md-5" style="margin-left:5%;">
-        <div class="panel-heading" style="text-align:center;">
-          <h6 class="panel-title">Recently added Members</h6>
-        </div>
-        <table class="table table-hover" id="dev-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Role</th>
-              <th>Mobile</th>
-              <th>Address</th>
-              <th>Status</th>
-
-            </tr>
-          </thead>
-          {% for member in members %}
-              <tr>
-                <td> {{member.get_name}}</td>
-                <td>{{member.member_role}}</td>
-                <td>{{member.mobile}}</td>
-                <td>{{member.residential_address}}</td>
-                {%if member.status%}
-                    <td> <span class="label label-primary">Approved</span></td>
-                {% else %}
-                    <td> <span class="label label-success">On Hold</span></td>
-                {% endif %}
-
-              </tr>
-          {% endfor %}
-        </table>
-      </div>
-    </div>
-  </div>
-{% endblock content %} -->
-
-
-<!-- Built by Osae -->
+{% include 'records_management/admin_dashboard_cards.html' %}
+{% block churchlist %}
+  {% for leader in leaders %}
+    <tr>
+      <td> {{leader.get_name}}</td>
+      <td>{{leader.leadershiptype}}</td>
+      <td>{{leader.mobile}}</td>
+      {% if leader.status %}
+        <td><span class="label label-primary">Permanet</span></td>
+      {% else %}
+        <td><span class="label label-success">On Hold</span></td>
+      {% endif %}
+      
+    </tr>
+  {% endfor %}
+{% endblock churchlist %}
