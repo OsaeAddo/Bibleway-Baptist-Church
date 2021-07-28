@@ -104,7 +104,7 @@
       <div class="card-items total-congregation">
         <h3>{{count_all}}</h3>
         <div class="card-data total-label">Total Church</div>
-        <div class="card-data required">Total Approval Required : {{pending_total_count}}</div>
+        <div class="card-data required">Total Approval Required : {{total_members}}</div>
         <img src="{% static 'images/teamwork.svg' %}" alt="CI">
       </div>
 
@@ -118,7 +118,7 @@
           <th>Mobile</th>
           <th>Status</th>
         </tr>
-        {% block churchlist %}{% endblock churchlist %}
+        {% block leaderlist %}{% endblock leaderlist %}
         <tr>
           <td>Emmanuel</td>
           <td>Deacon</td>
@@ -136,6 +136,7 @@
           <th>Address</th>
           <th>Status</th>
         </tr>
+        {% block memberlist %}{% endblock memberlist %}
         <tr>
           <tr>
             <td>Emmanuel Osae-Addo</td>
@@ -158,7 +159,7 @@
         <br>
         <div class="footer-copyright">
           <div class="copyright">
-            Copyright &copy; 2021 Bible Way Baptist Church</p>
+            Copyright &copy; 2021 Bible Way Baptist Church
           </div>
         </div>
     </div>
