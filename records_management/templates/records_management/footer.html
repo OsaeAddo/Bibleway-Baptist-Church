@@ -1,19 +1,19 @@
-<footer>
-    <br>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="ftr">
-                    <span>New Way Baptist Church
-                        Copyright &copy; <span id="copyright"></span>
-                        <script>
-                            n = new Date();
-                            y = n.getFullYear();
-                            document.getElementById("copyright").innerHTML = y;
-                        </script>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+{% load static %}
+<div class="ftr-socials">
+    <ul>
+        <li>Tw</li>
+        <li>Tel</li>
+        <li>FB</li>
+        <li>Wh</li>
+        <li>Ig</li>
+    </ul>
+</div>
+<div class="copyright">
+    <span>Copyright &copy; <span id="copyright"></span> Bible Way Baptist Church
+        <script>
+            n = new Date();
+            y = n.getFullYear();
+            document.getElementById("copyright").innerHTML = y;
+        </script>
+    </span>
+</div>
