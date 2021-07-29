@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <link rel="stylesheet" href="{% static 'records_management/admin_dashboard_cards.css' %}">
+</head>
+
+<body>
+    <div class="card-container">
+        <div class="leaders-card card-items">
+            <h3>{{count_leaders}}</h3>
+            <div class="card-data total-label">Total Church Leaders</div>
+            <div class="card-data required">Total Approval Required : {{pending_leaders_count}}</div>
+            <img src="{% static 'images/businessman1.svg' %}" alt="Church Leaders Icon">
+        </div>
+        <div class="members-card card-items">
+            <h3>{{count_church_members}}</h3>
+            <div class="card-data total-label">Total Church Members</div>
+            <div class="card-data required">Total Approval Required: {{pending_members_count}}</div>
+            <img src="{% static 'images/teamwork.svg' %}" alt="">
+        </div>
+    </div>
+</body>
+
+</html>
+<!-- Built by Osae -->

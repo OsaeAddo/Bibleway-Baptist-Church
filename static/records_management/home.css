@@ -1,27 +1,142 @@
-body{
-    background: linear-gradient(#c4ccdb, #925dce);
-}   
-main{
-    min-height: 100vh;
+html,
+body {
+  padding: 0;
+  margin: 0;
 }
-a{
-    color: rgba(.2, .2, .3, .9) !important;
+
+body {
+  font-family: sans-serif;
+  font-size: 1rem;
+  min-height: 100vh;
 }
-a:link{
-    color: #e1ecec;
+
+@media screen and (min-width: 300px) {
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 55px auto .33fr;
+    grid-template-areas:
+      "nav"
+      "main"
+      "footer";
+    min-height: inherit;
+  }
 }
-a:hover{
-    color:#925dce !important;
-    text-decoration: none !important;
+
+.nav {
+  color: #fff;
+  padding: 0px;
+  background: linear-gradient(to right, rgb(26, 24, 46), rgb(29, 95, 29));
+  grid-area: nav;
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  grid-template-areas: 
+    "hlogo options socials";
 }
-.txt{
+
+/* Main section */
+.main {
+  grid-area: main;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto 200px auto;
+  grid-template-areas:
+  "upcoming sideimage"
+  "texts sideimage"
+  "cards location"
+  "about location";
+}
+.upcoming{
+    grid-area: upcoming;
+}
+    /* Texts */
+.texts{
+    grid-area: texts;
+    justify-self: center;
+}
+.message{
+    padding: 3px;
+}
+#text1{
+    font-size: 18px;
+    color: rgb(3, 3, 3);
+}
+#text2{
+    font-size: 12px;
+    font-weight: 600;
+    color: rgb(94, 88, 88);
+}
+    /* SideImage */
+.image{
+    grid-area: sideimage;
+}
+.image img{
+    max-width: 100%;
+}
+    /* Cards */
+.user-cards{
+    grid-area: cards;  
+    max-width: 1100px;
+    margin: 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    grid-template-rows: minmax(80px, 200px);
+    gap: 20px;
+    grid-template-areas: 
+    "admin executive member";
+}
+.card-item {
+    background-color: #11101D;
+    padding: 20px;
+    color: rgb(90, 145, 123);
+    font-size: 0.77rem;
+    line-height: 1.7;
+    border-radius: 20px;
     text-align: center;
 }
-.ftr{
-    text-align: center;
-    color: #f8f4f4;
-    font-family: "Josefin Sans", Sans-serif;
-    font-size: 15px;
-    padding-top: 2rem;
-    margin-bottom: 1rem;
+.admin-card{
+    grid-area: admin;
+}
+.executive-card{
+    grid-area: executive;
+}
+.member-card{
+    grid-area: member;
+}
+.card-item img{
+    max-width: 100%;
+    width: 70%;
+    display: block;
+}
+.overlay-text{
+    align-self: end;
+    grid-column: 1;
+    grid-row: 1;
+    color: #fff;
+    padding: 8px;
+    font-size: .85rem;
+    line-height: 1.7;
+}
+    /* Location & About */
+.about{
+    grid-area: about;
+    justify-self: center;
+    align-self: center;
+}
+
+.location{
+    grid-area: location;
+    justify-self: center;
+    align-self: center;
+}
+/* End Main section */
+
+.footer {
+    grid-area: footer;
+    align-self: end;
+    background-color: rgb(77, 77, 77);
+    color: #fff;
+    padding: 15px;
+    font-size: 0.75rem;
 }
