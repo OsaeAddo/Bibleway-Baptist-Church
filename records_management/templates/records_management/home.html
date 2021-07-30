@@ -7,6 +7,7 @@
   <title>Home | Bible Way Baptist Church</title>
   <link rel="stylesheet" href="{% static 'records_management/home.css' %}">
   <link rel="stylesheet" href="{% static 'records_management/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'records_management/footer.css' %}">
 </head>
 <body>
 
@@ -37,21 +38,27 @@
         </div>
         <div class="user-cards">
             <div class="card-item admin-card">
-                <a><img src="{% static 'images/admin-h.svg' %}" alt=""></a>
+                <div class="img-card">
+                    <a><img src="{% static 'images/admin-h.svg' %}" alt="admin access card"></a>
+                </div>
                 <div class="overlay-text">
-                    <p>Admin</p>
+                    <a href="{% url 'admin-click' %}"><p>Admin</p></a>
                 </div>
             </div>
             <div class="card-item executive-card">
-                <a><img src="{% static 'images/exec-h.svg' %}" alt=""></a>
+                <div class="img-card">
+                    <a><img src="{% static 'images/exec-h.svg' %}" alt="executive access card"></a>
+                </div>
                 <div class="overlay-text">
-                    <p>Exec</p>
+                    <a href="{% url 'exec-click' %}"><p>Executive</p></a>
                 </div>
             </div>
             <div class="card-item member-card">
-                <a><img src="{% static 'images/admin-h.svg' %}" alt=""></a>
+                <div class="img-card">
+                    <a><img src="{% static 'images/member-h.svg' %}" alt="Member access card"></a>                
+                </div>
                 <div class="overlay-text">
-                    <p>Member</p>
+                    <a href="{% url 'admin-click' %}"><p>Member</p></a>
                 </div>
             </div>
         </div>
@@ -63,9 +70,7 @@
         </div>
     </div>
     <div class="footer">
-        <div>
-            Copyright &copy; 2021 Bible Way Baptist Church
-        </div>
+        {% include 'records_management/footer.html' %}
     </div>
 </div>
 

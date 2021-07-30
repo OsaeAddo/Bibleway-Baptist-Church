@@ -31,7 +31,7 @@ def churchMemberClick_view(request):
     return render(request, 'records_management/churchmember-click.html')
 
 
-def churchAdminSignup_view(request):
+def church_admin_signup_view(request):
     if request.method == "POST":
         adminForm = forms.AdminSignupForm(request.POST)
         if adminForm.is_valid():

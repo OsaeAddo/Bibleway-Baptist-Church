@@ -11,10 +11,27 @@ body {
 	align-items: center;
 	flex-direction: column;
 	font-family: 'Montserrat', sans-serif;
-	height: 100vh;
 	margin: -20px 0 50px;
+	min-height: 100vh;
 }
-
+.layout{
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-areas: 
+		"header"
+		"usertype"
+      	"main"
+    	"footer";
+}
+.nav{
+	grid-area: header;
+}
+.usrtype{
+	grid-area: usertype;
+}
+.footer{
+	grid-area: footer;
+}
 h1 {
 	font-weight: bold;
 	margin: 0;
@@ -89,6 +106,7 @@ input {
 }
 
 .container {
+	grid-area: main;
 	background-color: #fff;
 	border-radius: 10px;
   	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
