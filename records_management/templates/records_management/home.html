@@ -1,78 +1,103 @@
 {% load static %}
 <!DOCTYPE html>
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Home | Bible Way Baptist Church</title>
-  <link rel="stylesheet" href="{% static 'records_management/home.css' %}">
-  <link rel="stylesheet" href="{% static 'records_management/navbar.css' %}">
-  <link rel="stylesheet" href="{% static 'records_management/footer.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'records_management/home.css' %}">
+    <link rel="stylesheet" href="{% static 'records_management/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'records_management/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <title>Home | Bible Way Baptist Church</title>
 </head>
+
 <body>
-
-<div class="layout">
-    <div class="nav">
+    <nav class="main-nav">
         {% include 'records_management/navbar.html' %}
-    </div>
-    <div class="main">
-        <div class="upcoming">
-            <span>Upcoming events</span>
-        </div>
-        <div class="texts">
-            <div class="message">
-                <div id="text1">
-                    <h2> 
-                        <p>The World Looks</p> 
-                        <p>Different,But We Still</p> 
-                        <p>Worship the Same God</p> 
-                    </h2>
-                </div>
-                <p id="text2">
-                    <span>In response to Covid-19, we are not in our church building at this time</span>
-                </p>
+    </nav>
+    <main id="main">
+        <!-- Sliding Upcoming events section -->
+        <section id="section-upcoming" class="grid">
+            <div class="upcoming-event">
+                <h4>Upcoming Events: Sunday service</h4>
             </div>
-        </div>
-        <div class="image">
-            <img src="{% static 'images/bible.jpg' %}" alt="daily images">
-        </div>
-        <div class="user-cards">
-            <div class="card-item admin-card">
-                <div class="img-card">
-                    <a><img src="{% static 'images/admin-h.svg' %}" alt="admin access card"></a>
-                </div>
-                <div class="overlay-text">
-                    <a href="{% url 'admin-click' %}"><p>Admin</p></a>
-                </div>
+        </section>
+        <!-- Christian message section -->
+        <section id="section-msg" class="grid">
+            <div class="msg-wrapper">
+                <p class="msg-top">The World Looks<br> 
+                Different,But We Still<br> 
+                Worship the Same God<br></p>
+                <p class="msg-down">In response to Covid-19, we are not in our church building at this time. Join us on our various social media platforms & let's worship together</p>
             </div>
-            <div class="card-item executive-card">
-                <div class="img-card">
-                    <a><img src="{% static 'images/exec-h.svg' %}" alt="executive access card"></a>
-                </div>
-                <div class="overlay-text">
-                    <a href="{% url 'exec-click' %}"><p>Executive</p></a>
-                </div>
+        </section>
+        <!-- Side image section -->
+        <section id="section-side-img" class="grid">
+            <div class="img-wrapper">
+                <img src="{% static 'images/bible.jpg' %}" alt="sliding images">
             </div>
-            <div class="card-item member-card">
-                <div class="img-card">
-                    <a><img src="{% static 'images/member-h.svg' %}" alt="Member access card"></a>                
-                </div>
-                <div class="overlay-text">
-                    <a href="{% url 'admin-click' %}"><p>Member</p></a>
-                </div>
+        </section>
+        <!-- User access cards section -->
+        <section id="section-cards" class="grid">
+            <div class="cards admin-card">
+                <a href="{% url 'admin-click' %}">
+                    <p>Admin</p>
+                </a>
             </div>
-        </div>
-        <div class="about">
-            <h3>About</h3>
-        </div>
-        <div class="location">
-            <h2>Map of Church Location</h2>
-        </div>
-    </div>
-    <div class="footer">
+            <div class="cards executive-card">
+                <a href="{% url 'exec-click' %}">
+                    <p>Executive</p>
+                </a>
+            </div>
+            <div class="cards member-card">
+                <a href="{% url 'member-click' %}">
+                    <p>Member</p>
+                </a>
+            </div>
+        </section>
+        <!-- Location section -->
+        <section id="section-location" class="grid">
+            <div class="location">
+                <p>Location</p>
+            </div>
+        </section>
+        <!-- About section -->
+        <section id="section-about" class="grid">
+            <p>
+                <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat expedita, et optio quia culpa
+                    nesciunt molestiae autem possimus maiores necessitatibus quis ullam laborum.</h2>
+            </p>
+        </section>
+        <!-- Info + Socials section -->
+        <section id="section-info-socials" class="grid">
+            <div class="info box">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus sapiente eum fugit ipsa. Quos atque repudiandae quo aliquam, unde alias consectetur sunt! Magnam, facilis?</p>
+            </div>
+            <div class="ftr-socials box">
+                <p>Interact with us on:</p>
+                <ul>
+                    <li>
+                        <a href="#"><i class="fas fa-whatsapp fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-instagram fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-facebook fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-twitter fa-2x"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer id="main-footer">
         {% include 'records_management/footer.html' %}
-    </div>
-</div>
-
+    </footer>
 </body>
+
 </html>
