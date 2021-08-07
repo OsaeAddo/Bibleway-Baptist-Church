@@ -1,173 +1,145 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
+/* Core styles */
+:root{
+    --primary: #ddd;
+    --dark: #333;
+    --light: #fff;
+    --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+    --card: linear-gradient(to bottom, rgb(38, 94, 38), rgb(26, 24, 46));
+    --gradient: linear-gradient(to right,rgb(29, 95, 29), rgb(26, 24, 46));
 }
 
 body {
-  font-family: sans-serif;
-  font-size: 1rem;
-  min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+    margin: 10px 10px;
+    background: #ccc;
 }
+
 a{
     text-decoration: none;
+    color: #ddd;
 }
-@media screen and (min-width: 300px) {
-  .layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 55px auto .33fr;
-    grid-template-areas:
-      "nav"
-      "main"
-      "footer";
-    min-height: inherit;
-  }
+ul{
+    list-style: none;
 }
-
-.nav {
-  color: #fff;
-  padding: 0px;
-  background: linear-gradient(to right,rgb(29, 95, 29), rgb(26, 24, 46));
-  grid-area: nav;
-  display: grid;
-  grid-template-columns: 60px 1fr auto;
-  grid-template-areas: 
-    "hlogo options socials";
-}
-
-/* Main section */
-.main {
-  grid-area: main;
-  padding: 12px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto 200px auto;
-  grid-template-areas:
-  "upcoming sideimage"
-  "texts sideimage"
-  "cards location"
-  "about location";
-}
-.upcoming{
-    grid-area: upcoming;
-}
-    /* Texts */
-.texts{
-    grid-area: texts;
-    justify-self: center;
-}
-.message{
-    padding: 3px;
-}
-#text1{
-    font-size: 18px;
-    color: rgb(3, 3, 3);
-}
-#text2{
-    font-size: 12px;
-    font-weight: 600;
-    color: rgb(94, 88, 88);
-}
-    /* SideImage */
-.image{
-    grid-area: sideimage;
-}
-.image img{
+img{
     max-width: 100%;
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 6px;
 }
-    /* Cards */
-.user-cards{
-    grid-area: cards;  
-    max-width: 1100px;
-    margin: 8px;
+/* Nav section */
+.main-nav{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-    grid-template-rows: minmax(80px, 200px);
-    gap: 20px;
     grid-template-areas: 
-    "admin executive member";
+    "logo menu menu";
+    background: var(--gradient);
+    font-size: .93rem;
+    grid-gap: 6px;
 }
-.card-item {
-    background:linear-gradient(to bottom, rgb(38, 94, 38), rgb(26, 24, 46));
-    padding: 20px;
-    color: rgb(90, 145, 123);
-    font-size: 0.77rem;
-    line-height: 1.7;
-    border-radius: 16px;
+.main-nav .hlogo{
+    grid-area: logo;
+    align-self: start;
+}
+.main-nav .menu{
+    grid-area: menu;
+    align-self: center;
+}
+.main-nav .menu ul{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 8px;
+    padding: 0;
+    margin: 0;
+    justify-items: center;
+    align-items: center;
+}
+.navlist{
+    font-weight: 600;
+}
+/* End Nav section */
+
+/* Main */
+#main{
+    margin: 0;
+    padding: 0;
+}
+/* Sliding text section */
+/* Add text slider later */
+#section-upcoming h4{
     text-align: center;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 120px auto;
-    grid-template-areas: 
-        "img-card"
-        "txt-card";
 }
-.admin-card{
-    grid-area: admin;
-}
-.executive-card{
-    grid-area: executive;
-}
-.member-card{
-    grid-area: member;
-}
-.card-item img{
-    max-width: 100%;
-    width: 70%;
-}
-.img-card{
-    grid-area: img-card;
-    align-self: end;
-}
-.overlay-text{
-    grid-area: txt-card;
-    color: #fff;
-    padding: 8px;
-    font-size: .85rem;
-    font-weight: 600;
-    line-height: 1.7;
-    align-self: end;
-}
-.overlay-text a {
-    color: #fff;
-}
-    /* Location & About */
-.about{
-    grid-area: about;
-    justify-self: center;
-    align-self: center;
-}
+/* End Sliding text section */
 
-.location{
-    grid-area: location;
-    justify-self: center;
-    align-self: center;
+/* Message section */
+#section-msg .msg-wrapper{
+    text-align: center;
 }
-/* End Main section */
+#section-msg .msg-top{
+    font-size: 2rem;
+    padding: 0px;
+    font-weight: 300;
+}
+#section-msg .msg-down{
+    font-size: .9rem;
+    color: #2a2a2a;
+}
+/* End Message section */
+
+/* Side image section */
+#section-side-img .img-wrapper img{
+    width: 90%;
+}
+#section-side-img .img-wrapper{
+    text-align: center;
+}
+/* End side image section */
+
+/* Cards section */
+#section-cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+#section-cards .cards{
+    background: var(--card);
+    padding: 8px;
+    margin: 5px;
+    box-shadow: var(--shadow);
+    border-radius: 4px;
+}
+#section-cards .cards a {
+    color: var(--light);
+    text-align: center;
+}
+/* End Cards section */
+
+/* Location Section */
+#section-location .location{
+    text-align: center;
+    margin: 5px;
+    box-shadow: var(--shadow);
+    max-width: 100%;
+    padding: 8px;
+}
+/* End Location Section */
+
+/* About section */
+#section-about p{
+    text-align: center;
+    padding: 5px;
+}
+/* End About section */
+
+/* Info + socials section */
+#section-info-socials{
+    background:rgb(26, 24, 46);
+    margin: 4px;
+    color: var(--light);
+}
+#section-info-socials .info{
+    text-align: center;
+}
+/* End Info + socials section  */
+
+/* End Main  */
 
 /* Footer section */
-.footer {
-    grid-area: footer;
-    align-self: end;
-    justify-items: center;
-    background: linear-gradient(to right, rgb(26, 24, 46), rgb(29, 95, 29));
-    color: #fff;
-    padding: 15px;
-    font-size: 0.75rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: 
-        "ftr-socials"
-        "copyright";
-}
-.ftr-socials{
-    grid-area: ftr-socials;
 
-}
-.copyright{
-    grid-area: copyright;
-}
 /* End Footer section */
