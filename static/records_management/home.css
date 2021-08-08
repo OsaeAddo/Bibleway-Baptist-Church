@@ -133,13 +133,23 @@ img{
     margin: 4px;
     color: var(--light);
 }
-#section-info-socials .info{
+#section-info-socials .box{
     text-align: center;
 }
+#section-info-socials .box li{
+    text-align: center;
+}
+
 /* End Info + socials section  */
 
 /* End Main  */
 
 /* Footer section */
-
+#main-footer .copyright{
+    text-align: center;
+    background: var(--gradient);
+    font-size: .8rem;
+    color: var(--light);
+    padding: 6px;
+}
 /* End Footer section */
