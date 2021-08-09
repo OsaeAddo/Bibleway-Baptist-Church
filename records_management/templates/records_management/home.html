@@ -19,55 +19,71 @@
         {% include 'records_management/navbar.html' %}
     </nav>
     <main id="main">
-        <!-- Sliding Upcoming events section -->
-        <section id="section-upcoming" class="grid">
-            <div class="upcoming-event">
-                <h4>Upcoming Events: Sunday service</h4>
+        <div class="top-section">
+            <!-- Sliding Upcoming events section -->
+            <div class="txt-section">
+                <section id="section-upcoming" class="grid">
+                    <div class="upcoming-event">
+                        <h4>Upcoming Events: Sunday service</h4>
+                    </div>
+                </section>
+                <!-- Christian message section -->
+                <section id="section-msg" class="grid">
+                    <div class="msg-wrapper">
+                        <p class="msg-top">The World Looks<br> 
+                        Different,But We Still<br> 
+                        Worship the Same God<br></p>
+                        <p class="msg-down">In response to Covid-19, we are not in our church building at this time. Join us on our various social media platforms & let's worship together</p>
+                    </div>
+                </section>
             </div>
-        </section>
-        <!-- Christian message section -->
-        <section id="section-msg" class="grid">
-            <div class="msg-wrapper">
-                <p class="msg-top">The World Looks<br> 
-                Different,But We Still<br> 
-                Worship the Same God<br></p>
-                <p class="msg-down">In response to Covid-19, we are not in our church building at this time. Join us on our various social media platforms & let's worship together</p>
-            </div>
-        </section>
-        <!-- Side image section -->
-        <section id="section-side-img" class="grid">
-            <div class="img-wrapper">
-                <img src="{% static 'images/bible.jpg' %}" alt="sliding images">
-            </div>
-        </section>
-        <!-- User access cards section -->
-        <section id="section-cards" class="grid">
-            <div class="cards admin-card">
+            <!-- Side image section -->
+            <section id="section-side-img" class="grid">
+                <div class="img-wrapper">
+                    <img src="{% static 'images/bible.jpg' %}" alt="sliding images">
+                </div>
+            </section>
+        </div>
+        <div id="cards-about">
+            <!-- User access cards section -->
+            <section id="section-cards" class="grid">
                 <a href="{% url 'admin-click' %}">
-                    <p>Admin</p>
+                    <div class="admin-card card"></div>
+                    <div class="cards-container">
+                        <div class="card-header">   
+                            <p>Admin</p>
+                        </div>
+                    </div>
                 </a>
-            </div>
-            <div class="cards executive-card">
                 <a href="{% url 'exec-click' %}">
-                    <p>Executive</p>
+                    <div class="cards-container">
+                        <div class="executive-card card"></div>
+                        <div class="card-header">
+                            <p>Executive</p>
+                        </div>
+                    </div>
                 </a>
-            </div>
-            <div class="cards member-card">
                 <a href="{% url 'member-click' %}">
-                    <p>Member</p>
+                    <div class="cards-container">
+                        <div class="member-card card"></div>
+                        <div class="card-header">
+                            <p>Member</p>
+                        </div>
+                    </div>
                 </a>
-            </div>
-        </section>
+            </section>
+            <!-- About section -->
+            <section id="section-about" class="grid">
+                <h4>About</h4>
+                <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat expedita, et optio quia culpa
+                    nesciunt molestiae autem possimus maiores necessitatibus quis ullam laborum.</h2>
+            </section>
+        </div>
         <!-- Location section -->
         <section id="section-location" class="grid">
             <div class="location">
-                <p>Location</p>
+                <p>Map</p>
             </div>
-        </section>
-        <!-- About section -->
-        <section id="section-about" class="grid">
-            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat expedita, et optio quia culpa
-                nesciunt molestiae autem possimus maiores necessitatibus quis ullam laborum.</h2>
         </section>
         <!-- Info + Socials section -->
         <section id="section-info-socials" class="grid">
