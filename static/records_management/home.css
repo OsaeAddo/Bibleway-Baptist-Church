@@ -11,7 +11,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.1rem;
-    margin: 10px 10px;
+    margin: 10px 10px 0 10px;
     background: #ccc;
 }
 
@@ -78,7 +78,7 @@ img{
     font-weight: 600;
 }
 #section-msg .msg-down{
-    font-size: .9rem;
+    font-size: smaller;
     color: #2a2a2a;
 }
 /* End Message section */
@@ -95,18 +95,38 @@ img{
 /* Cards section */
 #section-cards{
     display: grid;
+    grid-gap: 4px;
     grid-template-columns: repeat(3, 1fr);
+    margin: 4px;
 }
-#section-cards .cards{
+
+#section-cards a {
     background: var(--card);
     padding: 8px;
-    margin: 5px;
     box-shadow: var(--shadow);
     border-radius: 4px;
 }
-#section-cards .cards a {
+
+#section-cards .card-header {
     color: var(--light);
     text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.card{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+.cards-container .admin-card{
+    background: url('../images/admin-h.svg');
+}
+.cards-container .executive-card{
+    background: url('../images/exec-h.svg');
+}
+.cards-container .member-card{
+    background: var(--card) url('../images/member-h.svg');
 }
 /* End Cards section */
 
@@ -121,7 +141,8 @@ img{
 /* End Location Section */
 
 /* About section */
-#section-about h2{
+#section-about h2,
+#section-about h4{
     text-align: center;
     padding: 5px;
     
@@ -130,9 +151,12 @@ img{
 
 /* Info + socials section */
 #section-info-socials{
-    background:rgb(26, 24, 46);
+    background:var(--gradient);
     margin: 4px 0 0 0;
     color: var(--light);
+}
+#section-info-socials .box p{
+    font-weight: 600;
 }
 #section-info-socials .info{
     text-align: center;
@@ -141,6 +165,7 @@ img{
 .ftr-socials p{
     text-align: center;
     padding: 0;
+    margin: 0;
 }
 
 /* End Info + socials section  */
@@ -155,7 +180,7 @@ img{
 }
 #main-footer .copyright{
     text-align: center;
-    font-size: .8rem;
+    font-size: smaller;
     color: var(--light);
     padding: 6px;
 }
@@ -164,7 +189,110 @@ img{
 
 /* Media Queries */
 @media(min-width: 700px){
-    .grid{
+    .main-nav .hlogo{
+        justify-self: start;
+    }
+    .menu{
+        justify-self: end;
+    }
+    .main-nav .menu ul{
+        grid-gap: 0;
+        grid-template-columns: repeat(4, minmax(2rem, 6rem));
+        justify-self: end;
+        align-self: center;
+
+    }
+    .top-section{
         display: grid;
+        grid-gap: 1rem;
+        grid-template-areas: 
+        "txt txt s-img s-img"
+        "txt txt s-img s-img";
+        padding-top: 1.3rem;
+    }
+    .txt-section{
+        grid-area: txt;
+    }
+    #section-side-img{
+        grid-area: s-img;
+    }
+    #section-side-img .img-wrapper{
+        height: 95%;
+        margin: 8px auto;
+    }
+    #section-side-img .img-wrapper img{
+        width: 100%;
+        height: 100%;
+    }
+    /* Cards */
+    #section-cards{
+        padding: 2rem;
+    }
+    #section-cards a{
+        padding: 1rem;
+        margin: 2px;
+    }
+    #section-cards .card-header{
+        display: grid;
+        align-items: end;
+        padding: 2rem;
+    }
+    /* Section about */
+    #section-about {
+        text-align: center;
+    }
+    /* Location */
+    #section-location{
+        display: grid;
+        grid-template-columns: 1fr;
+        padding-bottom: 1rem;
+    }
+    #section-location .location{
+        width: 60%;
+        justify-self: center;
+        padding: 2rem;
+    }
+    /* Info + Socials */
+    #section-info-socials{
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        "info socials";
+    }
+    #section-info-socials .info{
+        grid-area: info;
+        padding: 1rem;
+    }
+    
+    #section-info-socials .ftr-socials{
+        grid-area: socials;
+        padding-top: 2rem;
+    }
+    #section-info-socials .ftr-socials p{
+        padding-bottom: .5rem;
+    }
+}
+@media(min-width: 810px){
+    #cards-about{
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: 1fr 1fr 1fr 2fr;
+        grid-template-areas: 
+        "cards cards cards about"
+        "cards cards cards about";
+        padding-top: 2rem;
+    }
+    #section-cards{
+        grid-area: cards;
+        padding-right: 3rem;
+    }
+    #section-about{
+        grid-area: about;
+        justify-content: center;
+        padding: 1.6rem;
+    }
+    #section-about h2{
+        font-size: 1rem;
     }
 }
