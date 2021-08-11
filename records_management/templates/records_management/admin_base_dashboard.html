@@ -10,14 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 <body>
-  <div class="sidebar">
-    <ul class="nav-list">
+  <nav class="sidebar">
+    <ul>
+      <i class="fas fa-bars"></i>
       <div class="logo-details">
-        <img class="bx icon" src="{% static 'images/logo.jpg' %}" alt="logo">
-        <div class="logo_name">Bible Way<br>Baptist Church</div>
-        <i class='bx bx-menu' id="btn" ></i>
+        <img class="bx logo" src="{% static 'images/logo.jpg' %}" alt="logo">
+        <div class="church_name">Bible Way<br>Baptist Church</div>
       </div>
-      <li class="profile">
+      <li>
         <div class="profile-details">
           <img src="{% static 'images/os1.jpg' %}" alt="profilepic">
           <div class="name_job">
@@ -26,69 +26,31 @@
           </div>
         </div>
       </li>
-      <!-- <li>
-          <i class='bx bx-search' ></i>
-         <input type="text" placeholder="Search...">
-         <span class="tooltip">Search</span>
-        </li> -->
       <li>
-        <a href="#">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Dashboard</span>
-        </a>
-        <span class="tooltip">Dashboard</span>
+        <a href=""><span class="links_name">Dashboard</span></a>
       </li>
       <li>
-       <a href="#">
-         <i class='bx bx-user' ></i>
-         <span class="links_name">User</span>
-       </a>
-       <span class="tooltip">User</span>
-     </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-chat' ></i>
-         <span class="links_name">Messages</span>
-       </a>
-       <span class="tooltip">Messages</span>
-     </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-pie-chart-alt-2' ></i>
-         <span class="links_name">Analytics</span>
-        </a>
-       <span class="tooltip">Analytics</span>
-     </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-folder' ></i>
-         <span class="links_name">File Manager</span>
-       </a>
-       <span class="tooltip">Files</span>
-     </li>
-      <li>
-        <a href="#">
-          <i class='bx bx-heart' ></i>
-          <span class="links_name">Saved</span>
-        </a>
-        <span class="tooltip">Saved</span>
+        <a href=""><span class="links_name">Messages</span></a>
       </li>
       <li>
-        <a href="#">
-          <i class='bx bx-cog' ></i>
-          <span class="links_name">Setting</span>
-        </a>
-        <span class="tooltip">Settings</span>
+        <a href=""><span class="links_name">Add Leader</span></a>
+      </li>
+      <li>
+        <a href=""><span class="links_name">Add Member</span></a>
+      </li>
+      <li>
+        <a href=""><span class="links_name">Pending</span></a>
+      </li>
+      <li>
+        <a href=""><span class="links_name">Settings</span></a>
       </li>
     </ul>
-  </div>
+  </nav>
+  <main>
+    <section class="header">
 
-  <section class="home-section">
-    <div class="nav-section">
-      <div class="logout">Logout<i class='bx bx-log-out' id="log_out" ></i></div>
-    </div>
-
-    <div class="main-layout">
+    </section>
+    <section class="data-cards">
       <div class="card-items leaders-card">
         <h3>{{count_leaders}}</h3>
         <div class="card-data total-label">Total Church Leaders</div>
@@ -107,68 +69,24 @@
         <div class="card-data required">Total Approval Required : {{total_members}}</div>
         <img src="{% static 'images/teamwork.svg' %}" alt="CI">
       </div>
+    </section>
+    <section class="search">
 
-    </div>
-    <div class="user-details">
-      <table class="table leaders-table">
-        <caption>Leaders List</caption>
-        <tr>
-          <th>Name</th>
-          <th>Position</th>
-          <th>Mobile</th>
-          <th>Status</th>
-        </tr>
-        {% block leaderlist %}{% endblock leaderlist %}
-        <tr>
-          <td>Emmanuel</td>
-          <td>Deacon</td>
-          <td>0550125552</td>
-          <td>True</td>
-        </tr>
-      </table>
-      
-      <table class="table members-table">
-        <caption>Members List</caption>
-        <tr>
-          <th>Name</th>
-          <th>Role</th>
-          <th>Mobile</th>
-          <th>Address</th>
-          <th>Status</th>
-        </tr>
-        {% block memberlist %}{% endblock memberlist %}
-        <tr>
-          <tr>
-            <td>Emmanuel Osae-Addo</td>
-            <td>Deacon</td>
-            <td>0550125552</td>
-            <td>Pokuase, Street 5</td>
-            <td>True</td>
-          </tr>
-        </tr>
-      </table>
-    </div>
-    <div class="footer-section">
-        <div class="socials">
-          <a href="" class="bx bx-cog"></a>
-          <a href="" class="bxl-whatsapp"></a>
-          <a href="" class="bxl-twitter"></a>
-          <a href="" class="bxl-markdown"></a>
-        </div>
-    
-        <br>
-        <div class="footer-copyright">
-          <div class="copyright">
-            Copyright &copy; 2021 Bible Way Baptist Church
-          </div>
-        </div>
-    </div>
-      
-  </section>
-  <script src="{% static 'records_management/toggle-admin.js' %}"></script>
+    </section>
+    <section class="table-section">
+      <div class="leaders-table">
+
+      </div>
+      <div class="members-table">
+
+      </div>
+    </section>
+  </main>
+  <footer>
+
+  </footer>
 
 </body>
 </html>
 
 <!-- Built by Osae -->
-
