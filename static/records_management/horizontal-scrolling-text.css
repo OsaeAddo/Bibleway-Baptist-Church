@@ -1,0 +1,35 @@
+.upcoming-event{
+    overflow: hidden;
+    position: relative;
+}
+.upcoming-event h4{
+    /* Starting position */
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    /* Add animation */
+    -moz-animation: upcoming-event 15s linear infinite;
+    -webkit-animation: upcoming-event 15s linear infinite;
+    animation: upcoming-event 15s linear infinite;
+}
+/* define animation(in this case move it) */
+@-moz-keyframes upcoming-event{
+0%   { -moz-transform: translateX(100%); }
+100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes upcoming-event{
+0%   { -webkit-transform: translateX(100%); }
+100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes upcoming-event{
+0%   { 
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+100% { 
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%); 
+    transform: translateX(-100%);
+}
+}
