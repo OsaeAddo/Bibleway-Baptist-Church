@@ -13,6 +13,7 @@ body {
     font-size: 1.1rem;
     margin: 10px 10px 0 10px;
     background: #ccc;
+    scroll-behavior: smooth;
 }
 
 a{
@@ -107,13 +108,13 @@ img{
     border-radius: 4px;
 }
 
-#section-cards .card-header {
+#section-cards .cards-header {
     color: var(--light);
     text-align: center;
     font-weight: 600;
     text-transform: uppercase;
 }
-.card{
+.cards{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -232,7 +233,7 @@ img{
         padding: 1rem;
         margin: 2px;
     }
-    #section-cards .card-header{
+    #section-cards .cards-header{
         display: grid;
         align-items: end;
         padding: 2rem;
