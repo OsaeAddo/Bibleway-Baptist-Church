@@ -7,10 +7,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'records_management/home.css' %}">
     <link rel="stylesheet" href="{% static 'records_management/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'records_management/footer.css' %}">
-    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
     <title>Home | Bible Way Baptist Church</title>
 </head>
 
@@ -42,7 +42,7 @@
                 <div id="carouselExampleSlidesOnly" class="img-wrapper carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{% static 'images/bible.jpg' %}" class="d-block" alt="baptist way sliding images">
+                            <img src="{% static 'images/bible.jpg' %}" class="d-block w-100" alt="baptist way sliding images">
                         </div>
                     </div>
                 </div>
@@ -52,25 +52,25 @@
             <!-- User access cards section -->
             <section id="section-cards" class="grid">
                 <a href="{% url 'admin-click' %}">
-                    <div class="admin-card card"></div>
+                    <div class="admin-card cards"></div>
                     <div class="cards-container">
-                        <div class="card-header">   
+                        <div class="cards-header">   
                             <p>Admin</p>
                         </div>
                     </div>
                 </a>
                 <a href="{% url 'exec-click' %}">
                     <div class="cards-container">
-                        <div class="executive-card card"></div>
-                        <div class="card-header">
+                        <div class="executive-card cards"></div>
+                        <div class="cards-header">
                             <p>Executive</p>
                         </div>
                     </div>
                 </a>
                 <a href="{% url 'member-click' %}">
                     <div class="cards-container">
-                        <div class="member-card card"></div>
-                        <div class="card-header">
+                        <div class="member-card cards"></div>
+                        <div class="cards-header">
                             <p>Member</p>
                         </div>
                     </div>
