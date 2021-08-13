@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "postcss css/tailwind-base.css -o ../static/css/tailwind/tailwind.css"
   },
   "keywords": [],
