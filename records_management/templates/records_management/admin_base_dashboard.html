@@ -7,48 +7,45 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
-  <link rel="stylesheet" href="{% static 'records_management/admin_base_dashboard.css' %}">
-  <!-- Boxicons CDN Link -->
-  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <title> Admin Dashboard | Bible Way Baptist Church </title>
 </head>
 
 <body>
-  <nav class="sidebar">
+  <aside class="sidebar w-32 bg-gray-900 text-gray-300 h-screen fixed">
     <i class="fas fa-bars"></i>
     <div class="logo-details">
-      <img class="bx logo" src="{% static 'images/logo.jpg' %}" alt="logo">
+      <img class="h-12 w-12" src="{% static 'images/logo.jpg' %}" alt="logo">
       <div class="church_name">Bible Way<br>Baptist Church</div>
     </div>
     <div class="profile-details">
-      <img src="{% static 'images/os1.jpg' %}" alt="profilepic">
+      <img src="{% static 'images/os1.jpg' %}" alt="profilepic" class="h-12 w-12">
       <div class="name_job">
         <div class="name">Osae Addo</div>
         <div class="job">Admin</div>
       </div>
     </div>
-    <ul class="sidebar-nav">
-      <li class="lists-item">
-        <a href=""><span class="links_name">Dashboard</span></a>
+    <ul class="sidebar-nav flex flex-col items-center p-0 m-0 h-full">
+      <li class="lists-item w-full">
+        <a href=""><span class="links_name flex items-center h-12 text-yellow-100">Dashboard</span></a>
       </li>
-      <li class="lists-item">
-        <a href=""><span class="links_name">Messages</span></a>
+      <li class="lists-item w-full">
+        <a href=""><span class="links_name flex items-center h-12 text-yellow-100">Messages</span></a>
       </li>
-      <li class="lists-item">
-        <a href=""><span class="links_name">Add Leader</span></a>
+      <li class="lists-item w-full">
+        <a href=""><span class="links_name flex items-center h-12 text-yellow-100">Add Leader</span></a>
       </li>
-      <li class="lists-item">
-        <a href=""><span class="links_name">Add Member</span></a>
+      <li class="lists-item w-full">
+        <a href=""><span class="links_name flex items-center h-12 text-yellow-100">Add Member</span></a>
       </li>
-      <li class="lists-item">
-        <a href=""><span class="links_name">Pending Approvals</span></a>
+      <li class="lists-item w-full">
+        <a href=""><span class="links_name flex items-center h-12 text-yellow-100">Pending Approvals</span></a>
       </li>
-      <li class="lists-item">
-        <a href=""><span class="links_name">Settings</span></a>
+      <li class="lists-item w-full h-full mt-8">
+        <a href=""><span class="links_name flex items-center h-full lg:h-5/6 text-yellow-100">Settings</span></a>
       </li>
     </ul>
-  </nav>
-  <main>
+  </aside>
+  <main class="ml-32 p-4">
     <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea alias suscipit amet labore vero, expedita,
       cupiditate, officiis enim distinctio consequuntur quasi dolorum totam in unde corporis laboriosam. Est iure
       quisquam, laborum alias recusandae fugit id fugiat dignissimos voluptas hic cumque magnam ullam modi distinctio
