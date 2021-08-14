@@ -10,38 +10,38 @@
   <title> Admin Dashboard | Bible Way Baptist Church </title>
 </head>
 
-<body>
-  <aside class="sidebar w-32 bg-gray-900 text-gray-300 h-screen fixed">
+<body class="overflow-hidden">
+  <aside class="sidebar w-32 bg-gray-900 text-gray-300 h-screen fixed overflow-hidden">
     <i class="fas fa-bars"></i>
-    <div class="logo-details">
-      <img class="h-12 w-12" src="{% static 'images/logo.jpg' %}" alt="logo">
-      <div class="church_name">Bible Way<br>Baptist Church</div>
+    <div class="flex w-full py-4 px-1">
+      <img class="h-12 w-12 rounded-full" src="{% static 'images/logo.jpg' %}" alt="logo">
+      <div class="flex-1 text-sm font-semibold pl-1">Bible Way Baptist Church</div>
     </div>
-    <div class="profile-details">
-      <img src="{% static 'images/os1.jpg' %}" alt="profilepic" class="h-12 w-12">
-      <div class="name_job">
-        <div class="name">Osae Addo</div>
-        <div class="job">Admin</div>
+    <div class="flex w-full py-4 px-1">
+      <img src="{% static 'images/os1.jpg' %}" alt="profilepic" class="h-12 w-12 rounded-lg">
+      <div class="flex flex-col pl-1 py-1 text-sm font-semibold place-content-center">
+        <div class="flex-1 tracking-tighter">Osae Addo</div>
+        <div class="text-xs">Admin</div>
       </div>
     </div>
-    <ul class="sidebar-nav flex flex-col items-center p-0 m-0 h-full">
-      <li class="lists-item w-full">
-        <a href=""><span class="links_name flex items-center h-12 text-yellow-100">Dashboard</span></a>
+    <ul class="p-0 m-0 h-full text-sm">
+      <li class="my-12 w-full">
+        <a href=""><span class="flex justify-center text-yellow-100">Dashboard</span></a>
       </li>
-      <li class="lists-item w-full">
-        <a href=""><span class="links_name flex items-center h-12 text-yellow-100">Messages</span></a>
+      <li class="my-12 w-full">
+        <a href=""><span class="flex justify-center text-yellow-100">Messages</span></a>
       </li>
-      <li class="lists-item w-full">
-        <a href=""><span class="links_name flex items-center h-12 text-yellow-100">Add Leader</span></a>
+      <li class="my-12 w-full">
+        <a href=""><span class="flex justify-center text-yellow-100">Add Leader</span></a>
       </li>
-      <li class="lists-item w-full">
-        <a href=""><span class="links_name flex items-center h-12 text-yellow-100">Add Member</span></a>
+      <li class="my-12 w-full">
+        <a href=""><span class="flex justify-center text-yellow-100">Add Member</span></a>
       </li>
-      <li class="lists-item w-full">
-        <a href=""><span class="links_name flex items-center h-12 text-yellow-100">Pending Approvals</span></a>
+      <li class="my-12 w-full">
+        <a href=""><span class="flex justify-center text-yellow-100">Pending Approvals</span></a>
       </li>
-      <li class="lists-item w-full h-full mt-8">
-        <a href=""><span class="links_name flex items-center h-full lg:h-5/6 text-yellow-100">Settings</span></a>
+      <li class="mt-8 lg:my-24 w-full">
+        <a href="" class=""><span class="flex justify-center lg:h-5/6 text-yellow-100">Settings</span></a>
       </li>
     </ul>
   </aside>
