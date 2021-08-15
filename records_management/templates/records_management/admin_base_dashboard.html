@@ -28,6 +28,12 @@
   <aside 
     class="fixed inset-y-0 z-20 flex-shrink w-64 mt-16 bg-gray-800 text-gray-300 overflow-y-auto md:hidden"
     x-show="isSideMenuOpen"
+    x-transition:enter="transition ease-in-out duration-150"
+    x-transition:enter-start="opacity-0 transform -translate-x-20"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in-out duration-150"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0 transform -translate-x-20"
     @click.away="closeSideMenu"
     @keydown.escape="closeSideMenu"
   >
@@ -42,20 +48,20 @@
         <div class="text-xs">Admin</div>
       </div>
     </div>
-    <ul class="p-0 m-0 h-full text-sm">
-      <li class="my-12 w-full">
+    <ul class="text-md">
+      <li class="my-8 w-full">
         <a href=""><span class="flex justify-center">Dashboard</span></a>
       </li>
-      <li class="my-12 w-full">
+      <li class="my-8 w-full">
         <a href=""><span class="flex justify-center">Messages</span></a>
       </li>
-      <li class="my-12 w-full">
+      <li class="my-8 w-full">
         <a href=""><span class="flex justify-center">Add Leader</span></a>
       </li>
-      <li class="my-12 w-full">
+      <li class="my-8 w-full">
         <a href=""><span class="flex justify-center">Add Member</span></a>
       </li>
-      <li class="my-12 w-full">
+      <li class="my-8 w-full">
         <a href=""><span class="flex justify-center">Pending Approvals</span></a>
       </li>
       <li class="mt-8 lg:my-24 w-full">
