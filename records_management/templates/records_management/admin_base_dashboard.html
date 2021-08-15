@@ -6,15 +6,29 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
   <title> Admin Dashboard | Bible Way Baptist Church </title>
 </head>
 
 <body class="overflow-hidden">
-  <aside class="sidebar w-32 bg-gray-900 text-gray-300 h-screen fixed overflow-hidden">
+  <!-- Mobile sidebar -->
+  <!-- Backdrop -->
+  <div
+    x-show="isSideMenuOpen"
+    x-transition:enter="transition ease-in-out duration-150"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in-out duration-150"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"
+  ></div>
+  
+  <aside class="sidebar w-32 bg-gray-900 text-gray-300 h-screen fixed overflow-y-auto md:hidden">
     <i class="fas fa-bars"></i>
     <div class="flex w-full py-4 px-1">
-      <img class="h-12 w-12 rounded-full" src="{% static 'images/logo.jpg' %}" alt="logo">
+      <img class="h-12 w-12 rounded-full" src="{% static 'images/logo.jpg' %}" alt="church logo">
       <div class="flex-1 text-sm font-semibold pl-1">Bible Way Baptist Church</div>
     </div>
     <div class="flex w-full py-4 px-1">
@@ -45,63 +59,68 @@
       </li>
     </ul>
   </aside>
-  <main class="ml-32 p-4">
-    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea alias suscipit amet labore vero, expedita,
-      cupiditate, officiis enim distinctio consequuntur quasi dolorum totam in unde corporis laboriosam. Est iure
-      quisquam, laborum alias recusandae fugit id fugiat dignissimos voluptas hic cumque magnam ullam modi distinctio
-      natus sit sed laudantium obcaecati quibusdam suscipit! Aut provident distinctio facilis, vitae consequatur
-      perferendis aperiam magni! Quasi officia sunt assumenda nisi error, modi eligendi labore reprehenderit recusandae
-      fuga sed natus vero, rerum sapiente asperiores. Corporis voluptatum facilis deleniti error tempore, atque cum
-      aperiam doloremque debitis delectus dicta ut harum quam dolorum ipsam cumque perferendis commodi quia!</span>
-    <section class="header">
+  <div class="flex flex-col flex-1 w-full">
+    <header class="z-10 py-4 bg-gray-800">
+
+    </header>
+    <main class="">
       <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea alias suscipit amet labore vero, expedita,
         cupiditate, officiis enim distinctio consequuntur quasi dolorum totam in unde corporis laboriosam. Est iure
         quisquam, laborum alias recusandae fugit id fugiat dignissimos voluptas hic cumque magnam ullam modi distinctio
         natus sit sed laudantium obcaecati quibusdam suscipit! Aut provident distinctio facilis, vitae consequatur
-        perferendis aperiam magni! Quasi officia sunt assumenda nisi error, modi eligendi labore reprehenderit
-        recusandae fuga sed natus vero, rerum sapiente asperiores. Corporis voluptatum facilis deleniti error tempore,
-        atque cum aperiam doloremque debitis delectus dicta ut harum quam dolorum ipsam cumque perferendis commodi
-        quia!</span>
-    </section>
-    <section class="data-cards">
-      <!-- <div class="card-items leaders-card">
-        <h3>{{count_leaders}}</h3>
-        <div class="card-data total-label">Total Church Leaders</div>
-        <div class="card-data required">Approvals Required : {{pending_leaders_count}}</div>
-        <img src="{% static 'images/businessman1.svg' %}" alt="CLIcon">
-      </div>
-      <div class="card-items members-card">
-        <h3>{{count_church_members}}</h3>
-        <div class="card-data total-label">Total Church Members</div>
-        <div class="card-data required">Approvals Required: {{pending_members_count}}</div>
-        <img src="{% static 'images/teamwork.svg' %}" alt="MI">
-      </div>
-      <div class="card-items total-congregation">
-        <h3>{{count_all}}</h3>
-        <div class="card-data total-label">Total Church</div>
-        <div class="card-data required">Total Approval Required : {{total_members}}</div>
-        <img src="{% static 'images/teamwork.svg' %}" alt="CI">
-      </div> -->
-    </section>
-    <section class="search">
-      <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea alias suscipit amet labore vero, expedita,
-        cupiditate, officiis enim distinctio consequuntur quasi dolorum totam in unde corporis laboriosam. Est iure
-        quisquam, laborum alias recusandae fugit id fugiat dignissimos voluptas hic cumque magnam ullam modi distinctio
-        natus sit sed laudantium obcaecati quibusdam suscipit! Aut provident distinctio facilis, vitae consequatur
-        perferendis aperiam magni! Quasi officia sunt assumenda nisi error, modi eligendi labore reprehenderit
-        recusandae fuga sed natus vero, rerum sapiente asperiores. Corporis voluptatum facilis deleniti error tempore,
-        atque cum aperiam doloremque debitis delectus dicta ut harum quam dolorum ipsam cumque perferendis commodi
-        quia!</span>
-    </section>
-    <section class="table-section">
-      <div class="leaders-table">
-
-      </div>
-      <div class="members-table">
-
-      </div>
-    </section>
-  </main>
+        perferendis aperiam magni! Quasi officia sunt assumenda nisi error, modi eligendi labore reprehenderit recusandae
+        fuga sed natus vero, rerum sapiente asperiores. Corporis voluptatum facilis deleniti error tempore, atque cum
+        aperiam doloremque debitis delectus dicta ut harum quam dolorum ipsam cumque perferendis commodi quia!</span>
+      <section class="header">
+        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea alias suscipit amet labore vero, expedita,
+          cupiditate, officiis enim distinctio consequuntur quasi dolorum totam in unde corporis laboriosam. Est iure
+          quisquam, laborum alias recusandae fugit id fugiat dignissimos voluptas hic cumque magnam ullam modi distinctio
+          natus sit sed laudantium obcaecati quibusdam suscipit! Aut provident distinctio facilis, vitae consequatur
+          perferendis aperiam magni! Quasi officia sunt assumenda nisi error, modi eligendi labore reprehenderit
+          recusandae fuga sed natus vero, rerum sapiente asperiores. Corporis voluptatum facilis deleniti error tempore,
+          atque cum aperiam doloremque debitis delectus dicta ut harum quam dolorum ipsam cumque perferendis commodi
+          quia!</span>
+      </section>
+      <section class="data-cards">
+        <!-- <div class="card-items leaders-card">
+          <h3>{{count_leaders}}</h3>
+          <div class="card-data total-label">Total Church Leaders</div>
+          <div class="card-data required">Approvals Required : {{pending_leaders_count}}</div>
+          <img src="{% static 'images/businessman1.svg' %}" alt="CLIcon">
+        </div>
+        <div class="card-items members-card">
+          <h3>{{count_church_members}}</h3>
+          <div class="card-data total-label">Total Church Members</div>
+          <div class="card-data required">Approvals Required: {{pending_members_count}}</div>
+          <img src="{% static 'images/teamwork.svg' %}" alt="MI">
+        </div>
+        <div class="card-items total-congregation">
+          <h3>{{count_all}}</h3>
+          <div class="card-data total-label">Total Church</div>
+          <div class="card-data required">Total Approval Required : {{total_members}}</div>
+          <img src="{% static 'images/teamwork.svg' %}" alt="CI">
+        </div> -->
+      </section>
+      <section class="search">
+        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea alias suscipit amet labore vero, expedita,
+          cupiditate, officiis enim distinctio consequuntur quasi dolorum totam in unde corporis laboriosam. Est iure
+          quisquam, laborum alias recusandae fugit id fugiat dignissimos voluptas hic cumque magnam ullam modi distinctio
+          natus sit sed laudantium obcaecati quibusdam suscipit! Aut provident distinctio facilis, vitae consequatur
+          perferendis aperiam magni! Quasi officia sunt assumenda nisi error, modi eligendi labore reprehenderit
+          recusandae fuga sed natus vero, rerum sapiente asperiores. Corporis voluptatum facilis deleniti error tempore,
+          atque cum aperiam doloremque debitis delectus dicta ut harum quam dolorum ipsam cumque perferendis commodi
+          quia!</span>
+      </section>
+      <section class="table-section">
+        <div class="leaders-table">
+  
+        </div>
+        <div class="members-table">
+  
+        </div>
+      </section>
+    </main>
+  </div>
   <footer>
 
   </footer>
