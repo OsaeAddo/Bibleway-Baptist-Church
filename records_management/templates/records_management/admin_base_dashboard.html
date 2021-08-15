@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html x-data="data()" lang="en" dir="ltr">
 
 <head>
   <meta charset="UTF-8">
@@ -11,9 +11,9 @@
   <title> Admin Dashboard | Bible Way Baptist Church </title>
 </head>
 
-<body class="overflow-hidden">
+<body class="flex h-screen text-gray-200 bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
+  <!-- SideBar section -->
   <!-- Mobile sidebar -->
-  <!-- Backdrop -->
   <div
     x-show="isSideMenuOpen"
     x-transition:enter="transition ease-in-out duration-150"
@@ -23,10 +23,14 @@
     x-transition:leave-start="opacity-100"
     x-transition:leave-end="opacity-0"
     class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"
-  ></div>
+  ></div>  <!-- Backdrop -->
   
-  <aside class="sidebar w-32 bg-gray-900 text-gray-300 h-screen fixed overflow-y-auto md:hidden">
-    <i class="fas fa-bars"></i>
+  <aside 
+    class="fixed inset-y-0 z-20 flex-shrink w-64 mt-16 bg-gray-800 text-gray-300 overflow-y-auto md:hidden"
+    x-show="isSideMenuOpen"
+    @click.away="closeSideMenu"
+    @keydown.escape="closeSideMenu"
+  >
     <div class="flex w-full py-4 px-1">
       <img class="h-12 w-12 rounded-full" src="{% static 'images/logo.jpg' %}" alt="church logo">
       <div class="flex-1 text-sm font-semibold pl-1">Bible Way Baptist Church</div>
@@ -40,30 +44,41 @@
     </div>
     <ul class="p-0 m-0 h-full text-sm">
       <li class="my-12 w-full">
-        <a href=""><span class="flex justify-center text-yellow-100">Dashboard</span></a>
+        <a href=""><span class="flex justify-center">Dashboard</span></a>
       </li>
       <li class="my-12 w-full">
-        <a href=""><span class="flex justify-center text-yellow-100">Messages</span></a>
+        <a href=""><span class="flex justify-center">Messages</span></a>
       </li>
       <li class="my-12 w-full">
-        <a href=""><span class="flex justify-center text-yellow-100">Add Leader</span></a>
+        <a href=""><span class="flex justify-center">Add Leader</span></a>
       </li>
       <li class="my-12 w-full">
-        <a href=""><span class="flex justify-center text-yellow-100">Add Member</span></a>
+        <a href=""><span class="flex justify-center">Add Member</span></a>
       </li>
       <li class="my-12 w-full">
-        <a href=""><span class="flex justify-center text-yellow-100">Pending Approvals</span></a>
+        <a href=""><span class="flex justify-center">Pending Approvals</span></a>
       </li>
       <li class="mt-8 lg:my-24 w-full">
-        <a href="" class=""><span class="flex justify-center lg:h-5/6 text-yellow-100">Settings</span></a>
+        <a href="" class=""><span class="flex justify-center lg:h-5/6">Settings</span></a>
       </li>
     </ul>
   </aside>
+  
+  <!-- Main Content Section -->
   <div class="flex flex-col flex-1 w-full">
-    <header class="z-10 py-4 bg-gray-800">
-
+    <header class="z-10 py-4 bg-gray-800 shadow-md">
+      <div class="container flex mx-auto px-4 justify-between items-center">
+        <button 
+          class="p-1"
+          @click="toggleSideMenu"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <span class="px-4">Admin Dashboard Panel</span>
+        <span class="px-4">Logout</span>
+      </div>
     </header>
-    <main class="">
+    <main class="m-2 p-2">
       <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea alias suscipit amet labore vero, expedita,
         cupiditate, officiis enim distinctio consequuntur quasi dolorum totam in unde corporis laboriosam. Est iure
         quisquam, laborum alias recusandae fugit id fugiat dignissimos voluptas hic cumque magnam ullam modi distinctio
@@ -125,6 +140,7 @@
 
   </footer>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="{% static 'js/toggle-sidemenu.js' %}"></script>
 
 </body>
 
