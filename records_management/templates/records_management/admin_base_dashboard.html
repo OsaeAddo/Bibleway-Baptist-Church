@@ -97,31 +97,31 @@
       </div>
     </div>
     <ul class="flex flex-col justify-center text-lg mb-0 pb-0 font-semibold">
-      <li class="my-8 w-full">
+      <li class="my-8 md:my-6 w-full">
         <a class="flex items-center ml-8" href="">
           <i class="fas fa-home"></i>
           <span class="flex justify-center ml-7">Dashboard</span>
         </a>
       </li>
-      <li class="my-8 w-full">
+      <li class="my-8 md:my-6 w-full">
         <a class="flex items-center ml-8" href="">
-          <i class="far fa-envelope"></i>
+          <i class="fas fa-envelope"></i>
           <span class="flex justify-center ml-7">Messages</span>
         </a>
       </li>
-      <li class="my-8 w-full">
+      <li class="my-8 md:my-6 w-full">
         <a class="flex items-center ml-8" href="">
-          <i class="far fa-id-badge"></i>
+          <i class="fas fa-id-badge"></i>
           <span class="flex justify-center ml-7">Add Leader</span>
         </a>
       </li>
-      <li class="my-8 w-full">
+      <li class="my-8 md:my-6 w-full">
         <a class="flex items-center ml-8" href="">
-          <i class="far fa-address-card"></i>
+          <i class="fas fa-address-card"></i>
           <span class="flex justify-center ml-5">Add Member</span>
         </a>
       </li>
-      <li class="my-8 w-full">
+      <li class="my-8 md:my-6 w-full">
         <a class="flex items-center ml-8" href="">
           <i class="fas fa-clipboard"></i>
           <span class="flex justify-center ml-6">Pending Approvals</span>
@@ -151,48 +151,82 @@
     </header>
     <main class="m-2 p-2">
       <!-- Cards section -->
-      <section class="grid gap-6 md:grid-cols-3">
-        <!-- Card -->
-        <div class="flex items-center p-4 rounded-lg shadow-xs bg-gray-800">
-
+      <section class="grid gap-3 mb-8 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Leaders Card -->
+        <div class="flex items-center p-4 md:p-3 rounded-lg shadow-xs bg-gray-800">
+          <div class="p-2 mr-3 rounded-full bg-orange-500">
+            <img class="h-16 w-16" src="{% static 'images/businessman1.svg' %}" alt="church leaders icon, bible way baptist church">
+          </div>
+          <div class="pr-2">
+            <p class="mb-2 text-sm font-medium text-gray-400">Total Leaders</p>
+            <p class="text-lg font-semibold text-gray-200">213</p>
+          </div>
+          <div class="">
+            <p class="mb-2 text-sm  font-medium text-gray-400">Pending Approvals</p>
+            <p class="text-lg font-semibold text-gray-200">18</p>
+          </div>
         </div>
-        <!-- Card -->
+        <!-- Members Card -->
         <div class="flex items-center p-4 rounded-lg shadow-xs bg-gray-800">
-
+          <div class="p-3 mr-4 rounded-full text-orange-100 bg-orange-500">
+            <img class="h-16 w-16" src="{% static 'images/teamwork.svg' %}" alt="members, bible way baptist church">
+          </div>
+          <div class="pr-2 md:pr-5">
+            <p class="mb-2 text-sm font-medium text-gray-400">Total Members</p>
+            <p class="text-lg font-semibold text-gray-200">523</p>
+          </div>
+          <div class="">
+            <p class="mb-2 text-sm font-medium text-gray-400">Pending Approvals</p>
+            <p class="text-lg font-semibold text-gray-200">10</p>
+          </div>
         </div>
-        <!-- Card -->
-        <div class="flex items-center p-4 rounded-lg shadow-xs bg-gray-800">
-
+        <!-- Total Church data Card -->
+        <div class="md:col-span-2 md:mx-32 lg:col-span-1 lg:mx-0 flex items-center p-4 rounded-lg shadow-xs bg-gray-800">
+          <div class="p-3 mr-4 rounded-full bg-orange-500">
+            <img class="h-16 w-16" src="{% static 'images/teamwork.svg' %}" alt="church congregation icon">
+          </div>
+          <div>
+            <p class="mb-2 text-sm font-medium text-gray-400">Total Congregation</p>
+            <p class="text-lg font-semibold text-gray-200">783</p>
+          </div>
         </div>
       </section>
-      <section class="search">
-
+      <!-- Search section -->
+      <section class="flex flex-1 justify-center py-3 m-4">
+        <div class="relative w-full">
+          <div class="absolute inset-y-0 flex items-center pl-2">
+            <i class="fas fa-search text-gray-800"></i>
+          </div>
+          <input class="w-full py-3 rounded-xl pl-8 pr-2 text-sm text-gray-700 placeholder-gray-700 focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="Search for Church Members, Leaders..." aria-label="Search">
+        </div>
       </section>
       <section class="data-cards">
         <!-- <div class="card-items leaders-card">
           <h3>{{count_leaders}}</h3>
           <div class="card-data total-label">Total Church Leaders</div>
           <div class="card-data required">Approvals Required : {{pending_leaders_count}}</div>
-          <img src="{% static 'images/businessman1.svg' %}" alt="CLIcon">
+          
         </div>
         <div class="card-items members-card">
           <h3>{{count_church_members}}</h3>
           <div class="card-data total-label">Total Church Members</div>
           <div class="card-data required">Approvals Required: {{pending_members_count}}</div>
-          <img src="{% static 'images/teamwork.svg' %}" alt="MI">
+          
         </div>
         <div class="card-items total-congregation">
           <h3>{{count_all}}</h3>
           <div class="card-data total-label">Total Church</div>
-          <div class="card-data required">Total Approval Required : {{total_members}}</div>
-          <img src="{% static 'images/teamwork.svg' %}" alt="CI">
-        </div> -->
+          <div class="card-data required">Total Approval Required : {{total_members}}</div> -->
+          
+        </div>
       </section>
       <!-- Tables -->
       <section class="table-section">
+        <!-- Members table -->
         <div class="leaders-table">
 
         </div>
+        <!-- Leaders table -->
         <div class="members-table">
 
         </div>
