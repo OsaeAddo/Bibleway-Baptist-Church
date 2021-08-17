@@ -153,35 +153,35 @@
       <!-- Cards section -->
       <section class="grid gap-3 mb-8 md:grid-cols-2 lg:grid-cols-3">
         <!-- Leaders Card -->
-        <div class="flex items-center p-4 md:p-3 rounded-lg shadow-xs bg-gray-800">
+        <div class="flex items-center p-4 md:p-3 rounded-lg shadow bg-gray-800">
           <div class="p-2 mr-3 rounded-full bg-orange-500">
             <img class="h-16 w-16" src="{% static 'images/businessman1.svg' %}" alt="church leaders icon, bible way baptist church">
           </div>
           <div class="pr-2">
             <p class="mb-2 text-sm font-medium text-gray-400">Total Leaders</p>
-            <p class="text-lg font-semibold text-gray-200">213</p>
+            <p class="text-lg font-semibold text-gray-200">{{count_leaders}}</p>
           </div>
           <div class="">
             <p class="mb-2 text-sm  font-medium text-gray-400">Pending Approvals</p>
-            <p class="text-lg font-semibold text-gray-200">18</p>
+            <p class="text-lg font-semibold text-gray-200">{{pending_leaders_count}}</p>
           </div>
         </div>
         <!-- Members Card -->
-        <div class="flex items-center p-4 rounded-lg shadow-xs bg-gray-800">
+        <div class="flex items-center p-4 rounded-lg shadow bg-gray-800">
           <div class="p-3 mr-4 rounded-full text-orange-100 bg-orange-500">
             <img class="h-16 w-16" src="{% static 'images/teamwork.svg' %}" alt="members, bible way baptist church">
           </div>
           <div class="pr-2 md:pr-5">
             <p class="mb-2 text-sm font-medium text-gray-400">Total Members</p>
-            <p class="text-lg font-semibold text-gray-200">523</p>
+            <p class="text-lg font-semibold text-gray-200">{{count_church_members}}</p>
           </div>
           <div class="">
             <p class="mb-2 text-sm font-medium text-gray-400">Pending Approvals</p>
-            <p class="text-lg font-semibold text-gray-200">10</p>
+            <p class="text-lg font-semibold text-gray-200">{{pending_members_count}}</p>
           </div>
         </div>
         <!-- Total Church data Card -->
-        <div class="md:col-span-2 md:mx-32 lg:col-span-1 lg:mx-0 flex items-center p-4 rounded-lg shadow-xs bg-gray-800">
+        <div class="md:col-span-2 md:mx-32 lg:col-span-1 lg:mx-0 flex items-center p-4 rounded-lg shadow bg-gray-800">
           <div class="p-3 mr-4 rounded-full bg-orange-500">
             <img class="h-16 w-16" src="{% static 'images/teamwork.svg' %}" alt="church congregation icon">
           </div>
@@ -200,31 +200,24 @@
           <input class="w-full py-3 rounded-xl pl-8 pr-2 text-sm text-gray-700 placeholder-gray-700 focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="Search for Church Members, Leaders..." aria-label="Search">
         </div>
       </section>
-      <section class="data-cards">
-        <!-- <div class="card-items leaders-card">
-          <h3>{{count_leaders}}</h3>
-          <div class="card-data total-label">Total Church Leaders</div>
-          <div class="card-data required">Approvals Required : {{pending_leaders_count}}</div>
-          
-        </div>
-        <div class="card-items members-card">
-          <h3>{{count_church_members}}</h3>
-          <div class="card-data total-label">Total Church Members</div>
-          <div class="card-data required">Approvals Required: {{pending_members_count}}</div>
-          
-        </div>
-        <div class="card-items total-congregation">
-          <h3>{{count_all}}</h3>
-          <div class="card-data total-label">Total Church</div>
-          <div class="card-data required">Total Approval Required : {{total_members}}</div> -->
-          
-        </div>
-      </section>
       <!-- Tables -->
-      <section class="table-section">
+      <section class="w-full overflow-hidden rounded-lg shadow-xs">
         <!-- Members table -->
-        <div class="leaders-table">
-
+        <div class="overflow-x-auto w-full">
+          <table class="w-full whitespace-nowrap">
+            <thead>
+              <tr class="text-xs font-semibold tracking-wide text-left text-gray-400 bg-gray-800 uppercase border-b">
+                <th class="px-3 py-3">Name</th>
+                <th class="px-3 py-3">Role</th>
+                <th class="px-3 py-3">Mobile</th>
+                <th class="px-3 py-3">Status</th>
+                <th class="px-3 py-3">Action</th>
+              </tr>
+            </thead>
+            <tbody class="bg-gray-800 divide-gray-700">
+              
+            </tbody>
+          </table>
         </div>
         <!-- Leaders table -->
         <div class="members-table">
@@ -244,3 +237,21 @@
 </html>
 
 <!-- Built by Osae -->
+
+  <!-- <div class="card-items leaders-card">
+    <h3>{{count_leaders}}</h3>
+    <div class="card-data total-label">Total Church Leaders</div>
+    <div class="card-data required">Approvals Required : </div>
+    
+  </div>
+  <div class="card-items members-card">
+    <h3>{{count_church_members}}</h3>
+    <div class="card-data total-label">Total Church Members</div>
+    <div class="card-data required">Approvals Required: {{pending_members_count}}</div>
+    
+  </div>
+  <div class="card-items total-congregation">
+    <h3>{{count_all}}</h3>
+    <div class="card-data total-label">Total Church</div>
+    <div class="card-data required">Total Approval Required : {{total_members}}</div> -->
+    
