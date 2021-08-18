@@ -39,6 +39,7 @@ genders = [
 
 class ChurchMember(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
+    profile_pic = models.ImageField(upload_to='profile_pic/LeadersProfilePic/', null=True, blank=True)
     gender = models.CharField(max_length=10, choices=genders, blank=True, null=True)
     member_role = models.CharField(max_length=60, choices=member_roles, default='', blank=True, null=True)
     date_of_birth = models.DateField(default=timezone.now)
@@ -53,6 +54,9 @@ class ChurchMember(models.Model):
     date_of_baptism = models.DateField(default=timezone.now)
     status = models.BooleanField(default=False)
 
+    @property
+    def get_name(self):
+        return f"{self.user.first_name} {self.user.last_name}"
 
 
     class Meta:
