@@ -1,6 +1,51 @@
 {% extends 'records_management/admin_base_dashboard.html' %}
 {% load static %}
 {% include 'records_management/admin_dashboard_cards.html' %}
+{% block memberlist %}
+  {% for member in members %}
+    <tr class="text-gray-300">
+      <td class="px-2 py-3"> 
+        <div class="flex items-center text-sm">
+          <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+            <img lass="object-cover w-full h-full rounded-full" src="{{member.profile_pic.url}}" alt="profile">
+            <div class="absolutute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+          </div>
+          <div>
+            <p class="font-semibold">{{member.get_name}}</p>
+            <p class="text-xs text-gray-400">{{member.member_role}}</p>
+          </div>
+        </div>
+      </td>
+      <td class="px-1 py-3 text-sm">
+        <span class="px-2 py-1 font-semibold leading-tight text-gray-400">
+          {{member.mobile}}
+        </span>  
+      </td>
+      <td class="px-3 py-3 text-sm">{{member.residential_address}}</td>
+      {% if member.status %}
+        <td class="px-3 py-3 text-xs">
+          <span class="px-2 py-1 font-semibold leading-tight text-green-100 bg-green-700 rounded-full">Approved</span>
+        </td>
+      {% else %}
+        <td class="px-3 py-3 text-xs">
+          <span class="px-2 py-1 font-semibold leading-tight text-green-100 bg-yellow-500 rounded-full">Pending</span>
+        </td>
+      {% endif %}
+      <!-- Action -->
+      <td class="px-3 py-3 text-xs font-semibold">
+        <div class="flex items-center">
+          <button class="mr-2 px-2 py-1 text-blue-100 bg-blue-600 rounded-full">View</button>
+          <a href="#" class="mr-2 px-2 py-1 text-green-100 bg-green-600 rounded-full">Update</a>
+          <button class="px-2 py-1 text-red-100 bg-red-700 rounded-full">Delete</button>
+        </div>
+      </td>
+
+
+    </tr>
+  {% endfor %}
+{% endblock memberlist %}
+
+
 {% block leaderlist %}
   {% for leader in leaders %}
     <tr>
@@ -8,27 +53,11 @@
       <td>{{leader.leadershiptype}}</td>
       <td>{{leader.mobile}}</td>
       {% if leader.status %}
-        <td><span class="label label-primary">Permanet</span></td>
+        <td><span class="label label-primary">Approved</span></td>
       {% else %}
-        <td><span class="label label-success">On Hold</span></td>
+        <td><span class="label label-success">Pending</span></td>
       {% endif %}
 
     </tr>
   {% endfor %}
 {% endblock leaderlist %}
-
-{% block memberlist %}
-{% for member in members %}
-<tr>
-  <td> {{member.get_name}}</td>
-  <td>{{member.leadershiptype}}</td>
-  <td>{{member.mobile}}</td>
-  {% if member.status %}
-    <td><span class="label label-primary">Approved</span></td>
-  {% else %}
-    <td><span class="label label-success">On Hold</span></td>
-  {% endif %}
-
-</tr>
-{% endfor %}
-{% endblock memberlist %}
