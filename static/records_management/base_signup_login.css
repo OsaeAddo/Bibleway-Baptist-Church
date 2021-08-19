@@ -18,20 +18,9 @@ body {
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-areas: 
-		"header"
-		"usertype"
       	"main"
-    	"footer";
 }
-.nav{
-	grid-area: header;
-}
-.usrtype{
-	grid-area: usertype;
-}
-.footer{
-	grid-area: footer;
-}
+
 h1 {
 	font-weight: bold;
 	margin: 0;
