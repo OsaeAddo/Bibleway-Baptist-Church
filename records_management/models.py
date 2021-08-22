@@ -62,7 +62,7 @@ class ChurchMember(models.Model):
     class Meta:
         verbose_name_plural = 'Church Members'
     def __str__(self):
-        return self.user.first_name + ' ' + self.user.last_name + '('+self.member_role+')'
+        return f"{self.user.first_name} {self.user.last_name} {self.member_role})"
 
 
 class ChurchLeader(models.Model):
@@ -78,7 +78,7 @@ class ChurchLeader(models.Model):
     region = models.CharField(max_length=60, blank=True, null=True)
     residential_address = models.CharField(max_length=60,)
     date_of_baptism = models.DateField(default=timezone.now)
-    profile_pic = models.ImageField(upload_to='profile_pic/LeadersProfilePic/', null=True, blank=True)
+    profile_pic = models.ImageField(upload_to='profile_pic/LeadersProfilePic/', null=True, blank=True, default="media/admin-icon.png")
     status = models.BooleanField(default=False)
 
     @property
@@ -93,6 +93,6 @@ class ChurchLeader(models.Model):
         verbose_name_plural = 'Church Leaders'
 
     def __str__(self):
-        return f"{self.user.first_name} ({self.leadershiptype})"
+        return f"{self.user.first_name} {self.user.last_name} ({self.leadershiptype})"
 
 
