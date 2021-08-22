@@ -99,7 +99,7 @@ def is_churchadmin(user):
     return user.groups.filter(name='ADMIN').exists()
 
 def is_churchexecutive(user):
-    return user.groups.filter(name='EXECUTIVE / CHURCH LEADER').exists()
+    return user.groups.filter(name='LEADERS').exists()
 
 def is_churchmember(user):
     return user.groups.filter(name='CHURCH MEMBER').exists()
