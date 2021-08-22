@@ -102,7 +102,7 @@ def is_churchexecutive(user):
     return user.groups.filter(name='LEADERS').exists()
 
 def is_churchmember(user):
-    return user.groups.filter(name='CHURCH MEMBER').exists()
+    return user.groups.filter(name='MEMBERS').exists()
 
 
 #------- AFTER ENTERING CREDENTIALS, CHECK IF USERNAME & PASSWORD IS THAT OF CHURCH ADMIN OR EXECUTIVE
