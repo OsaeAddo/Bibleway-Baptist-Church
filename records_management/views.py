@@ -58,7 +58,7 @@ def churchExecSignup_view(request):
             executive = executiveForm.save(commit=False)
             executive.user = exec_user
             executive = executive.save()
-            my_executive_group = Group.objects.get_or_create(name='EXECUTIVE / CHURCH LEADER')
+            my_executive_group = Group.objects.get_or_create(name='LEADERS')
             my_executive_group[0].user_set.add(exec_user)
 
     else:
