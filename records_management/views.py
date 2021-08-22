@@ -33,9 +33,9 @@ def churchMemberClick_view(request):
 
 def church_admin_signup_view(request):
     if request.method == "POST":
-        adminForm = forms.AdminSignupForm(request.POST)
-        if adminForm.is_valid():
-            user = adminForm.save()
+        form = forms.AdminSignupForm(request.POST)
+        if form.is_valid():
+            user = form.save()
             user.set_password(user.password)
             user.save()
             my_admin_group = Group.objects.get_or_create(name="ADMIN")
