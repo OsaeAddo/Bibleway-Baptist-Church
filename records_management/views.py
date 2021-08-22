@@ -110,7 +110,9 @@ def afterloginview(request):
     print("-------------afterloginview hit-----------")
     print("******* proceeding to verify if user is admin ******")
     if is_churchadmin(request.user):
-        return redirect('churchadmin-dashboard/')
+        print(f"Admin user is: {request.user}")
+        return redirect("churchadmin-dashboard")
+        
     elif is_churchexecutive(request.user):
         accountapproval = models.ChurchLeader.objects.all().filter(user_id=request.user.id, status = True)
         if accountapproval:
