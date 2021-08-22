@@ -83,7 +83,7 @@ def member_signup_view(request):
             churchmember = churchmemberForm.save(commit=False)
             churchmember.user = user
             churchmember = churchmember.save()
-            my_churchmember_group = Group.ojects.get_or_create(name='CHURCH MEMBER')
+            my_churchmember_group = Group.objects.get_or_create(name='MEMBERS')
             my_churchmember_group[0].user_set.add(user)
         return HttpResponseRedirect('memberlogin')
 
