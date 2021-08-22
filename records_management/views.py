@@ -42,8 +42,8 @@ def church_admin_signup_view(request):
             my_admin_group[0].user_set.add(user)
             return redirect('adminlogin')
     else:
-        adminForm = forms.AdminSignupForm()
-    return render(request, 'records_management/admin_login_signup.html', {'adminForm': adminForm})
+        form = forms.AdminSignupForm()
+    return render(request, 'records_management/admin_login_signup.html', {'form': form})
 
 
 def churchExecSignup_view(request):
