@@ -126,11 +126,14 @@ def afterloginview(request):
 @user_passes_test(is_churchadmin)
 def churchadmin_dashboard_view(request):
     leaders = models.ChurchLeader.objects.all().order_by('-id')
+    count_leaders = models.ChurchLeader.objects.all().filter(status= True).count()
+    pending_leaders_count = models.ChurchLeader.objects.all().filter(status=False).count()
     members = models.ChurchMember.objects.all().order_by('-id')
     count_church_members = models.ChurchMember.objects.all().filter(status=True).count()
     pending_members_count = models.ChurchMember.objects.all().filter(status=False).count()
-    count_leaders = models.ChurchLeader.objects.all().filter(status= True).count()
-    pending_leaders_count = models.ChurchLeader.objects.all().filter(status=False).count()
+    paginator_members = Paginator(members, 2)
+    page_number_members = request.GET.get('page')
+    page_obj_members = paginator_members.get_page(page_number_members)
     total_members = count_church_members + count_leaders
     context = {
         'leaders':leaders,
