@@ -4,7 +4,7 @@ from . import models, forms
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponseRedirect
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 def home(request):
@@ -131,18 +131,25 @@ def churchadmin_dashboard_view(request):
     members = models.ChurchMember.objects.all().order_by('-id')
     count_church_members = models.ChurchMember.objects.all().filter(status=True).count()
     pending_members_count = models.ChurchMember.objects.all().filter(status=False).count()
-    paginator_members = Paginator(members, 2)
-    page_number_members = request.GET.get('page')
-    page_obj_members = paginator_members.get_page(page_number_members)
+    page = request.GET.get('page', 2)
+    paginator = Paginator(members, 2)
+    try:
+        li_members = paginator.page(page)
+    except PageNotAnInteger:
+        li_members = paginator.page(1)
+    except EmptyPage:
+        li_members = paginator.page(paginator.num_pages)
     total_members = count_church_members + count_leaders
     context = {
         'leaders':leaders,
-        'members':members,
-        'count_church_members':count_church_members,
-        'pending_members_count':pending_members_count,
         'count_leaders':count_leaders,
         'pending_leaders_count':pending_leaders_count,
+        'members':members,
+        'pending_members_count':pending_members_count,
+        'count_church_members':count_church_members,
+        'li_members': li_members,
         'total_members':total_members,
+
         # 'executive':models.ChurchLeader.objects.get(user_id=request.user.id)
         #for profile picture of admin in the sidebar
     }
