@@ -13,6 +13,7 @@
 
 <body class="flex h-screen text-gray-200 bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
   <!-- SideBar section -->
+
   <!-- Desktop Sidebar -->
   <aside class="hidden z-20 h-screen flex-shrink-0 w-60 bg-gray-800 text-gray-300 md:block">
     <div class="flex w-full  py-2 px-1 justify-center">
@@ -69,12 +70,12 @@
   </aside>
 
   <!-- Mobile sidebar -->
+  <!-- Backdrop -->
   <div x-show="isSideMenuOpen" x-transition:enter="transition ease-in-out duration-150"
     x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
     x-transition:leave="transition ease-in-out duration-150" x-transition:leave-start="opacity-100"
     x-transition:leave-end="opacity-0"
     class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"></div>
-  <!-- Backdrop -->
 
   <aside class="fixed inset-y-0 z-20 flex-shrink w-60 mt-16 bg-gray-800 text-gray-300 overflow-y-auto md:hidden"
     x-show="isSideMenuOpen" x-transition:enter="transition ease-in-out duration-150"
@@ -262,23 +263,23 @@
           </table>
         </div>
         <!-- Pagination -->
-        <div aria-label="Page navigation">
+        <div class="bg-gray-800 divide-gray-700" aria-label="Page navigation" >
           {% if li_members.has_other_pages %}
-            <ul class="flex space-x-2 align-middle justify-center">
+            <ul class="flex p-4 space-x-4 items-center justify-center">
               {% if li_members.has_previous %}
                 <li>
                   <a class="font-bold text-2xl pr-12" href="?page={{ li_members.previous_page_number }}">&laquo;</a>
                 </li>
               {% else %}
                 <li class="disabled">
-                  <a class="font-bold text-2xl" href="?page={{ li_members.previous_page_number }}" aria-disabled="true">&laquo;</a>
+                  <a class="text-2xl" href="?page={{ li_members.previous_page_number }}" aria-disabled="true">&laquo;</a>
                 </li>
               {% endif %}
               {% for p in li_members.paginator.page_range %}
                 {% if li_members.number == p %}
                   <li class="px-2 bg-blue-800 active:bg-blue-500">
                     <span>{{ p }}</span>
-                    <span>(current)</span>
+                    <span class="sr-only">(current)</span>
                   </li>
                 {% else %}
                   <li>
@@ -289,7 +290,7 @@
               {% if li_members.has_next %}
                 <li><a class="font-bold text-2xl pl-12" href="?page={{ li_members.next_page_number }}">&raquo;</a></li>
               {% else %}
-                <li class="disabled"><span class="font-bold text-2xl pl-12">&raquo;</span></li>
+                <li class="disabled"><span class="text-2xl pl-12">&raquo;</span></li>
               {% endif %}
             </ul>
           {% endif %}
