@@ -4,6 +4,7 @@ from . import models, forms
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponseRedirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 def home(request):
@@ -33,17 +34,17 @@ def churchMemberClick_view(request):
 
 def church_admin_signup_view(request):
     if request.method == "POST":
-        adminForm = forms.AdminSignupForm(request.POST)
-        if adminForm.is_valid():
-            user = adminForm.save()
+        form = forms.AdminSignupForm(request.POST)
+        if form.is_valid():
+            user = form.save()
             user.set_password(user.password)
             user.save()
             my_admin_group = Group.objects.get_or_create(name="ADMIN")
             my_admin_group[0].user_set.add(user)
-            return redirect('/church-admin-login/')
+            return redirect('adminlogin')
     else:
-        adminForm = forms.AdminSignupForm()
-    return render(request, 'records_management/admin_login_signup.html', {'adminForm': adminForm})
+        form = forms.AdminSignupForm()
+    return render(request, 'records_management/admin_login_signup.html', {'form': form})
 
 
 def churchExecSignup_view(request):
@@ -58,7 +59,7 @@ def churchExecSignup_view(request):
             executive = executiveForm.save(commit=False)
             executive.user = exec_user
             executive = executive.save()
-            my_executive_group = Group.objects.get_or_create(name='EXECUTIVE / CHURCH LEADER')
+            my_executive_group = Group.objects.get_or_create(name='LEADERS')
             my_executive_group[0].user_set.add(exec_user)
 
     else:
@@ -83,7 +84,7 @@ def member_signup_view(request):
             churchmember = churchmemberForm.save(commit=False)
             churchmember.user = user
             churchmember = churchmember.save()
-            my_churchmember_group = Group.ojects.get_or_create(name='CHURCH MEMBER')
+            my_churchmember_group = Group.objects.get_or_create(name='MEMBERS')
             my_churchmember_group[0].user_set.add(user)
         return HttpResponseRedirect('memberlogin')
 
@@ -99,16 +100,19 @@ def is_churchadmin(user):
     return user.groups.filter(name='ADMIN').exists()
 
 def is_churchexecutive(user):
-    return user.groups.filter(name='EXECUTIVE / CHURCH LEADER').exists()
+    return user.groups.filter(name='LEADERS').exists()
 
 def is_churchmember(user):
-    return user.groups.filter(name='CHURCH MEMBER').exists()
+    return user.groups.filter(name='MEMBERS').exists()
 
 
 #------- AFTER ENTERING CREDENTIALS, CHECK IF USERNAME & PASSWORD IS THAT OF CHURCH ADMIN OR EXECUTIVE
 def afterloginview(request):
+    print("-------------afterloginview hit-----------")
+    print("******* proceeding to verify if user is admin ******")
     if is_churchadmin(request.user):
-        return redirect('churchadmin-dashboard/')
+        print(f"Admin user is: {request.user}")
+        return redirect("churchadmin-dashboard")
     elif is_churchexecutive(request.user):
         accountapproval = models.ChurchLeader.objects.all().filter(user_id=request.user.id, status = True)
         if accountapproval:
@@ -122,20 +126,30 @@ def afterloginview(request):
 @user_passes_test(is_churchadmin)
 def churchadmin_dashboard_view(request):
     leaders = models.ChurchLeader.objects.all().order_by('-id')
+    count_leaders = models.ChurchLeader.objects.all().filter(status= True).count()
+    pending_leaders_count = models.ChurchLeader.objects.all().filter(status=False).count()
     members = models.ChurchMember.objects.all().order_by('-id')
     count_church_members = models.ChurchMember.objects.all().filter(status=True).count()
-    pending_members_count = models.ChurchMember.objects.all().filter(status=False)
-    count_leaders = models.ChurchLeader.objects.all().filter(status= True).count()
-    pending_leaders_count = models.ChurchLeader.objects.all().filter(status=False)
+    pending_members_count = models.ChurchMember.objects.all().filter(status=False).count()
+    page = request.GET.get('page', 2)
+    paginator = Paginator(members, 2)
+    try:
+        li_members = paginator.page(page)
+    except PageNotAnInteger:
+        li_members = paginator.page(1)
+    except EmptyPage:
+        li_members = paginator.page(paginator.num_pages)
     total_members = count_church_members + count_leaders
     context = {
         'leaders':leaders,
-        'members':members,
-        'count_church_members':count_church_members,
-        'pending_members_count':pending_members_count,
         'count_leaders':count_leaders,
         'pending_leaders_count':pending_leaders_count,
+        'members':members,
+        'pending_members_count':pending_members_count,
+        'count_church_members':count_church_members,
+        'li_members': li_members,
         'total_members':total_members,
+
         # 'executive':models.ChurchLeader.objects.get(user_id=request.user.id)
         #for profile picture of admin in the sidebar
     }

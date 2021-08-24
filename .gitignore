@@ -6,5 +6,7 @@ migrations/
 
 #Pycache
 *.pyc
-records_management/__pycache__/
+__pycache__/
 
+#Uploaded files
+media/

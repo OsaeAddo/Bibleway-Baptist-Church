@@ -1,173 +1,300 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
+/* Core styles */
+:root{
+    --primary: #ddd;
+    --dark: #333;
+    --light: #fff;
+    --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+    --card: linear-gradient(to bottom, rgb(38, 94, 38), rgb(26, 24, 46));
+    --gradient: linear-gradient(to right,rgb(29, 95, 29), rgb(26, 24, 46));
 }
 
 body {
-  font-family: sans-serif;
-  font-size: 1rem;
-  min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+    background: #ccc;
+    margin: 10px 10px 0 10px;
+    scroll-behavior: smooth;
 }
+
 a{
     text-decoration: none;
+    color: #ddd;
 }
-@media screen and (min-width: 300px) {
-  .layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 55px auto .33fr;
-    grid-template-areas:
-      "nav"
-      "main"
-      "footer";
-    min-height: inherit;
-  }
+ul{
+    list-style: none;
 }
-
-.nav {
-  color: #fff;
-  padding: 0px;
-  background: linear-gradient(to right,rgb(29, 95, 29), rgb(26, 24, 46));
-  grid-area: nav;
-  display: grid;
-  grid-template-columns: 60px 1fr auto;
-  grid-template-areas: 
-    "hlogo options socials";
-}
-
-/* Main section */
-.main {
-  grid-area: main;
-  padding: 12px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto 200px auto;
-  grid-template-areas:
-  "upcoming sideimage"
-  "texts sideimage"
-  "cards location"
-  "about location";
-}
-.upcoming{
-    grid-area: upcoming;
-}
-    /* Texts */
-.texts{
-    grid-area: texts;
-    justify-self: center;
-}
-.message{
-    padding: 3px;
-}
-#text1{
-    font-size: 18px;
-    color: rgb(3, 3, 3);
-}
-#text2{
-    font-size: 12px;
-    font-weight: 600;
-    color: rgb(94, 88, 88);
-}
-    /* SideImage */
-.image{
-    grid-area: sideimage;
-}
-.image img{
+img{
     max-width: 100%;
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 6px;
 }
-    /* Cards */
-.user-cards{
-    grid-area: cards;  
-    max-width: 1100px;
-    margin: 8px;
+/* Nav section */
+.main-nav{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-    grid-template-rows: minmax(80px, 200px);
-    gap: 20px;
     grid-template-areas: 
-    "admin executive member";
+    "logo menu menu";
+    background: var(--gradient);
+    font-size: .93rem;
+    grid-gap: 6px;
 }
-.card-item {
-    background:linear-gradient(to bottom, rgb(38, 94, 38), rgb(26, 24, 46));
-    padding: 20px;
-    color: rgb(90, 145, 123);
-    font-size: 0.77rem;
-    line-height: 1.7;
-    border-radius: 16px;
+.main-nav .hlogo{
+    grid-area: logo;
+    align-self: start;
+}
+.main-nav .menu{
+    grid-area: menu;
+    align-self: center;
+}
+.main-nav .menu ul{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 8px;
+    padding: 0;
+    margin: 0;
+    justify-items: center;
+    align-items: center;
+}
+.navlist{
+    font-weight: 600;
+}
+/* End Nav section */
+
+/* Main */
+#main{
+    margin: 0;
+    padding: 0;
+}
+/* Sliding text section */
+/* Add text slider later */
+#section-upcoming h4{
     text-align: center;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 120px auto;
-    grid-template-areas: 
-        "img-card"
-        "txt-card";
 }
-.admin-card{
-    grid-area: admin;
+/* End Sliding text section */
+
+/* Message section */
+#section-msg .msg-wrapper{
+    text-align: center;
 }
-.executive-card{
-    grid-area: executive;
-}
-.member-card{
-    grid-area: member;
-}
-.card-item img{
-    max-width: 100%;
-    width: 70%;
-}
-.img-card{
-    grid-area: img-card;
-    align-self: end;
-}
-.overlay-text{
-    grid-area: txt-card;
-    color: #fff;
-    padding: 8px;
-    font-size: .85rem;
+#section-msg .msg-top{
+    font-size: 2rem;
+    padding: 0px;
     font-weight: 600;
-    line-height: 1.7;
-    align-self: end;
 }
-.overlay-text a {
-    color: #fff;
+#section-msg .msg-down{
+    font-size: smaller;
+    color: #2a2a2a;
 }
-    /* Location & About */
-.about{
-    grid-area: about;
-    justify-self: center;
-    align-self: center;
+/* End Message section */
+
+/* Side image section */
+#section-side-img .img-wrapper img{
+    width: 90%;
+}
+#section-side-img .img-wrapper{
+    text-align: center;
+}
+/* End side image section */
+
+/* Cards section */
+#section-cards{
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 4px;
 }
 
-.location{
-    grid-area: location;
-    justify-self: center;
-    align-self: center;
+#section-cards a {
+    background: var(--card);
+    padding: 8px;
+    box-shadow: var(--shadow);
+    border-radius: 4px;
 }
-/* End Main section */
+
+#section-cards .cards-header {
+    color: var(--light);
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.cards{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+.cards-container .admin-card{
+    background: url('../images/admin-h.svg');
+}
+.cards-container .executive-card{
+    background: url('../images/exec-h.svg');
+}
+.cards-container .member-card{
+    background: var(--card) url('../images/member-h.svg');
+}
+/* End Cards section */
+
+/* Location Section */
+#section-location .location{
+    text-align: center;
+    margin: 12px 4px auto 0;
+    box-shadow: var(--shadow);
+    max-width: 100%;
+    padding: 8px;
+}
+/* End Location Section */
+
+/* About section */
+#section-about h2,
+#section-about h4{
+    text-align: center;
+    padding: 5px;
+    
+}
+/* End About section */
+
+/* Info + socials section */
+#section-info-socials{
+    background:var(--gradient);
+    margin: 4px 0 0 0;
+    color: var(--light);
+}
+#section-info-socials .box p{
+    font-weight: 600;
+    padding: .7rem;
+}
+#section-info-socials .info{
+    text-align: center;
+}
+#section-info-socials .ftr-socials ul,
+.ftr-socials p{
+    text-align: center;
+    padding: 0.5rem;
+    margin: 0;
+}
+
+/* End Info + socials section  */
+
+/* End Main  */
 
 /* Footer section */
-.footer {
-    grid-area: footer;
-    align-self: end;
-    justify-items: center;
-    background: linear-gradient(to right, rgb(26, 24, 46), rgb(29, 95, 29));
-    color: #fff;
-    padding: 15px;
-    font-size: 0.75rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: 
-        "ftr-socials"
-        "copyright";
+#main-footer{
+    margin: 0;
+    padding: 0;
+    background: var(--gradient);
 }
-.ftr-socials{
-    grid-area: ftr-socials;
-
-}
-.copyright{
-    grid-area: copyright;
+#main-footer .copyright{
+    text-align: center;
+    font-size: smaller;
+    color: var(--light);
+    padding: 6px;
 }
 /* End Footer section */
+
+
+/* Media Queries */
+@media(min-width: 700px){
+    .main-nav .hlogo{
+        justify-self: start;
+    }
+    .menu{
+        justify-self: end;
+    }
+    .main-nav .menu ul{
+        grid-gap: 0;
+        grid-template-columns: repeat(4, minmax(2rem, 6rem));
+        justify-self: end;
+        align-self: center;
+
+    }
+    .top-section{
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-areas: 
+        "txt txt s-img s-img"
+        "txt txt s-img s-img";
+        padding-top: 1.3rem;
+    }
+    .txt-section{
+        grid-area: txt;
+    }
+    #section-side-img{
+        grid-area: s-img;
+    }
+    #section-side-img .img-wrapper{
+        height: 95%;
+        margin: 8px auto;
+    }
+    #section-side-img .img-wrapper img{
+        width: 100%;
+        height: 100%;
+    }
+    /* Cards */
+    #section-cards{
+        padding: 2rem;
+    }
+    #section-cards a{
+        padding: 1rem;
+        margin: 2px;
+    }
+    #section-cards .cards-header{
+        display: grid;
+        align-items: end;
+        padding: 2rem;
+    }
+    /* Section about */
+    #section-about {
+        text-align: center;
+    }
+    /* Location */
+    #section-location{
+        display: grid;
+        grid-template-columns: 1fr;
+        padding-bottom: 1rem;
+    }
+    #section-location .location{
+        width: 60%;
+        justify-self: center;
+        padding: 2rem;
+    }
+    /* Info + Socials */
+    #section-info-socials{
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        "info socials";
+    }
+    #section-info-socials .info{
+        grid-area: info;
+        padding: 1rem;
+    }
+    
+    #section-info-socials .ftr-socials{
+        grid-area: socials;
+        padding-top: 2rem;
+    }
+    #section-info-socials .ftr-socials p{
+        padding-bottom: .5rem;
+    }
+}
+@media(min-width: 810px){
+    #cards-about{
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: 1fr 1fr 1fr 2fr;
+        grid-template-areas: 
+        "cards cards cards about"
+        "cards cards cards about";
+        padding-top: 2rem;
+    }
+    #section-cards{
+        grid-area: cards;
+        padding-right: 3rem;
+    }
+    #section-about{
+        grid-area: about;
+        justify-content: center;
+        padding: 1.6rem;
+    }
+    #section-about h2{
+        font-size: 1rem;
+    }
+}

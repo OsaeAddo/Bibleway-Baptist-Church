@@ -1,174 +1,331 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <title> Responsive Sidebar Menu  | CodingLab </title>
-    <link rel="stylesheet" href="{% static 'records_management/admin_base_dashboard.css' %}">
-    <!-- Boxicons CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-<body>
-  <div class="sidebar">
-    <ul class="nav-list">
-      <div class="logo-details">
-        <img class="bx icon" src="{% static 'images/logo.jpg' %}" alt="logo">
-        <div class="logo_name">Bible Way<br>Baptist Church</div>
-        <i class='bx bx-menu' id="btn" ></i>
+<html x-data="data()" lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
+  <title> Admin Dashboard | Bible Way Baptist Church </title>
+</head>
+
+<body class="flex h-screen text-gray-200 bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
+  <!-- SideBar section -->
+  <!-- Desktop Sidebar -->
+  <aside class="hidden z-20 overflow-y-auto flex-shrink-0 w-60 bg-gray-800 text-gray-300 md:block">
+    <div class="flex w-full  py-2 px-1 justify-center">
+      <img class="h-12 w-12 rounded-full" src="{% static 'images/logo.jpg' %}" alt="church logo">
+      <div class="flex flex-col px-1 justify-center text-base font-semibold">
+        <div>Bible Way Baptist Church</div>
       </div>
-      <li class="profile">
-        <div class="profile-details">
-          <img src="{% static 'images/os1.jpg' %}" alt="profilepic">
-          <div class="name_job">
-            <div class="name">Osae Addo</div>
-            <div class="job">Admin</div>
-          </div>
-        </div>
+    </div>
+    <div class="flex w-full py-4 pr-9 justify-center">
+      <img src="{% static 'images/os1.jpg' %}" alt="profilepic" class="h-12 w-12 rounded-lg">
+      <div class="flex flex-col pl-2 py-1 text-base font-semibold place-content-center">
+        <div class="flex-1">Osae Addo</div>
+        <div class="text-xs">Admin</div>
+      </div>
+    </div>
+    <ul class="flex flex-col justify-center text-lg mb-0 pb-0 font-semibold">
+      <li class="my-6 w-full">
+        <a class="flex items-center ml-8" href="">
+          <i class="fas fa-home"></i>
+          <span class="flex justify-center ml-7">Dashboard</span>
+        </a>
       </li>
-      <!-- <li>
-          <i class='bx bx-search' ></i>
-         <input type="text" placeholder="Search...">
-         <span class="tooltip">Search</span>
-        </li> -->
-      <li>
-        <a href="#">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Dashboard</span>
+      <li class="my-6 w-full">
+        <a class="flex items-center ml-8" href="">
+          <i class="far fa-envelope"></i>
+          <span class="flex justify-center ml-7">Messages</span>
         </a>
-        <span class="tooltip">Dashboard</span>
       </li>
-      <li>
-       <a href="#">
-         <i class='bx bx-user' ></i>
-         <span class="links_name">User</span>
-       </a>
-       <span class="tooltip">User</span>
-     </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-chat' ></i>
-         <span class="links_name">Messages</span>
-       </a>
-       <span class="tooltip">Messages</span>
-     </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-pie-chart-alt-2' ></i>
-         <span class="links_name">Analytics</span>
+      <li class="my-6 w-full">
+        <a class="flex items-center ml-8" href="">
+          <i class="far fa-id-badge"></i>
+          <span class="flex justify-center ml-7">Add Leader</span>
         </a>
-       <span class="tooltip">Analytics</span>
-     </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-folder' ></i>
-         <span class="links_name">File Manager</span>
-       </a>
-       <span class="tooltip">Files</span>
-     </li>
-      <li>
-        <a href="#">
-          <i class='bx bx-heart' ></i>
-          <span class="links_name">Saved</span>
-        </a>
-        <span class="tooltip">Saved</span>
       </li>
-      <li>
-        <a href="#">
-          <i class='bx bx-cog' ></i>
-          <span class="links_name">Setting</span>
+      <li class="my-6 w-full">
+        <a class="flex items-center ml-8" href="">
+          <i class="far fa-address-card"></i>
+          <span class="flex justify-center ml-5">Add Member</span>
         </a>
-        <span class="tooltip">Settings</span>
+      </li>
+      <li class="my-6 w-full">
+        <a class="flex items-center ml-8" href="">
+          <i class="fas fa-clipboard"></i>
+          <span class="flex justify-center ml-6">Pending Approvals</span>
+        </a>
+      </li>
+      <li class="mt-4 w-full">
+        <a href="" class="flex items-center ml-8">
+          <i class="fas fa-cog"></i>
+          <span class="flex justify-center ml-5">Settings</span>
+        </a>
       </li>
     </ul>
-  </div>
+  </aside>
 
-  <section class="home-section">
-    <div class="nav-section">
-      <div class="logout">Logout<i class='bx bx-log-out' id="log_out" ></i></div>
-    </div>
+  <!-- Mobile sidebar -->
+  <div x-show="isSideMenuOpen" x-transition:enter="transition ease-in-out duration-150"
+    x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in-out duration-150" x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"></div>
+  <!-- Backdrop -->
 
-    <div class="main-layout">
-      <div class="card-items leaders-card">
-        <h3>{{count_leaders}}</h3>
-        <div class="card-data total-label">Total Church Leaders</div>
-        <div class="card-data required">Approvals Required : {{pending_leaders_count}}</div>
-        <img src="{% static 'images/businessman1.svg' %}" alt="CLIcon">
+  <aside class="fixed inset-y-0 z-20 flex-shrink w-60 mt-16 bg-gray-800 text-gray-300 overflow-y-auto md:hidden"
+    x-show="isSideMenuOpen" x-transition:enter="transition ease-in-out duration-150"
+    x-transition:enter-start="opacity-0 transform -translate-x-20" x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in-out duration-150" x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0 transform -translate-x-20" @click.away="closeSideMenu"
+    @keydown.escape="closeSideMenu">
+    <div class="flex w-full  py-4 px-2 justify-center">
+      <img class="h-12 w-12 rounded-full" src="{% static 'images/logo.jpg' %}" alt="church logo">
+      <div class="flex flex-col px-1 justify-center text-base font-semibold">
+        <div>Bible Way</div>
+        <div>Baptist Church</div>
       </div>
-      <div class="card-items members-card">
-        <h3>{{count_church_members}}</h3>
-        <div class="card-data total-label">Total Church Members</div>
-        <div class="card-data required">Approvals Required: {{pending_members_count}}</div>
-        <img src="{% static 'images/teamwork.svg' %}" alt="MI">
+    </div>
+    <div class="flex w-full py-4 pr-9 justify-center">
+      <img src="{% static 'images/os1.jpg' %}" alt="profilepic" class="h-12 w-12 rounded-lg">
+      <div class="flex flex-col pl-1 py-1 text-base font-semibold place-content-center">
+        <div class="flex-1">Osae Addo</div>
+        <div class="text-xs">Admin</div>
       </div>
-      <div class="card-items total-congregation">
-        <h3>{{count_all}}</h3>
-        <div class="card-data total-label">Total Church</div>
-        <div class="card-data required">Total Approval Required : {{total_members}}</div>
-        <img src="{% static 'images/teamwork.svg' %}" alt="CI">
-      </div>
+    </div>
+    <ul class="flex flex-col justify-center text-lg mb-0 pb-0 font-semibold">
+      <li class="my-8 md:my-6 w-full">
+        <a class="flex items-center ml-8" href="">
+          <i class="fas fa-home"></i>
+          <span class="flex justify-center ml-7">Dashboard</span>
+        </a>
+      </li>
+      <li class="my-8 md:my-6 w-full">
+        <a class="flex items-center ml-8" href="">
+          <i class="fas fa-envelope"></i>
+          <span class="flex justify-center ml-7">Messages</span>
+        </a>
+      </li>
+      <li class="my-8 md:my-6 w-full">
+        <a class="flex items-center ml-8" href="">
+          <i class="fas fa-id-badge"></i>
+          <span class="flex justify-center ml-7">Add Leader</span>
+        </a>
+      </li>
+      <li class="my-8 md:my-6 w-full">
+        <a class="flex items-center ml-8" href="">
+          <i class="fas fa-address-card"></i>
+          <span class="flex justify-center ml-5">Add Member</span>
+        </a>
+      </li>
+      <li class="my-8 md:my-6 w-full">
+        <a class="flex items-center ml-8" href="">
+          <i class="fas fa-clipboard"></i>
+          <span class="flex justify-center ml-6">Pending Approvals</span>
+        </a>
+      </li>
+      <li class="mt-4 w-full">
+        <a href="" class="flex items-center ml-8">
+          <i class="fas fa-cog"></i>
+          <span class="flex justify-center ml-5">Settings</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
 
-    </div>
-    <div class="user-details">
-      <table class="table leaders-table">
-        <caption>Leaders List</caption>
-        <tr>
-          <th>Name</th>
-          <th>Position</th>
-          <th>Mobile</th>
-          <th>Status</th>
-        </tr>
-        {% block leaderlist %}{% endblock leaderlist %}
-        <tr>
-          <td>Emmanuel</td>
-          <td>Deacon</td>
-          <td>0550125552</td>
-          <td>True</td>
-        </tr>
-      </table>
-      
-      <table class="table members-table">
-        <caption>Members List</caption>
-        <tr>
-          <th>Name</th>
-          <th>Role</th>
-          <th>Mobile</th>
-          <th>Address</th>
-          <th>Status</th>
-        </tr>
-        {% block memberlist %}{% endblock memberlist %}
-        <tr>
-          <tr>
-            <td>Emmanuel Osae-Addo</td>
-            <td>Deacon</td>
-            <td>0550125552</td>
-            <td>Pokuase, Street 5</td>
-            <td>True</td>
-          </tr>
-        </tr>
-      </table>
-    </div>
-    <div class="footer-section">
-        <div class="socials">
-          <a href="" class="bx bx-cog"></a>
-          <a href="" class="bxl-whatsapp"></a>
-          <a href="" class="bxl-twitter"></a>
-          <a href="" class="bxl-markdown"></a>
-        </div>
-    
-        <br>
-        <div class="footer-copyright">
-          <div class="copyright">
-            Copyright &copy; 2021 Bible Way Baptist Church
+  <!-- Main Content Section -->
+  <div class="flex flex-col flex-1 w-full">
+    <header class="z-10 py-4 bg-gray-800 shadow-md">
+      <div class="container flex mx-auto px-4 justify-between items-center">
+        <button class="p-1 md:hidden focus:outline-none focus:shadow-outline-purple" @click="toggleSideMenu"
+          aria-label="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <span class="px-4 md:pl-8 md:font-semibold md:uppercase">Admin Dashboard Panel</span>
+        <a href="">
+          <span class="rounded-full py-0.5 px-3 bg-gray-900">Logout <i class="fas fa-sign-out-alt pl-1"></i></span>
+        </a>
+      </div>
+    </header>
+    <main class="m-2 p-2">
+      <!-- Cards section -->
+      <section class="grid gap-3 mb-8 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Leaders Card -->
+        <div class="flex items-center p-4 md:p-3 rounded-lg shadow bg-gray-800">
+          <div class="p-2 mr-3 rounded-full bg-orange-500">
+            <img class="h-16 w-16" src="{% static 'images/businessman1.svg' %}"
+              alt="church leaders icon, bible way baptist church">
+          </div>
+          <div class="pr-2 text-center">
+            <p class="mb-2 text-sm font-medium text-gray-400">Total Leaders</p>
+            <p class="text-lg font-semibold text-gray-200">{{count_leaders}}</p>
+          </div>
+          <div class="text-center">
+            <p class="mb-2 text-sm  font-medium text-gray-400">Pending Approvals</p>
+            <p class="text-lg font-semibold text-gray-200">{{pending_leaders_count}}</p>
           </div>
         </div>
-    </div>
-      
-  </section>
-  <script src="{% static 'records_management/toggle-admin.js' %}"></script>
+        <!-- Members Card -->
+        <div class="flex items-center p-4 rounded-lg shadow bg-gray-800">
+          <div class="p-3 mr-4 rounded-full text-orange-100 bg-orange-500">
+            <img class="h-16 w-16" src="{% static 'images/teamwork.svg' %}" alt="members, bible way baptist church">
+          </div>
+          <div class="pr-2 text-center md:pr-5">
+            <p class="mb-2 text-sm font-medium text-gray-400">Total Members</p>
+            <p class="text-lg font-semibold text-gray-200">{{count_church_members}}</p>
+          </div>
+          <div class="text-center">
+            <p class="mb-2 text-sm font-medium text-gray-400">Pending Approvals</p>
+            <p class="text-lg text-center font-semibold text-gray-200">{{pending_members_count}}</p>
+          </div>
+        </div>
+        <!-- Total Church data Card -->
+        <div class="md:col-span-2 md:mx-32 lg:col-span-1 lg:mx-0 flex items-center p-4 rounded-lg shadow bg-gray-800">
+          <div class="p-3 mr-4 rounded-full bg-orange-500">
+            <img class="h-16 w-16" src="{% static 'images/teamwork.svg' %}" alt="church congregation icon">
+          </div>
+          <div class="text-center">
+            <p class="mb-2 text-sm font-medium text-gray-400">Total Congregation</p>
+            <p class="text-lg font-semibold text-gray-200">{{total_members}}</p>
+          </div>
+        </div>
+      </section>
+      <!-- Search section -->
+      <!-- Build later -->
+      <section class="flex justify-center py-3 m-4">
+        <!-- <div class=" flex rounded-full bg-gray-50">
+          <div class="flex items-center justify-center inset-y-0 pl-2">
+            <i class="fas fa-search text-gray-800"></i>
+          </div>
+          <div class="flex items-center justify-center">
+            <input
+              class="py-3 pl-8 pr-4 text-sm text-gray-700 placeholder-gray-700 focus:outline-none focus:shadow-outline-purple"
+              type="text" placeholder="Search for Church Members, Leaders..." aria-label="Search">
+          </div>
+        </div> -->
+      </section>
+      <!-- Tables -->
+      <section class="w-full overflow-hidden rounded-lg shadow-xs">
+        <!-- Members table -->
+        <div class="flex items-center justify-center"><span class="text-gray-200 uppercase font-semibold">Church Members
+            List</span></div>
+        <div class="overflow-x-auto w-full">
+          <table class="w-full whitespace-nowrap">
+            <thead>
+              <tr class="text-xs font-semibold tracking-wide text-left text-gray-400 bg-gray-800 uppercase border-b">
+                <th class="px-3 py-3">Name</th>
+                <th class="px-3 py-3">Mobile</th>
+                <th class="px-3 py-3">Address</th>
+                <th class="px-3 py-3">Status</th>
+                <th class="px-3 py-3">Action</th>
+              </tr>
+            </thead>
+            <tbody class="bg-gray-800 divide-gray-700">
+              <tr class="text-gray-300">
+                <td class="px-2 py-3">
+                  <div class="flex items-center text-sm">
+                    <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                      <img class="object-cover w-full h-full rounded-full" src="{% static 'images/os1.jpg' %}"
+                        alt="member's profile pic bible way baptist church">
+                      <div class="absolutute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                    </div>
+                    <div>
+                      <p class="font-semibold">Osae Addo</p>
+                      <p class="text-xs text-gray-400">Moderator</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-1 py-3 text-sm">
+                  <span class="px-2 py-1 font-semibold leading-tight text-gray-400">0550125552</span>
+                </td>
+                <td class="px-3 py-3 text-sm">
+                  Pokuase, Accra, Ghana
+                </td>
+                <td class="px-3 py-3 text-xs">
+                  <span
+                    class="px-2 py-1 font-semibold leading-tight text-green-100 bg-green-700 rounded-full">Approved</span>
+                </td>
+                <!-- Action -->
+                <td class="px-3 py-3 text-xs font-semibold">
+                  <div class="flex items-center">
+                    <button class="mr-2 px-2 py-1 text-blue-100 bg-blue-600 rounded-full">View</button>
+                    <a href="#" class="mr-2 px-2 py-1 text-green-100 bg-green-600 rounded-full">Update</a>
+                    <button class="px-2 py-1 text-red-100 bg-red-700 rounded-full">Delete</button>
+                  </div>
+                </td>
+              </tr>
+              {% block memberlist %}{% endblock memberlist %}
+            </tbody>
+          </table>
+        </div>
+        <!-- Pagination -->
+        <div aria-label="Page navigation">
+          {% if li_members.has_other_pages %}
+            <ul class="flex space-x-2 align-middle justify-center">
+              {% if li_members.has_previous %}
+                <li>
+                  <a class="font-bold text-2xl pr-12" href="?page={{ li_members.previous_page_number }}">&laquo;</a>
+                </li>
+              {% else %}
+                <li class="disabled">
+                  <a class="font-bold text-2xl" href="?page={{ li_members.previous_page_number }}" aria-disabled="true">&laquo;</a>
+                </li>
+              {% endif %}
+              {% for p in li_members.paginator.page_range %}
+                {% if li_members.number == p %}
+                  <li class="active">
+                    <span>{{ p }}</span>
+                    <span>(current)</span>
+                  </li>
+                {% else %}
+                  <li>
+                    <a href="?page={{ p }}">{{ p }}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+              {% if li_members.has_next %}
+                <li><a class="font-bold text-2xl pl-12" href="?page={{ li_members.next_page_number }}">&raquo;</a></li>
+              {% else %}
+                <li class="disabled"><span class="font-bold text-2xl pl-12">&raquo;</span></li>
+              {% endif %}
+            </ul>
+          {% endif %}
+        </div>
+        <!-- Leaders table -->
+        <div class="members-table">
+
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer>
+
+  </footer>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="{% static 'js/toggle-sidemenu.js' %}"></script>
 
 </body>
+
 </html>
 
 <!-- Built by Osae -->
 
+<!-- <div class="card-items leaders-card">
+    <h3>{{count_leaders}}</h3>
+    <div class="card-data total-label">Total Church Leaders</div>
+    <div class="card-data required">Approvals Required : </div>
+    
+  </div>
+  <div class="card-items members-card">
+    <h3>{{count_church_members}}</h3>
+    <div class="card-data total-label">Total Church Members</div>
+    <div class="card-data required">Approvals Required: {{pending_members_count}}</div>
+    
+  </div>
+  <div class="card-items total-congregation">
+    <h3>{{count_all}}</h3>
+    <div class="card-data total-label">Total Church</div>
+    <div class="card-data required">Total Approval Required : {{total_members}}</div> -->

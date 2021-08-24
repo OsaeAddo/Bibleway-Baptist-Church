@@ -3,26 +3,27 @@
 {% block usertypeheader %}Admin{% endblock usertypeheader %}
 
 {% block signupform %}
-  <form method="post" action="{% url 'adminsignup' %}">
+  <form method="post" action="{% url 'adminsignup' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    <h1>Signup</h1>
-    {{adminForm.first_name}}
-    {{adminForm.last_name}}
-    {{adminForm.username}}
-    {{adminForm.password}}
-    <a href="#">Forgot your password?</a>
-    <button type="submit">SignUp</button>
+      <h1>Signup</h1>
+      {{form.first_name}}
+      {{form.last_name}}
+      {{form.username}}
+      {{form.password}}
+      <a href="#">Forgot your password?</a>
+      <button type="submit">SignUp</button>
   </form>
 {% endblock signupform %}
 
 {% block loginform %}
-  <form method="post" action="{% url 'adminlogin' %}">
+  <form method="post" action="{% url 'adminlogin' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    <h1>Log In</h1>
-    {{adminForm.username}}
-    {{adminForm.password}}
-    <a href="#">Forgot your password?</a>
-    <button type="submit">Log In</button>
+      <h1>Log In</h1>
+      {{form.username.label}}
+      {{form.username}}
+      {{form.password}}
+      <a href="#">Forgot your password?</a>
+      <button type="submit">Log In</button>
   </form>
 {% endblock loginform %}
 
