@@ -11,7 +11,7 @@
   <title> Admin Dashboard | Bible Way Baptist Church </title>
 </head>
 
-<body class="flex h-screen text-gray-200 bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
+<body class="flex h-screen text-gray-200 bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }" id="dashboard">
   <!-- SideBar section -->
 
   <!-- Desktop Sidebar -->
@@ -31,7 +31,7 @@
     </div>
     <ul class="flex flex-col justify-center text-lg mb-0 pb-0 font-semibold">
       <li class="my-6 w-full">
-        <a class="flex items-center ml-8" href="">
+        <a class="flex items-center ml-8" href="#dashboard">
           <i class="fas fa-home"></i>
           <span class="flex justify-center ml-7">Dashboard</span>
         </a>
@@ -45,13 +45,13 @@
       <li class="my-6 w-full">
         <a class="flex items-center ml-8" href="">
           <i class="far fa-id-badge"></i>
-          <span class="flex justify-center ml-7">Add Leader</span>
+          <span class="flex justify-center ml-7">Leaders</span>
         </a>
       </li>
       <li class="my-6 w-full">
         <a class="flex items-center ml-8" href="">
           <i class="far fa-address-card"></i>
-          <span class="flex justify-center ml-5">Add Member</span>
+          <span class="flex justify-center ml-5">Members</span>
         </a>
       </li>
       <li class="my-6 w-full">
@@ -99,7 +99,7 @@
     </div>
     <ul class="flex flex-col justify-center text-lg mb-0 pb-0 font-semibold">
       <li class="my-8 md:my-6 w-full">
-        <a class="flex items-center ml-8" href="">
+        <a class="flex items-center ml-8" href="#dashboard">
           <i class="fas fa-home"></i>
           <span class="flex justify-center ml-7">Dashboard</span>
         </a>
@@ -113,13 +113,13 @@
       <li class="my-8 md:my-6 w-full">
         <a class="flex items-center ml-8" href="">
           <i class="fas fa-id-badge"></i>
-          <span class="flex justify-center ml-7">Add Leader</span>
+          <span class="flex justify-center ml-7">Leaders</span>
         </a>
       </li>
       <li class="my-8 md:my-6 w-full">
         <a class="flex items-center ml-8" href="">
           <i class="fas fa-address-card"></i>
-          <span class="flex justify-center ml-5">Add Member</span>
+          <span class="flex justify-center ml-5">Members</span>
         </a>
       </li>
       <li class="my-8 md:my-6 w-full">
