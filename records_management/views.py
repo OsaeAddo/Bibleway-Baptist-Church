@@ -157,7 +157,7 @@ def churchadmin_dashboard_view(request):
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
-def add_member_view(request):
+def admin_add_member_view(request):
     pass
 
 
