@@ -192,6 +192,12 @@ def admin_add_member_view(request):
     pass
 
 
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def reject_member_view(request):
+    pass
+
+
 #<-----------------Views For Church Executive/Leader Only----------->
 @login_required(login_url='execlogin')
 @user_passes_test(is_churchexecutive)
