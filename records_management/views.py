@@ -177,7 +177,8 @@ def update_member_view(request):
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
 def admin_pending_approvals_member_view(request):
-    pass
+    members_pending = models.ChurchMember.objects.all().filter(status=True).count()
+    return render(request, 'records_management/pending_approvals_member.html')
 
 
 @login_required(login_url='adminlogin')
