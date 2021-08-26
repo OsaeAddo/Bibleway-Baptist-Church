@@ -155,6 +155,13 @@ def churchadmin_dashboard_view(request):
     }
     return render(request, 'records_management/admin_dashboard.html', context)
 
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_members_view(request):
+    pass
+
+
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
 def admin_add_member_view(request):
