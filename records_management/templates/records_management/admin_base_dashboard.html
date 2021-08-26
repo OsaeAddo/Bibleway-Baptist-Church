@@ -225,39 +225,6 @@
               </tr>
             </thead>
             <tbody class="bg-gray-800 divide-gray-700">
-              <tr class="text-gray-300">
-                <td class="px-2 py-3">
-                  <div class="flex items-center text-sm">
-                    <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                      <img class="object-cover w-full h-full rounded-full" src="{% static 'images/os1.jpg' %}"
-                        alt="member's profile pic bible way baptist church">
-                      <div class="absolutute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                    </div>
-                    <div>
-                      <p class="font-semibold">Osae Addo</p>
-                      <p class="text-xs text-gray-400">Moderator</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-1 py-3 text-sm">
-                  <span class="px-2 py-1 font-semibold leading-tight text-gray-400">0550125552</span>
-                </td>
-                <td class="px-3 py-3 text-sm">
-                  Pokuase, Accra, Ghana
-                </td>
-                <td class="px-3 py-3 text-xs">
-                  <span
-                    class="px-2 py-1 font-semibold leading-tight text-green-100 bg-green-700 rounded-full">Approved</span>
-                </td>
-                <!-- Action -->
-                <td class="px-3 py-3 text-xs font-semibold">
-                  <div class="flex items-center">
-                    <button class="mr-2 px-2 py-1 text-blue-100 bg-blue-600 rounded-full">View</button>
-                    <a href="#" class="mr-2 px-2 py-1 text-green-100 bg-green-600 rounded-full">Update</a>
-                    <button class="px-2 py-1 text-red-100 bg-red-700 rounded-full">Delete</button>
-                  </div>
-                </td>
-              </tr>
               {% block memberlist %}{% endblock memberlist %}
             </tbody>
           </table>
