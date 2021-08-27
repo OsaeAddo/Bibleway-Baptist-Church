@@ -232,8 +232,12 @@ def admin_approve_member_view(request, pk):
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
-def reject_member_view(request):
-    pass
+def reject_member_view(request, pk):
+    member = models.ChurchMember.objects.get(id=pk)
+    user = models.User.objects.get(id=member.user_id)
+    member.delete()
+    user.delete()
+    return redirect('pending-member')
 
 
 #<-----------------Views For Church Executive/Leader Only----------->
