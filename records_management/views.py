@@ -168,7 +168,38 @@ def admin_members_view(request):
 def admin_list_members_view(request):
     members = models.ChurchMember.objects.all().filter(status=True)
     context = {"members": members}
-    return render(request, 'records_management/admin-view-members.html', context)
+    return render(request, 'records_management/admin-list-members.html', context)
+
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_add_member_view(request):
+    userForm = forms.ChurchMemberUserForm()
+    memberForm = forms.ChurchMemberForm()
+    context = {
+        "userForm": userForm,
+        "memberForm": memberForm
+    }
+    if request.method == "POST":
+        userForm = forms.ChurchMemberUserForm(request.POST)
+        memberForm = forms.ChurchMemberForm(request.POST, request.FILES)
+        if userForm.is_valid() and memberForm.is_valid():
+            user = userForm.save()
+            user.set_password(user.password)
+            user.save()
+
+            member = memberForm.save(commit=False)
+            member.user = user
+            member.status = True
+            member.save()
+
+            member_group = Group.objects.get_or_create(name="MEMBERS")
+            member_group[0].user_set.add(user)
+
+        return redirect('admin-list-members')
+    return render(request, 'records_management/admin-add-member.html', context)
+    
+
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
@@ -193,12 +224,6 @@ def admin_pending_approvals_member_view(request):
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
 def admin_approve_member(request):
-    pass
-
-
-@login_required(login_url='adminlogin')
-@user_passes_test(is_churchadmin)
-def admin_add_member_view(request):
     pass
 
 
