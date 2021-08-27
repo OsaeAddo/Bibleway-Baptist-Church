@@ -223,8 +223,11 @@ def admin_pending_approvals_member_view(request):
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
-def admin_approve_member(request):
-    pass
+def admin_approve_member_view(request, pk):
+    members = models.ChurchMember.objects.get(id=pk)
+    members.status = True
+    members.save()
+    return redirect('pending-member')
 
 
 @login_required(login_url='adminlogin')
