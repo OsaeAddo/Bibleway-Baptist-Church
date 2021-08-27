@@ -1,5 +1,10 @@
 {% extends 'records_management/admin_base_dashboard.html' %}
 {% load static %}
+
+{% block cards %}
+  {% include 'records_management/admin_dashboard_cards.html' %}
+{% endblock cards %}
+
 {% block memberlist %}
   {% for member in members %}
     <tr class="text-gray-300">
