@@ -213,8 +213,30 @@ def admin_delete_member_view(request, pk):
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
-def update_member_view(request):
-    pass
+def admin_update_member_view(request, pk):
+    member = models.ChurchMember.objects.get(id=pk)
+    user = models.User.objects.get(id=pk)
+
+    memberForm = forms.ChurchMemberForm(instance=member)
+    userForm = forms.ChurchMemberUserForm(instance=user)
+    context = {
+        'memberForm': memberForm,
+        'userForm': userForm
+    }
+    if request.method == 'POST':
+        memberForm = forms.ChurchMemberForm(request.POST, request.FILES, instance=member)
+        userForm = forms.ChurchMemberUserForm(request.POST, instance=user)
+        if userForm.is_valid() and memberForm.is_valid():
+            user = userForm.save()
+            user.set_password(user.password)
+            user.save()
+
+            member = memberForm.save(commit=False)
+            member.status = True
+            member.save()
+        return redirect('admin-list-members')
+
+    return render(request, 'records_manangent/admin-update-member.html', context)
 
 
 @login_required(login_url='adminlogin')
