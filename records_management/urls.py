@@ -34,6 +34,7 @@ urlpatterns = [
     path('list-members/', views.admin_list_members_view, name='admin-list-members'),
     path('add-member/', views.admin_add_member_view, name='admin-add-member'),
     path('delete-member/<int:pk>', views.admin_delete_member_view, name='admin-delete-member')
+    path('update-member/<int:pk>', views.admin_update_member_view, name='admin-update-member')
     path('member-pending-approvals/', views.admin_pending_approvals_member_view, name='pending-member'),
     path('approve-member/<int:pk>', views.admin_approve_member_view, name='approve-member'),
     path('reject-member/<int:pk>', views.reject_member_view, name='reject-member')
