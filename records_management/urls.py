@@ -28,7 +28,9 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(template_name='records_management/home.html'), name="logout"),
 
     #<-------------Dashboard Related------------>
+    #-----------Admin Dashboard-----------------
     path('churchadmin-dashboard/', views.churchadmin_dashboard_view, name='churchadmin-dashboard'),
+    path('member-pending-approvals/', views.admin_pending_approvals_member_view, name='pending-member'),
     path('church-exec-dashboard/', views.church_exec_dashboard_view, name='church-exec-dashboard'),
 
     #<------------Search related --------->
