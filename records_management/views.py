@@ -159,7 +159,8 @@ def churchadmin_dashboard_view(request):
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
 def admin_members_view(request):
-    pass
+    return render(request, 'records_management/admin-member.html')
+
 
 
 @login_required(login_url='adminlogin')
