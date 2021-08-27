@@ -1,21 +1,31 @@
-{% extends 'records_management/admin_base_dashboard.html' %}
 {% load static %}
-
-<!-- View Members Card -->
-<div class="flex items-center justify-center p-4 md:p-3 rounded-lg shadow bg-gray-800">
-    <a class="p-6 text-center" href="{% url 'admin-list-members' %}">
-        <p class="text-lg font-semibold text-gray-200">View Members</p>
-    </a>
-</div>
-<!-- Add Member Card -->
-<div class="flex items-center justify-center p-4 md:p-3 rounded-lg shadow bg-gray-800">
-    <a class="p-6 text-center" href="{% url '' %}">
-        <p class="text-lg font-semibold text-gray-200">Add Member</p>
-    </a>
-</div>
-<!-- Approve Member Card -->
-<div class="flex items-center justify-center p-4 md:p-3 rounded-lg shadow bg-gray-800">
-    <a class="p-6 text-center" href="{% url '' %}">
-        <p class="text-lg font-semibold text-gray-200">Approve Member</p>
-    </a>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
+    <title>Add Member | Bible Way Baptist Church</title>
+</head>
+<body>
+    <!-- View Members Card -->
+    <div class="flex items-center justify-center p-4 md:p-3 rounded-lg shadow bg-gray-800">
+        <a class="p-6 text-center" href="{% url 'admin-list-members' %}">
+            <p class="text-lg font-semibold text-gray-200">View Members</p>
+        </a>
+    </div>
+    <!-- Add Member Card -->
+    <div class="flex items-center justify-center p-4 md:p-3 rounded-lg shadow bg-gray-800">
+        <a class="p-6 text-center" href="{% url 'admin-add-member' %}">
+            <p class="text-lg font-semibold text-gray-200">Add Member</p>
+        </a>
+    </div>
+    <!-- Approve Member Card -->
+    <div class="flex items-center justify-center p-4 md:p-3 rounded-lg shadow bg-gray-800">
+        <a class="p-6 text-center" href="{% url '' %}">
+            <p class="text-lg font-semibold text-gray-200">Approve Member</p>
+        </a>
+    </div>
+</body>
+</html>
