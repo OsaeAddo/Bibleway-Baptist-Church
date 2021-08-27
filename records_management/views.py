@@ -203,8 +203,12 @@ def admin_add_member_view(request):
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
-def admin_delete_member_view(request):
-    pass
+def admin_delete_member_view(request, pk):
+    member = models.ChurchMember.objects.get(id=pk)
+    user = models.User.objects.get(id=member.user_id)
+    member.delete()
+    user.delete()
+    return redirect('admin-list-members')
 
 
 @login_required(login_url='adminlogin')
