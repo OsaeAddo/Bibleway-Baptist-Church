@@ -32,6 +32,8 @@ urlpatterns = [
     path('churchadmin-dashboard/', views.churchadmin_dashboard_view, name='churchadmin-dashboard'),
     path('admin-member', views.admin_members_view, name='adminmember'),
     path('member-pending-approvals/', views.admin_pending_approvals_member_view, name='pending-member'),
+
+    #-----------Leader Dashboard--------------
     path('church-exec-dashboard/', views.church_exec_dashboard_view, name='church-exec-dashboard'),
 
     #<------------Search related --------->
