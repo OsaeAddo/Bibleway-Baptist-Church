@@ -35,6 +35,7 @@ urlpatterns = [
     path('add-member/', views.admin_add_member_view, name='admin-add-member'),
     path('member-pending-approvals/', views.admin_pending_approvals_member_view, name='pending-member'),
     path('approve-member/<int:pk>', views.admin_approve_member_view, name='approve-member'),
+    path('reject-member/<int:pk>', views.reject_member_view, name='reject-member')
 
     #-----------Leader Dashboard--------------
     path('church-exec-dashboard/', views.church_exec_dashboard_view, name='church-exec-dashboard'),
