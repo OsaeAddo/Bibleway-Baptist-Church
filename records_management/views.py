@@ -167,7 +167,8 @@ def admin_members_view(request):
 @user_passes_test(is_churchadmin)
 def admin_list_members_view(request):
     members = models.ChurchMember.objects.all().filter(status=True)
-    return render(request, 'records_management/admin-view-members.html')
+    context = {"members": members}
+    return render(request, 'records_management/admin-view-members.html', context)
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
