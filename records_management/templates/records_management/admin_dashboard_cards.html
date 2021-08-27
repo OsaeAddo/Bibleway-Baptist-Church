@@ -1,0 +1,40 @@
+{% load static %}
+<!-- Leaders Card -->
+<div class="flex items-center p-4 md:p-3 rounded-lg shadow bg-gray-800">
+    <div class="p-2 mr-3 rounded-full bg-orange-500">
+        <img class="h-16 w-16" src="{% static 'images/businessman1.svg' %}"
+            alt="church leaders icon, bible way baptist church">
+    </div>
+    <div class="pr-2 text-center">
+        <p class="mb-2 text-sm font-medium text-gray-400">Total Leaders</p>
+        <p class="text-lg font-semibold text-gray-200">{{count_leaders}}</p>
+    </div>
+    <div class="text-center">
+        <p class="mb-2 text-sm  font-medium text-gray-400">Pending Approvals</p>
+        <p class="text-lg font-semibold text-gray-200">{{pending_leaders_count}}</p>
+    </div>
+</div>
+<!-- Members Card -->
+<div class="flex items-center p-4 rounded-lg shadow bg-gray-800">
+    <div class="p-3 mr-4 rounded-full text-orange-100 bg-orange-500">
+        <img class="h-16 w-16" src="{% static 'images/teamwork.svg' %}" alt="members, bible way baptist church">
+    </div>
+    <div class="pr-2 text-center md:pr-5">
+        <p class="mb-2 text-sm font-medium text-gray-400">Total Members</p>
+        <p class="text-lg font-semibold text-gray-200">{{count_church_members}}</p>
+    </div>
+    <div class="text-center">
+        <p class="mb-2 text-sm font-medium text-gray-400">Pending Approvals</p>
+        <p class="text-lg text-center font-semibold text-gray-200">{{pending_members_count}}</p>
+    </div>
+</div>
+<!-- Total Church data Card -->
+<div class="md:col-span-2 md:mx-32 lg:col-span-1 lg:mx-0 flex items-center p-4 rounded-lg shadow bg-gray-800">
+    <div class="p-3 mr-4 rounded-full bg-orange-500">
+        <img class="h-16 w-16" src="{% static 'images/teamwork.svg' %}" alt="church congregation icon">
+    </div>
+    <div class="text-center">
+        <p class="mb-2 text-sm font-medium text-gray-400">Total Congregation</p>
+        <p class="text-lg font-semibold text-gray-200">{{total_members}}</p>
+    </div>
+</div>
