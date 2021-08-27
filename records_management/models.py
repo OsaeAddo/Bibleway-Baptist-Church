@@ -58,9 +58,13 @@ class ChurchMember(models.Model):
     def get_name(self):
         return f"{self.user.first_name} {self.user.last_name}"
 
+    @property
+    def get_id(self):
+        return self.user.id
 
     class Meta:
         verbose_name_plural = 'Church Members'
+
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name} ({self.member_role})"
 
