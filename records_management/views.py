@@ -216,6 +216,7 @@ def admin_delete_member_view(request, pk):
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
 def admin_update_member_view(request, pk):
+    print("************* UPDATE MEMBER HIT ********")
     member = models.ChurchMember.objects.get(id=pk)
     user = models.User.objects.get(id=member.user_id)
 
