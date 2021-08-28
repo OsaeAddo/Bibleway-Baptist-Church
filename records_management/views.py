@@ -215,7 +215,7 @@ def admin_delete_member_view(request, pk):
 @user_passes_test(is_churchadmin)
 def admin_update_member_view(request, pk):
     member = models.ChurchMember.objects.get(id=pk)
-    user = models.User.objects.get(id=member.user_id)
+    user = models.User.objects.get(id=pk)
 
     memberForm = forms.ChurchMemberForm(instance=member)
     userForm = forms.ChurchMemberUserForm(instance=user)
@@ -242,7 +242,7 @@ def admin_update_member_view(request, pk):
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
 def admin_pending_approvals_member_view(request):
-    members_pending = models.ChurchMember.objects.all().filter(status=True).count()
+    members_pending = models.ChurchMember.objects.all().filter(status=False)
     context = {'members_pending': members_pending}
     return render(request, 'records_management/pending_approvals_member.html', context)
 
