@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
     <title>Pending Member Approvals | Bible Way Baptist Church</title>
 </head>
-<body>
-    <h4 class="text-center font-bold text-base text-gray-800">Pending Member Approvals</h4>
+<body class="bg-gray-100">
+    <h4 class="p-8 text-center font-bold text-base text-gray-800">Pending Member Approvals</h4>
     
     <div class="overflow-x-auto w-full py-9 px-8">
         <table class="w-full whitespace-nowrap">
@@ -23,7 +23,7 @@
                 </tr>
             </thead>
             <tbody class="bg-gray-800 divide-gray-700">
-                {% for member in members %}
+                {% for member in members_pending %}
                     <tr class="text-gray-300">
                         <td class="px-2 py-3">
                             <div class="flex items-center text-sm">
