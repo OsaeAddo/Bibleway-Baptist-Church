@@ -43,7 +43,7 @@ class ChurchMember(models.Model):
     gender = models.CharField(max_length=10, choices=genders, default='Gender', blank=True, null=True)
     member_role = models.CharField(max_length=60, choices=member_roles, default='Role', blank=True, null=True)
     date_of_birth = models.DateField(default=timezone.now)
-    marital_status = models.CharField(max_length=30, choices=marital_statuses, default='Select Role')
+    marital_status = models.CharField(max_length=30, choices=marital_statuses, default='Marital status')
     mobile = models.CharField(max_length=11, blank=True, null=True)
     emergency_contact = models.CharField(max_length=11, blank=True, null=True)
     name_of_father = models.CharField(max_length=60, blank=True, null=True)
