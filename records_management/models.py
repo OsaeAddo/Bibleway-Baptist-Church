@@ -40,7 +40,7 @@ genders = [
 class ChurchMember(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
     profile_pic = models.ImageField(upload_to='profile_pic/LeadersProfilePic/', null=True, blank=True, default="admin-icon.png")
-    gender = models.CharField(max_length=10, choices=genders, blank=True, null=True)
+    gender = models.CharField(max_length=10, choices=genders, default='Gender', blank=True, null=True)
     member_role = models.CharField(max_length=60, choices=member_roles, default='Role', blank=True, null=True)
     date_of_birth = models.DateField(default=timezone.now)
     marital_status = models.CharField(max_length=30, choices=marital_statuses, default='Select Role')
