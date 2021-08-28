@@ -217,7 +217,7 @@ def admin_update_member_view(request, pk):
     member = models.ChurchMember.objects.get(id=pk)
     user = models.User.objects.get(id=member.user_id)
 
-    memberForm = forms.ChurchMemberForm(instance=member)
+    memberForm = forms.ChurchMemberForm(request.FILES, instance=member)
     userForm = forms.ChurchMemberUserForm(instance=user)
     context = {
         'memberForm': memberForm,
