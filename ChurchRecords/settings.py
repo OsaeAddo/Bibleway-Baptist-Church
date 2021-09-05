@@ -99,6 +99,9 @@ DATABASES = {
 # Improve csrf_token security
 CSRF_COOKIE_SECURE = True
 
+#Secure user sessions 
+SESSION_COOKIE_SECURE =True
+
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
