@@ -239,7 +239,7 @@ def admin_update_member_view(request, pk):
             member.save()
         return redirect('admin-list-members')
 
-    return render(request, 'records_manangent/admin-update-member.html', context)
+    return render(request, 'records_management/admin-update-member.html', context)
 
 
 @login_required(login_url='adminlogin')
