@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.db.models import Q #for more sophisticated/realistic queries
 from . import models, forms
+from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponseRedirect
@@ -41,7 +42,8 @@ def church_admin_signup_view(request):
             user.save()
             my_admin_group = Group.objects.get_or_create(name="ADMIN")
             my_admin_group[0].user_set.add(user)
-            return redirect('adminlogin')
+            messages.success(request, "Success: Admin created!")
+            return redirect('admin-click')
     else:
         form = forms.AdminSignupForm()
     return render(request, 'records_management/admin_login_signup.html', {'form': form})
@@ -154,6 +156,117 @@ def churchadmin_dashboard_view(request):
         #for profile picture of admin in the sidebar
     }
     return render(request, 'records_management/admin_dashboard.html', context)
+
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_members_view(request):
+    return render(request, 'records_management/admin-member.html')
+
+
+# List/Table of all members(approved)
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_list_members_view(request):
+    members = models.ChurchMember.objects.all().filter(status=True)
+    context = {"members": members}
+    return render(request, 'records_management/admin-list-members.html', context)
+
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_add_member_view(request):
+    userForm = forms.ChurchMemberUserForm()
+    memberForm = forms.ChurchMemberForm()
+    context = {
+        "userForm": userForm,
+        "memberForm": memberForm
+    }
+    if request.method == "POST":
+        userForm = forms.ChurchMemberUserForm(request.POST)
+        memberForm = forms.ChurchMemberForm(request.POST, request.FILES)
+        if userForm.is_valid() and memberForm.is_valid():
+            user = userForm.save()
+            user.set_password(user.password)
+            user.save()
+
+            member = memberForm.save(commit=False)
+            member.user = user
+            member.status = True
+            member.save()
+
+            member_group = Group.objects.get_or_create(name="MEMBERS")
+            member_group[0].user_set.add(user)
+
+        return redirect('admin-list-members')
+    return render(request, 'records_management/admin-add-member.html', context)
+    
+
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_delete_member_view(request, pk):
+    member = models.ChurchMember.objects.get(id=pk)
+    user = models.User.objects.get(id=member.user_id)
+    member.delete()
+    user.delete()
+    return redirect('admin-list-members')
+
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_update_member_view(request, pk):
+    print("************* UPDATE MEMBER HIT ********")
+    member = models.ChurchMember.objects.get(id=pk)
+    user = models.User.objects.get(id=member.user_id)
+
+    memberForm = forms.ChurchMemberForm(request.FILES, instance=member)
+    userForm = forms.ChurchMemberUserForm(instance=user)
+    context = {
+        'memberForm': memberForm,
+        'userForm': userForm
+    }
+    if request.method == 'POST':
+        memberForm = forms.ChurchMemberForm(request.POST, request.FILES, instance=member)
+        userForm = forms.ChurchMemberUserForm(request.POST, instance=user)
+        if userForm.is_valid() and memberForm.is_valid():
+            user = userForm.save()
+            user.set_password(user.password)
+            user.save()
+
+            member = memberForm.save(commit=False)
+            member.status = True
+            member.save()
+        return redirect('admin-list-members')
+
+    return render(request, 'records_management/admin-update-member.html', context)
+
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_pending_approvals_member_view(request):
+    members_pending = models.ChurchMember.objects.all().filter(status=False)
+    context = {'members_pending': members_pending}
+    return render(request, 'records_management/pending_approvals_member.html', context)
+
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_approve_member_view(request, pk):
+    members = models.ChurchMember.objects.get(id=pk)
+    members.status = True
+    members.save()
+    return redirect('pending-member')
+
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def reject_member_view(request, pk):
+    member = models.ChurchMember.objects.get(id=pk)
+    user = models.User.objects.get(id=member.user_id)
+    member.delete()
+    user.delete()
+    return redirect('pending-member')
 
 
 #<-----------------Views For Church Executive/Leader Only----------->

@@ -1,0 +1,45 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
+    <title>Add Member | Bible Way Baptist Church</title>
+</head>
+<body>
+    <main>
+        <div class="p-8">
+            <span class="font-semibold text-base text-gray-500">Admit New Member to Church</span>
+        </div>
+        <div class="p-8 m-4 rounded-md bg-gray-900">
+            <form method="post" enctype="multipart/form-data">
+                <div class="flex flex-col space-y-4 items-center justify-center bg-gray-900">
+                    {% csrf_token %}
+                    <p class="font-xs text-gray-600 border-solid border-gray-700">{{userForm.first_name}}</p>
+                    <p class="font-xs text-gray-600 border-solid border-gray-700">{{userForm.last_name}}</p>
+                    <p class="font-xs text-gray-600 border-solid border-gray-700">{{userForm.username}}</p>
+                    <p class="font-xs text-gray-600 border-solid border-gray-700">{{memberForm.profile_pic}}</p>
+                    <p class="font-xs text-gray-600 border-solid border-gray-700 p-6">{% render_field memberForm.member_role placeholder="member_role" %}</p>
+                    <p class="font-xs text-gray-600 border-solid border-gray-700">{{memberForm.date_of_birth}}</p>
+                    <p class="font-xs text-gray-600 border-solid border-gray-700" aria-placeholder="Marital Status">{{memberForm.marital_status}}</p>
+                    <p class="font-xs text-gray-600 border-solid border-gray-700" aria-placeholder="Mobile">{{memberForm.mobile}}</p>
+                    <p class="font-xs text-gray-600 border-solid border-gray-700">{% render_field memberForm.emergency_contact placeholder="Emergency contact" %}</p>
+                    <p class="font-xs text-gray-600 border-solid border-gray-700">{{memberForm.name_of_father}}</p>
+                    <!-- To Do: Break up form into 2 pages with pagination -->
+                    <p class="font-xs text-gray-600 border-solid border-gray-700">{{memberForm.name_of_mother}}</p>
+                    <p class="font-xs text-gray-600 border-solid border-gray-700">{{memberForm.hometown}}</p>
+                    <p class="font-xs text-gray-600 border-solid border-gray-700">{{memberForm.region}}</p>
+                    <p class="font-xs text-gray-600 border-solid border-gray-700">{{memberForm.residential_address}}</p>
+                    <p class="font-xs text-gray-600 border-solid border-gray-700">{{memberForm.date_of_baptism}}</p>
+                    <p class="font-xs text-gray-600 border-solid border-gray-700">{{userForm.password}}</p>
+                    <p class="font-xs text-gray-600 border-solid border-gray-700">{{memberForm.status}}</p>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

@@ -17,7 +17,7 @@
   <!-- Desktop Sidebar -->
   <aside class="hidden z-20 h-screen flex-shrink-0 w-60 bg-gray-800 text-gray-300 md:block">
     <div class="flex w-full  py-2 px-1 justify-center">
-      <img class="h-12 w-12 rounded-full" src="{% static 'images/logo.jpg' %}" alt="church logo">
+      <img class="h-12 w-12 rounded-full" src="{% static 'images/logo2.png' %}" alt="church logo">
       <div class="flex flex-col px-1 justify-center text-base font-semibold">
         <div>Bible Way Baptist Church</div>
       </div>
@@ -31,31 +31,31 @@
     </div>
     <ul class="flex flex-col justify-center text-lg mb-0 pb-0 font-semibold">
       <li class="my-6 w-full">
-        <a class="flex items-center ml-8" href="">
+        <a class="flex items-center ml-8" href="{% url 'churchadmin-dashboard' %}">
           <i class="fas fa-home"></i>
-          <span class="flex justify-center ml-7">Dashboard</span>
+          <span class="flex justify-center ml-5">Dashboard</span>
         </a>
       </li>
       <li class="my-6 w-full">
         <a class="flex items-center ml-8" href="">
           <i class="far fa-envelope"></i>
-          <span class="flex justify-center ml-7">Messages</span>
+          <span class="flex justify-center ml-5">Messages</span>
         </a>
       </li>
       <li class="my-6 w-full">
         <a class="flex items-center ml-8" href="">
           <i class="far fa-id-badge"></i>
-          <span class="flex justify-center ml-7">Add Leader</span>
+          <span class="flex justify-center ml-6">Leaders</span>
         </a>
       </li>
       <li class="my-6 w-full">
-        <a class="flex items-center ml-8" href="">
+        <a class="flex items-center ml-8" href="{% url 'adminmember' %}">
           <i class="far fa-address-card"></i>
-          <span class="flex justify-center ml-5">Add Member</span>
+          <span class="flex justify-center ml-4">Members</span>
         </a>
       </li>
       <li class="my-6 w-full">
-        <a class="flex items-center ml-8" href="">
+        <a class="flex items-center ml-8" href="{% url 'pending-member' %}">
           <i class="fas fa-clipboard"></i>
           <span class="flex justify-center ml-6">Pending Approvals</span>
         </a>
@@ -99,7 +99,7 @@
     </div>
     <ul class="flex flex-col justify-center text-lg mb-0 pb-0 font-semibold">
       <li class="my-8 md:my-6 w-full">
-        <a class="flex items-center ml-8" href="">
+        <a class="flex items-center ml-8" href="#dashboard">
           <i class="fas fa-home"></i>
           <span class="flex justify-center ml-7">Dashboard</span>
         </a>
@@ -113,13 +113,13 @@
       <li class="my-8 md:my-6 w-full">
         <a class="flex items-center ml-8" href="">
           <i class="fas fa-id-badge"></i>
-          <span class="flex justify-center ml-7">Add Leader</span>
+          <span class="flex justify-center ml-7">Leaders</span>
         </a>
       </li>
       <li class="my-8 md:my-6 w-full">
-        <a class="flex items-center ml-8" href="">
+        <a class="flex items-center ml-8" href="{% url 'adminmember' %}">
           <i class="fas fa-address-card"></i>
-          <span class="flex justify-center ml-5">Add Member</span>
+          <span class="flex justify-center ml-5">Members</span>
         </a>
       </li>
       <li class="my-8 md:my-6 w-full">
@@ -138,14 +138,14 @@
   </aside>
 
   <!-- Main Content Section -->
-  <div class="flex flex-col flex-1 w-full">
+  <div class="flex flex-col flex-1 w-full" id="dashboard">
     <header class="z-10 py-4 bg-gray-800 shadow-md">
       <div class="container flex mx-auto px-4 justify-between items-center">
         <button class="p-1 md:hidden focus:outline-none focus:shadow-outline-purple" @click="toggleSideMenu"
           aria-label="Menu">
           <i class="fas fa-bars"></i>
         </button>
-        <span class="px-4 md:pl-8 md:font-semibold md:uppercase">Admin Dashboard Panel</span>
+        <span class="px-4 md:pl-8 lg:ml-96 lg:px-0 md:font-semibold md:uppercase">Admin Dashboard Panel</span>
         <a href="">
           <span class="rounded-full py-0.5 px-3 bg-gray-900">Logout <i class="fas fa-sign-out-alt pl-1"></i></span>
         </a>
@@ -153,46 +153,9 @@
     </header>
     <main class="h-full overflow-y-auto m-2 p-2">
       <!-- Cards section -->
-      <section class="grid gap-3 mb-8 md:grid-cols-2 lg:grid-cols-3">
-        <!-- Leaders Card -->
-        <div class="flex items-center p-4 md:p-3 rounded-lg shadow bg-gray-800">
-          <div class="p-2 mr-3 rounded-full bg-orange-500">
-            <img class="h-16 w-16" src="{% static 'images/businessman1.svg' %}"
-              alt="church leaders icon, bible way baptist church">
-          </div>
-          <div class="pr-2 text-center">
-            <p class="mb-2 text-sm font-medium text-gray-400">Total Leaders</p>
-            <p class="text-lg font-semibold text-gray-200">{{count_leaders}}</p>
-          </div>
-          <div class="text-center">
-            <p class="mb-2 text-sm  font-medium text-gray-400">Pending Approvals</p>
-            <p class="text-lg font-semibold text-gray-200">{{pending_leaders_count}}</p>
-          </div>
-        </div>
-        <!-- Members Card -->
-        <div class="flex items-center p-4 rounded-lg shadow bg-gray-800">
-          <div class="p-3 mr-4 rounded-full text-orange-100 bg-orange-500">
-            <img class="h-16 w-16" src="{% static 'images/teamwork.svg' %}" alt="members, bible way baptist church">
-          </div>
-          <div class="pr-2 text-center md:pr-5">
-            <p class="mb-2 text-sm font-medium text-gray-400">Total Members</p>
-            <p class="text-lg font-semibold text-gray-200">{{count_church_members}}</p>
-          </div>
-          <div class="text-center">
-            <p class="mb-2 text-sm font-medium text-gray-400">Pending Approvals</p>
-            <p class="text-lg text-center font-semibold text-gray-200">{{pending_members_count}}</p>
-          </div>
-        </div>
-        <!-- Total Church data Card -->
-        <div class="md:col-span-2 md:mx-32 lg:col-span-1 lg:mx-0 flex items-center p-4 rounded-lg shadow bg-gray-800">
-          <div class="p-3 mr-4 rounded-full bg-orange-500">
-            <img class="h-16 w-16" src="{% static 'images/teamwork.svg' %}" alt="church congregation icon">
-          </div>
-          <div class="text-center">
-            <p class="mb-2 text-sm font-medium text-gray-400">Total Congregation</p>
-            <p class="text-lg font-semibold text-gray-200">{{total_members}}</p>
-          </div>
-        </div>
+      <section class="grid md:pt-12 gap-3 mb-8 md:grid-cols-2 lg:grid-cols-3">
+        {% block cards %}
+        {% endblock cards %}
       </section>
       <!-- Search section -->
       <!-- Build later -->
@@ -225,39 +188,6 @@
               </tr>
             </thead>
             <tbody class="bg-gray-800 divide-gray-700">
-              <tr class="text-gray-300">
-                <td class="px-2 py-3">
-                  <div class="flex items-center text-sm">
-                    <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                      <img class="object-cover w-full h-full rounded-full" src="{% static 'images/os1.jpg' %}"
-                        alt="member's profile pic bible way baptist church">
-                      <div class="absolutute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                    </div>
-                    <div>
-                      <p class="font-semibold">Osae Addo</p>
-                      <p class="text-xs text-gray-400">Moderator</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-1 py-3 text-sm">
-                  <span class="px-2 py-1 font-semibold leading-tight text-gray-400">0550125552</span>
-                </td>
-                <td class="px-3 py-3 text-sm">
-                  Pokuase, Accra, Ghana
-                </td>
-                <td class="px-3 py-3 text-xs">
-                  <span
-                    class="px-2 py-1 font-semibold leading-tight text-green-100 bg-green-700 rounded-full">Approved</span>
-                </td>
-                <!-- Action -->
-                <td class="px-3 py-3 text-xs font-semibold">
-                  <div class="flex items-center">
-                    <button class="mr-2 px-2 py-1 text-blue-100 bg-blue-600 rounded-full">View</button>
-                    <a href="#" class="mr-2 px-2 py-1 text-green-100 bg-green-600 rounded-full">Update</a>
-                    <button class="px-2 py-1 text-red-100 bg-red-700 rounded-full">Delete</button>
-                  </div>
-                </td>
-              </tr>
               {% block memberlist %}{% endblock memberlist %}
             </tbody>
           </table>

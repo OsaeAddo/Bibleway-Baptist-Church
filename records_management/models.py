@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+
+from PIL import Image
 # Create your models here.
 member_roles = [
     ('Singer', 'Singer'),
@@ -40,10 +42,10 @@ genders = [
 class ChurchMember(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
     profile_pic = models.ImageField(upload_to='profile_pic/LeadersProfilePic/', null=True, blank=True, default="admin-icon.png")
-    gender = models.CharField(max_length=10, choices=genders, blank=True, null=True)
+    gender = models.CharField(max_length=10, choices=genders, default='Gender', blank=True, null=True)
     member_role = models.CharField(max_length=60, choices=member_roles, default='Role', blank=True, null=True)
     date_of_birth = models.DateField(default=timezone.now)
-    marital_status = models.CharField(max_length=30, choices=marital_statuses, default='Select Role')
+    marital_status = models.CharField(max_length=30, choices=marital_statuses, default='Marital status')
     mobile = models.CharField(max_length=11, blank=True, null=True)
     emergency_contact = models.CharField(max_length=11, blank=True, null=True)
     name_of_father = models.CharField(max_length=60, blank=True, null=True)
@@ -58,9 +60,22 @@ class ChurchMember(models.Model):
     def get_name(self):
         return f"{self.user.first_name} {self.user.last_name}"
 
+    @property
+    def get_id(self):
+        return self.user.id
 
     class Meta:
         verbose_name_plural = 'Church Members'
+
+    # resize/reduce images saved to the files system
+    def save(self):
+        super().save()
+        pic = Image.open(self.profile_pic.path)
+        if pic.height > 300 or pic.width > 300:
+            output_size = (300, 300)
+            pic.thumbnail(output_size) #resize image
+            pic.save(self.profile_pic.path)
+
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name} ({self.member_role})"
 
