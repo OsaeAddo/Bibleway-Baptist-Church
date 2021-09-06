@@ -22,7 +22,7 @@ def churchAdminClick_view(request):
     return render(request, 'records_management/admin_login_signup.html')
 
 #Shows the signup/login page for Church Executive
-def churchExecClick_view(request):
+def leader_click_view(request):
     # if request.user.is_authenticated:
     #     return HttpResponseRedirect('afterlogin')
     return render(request, 'records_management/churchexec-click.html')
