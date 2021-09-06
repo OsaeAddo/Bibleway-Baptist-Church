@@ -11,16 +11,51 @@
 </head>
 
 <body>
-    <div class="" style="margin-bottom:0px;">
-        <h1 class="" style="text-align:center;">Hello, Executive</h1>
-        <p class="">Welcome to Church Management System.</p>
-        <hr class="">
-        <p>You can access executive features after Login/SignUp.</p>
-        <p class="">
-          <a class="btn btn-primary btn-lg" href="{% url 'execsignup' %}" role="button">SignUp</a>
-          <a class="btn btn-primary btn-lg" href="{% url 'execlogin' %}" role="button">Login</a>
-        </p>
+    <div class="h-full px-1">
+        <nav style="background: linear-gradient(to right,rgb(29, 95, 29), rgb(26, 24, 46));">
+            <div class="flex justify-between p-2">
+                <a href="/"><img class="rounded-full w-12 p-0.5" src="{% static 'images/logo2.png' %}"
+                        alt="Logo | Bible Way Baptist Church"></a>
+                <ul class="justify-self-end flex space-x-4 justify-center items-center text-gray-50 font-semibold pr-4">
+                    <li class=""><a href="#">Sermon</a></li>
+                    <li class=""><a href="#section-location">Location</a></li>
+                    <li class=""><a href="#">Worship</a></li>
+                    <li class=""><a href="#section-about">About</a></li>
+                </ul>
+            </div>
+        </nav>
+        <main class="h-screen flex justify-center items-center">
+            <div class="flex flex-col justify-center items-center text-gray-800">
+                <div class="flex justify-between">
+                    <span class="font-bold text-xl p-4 uppercase">
+                        Hello, Executive
+                        <span class="pl-4">|</span>
+                    </span>
+                    <span class="text-base font-bold p-4">Welcome to Church Management System.</span>
+                </div>
+                <span class="text-sm font-bold p-4">You can access executive features after Login/SignUp</span>
+                <div class="flex justify-between text-gray-200 p-4">
+                    <a class="p-4" href="{% url 'execsignup' %}" role="button">
+                        <div class="rounded-lg bg-gray-700 p-4">SignUp</div>
+                    </a>
+                    <a class="p-4" href="{% url 'execlogin' %}" role="button">
+                        <div class="rounded-lg bg-gray-700 p-4">Login</div>
+                    </a>
+                </div>
+            </div>
+        </main>
     </div>
+    <footer>
+        <div class="p-4" style="background: linear-gradient(to right,rgb(29, 95, 29), rgb(26, 24, 46));">
+            <span class="flex justify-center items-center space-x-4 text-gray-50">
+                <span></span> &copy; Bible Way Baptist Church
+                <script>
+                    n = new Date();
+                    y = n.getFullYear();
+                    document.getElementById("copyright").innerHTML = y;
+                </script>
+            </span>
+        </div>
     </footer>
 </body>
 
