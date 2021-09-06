@@ -101,7 +101,7 @@ def customize_churchadmin_login_view(user):
 def is_churchadmin(user):
     return user.groups.filter(name='ADMIN').exists()
 
-def is_leader(user):
+def is_churchleader(user):
     return user.groups.filter(name='LEADERS').exists()
 
 def is_churchmember(user):
