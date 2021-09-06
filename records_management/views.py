@@ -272,7 +272,7 @@ def reject_member_view(request, pk):
 #<-----------------Views For Church Executive/Leader Only----------->
 @login_required(login_url='execlogin')
 @user_passes_test(is_churchexecutive)
-def church_exec_dashboard_view(request):
+def leader_dashboard_view(request):
     #to create three cards 
     count_church_members = models.ChurchMember.objects.all().count()
     count_executives = models.ChurchLeader.objects.all().filter().count()
