@@ -40,7 +40,7 @@ urlpatterns = [
     path('reject-member/<int:pk>', views.reject_member_view, name='reject-member'),
 
     #-----------Leader Dashboard--------------
-    path('church-exec-dashboard/', views.church_exec_dashboard_view, name='church-exec-dashboard'),
+    path('church-leader-dashboard/', views.leader_dashboard_view, name='leader-dashboard'),
 
     #<------------Search related --------->
     #search church members
