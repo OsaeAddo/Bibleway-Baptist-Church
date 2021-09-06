@@ -49,7 +49,7 @@ def church_admin_signup_view(request):
     return render(request, 'records_management/admin_login_signup.html', {'form': form})
 
 
-def churchExecSignup_view(request):
+def leader_signup_view(request):
     if request.method == 'POST':
         userForm = forms.ExecutiveUserForm(request.POST)
         executiveForm = forms.ExecutiveForm(request.POST, request.FILES)
