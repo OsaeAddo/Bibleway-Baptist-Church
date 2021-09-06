@@ -11,7 +11,7 @@ urlpatterns = [
     #<-------------Click Related----------->
     path('church-admin-click/', views.church_admin_signup_view, name='admin-click'),
     path('church-exec-click/', views.leader_click_view, name='exec-click'),
-    path('church-member-click/', views.churchMemberClick_view, name='member-click'),
+    path('church-member-click/', views.member_click_view, name='member-click'),
 
     #<-------------SignUp Related----------->
     path('church-admin-signup/', views.church_admin_signup_view, name='adminsignup'),
