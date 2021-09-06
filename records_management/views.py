@@ -29,7 +29,7 @@ def leader_click_view(request):
 
 
 #shows the credentials-entry page
-def churchMemberClick_view(request):
+def member_click_view(request):
     return render(request, 'records_management/churchmember-click.html')
 
 
