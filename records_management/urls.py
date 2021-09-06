@@ -10,7 +10,7 @@ urlpatterns = [
 
     #<-------------Click Related----------->
     path('church-admin-click/', views.church_admin_signup_view, name='admin-click'),
-    path('church-exec-click/', views.churchExecClick_view, name='exec-click'),
+    path('church-exec-click/', views.leader_click_view, name='exec-click'),
     path('church-member-click/', views.churchMemberClick_view, name='member-click'),
 
     #<-------------SignUp Related----------->
