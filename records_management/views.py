@@ -22,14 +22,14 @@ def churchAdminClick_view(request):
     return render(request, 'records_management/admin_login_signup.html')
 
 #Shows the signup/login page for Church Executive
-def churchExecClick_view(request):
+def leader_click_view(request):
     # if request.user.is_authenticated:
     #     return HttpResponseRedirect('afterlogin')
     return render(request, 'records_management/churchexec-click.html')
 
 
 #shows the credentials-entry page
-def churchMemberClick_view(request):
+def member_click_view(request):
     return render(request, 'records_management/churchmember-click.html')
 
 
@@ -49,7 +49,7 @@ def church_admin_signup_view(request):
     return render(request, 'records_management/admin_login_signup.html', {'form': form})
 
 
-def churchExecSignup_view(request):
+def leader_signup_view(request):
     if request.method == 'POST':
         userForm = forms.ExecutiveUserForm(request.POST)
         executiveForm = forms.ExecutiveForm(request.POST, request.FILES)
@@ -101,7 +101,7 @@ def customize_churchadmin_login_view(user):
 def is_churchadmin(user):
     return user.groups.filter(name='ADMIN').exists()
 
-def is_churchexecutive(user):
+def is_churchleader(user):
     return user.groups.filter(name='LEADERS').exists()
 
 def is_churchmember(user):
@@ -115,10 +115,10 @@ def afterloginview(request):
     if is_churchadmin(request.user):
         print(f"Admin user is: {request.user}")
         return redirect("churchadmin-dashboard")
-    elif is_churchexecutive(request.user):
+    elif is_churchleader(request.user):
         accountapproval = models.ChurchLeader.objects.all().filter(user_id=request.user.id, status = True)
         if accountapproval:
-            return redirect('church-exec-dashboard')
+            return redirect('leader-dashboard')
         else:
             return render(request, 'records_management/exec_await_approval.html')
 
@@ -271,8 +271,8 @@ def reject_member_view(request, pk):
 
 #<-----------------Views For Church Executive/Leader Only----------->
 @login_required(login_url='execlogin')
-@user_passes_test(is_churchexecutive)
-def church_exec_dashboard_view(request):
+@user_passes_test(is_churchleader)
+def leader_dashboard_view(request):
     #to create three cards 
     count_church_members = models.ChurchMember.objects.all().count()
     count_executives = models.ChurchLeader.objects.all().filter().count()

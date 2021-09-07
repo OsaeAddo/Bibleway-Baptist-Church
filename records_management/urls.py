@@ -10,12 +10,12 @@ urlpatterns = [
 
     #<-------------Click Related----------->
     path('church-admin-click/', views.church_admin_signup_view, name='admin-click'),
-    path('church-exec-click/', views.churchExecClick_view, name='exec-click'),
-    path('church-member-click/', views.churchMemberClick_view, name='member-click'),
+    path('church-exec-click/', views.leader_click_view, name='exec-click'),
+    path('church-member-click/', views.member_click_view, name='member-click'),
 
     #<-------------SignUp Related----------->
     path('church-admin-signup/', views.church_admin_signup_view, name='adminsignup'),
-    path('church-exec-signup/', views.churchExecSignup_view, name='execsignup'),
+    path('church-exec-signup/', views.leader_signup_view, name='execsignup'),
     path('church-member-signup/', views.member_signup_view, name='member-signup'),
 
     #<-------------LogIn Related----------->
@@ -40,7 +40,7 @@ urlpatterns = [
     path('reject-member/<int:pk>', views.reject_member_view, name='reject-member'),
 
     #-----------Leader Dashboard--------------
-    path('church-exec-dashboard/', views.church_exec_dashboard_view, name='church-exec-dashboard'),
+    path('church-leader-dashboard/', views.leader_dashboard_view, name='leader-dashboard'),
 
     #<------------Search related --------->
     #search church members

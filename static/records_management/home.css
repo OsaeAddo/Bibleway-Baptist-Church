@@ -11,8 +11,8 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.1rem;
-    background: #ccc;
-    margin: 10px 10px 0 10px;
+    background: var(--light);
+    margin: 10px 6px 0 6px;
     scroll-behavior: smooth;
 }
 
@@ -72,6 +72,11 @@ img{
 /* Message section */
 #section-msg .msg-wrapper{
     text-align: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 #section-msg .msg-top{
     font-size: 2rem;
@@ -81,6 +86,7 @@ img{
 #section-msg .msg-down{
     font-size: smaller;
     color: #2a2a2a;
+    width: 65%;
 }
 /* End Message section */
 
@@ -133,10 +139,14 @@ img{
 
 /* Location Section */
 #section-location .location{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     margin: 12px 4px auto 0;
     box-shadow: var(--shadow);
-    max-width: 100%;
+    width: 80%;
+    /* max-width: 100%; */
     padding: 8px;
 }
 /* End Location Section */
@@ -250,9 +260,9 @@ img{
         padding-bottom: 1rem;
     }
     #section-location .location{
-        width: 60%;
+        width: 40%;
         justify-self: center;
-        padding: 2rem;
+        padding: 0.1rem;
     }
     /* Info + Socials */
     #section-info-socials{
