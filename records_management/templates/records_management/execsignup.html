@@ -43,11 +43,13 @@
             <div>{{leaderForm.hometown}}</div>
             <div>{{leaderForm.region}}</div>
           </div>
-          <div>{{leaderForm.residential_address}}</div>
-          <button type="submit" class="btnSubmit">Submit</button>
+          <div class="p-2">{{leaderForm.residential_address}}</div>
+          <div class="bg-blue-600 border-indigo-800 border-solid text-gray-300 rounded-lg w-1/4">
+            <button type="submit" class="p-2 text-center">Submit</button>
+          </div>
         </form>
       </div>
-      <div class="text-center">Already have an account? <a href="{% url 'leader-login' %}">Login here</a></div>
+      <div class="text-center font-semibold text-base text-gray-900">Already have an account? <a class="text-blue-600 font-semibold" href="{% url 'leader-login' %}">Login here</a></div>
     </div>
   </main>
 
