@@ -38,7 +38,7 @@ class LeaderUserForm(forms.ModelForm):
         }
 
 
-class ExecutiveForm(forms.ModelForm):
+class LeaderForm(forms.ModelForm):
     class Meta:
         model = models.ChurchLeader
         fields = '__all__'
