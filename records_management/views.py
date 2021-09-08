@@ -53,12 +53,12 @@ def leader_signup_view(request):
     userForm = forms.LeaderUserForm()
     leaderForm = forms.LeaderForm()
     if request.method == 'POST':
-        userForm = forms.ExecutiveUserForm(request.POST)
-        executiveForm = forms.ExecutiveForm(request.POST, request.FILES)
-        if userForm.is_valid() and executiveForm.is_valid():
-            exec_user = userForm.save()
-            exec_user.set_password(exec_user.password)
-            exec_user.save()
+        userForm = forms.LeaderUserForm(request.POST)
+        leaderForm = forms.LeaderForm(request.POST, request.FILES)
+        if userForm.is_valid() and leaderForm.is_valid():
+            leader_user = userForm.save()
+            leader_user.set_password(leader_user.password)
+            leader_user.save()
 
             leader = leaderForm.save(commit=False)
             leader.user = leader_user
