@@ -279,8 +279,8 @@ def leader_dashboard_view(request):
         'count_church_members':count_church_members,
         'count_leaders':count_leaders,
         'total_members':total_members,
-        'executive':models.ChurchLeader.objects.get(user_id=request.user.id)
-        #for profile picture of church executive in the sidebar
+        'leader':models.ChurchLeader.objects.get(user_id=request.user.id)
+        #for profile picture of church leader in the sidebar
     }
     return render(request, 'records_management/exec_dashboard.html', context)
 
