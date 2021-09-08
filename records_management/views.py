@@ -150,7 +150,7 @@ def churchadmin_dashboard_view(request):
         'li_members': li_members,
         'total_members':total_members,
 
-        # 'executive':models.ChurchLeader.objects.get(user_id=request.user.id)
+        # 'leader':models.ChurchLeader.objects.get(user_id=request.user.id)
         #for profile picture of admin in the sidebar
     }
     return render(request, 'records_management/admin_dashboard.html', context)
