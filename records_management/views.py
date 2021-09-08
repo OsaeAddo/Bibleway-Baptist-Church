@@ -16,7 +16,7 @@ def accesslevel_view(request):
 
 
 #Shows the signup/login for Church Admin
-def churchAdminClick_view(request):
+def church_admin_click_view(request):
     # if request.user.is_authenticated:
     #     return HttpResponseRedirect('afterlogin')
     return render(request, 'records_management/admin_login_signup.html')
