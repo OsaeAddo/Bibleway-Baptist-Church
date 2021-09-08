@@ -95,7 +95,7 @@ def member_signup_view(request):
 def customize_churchadmin_login_view(user):
     pass
 
-# checks if user is an admin or a church executive
+# checks if user is an admin or a church leader
 def is_churchadmin(user):
     return user.groups.filter(name='ADMIN').exists()
 
