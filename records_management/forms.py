@@ -21,7 +21,7 @@ class AdminSignupForm(forms.ModelForm):
 
 #for church leaders to create an account
 #combine with ChurchLeader model in views to create a user form
-class ExecutiveUserForm(forms.ModelForm):
+class LeaderUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = [
