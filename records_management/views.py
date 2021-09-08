@@ -277,7 +277,7 @@ def leader_dashboard_view(request):
     total_members = count_church_members + count_leaders
     context = {
         'count_church_members':count_church_members,
-        'count_executives':count_executives,
+        'count_leaders':count_leaders,
         'total_members':total_members,
         'executive':models.ChurchLeader.objects.get(user_id=request.user.id)
         #for profile picture of church executive in the sidebar
