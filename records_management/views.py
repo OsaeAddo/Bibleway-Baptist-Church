@@ -21,7 +21,7 @@ def church_admin_click_view(request):
     #     return HttpResponseRedirect('afterlogin')
     return render(request, 'records_management/admin_login_signup.html')
 
-#Shows the signup/login page for Church Executive
+#Shows the signup/login page for Church leader
 def leader_click_view(request):
     # if request.user.is_authenticated:
     #     return HttpResponseRedirect('afterlogin')
