@@ -42,6 +42,15 @@ class LeaderForm(forms.ModelForm):
     class Meta:
         model = models.ChurchLeader
         fields = '__all__'
+        widgets = {
+            'mobile': forms.TextInput(attrs={'placeholder': "Enter phone number"}),
+            'emergency_contact': forms.TextInput(attrs={'placeholder': "Enter emergency contact"}),
+            'name_of_father': forms.TextInput(attrs={'placeholder': "Name of father"}),
+            'name_of_mother': forms.TextInput(attrs={'placeholder': "Name of mother"}),
+            'hometown': forms.TextInput(attrs={'placeholder': "Hometown"}),
+            'region': forms.TextInput(attrs={'placeholder': "Region"}),
+            'residential_address': forms.TextInput(attrs={'placeholder': "Residential address"}),
+        }
 
 
 #forms for church members to create an account
