@@ -82,7 +82,8 @@ class ChurchMember(models.Model):
 
 class ChurchLeader(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_pic = models.ImageField(upload_to='profile_pic/LeadersProfilePic/', null=True, blank=True, default="admin-icon.png")
+    profile_pic = models.ImageField(upload_to='profile_pic/leaders-profile-pic/', null=True, blank=True, default="admin-icon.png")
+    gender = models.CharField(max_length=10, choices=genders, default='Gender', blank=True, null=True)
     leadershiptype = models.CharField(max_length=30, choices=leadershiptypes, default='Select Role')
     date_of_birth = models.DateField(default=timezone.now)
     marital_status = models.CharField(max_length=30, choices=marital_statuses, default='Single')
