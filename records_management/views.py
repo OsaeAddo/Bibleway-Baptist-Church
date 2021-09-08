@@ -106,7 +106,7 @@ def is_churchmember(user):
     return user.groups.filter(name='MEMBERS').exists()
 
 
-#------- AFTER ENTERING CREDENTIALS, CHECK IF USERNAME & PASSWORD IS THAT OF CHURCH ADMIN OR EXECUTIVE
+#------- AFTER ENTERING CREDENTIALS, CHECK IF USERNAME & PASSWORD IS THAT OF CHURCH ADMIN OR leader
 def afterloginview(request):
     print("-------------afterloginview hit-----------")
     print("******* proceeding to verify if user is admin ******")
