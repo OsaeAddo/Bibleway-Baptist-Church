@@ -72,7 +72,10 @@ def leader_signup_view(request):
 def member_signup_view(request):
     userForm = forms.ChurchMemberUserForm()
     churchmemberForm = forms.ChurchMemberForm()
-    context={'userForm':userForm, 'churchmemberForm':churchmemberForm}
+    context={
+        'userForm':userForm, 
+        'churchmemberForm':churchmemberForm
+    }
     if request.method == 'POST':
         userForm = forms.ChurchMemberUserForm(request.POST)
         churchmemberForm = forms.ChurchMemberForm(request.POST, request.FILES)
