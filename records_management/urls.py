@@ -15,7 +15,7 @@ urlpatterns = [
 
     #<-------------SignUp Related----------->
     path('church-admin-signup/', views.church_admin_signup_view, name='adminsignup'),
-    path('church-exec-signup/', views.leader_signup_view, name='execsignup'),
+    path('church-leader-signup/', views.leader_signup_view, name='leader-signup'),
     path('church-member-signup/', views.member_signup_view, name='member-signup'),
 
     #<-------------LogIn Related----------->
