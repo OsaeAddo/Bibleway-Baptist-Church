@@ -30,30 +30,27 @@
   <!--- signup page for admin by admin  ---------->
   <form method="post">
     {% csrf_token %}
-    <div class="container register-form">
-      <div class="form">
-        <div class="note">
-          <p>Add New Church Admin</p>
-        </div>
-
-        <div class="form-content">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                {% render_field userForm.first_name class="form-control" placeholder="First Name" %}
-              </div>
-              <div class="form-group">
-                {% render_field userForm.username class="form-control" placeholder="Username" %}
-              </div>
-
+          <div class="">
+            <div class="">{{userForm.first_name}}</div>
+            <div class="">{{userForm.last_name}</div>
+            <div class="">{{userForm.username}}</div>
+            <div class="">{{userForm.password}}</div>
+            <div class="">{{leaderForm.profile_pic}}</div>
+            <div class="">{{leaderForm.leadershiptype}}</div>
+            <div class="">{{leaderForm.gender}}</div>
+            <div class="">{{leaderForm.date_of_birth}}</div>
+            <div class="">{{leaderForm.marital_status}}</div>
+            <div class="">{{leaderForm.data_of_baptism}}</div>
+            <div class="">{{leaderForm.mobile}}</div>
+            <div class="">{{leaderForm.emergency_contact}}</div>
+          </div>
+          <div class="">
+            <div class="">
+              {{leaderForm.name_of_father}}
             </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                {% render_field userForm.last_name class="form-control" placeholder="Last Name" %}
-              </div>
-              <div class="form-group">
-                {% render_field userForm.password class="form-control" placeholder="Password" %}
-              </div>
+            <div class="">
+              {{leaderForm.name_of_mother}}
+            </div>
 
             </div>
           </div>
