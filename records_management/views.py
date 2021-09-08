@@ -273,8 +273,8 @@ def reject_member_view(request, pk):
 def leader_dashboard_view(request):
     #to create three cards 
     count_church_members = models.ChurchMember.objects.all().count()
-    count_executives = models.ChurchLeader.objects.all().filter().count()
-    total_members = count_church_members + count_executives
+    count_leaders = models.ChurchLeader.objects.all().filter().count()
+    total_members = count_church_members + count_leaders
     context = {
         'count_church_members':count_church_members,
         'count_executives':count_executives,
