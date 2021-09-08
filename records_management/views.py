@@ -69,7 +69,6 @@ def leader_signup_view(request):
             leader = leader.save()
             my_leader_group = Group.objects.get_or_create(name='LEADERS')
             my_leader_group[0].user_set.add(leader_user)
-    context = {'userForm': 'userForm', 'leaderForm': 'leaderForm'}
     return render(request, 'records_management/execsignup.html', context)
 
 
