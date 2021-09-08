@@ -52,6 +52,10 @@ def church_admin_signup_view(request):
 def leader_signup_view(request):
     userForm = forms.LeaderUserForm()
     leaderForm = forms.LeaderForm()
+    context = {
+        'userForm': userForm, 
+        'leaderForm': leaderForm
+    }
     if request.method == 'POST':
         userForm = forms.LeaderUserForm(request.POST)
         leaderForm = forms.LeaderForm(request.POST, request.FILES)
