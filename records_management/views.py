@@ -58,11 +58,11 @@ def leader_signup_view(request):
             exec_user.set_password(exec_user.password)
             exec_user.save()
 
-            executive = executiveForm.save(commit=False)
-            executive.user = exec_user
-            executive = executive.save()
-            my_executive_group = Group.objects.get_or_create(name='LEADERS')
-            my_executive_group[0].user_set.add(exec_user)
+            leader = leaderForm.save(commit=False)
+            leader.user = leader_user
+            leader = leader.save()
+            my_leader_group = Group.objects.get_or_create(name='LEADERS')
+            my_leader_group[0].user_set.add(leader_user)
 
     else:
         userForm = forms.ExecutiveUserForm()
