@@ -11,11 +11,11 @@
 </head>
 
 <body>
-  <main class="flex justify-center items-center p-2">
-    <div class="">
-      <span class="text-gray-600 font-bold text-center">Church Leader SignUp</span>
-      <div class="p-3 rounded-lg border-solid border-gray-700">
-        <form class="flex flex-col text-gray-700" method="post">
+  <main>
+    <div class="flex flex-col justify-center items-center p-4">
+      <span class="text-gray-600 font-bold text-xl text-center p-8">Church Leader SignUp</span>
+      <div class="rounded-lg border-solid box-border border-blue-700">
+        <form class="flex flex-col text-gray-700" method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="">
             <div class="">{{userForm.first_name}}</div>
