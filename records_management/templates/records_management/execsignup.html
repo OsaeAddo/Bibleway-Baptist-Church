@@ -15,21 +15,12 @@
 
 
 <body>
-  
-  <br>
-  <br>
-  <br>
-  <br>
-
-
-
-  <h1 class="" style="text-align:center;">Hello, Executive</h1>
-  <p class="">Welcome to Church Management System.</p>
-  <hr class="">
-  <p>You can access admin features after Login/SignUp.</p>
-  <!--- signup page for admin by admin  ---------->
-  <form method="post">
-    {% csrf_token %}
+  <main class="flex justify-center items-center p-2">
+    <div class="">
+      <span class="text-gray-600 font-bold text-center">Church Leader SignUp</span>
+      <div class="p-3 rounded-lg border-solid border-gray-700">
+        <form class="flex flex-col text-gray-700" method="post">
+          {% csrf_token %}
           <div class="">
             <div class="">{{userForm.first_name}}</div>
             <div class="">{{userForm.last_name}</div>
@@ -52,11 +43,15 @@
               {{leaderForm.name_of_mother}}
             </div>
 
-            </div>
           </div>
+          <div>
+            <div>{{leaderForm.hometown}}</div>
+            <div>{{leaderForm.region}}</div>
+          </div>
+          <div>{{leaderForm.residential_address}}</div>
           <button type="submit" class="btnSubmit">Submit</button>
-          <div class="text-center">Already have an account? <a href="{% url 'adminlogin' %}">Login here</a></div>
-        </div>
+        </form>
+      </div>
       </div>
     </div>
 
