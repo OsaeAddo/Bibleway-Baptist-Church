@@ -267,7 +267,7 @@ def reject_member_view(request, pk):
     return redirect('pending-member')
 
 
-#<-----------------Views For Church Executive/Leader Only----------->
+#<-----------------Views For Church Leader Only----------->
 @login_required(login_url='execlogin')
 @user_passes_test(is_churchleader)
 def leader_dashboard_view(request):
