@@ -31,7 +31,11 @@ class LeaderUserForm(forms.ModelForm):
             'password'
         ]
         widgets = {
-            'first_name': forms.TextInput(attrs={'placeholder':"First name"}),
+            'first_name': forms.TextInput(attrs={
+                'placeholder':"First name",
+                'size': 20,
+                'class': 'first-name',
+            }),
             'username': forms.TextInput(attrs={'placeholder':"Username"}),
             'last_name': forms.TextInput(attrs={'placeholder':"Last name"}),
             'password': forms.PasswordInput(attrs={'placeholder':"Password"}),
