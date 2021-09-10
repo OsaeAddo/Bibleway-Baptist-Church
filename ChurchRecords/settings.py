@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #My Apps
     'records_management',
+    'crispy_forms',
 ]
 
 if DEBUG:
