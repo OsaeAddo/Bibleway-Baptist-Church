@@ -15,21 +15,21 @@
     <div class="flex flex-col justify-center items-center p-4">
       <span class="text-gray-600 font-bold text-xl text-center p-8">Church Leader SignUp</span>
       <div class="rounded-lg border-solid box-border border-blue-700">
-        <form class="flex flex-col text-gray-700" method="post" enctype="multipart/form-data">
+        <form class="flex flex-col text-gray-800" method="post" enctype="multipart/form-data">
           {% csrf_token %}
-          <div class="p-2">
-            <div class="p-2">{{userForm.first_name}}</div>
-            <div class="p-2">{{userForm.last_name}}</div>
-            <div class="p-2">{{userForm.username}}</div>
-            <div class="p-2">{{userForm.password}}</div>
-            <div class="p-2">{{leaderForm.profile_pic}}</div>
-            <div class="p-2">{{leaderForm.leadershiptype}}</div>
-            <div class="p-2">{{leaderForm.gender}}</div>
-            <div class="p-2">{{leaderForm.date_of_birth}}</div>
-            <div class="p-2">{{leaderForm.marital_status}}</div>
-            <div class="p-2">{{leaderForm.data_of_baptism}}</div>
-            <div class="p-2">{{leaderForm.mobile}}</div>
-            <div class="p-2">{{leaderForm.emergency_contact}}</div>
+          <div class="p-2 grid grid-cols-2 gap-3 placeholder-gray-900">
+            <div class="p-2 border rounded-xl border-blue-500 focus:border-blue-800 placeholder-gray-900" aria-placeholder="First name">{{userForm.first_name}}</div>
+            <div class="p-2 border rounded-xl border-blue-500">{{userForm.last_name}}</div>
+            <div class="p-2 border rounded-xl border-blue-500">{{userForm.username}}</div>
+            <div class="p-2 border rounded-xl border-blue-500">{{userForm.password}}</div>
+            <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.profile_pic}}</div>
+            <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.leadershiptype}}</div>
+            <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.gender}}</div>
+            <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.date_of_birth}}</div>
+            <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.marital_status}}</div>
+            <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.data_of_baptism}}</div>
+            <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.mobile}}</div>
+            <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.emergency_contact}}</div>
           </div>
           <div class="p-2">
             <div class="p-2">
@@ -39,12 +39,12 @@
               {{leaderForm.name_of_mother}}
             </div>
           </div>
-          <div class="p-2">
+          <div class="p-2 grid grid-cols-2">
             <div>{{leaderForm.hometown}}</div>
             <div>{{leaderForm.region}}</div>
           </div>
-          <div class="p-2">{{leaderForm.residential_address}}</div>
-          <div class="bg-blue-600 border-indigo-800 border-solid text-gray-300 rounded-lg w-1/4">
+          <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.residential_address}}</div>
+          <div class="bg-blue-600 border-indigo-800 border text-gray-300 rounded-lg w-1/5">
             <button type="submit" class="p-2 text-center">Submit</button>
           </div>
         </form>
