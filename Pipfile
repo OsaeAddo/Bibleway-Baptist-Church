@@ -13,8 +13,8 @@ bpython = "==0.21"
 werkzeug = "==2.0.1"
 pip = "*"
 install = "*"
-django-crispy-forms = "==1.12.0"
 sqlparse = "==0.4.2"
+django-crispy-forms = "==1.12.0"
 
 [dev-packages]
 
