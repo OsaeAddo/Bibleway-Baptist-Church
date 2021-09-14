@@ -34,11 +34,20 @@ class LeaderUserForm(forms.ModelForm):
             'first_name': forms.TextInput(attrs={
                 'placeholder':"First name",
                 'size': 20,
-                'class': 'first-name',
+                'class': "placeholder-gray-900",
             }),
-            'username': forms.TextInput(attrs={'placeholder':"Username"}),
-            'last_name': forms.TextInput(attrs={'placeholder':"Last name"}),
-            'password': forms.PasswordInput(attrs={'placeholder':"Password"}),
+            'username': forms.TextInput(attrs={
+                'placeholder':"Username",
+                'class': "placeholder-gray-900",
+            }),
+            'last_name': forms.TextInput(attrs={
+                'placeholder':"Last name",
+                'class': "placeholder-gray-900",
+            }),
+            'password': forms.PasswordInput(attrs={
+                'placeholder':"Password",
+                'class': "placeholder-gray-900",
+            }),
         }
 
 
