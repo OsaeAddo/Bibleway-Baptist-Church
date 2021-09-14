@@ -15,6 +15,7 @@ member_roles = [
 ]
 
 leadershiptypes = [
+    ('Select role', 'Select role'),
     ('Head Pastor', 'Head Pastor'),
     ('Junior Pastor', 'Junior Pastor'),
     ('Prophet', 'Prophet'),
