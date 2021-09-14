@@ -19,18 +19,18 @@
         <form class="flex flex-col text-gray-800 bg-gray-500 rounded-xl shadow-xl p-2" method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="p-2 grid grid-cols-2 gap-3 placeholder-gray-900">
-            <div class="p-2 border rounded-xl border-blue-500 focus:border-blue-800 placeholder-gray-900" aria-placeholder="First name">{{userForm.first_name}}</div>
-            <div class="p-2 border rounded-xl border-blue-500">{{userForm.last_name}}</div>
-            <div class="p-2 border rounded-xl border-blue-500">{{userForm.username}}</div>
-            <div class="p-2 border rounded-xl border-blue-500">{{userForm.password}}</div>
-            <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.profile_pic}}</div>
-            <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.leadershiptype}}</div>
-            <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.gender}}</div>
-            <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.date_of_birth}}</div>
-            <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.marital_status}}</div>
-            <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.data_of_baptism}}</div>
-            <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.mobile}}</div>
-            <div class="p-2 border rounded-xl border-blue-500">{{leaderForm.emergency_contact}}</div>
+            <div class="p-2 rounded-xl focus:border-blue-800 placeholder-gray-900" aria-placeholder="First name">{{ userForm.first_name }}</div>
+            <div class="p-2 rounded-xl">{{userForm.last_name}}</div>
+            <div class="p-2 rounded-xl">{{userForm.username}}</div>
+            <div class="p-2 rounded-xl">{{userForm.password}}</div>
+            <div class="p-2 rounded-xl">{{leaderForm.profile_pic}}</div>
+            <div class="p-2 rounded-xl">{{leaderForm.leadershiptype}}</div>
+            <div class="p-2 rounded-xl">{{leaderForm.gender}}</div>
+            <div class="p-2 rounded-xl">{{leaderForm.date_of_birth}}</div>
+            <div class="p-2 rounded-xl">{{leaderForm.marital_status}}</div>
+            <div class="p-2 rounded-xl">{{leaderForm.date_of_baptism}}</div>
+            <div class="p-2 rounded-xl">{{leaderForm.mobile}}</div>
+            <div class="p-2 rounded-xl">{{leaderForm.emergency_contact}}</div>
           </div>
           <div class="p-2">
             <div class="p-2 w-3/5">
