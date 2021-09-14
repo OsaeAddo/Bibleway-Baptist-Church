@@ -56,13 +56,47 @@ class LeaderForm(forms.ModelForm):
         model = models.ChurchLeader
         fields = '__all__'
         widgets = {
-            'mobile': forms.TextInput(attrs={'placeholder': "Enter phone number"}),
-            'emergency_contact': forms.TextInput(attrs={'placeholder': "Enter emergency contact"}),
-            'name_of_father': forms.TextInput(attrs={'placeholder': "Name of father"}),
-            'name_of_mother': forms.TextInput(attrs={'placeholder': "Name of mother"}),
-            'hometown': forms.TextInput(attrs={'placeholder': "Hometown"}),
-            'region': forms.TextInput(attrs={'placeholder': "Region"}),
-            'residential_address': forms.TextInput(attrs={'placeholder': "Residential address"}),
+            # 'leadershiptype': forms.Input(attrs={
+            #     'placholder': "Select Role",
+            #     'label': "leadership role",
+            # }),
+            'mobile': forms.TextInput(attrs={
+                'placeholder': "Phone number",
+                'class': "placeholder-gray-900",
+            }),
+            'emergency_contact': forms.TextInput(attrs={
+                'placeholder': "Emergency contact",
+                'class': "placeholder-gray-900",
+                'label': "Emergency Contact",
+            }),
+            'date_of_birth': forms.DateInput(attrs={
+                'class': "w-4/5 placeholder-gray-900",
+                'placeholder': "Date of Birth",
+            }),
+            'date_of_baptism': forms.DateInput(attrs={
+                'class': "w-4/5 placeholder-gray-900", 
+                'placeholder': "Date of Baptism",
+            }),
+            'name_of_father': forms.TextInput(attrs={
+                'placeholder': "Name of father",
+                'class': "placeholder-gray-900",
+            }),
+            'name_of_mother': forms.TextInput(attrs={
+                'placeholder': "Name of mother",
+                'class': "placeholder-gray-900",
+            }),
+            'hometown': forms.TextInput(attrs={
+                'placeholder': "Hometown",
+                'class': "placeholder-gray-900",
+            }),
+            'region': forms.TextInput(attrs={
+                'placeholder': "Region",
+                'class': "placeholder-gray-900",
+            }),
+            'residential_address': forms.TextInput(attrs={
+                'placeholder': "Residential address",
+                'class': "placeholder-gray-900",
+            }),
         }
 
 
