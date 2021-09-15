@@ -96,7 +96,7 @@ class LeaderForm(forms.ModelForm):
                 'class': "placeholder-gray-900",
             }),
             'residential_address': forms.TextInput(attrs={
-                'placeholder': "Residential address",
+                'placeholder': "Enter residential address",
                 'class': "placeholder-gray-900",
             }),
         }
