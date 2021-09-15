@@ -14,6 +14,18 @@
   <title>Leader SignUp | Bible Way Baptist Church</title>
 </head>
 <body style="font-family: 'Lexend Deca', sans-serif;">
+  <nav class="mb-4" style="background: linear-gradient(to right,rgb(29, 95, 29), rgb(26, 24, 46));">
+    <div class="flex justify-between p-2">
+        <a href="/"><img class="rounded-full w-12 p-0.5" src="{% static 'images/logo2.png' %}"
+                alt="Logo | Bible Way Baptist Church"></a>
+        <ul class="justify-self-end flex space-x-4 justify-center items-center text-gray-50 font-semibold pr-4">
+            <li class=""><a href="#">Home</a></li>
+            <li class=""><a href="#section-location">Location</a></li>
+            <li class=""><a href="#">Worship</a></li>
+            <li class=""><a href="#section-about">About</a></li>
+        </ul>
+    </div>
+  </nav>
   <main>
     <div class="flex flex-col justify-center items-center p-4">
       <span class="text-gray-600 font-bold text-xl text-center p-8">Church Leader SignUp</span>
@@ -36,10 +48,10 @@
           </div>
           <div class="p-2">
             <div class="p-2 w-3/5">
-              {{leaderForm.name_of_father}}
+              {{leaderForm.name_of_father|as_crispy_field}}
             </div>
             <div class="p-2 w-3/5">
-              {{leaderForm.name_of_mother}}
+              {{leaderForm.name_of_mother|as_crispy_field}}
             </div>
           </div>
           <div class="p-2 grid grid-cols-2 gap-3">
