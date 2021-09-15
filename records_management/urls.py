@@ -20,8 +20,8 @@ urlpatterns = [
 
     #<-------------LogIn Related----------->
     path('church-admin-login/', LoginView.as_view(template_name='records_management/admin_login_signup.html'), name='adminlogin'),
-    path('church-leader-login/', LoginView.as_view(template_name='records_management/execlogin.html'), name='leader-login'),
-    path('church-member-login/', LoginView.as_view(template_name='records_management/memberlogin.html'), name='memberlogin'),
+    path('church-leader-login/', LoginView.as_view(template_name='records_management/leader_login.html'), name='leader-login'),
+    path('church-member-login/', LoginView.as_view(template_name='records_management/member_login.html'), name='memberlogin'),
 
     #<-----AfterLogin Related------>
     path('afterlogin/', views.afterloginview, name='afterlogin'),
