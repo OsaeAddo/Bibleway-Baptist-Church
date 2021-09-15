@@ -80,11 +80,11 @@ class LeaderForm(forms.ModelForm):
                 'placeholder': "Date of Baptism",
             }),
             'name_of_father': forms.TextInput(attrs={
-                'placeholder': "Name of father",
+                'placeholder': "Enter father's name",
                 'class': "placeholder-gray-900",
             }),
             'name_of_mother': forms.TextInput(attrs={
-                'placeholder': "Name of mother",
+                'placeholder': "Enter mother's name",
                 'class': "placeholder-gray-900",
             }),
             'hometown': forms.TextInput(attrs={
