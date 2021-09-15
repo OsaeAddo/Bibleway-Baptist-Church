@@ -69,6 +69,7 @@ class LeaderForm(forms.ModelForm):
                 'placeholder': "Enter emergency contact",
                 'class': "placeholder-gray-900",
                 'label': "Emergency Contact",
+                'type': "tel",
             }),
             'date_of_birth': forms.DateInput(attrs={
                 'class': "w-4/5 placeholder-gray-900",
