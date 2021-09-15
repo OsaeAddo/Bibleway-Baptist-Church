@@ -69,7 +69,7 @@ def leader_signup_view(request):
             leader = leader.save()
             my_leader_group = Group.objects.get_or_create(name='LEADERS')
             my_leader_group[0].user_set.add(leader_user)
-    return render(request, 'records_management/leadersignup.html', context)
+    return render(request, 'records_management/leader_signup.html', context)
 
 
 def member_signup_view(request):
