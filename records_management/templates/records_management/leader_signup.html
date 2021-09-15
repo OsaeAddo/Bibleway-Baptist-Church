@@ -19,10 +19,10 @@
         <a href="/"><img class="rounded-full w-12 p-0.5" src="{% static 'images/logo2.png' %}"
                 alt="Logo | Bible Way Baptist Church"></a>
         <ul class="justify-self-end flex space-x-4 justify-center items-center text-gray-50 font-semibold pr-4">
-            <li class=""><a href="#">Home</a></li>
-            <li class=""><a href="#section-location">Location</a></li>
-            <li class=""><a href="#">Worship</a></li>
-            <li class=""><a href="#section-about">About</a></li>
+            <li class=""><a href="{% url 'home-page' %}">Home</a></li>
+            <li class=""><a href="{% url 'home-page' %}">Location</a></li>
+            <li class=""><a href="{% url 'home-page' %}">Worship</a></li>
+            <li class=""><a href="{% url 'home-page' %}">About</a></li>
         </ul>
     </div>
   </nav>
