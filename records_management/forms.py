@@ -61,7 +61,7 @@ class LeaderForm(forms.ModelForm):
             #     'label': "leadership role",
             # }),
             'mobile': forms.TextInput(attrs={
-                'placeholder': "Phone number",
+                'placeholder': "Enter phone number",
                 'class': "placeholder-gray-900",
             }),
             'emergency_contact': forms.TextInput(attrs={
