@@ -63,6 +63,7 @@ class LeaderForm(forms.ModelForm):
             'mobile': forms.TextInput(attrs={
                 'placeholder': "Enter phone number",
                 'class': "placeholder-gray-900",
+                'type': "tel",
             }),
             'emergency_contact': forms.TextInput(attrs={
                 'placeholder': "Emergency contact",
