@@ -215,6 +215,7 @@ def admin_delete_member_view(request, pk):
     messages.warning(request, "This action is irreversible!")
     member.delete()
     user.delete()
+    messages.success(request, "Success: Church Member Deleted!")
     return redirect('admin-list-members')
 
 
