@@ -19,7 +19,6 @@
   <form method="post" action="{% url 'adminlogin' %}" enctype="multipart/form-data">
     {% csrf_token %}
       <h1>Log In</h1>
-      {{form.username.label}}
       {{form.username}}
       {{form.password}}
       <a href="#">Forgot your password?</a>
