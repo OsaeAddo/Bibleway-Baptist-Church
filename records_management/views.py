@@ -25,7 +25,7 @@ def church_admin_click_view(request):
 def leader_click_view(request):
     # if request.user.is_authenticated:
     #     return HttpResponseRedirect('afterlogin')
-    return render(request, 'records_management/churchexec-click.html')
+    return render(request, 'records_management/church-leader-click.html')
 
 
 #shows the credentials-entry page
