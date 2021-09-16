@@ -34,19 +34,19 @@ class LeaderUserForm(forms.ModelForm):
             'first_name': forms.TextInput(attrs={
                 'placeholder':"First name",
                 'size': 20,
-                'class': "placeholder-gray-900",
+                'class': "placeholder-gray-500",
             }),
             'username': forms.TextInput(attrs={
                 'placeholder':"Username",
-                'class': "placeholder-gray-900",
+                'class': "placeholder-gray-500",
             }),
             'last_name': forms.TextInput(attrs={
                 'placeholder':"Last name",
-                'class': "placeholder-gray-900",
+                'class': "placeholder-gray-500",
             }),
             'password': forms.PasswordInput(attrs={
                 'placeholder':"Password",
-                'class': "placeholder-gray-900",
+                'class': "placeholder-gray-500",
             }),
         }
 
@@ -62,42 +62,42 @@ class LeaderForm(forms.ModelForm):
             # }),
             'mobile': forms.TextInput(attrs={
                 'placeholder': "Enter phone number",
-                'class': "placeholder-gray-900",
+                'class': "placeholder-gray-500",
                 'type': "tel",
             }),
             'emergency_contact': forms.TextInput(attrs={
                 'placeholder': "Enter emergency contact",
-                'class': "placeholder-gray-900",
+                'class': "placeholder-gray-500",
                 'label': "Emergency Contact",
                 'type': "tel",
             }),
             'date_of_birth': forms.DateInput(attrs={
-                'class': "w-4/5 placeholder-gray-900",
+                'class': "w-4/5 placeholder-gray-500",
                 'placeholder': "Date of Birth",
             }),
             'date_of_baptism': forms.DateInput(attrs={
-                'class': "w-4/5 placeholder-gray-900", 
+                'class': "w-4/5 placeholder-gray-500", 
                 'placeholder': "Date of Baptism",
             }),
             'name_of_father': forms.TextInput(attrs={
                 'placeholder': "Enter father's name",
-                'class': "placeholder-gray-900",
+                'class': "placeholder-gray-500",
             }),
             'name_of_mother': forms.TextInput(attrs={
                 'placeholder': "Enter mother's name",
-                'class': "placeholder-gray-900",
+                'class': "placeholder-gray-500",
             }),
             'hometown': forms.TextInput(attrs={
                 'placeholder': "Hometown",
-                'class': "placeholder-gray-900",
+                'class': "placeholder-gray-500",
             }),
             'region': forms.TextInput(attrs={
                 'placeholder': "Region",
-                'class': "placeholder-gray-900",
+                'class': "placeholder-gray-500",
             }),
             'residential_address': forms.TextInput(attrs={
                 'placeholder': "Enter residential address",
-                'class': "placeholder-gray-900",
+                'class': "placeholder-gray-500",
             }),
         }
 
