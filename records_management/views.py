@@ -125,6 +125,8 @@ def afterloginview(request):
             return redirect('leader-dashboard')
         else:
             return render(request, 'records_management/exec_await_approval.html')
+    else:
+        return render(request, 'records_management/unknown-user.html')
 
 
 #<-----------------Views For Church Admin Only----------->
