@@ -13,3 +13,6 @@ select{
     position: relative;
     border-radius: 0.5rem;
 }
+#id_status{
+    width: 5%;
+}
