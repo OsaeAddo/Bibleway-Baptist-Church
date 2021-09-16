@@ -124,3 +124,44 @@ class ChurchMemberForm(forms.ModelForm):
     class Meta:
         model = models.ChurchMember
         fields = '__all__'
+        widgets = {
+            'mobile': forms.TextInput(attrs={
+                'placeholder': "Enter phone number",
+                'class': "placeholder-gray-500",
+                'type': "tel",
+            }),
+            'emergency_contact': forms.TextInput(attrs={
+                'placeholder': "Enter emergency contact",
+                'class': "placeholder-gray-500",
+                'label': "Emergency Contact",
+                'type': "tel",
+            }),
+            'date_of_birth': forms.DateInput(attrs={
+                'class': "w-4/5 placeholder-gray-500",
+                'placeholder': "Date of Birth",
+            }),
+            'date_of_baptism': forms.DateInput(attrs={
+                'class': "w-4/5 placeholder-gray-500", 
+                'placeholder': "Date of Baptism",
+            }),
+            'name_of_father': forms.TextInput(attrs={
+                'placeholder': "Enter father's name",
+                'class': "placeholder-gray-500",
+            }),
+            'name_of_mother': forms.TextInput(attrs={
+                'placeholder': "Enter mother's name",
+                'class': "placeholder-gray-500",
+            }),
+            'hometown': forms.TextInput(attrs={
+                'placeholder': "Hometown",
+                'class': "placeholder-gray-500",
+            }),
+            'region': forms.TextInput(attrs={
+                'placeholder': "Region",
+                'class': "placeholder-gray-500",
+            }),
+            'residential_address': forms.TextInput(attrs={
+                'placeholder': "Enter residential address",
+                'class': "placeholder-gray-500",
+            }),
+        }
