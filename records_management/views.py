@@ -243,6 +243,7 @@ def admin_update_member_view(request, pk):
             member = memberForm.save(commit=False)
             member.status = True
             member.save()
+        messages.success(request, "Success: Church Member Updated!")
         return redirect('admin-list-members')
 
     return render(request, 'records_management/admin-update-member.html', context)
