@@ -19,16 +19,16 @@
         <a href="/"><img class="rounded-full w-12 p-0.5" src="{% static 'images/logo2.png' %}"
                 alt="Logo | Bible Way Baptist Church"></a>
         <ul class="justify-self-end flex space-x-4 justify-center items-center text-gray-50 font-semibold pr-4">
+            <li class=""><a href="{% url 'churchadmin-dashboard' %}">Dashboard</a></li>
             <li class=""><a href="{% url 'home-page' %}">Home</a></li>
             <li class=""><a href="{% url 'home-page' %}">Location</a></li>
-            <li class=""><a href="{% url 'home-page' %}">Worship</a></li>
             <li class=""><a href="{% url 'home-page' %}">About</a></li>
         </ul>
     </div>
   </nav>
   <main>
     <div class="flex flex-col justify-center items-center p-4">
-      <span class="text-gray-600 font-bold text-xl text-center p-8">Church Member SignUp</span>
+      <span class="text-gray-600 font-bold text-xl text-center p-8">Add New Church Member</span>
       <div class="rounded-lg border-solid box-border border-blue-700">
         <form class="flex flex-col text-gray-800 bg-gray-300 rounded-xl shadow-xl p-2" method="post" enctype="multipart/form-data">
           {% csrf_token %}
@@ -59,13 +59,12 @@
             <div class="p-2">{{memberForm.region}}</div>
           </div>
           <div class="p-2 rounded-xl ">{{memberForm.residential_address}}</div>
+          <div class="flex items-center p-3">{{memberForm.status}}<span>Status</span></div>
           <div class="bg-blue-600 shadow-xl text-gray-50 rounded-lg w-20 ml-1">
             <button type="submit" class="p-2 text-center font-extrabold" >Submit</button>
           </div>
-          <div class="p-3">{{memberForm.status}}</div>
         </form>
       </div>
-      <div class="text-center font-semibold text-base text-gray-900">Already have an account? <a class="text-blue-600 font-semibold" href="{% url 'member-login' %}">Login here</a></div>
     </div>
   </main>
 </body>
