@@ -15,13 +15,13 @@ urlpatterns = [
 
     #<-------------SignUp Related----------->
     path('church-admin-signup/', views.church_admin_signup_view, name='adminsignup'),
-    path('church-exec-signup/', views.leader_signup_view, name='execsignup'),
+    path('church-leader-signup/', views.leader_signup_view, name='leader-signup'),
     path('church-member-signup/', views.member_signup_view, name='member-signup'),
 
     #<-------------LogIn Related----------->
     path('church-admin-login/', LoginView.as_view(template_name='records_management/admin_login_signup.html'), name='adminlogin'),
-    path('church-exec-login/', LoginView.as_view(template_name='records_management/execlogin.html'), name='execlogin'),
-    path('church-member-login/', LoginView.as_view(template_name='records_management/memberlogin.html'), name='memberlogin'),
+    path('church-leader-login/', LoginView.as_view(template_name='records_management/leader_login.html'), name='leader-login'),
+    path('church-member-login/', LoginView.as_view(template_name='records_management/member_login.html'), name='member-login'),
 
     #<-----AfterLogin Related------>
     path('afterlogin/', views.afterloginview, name='afterlogin'),

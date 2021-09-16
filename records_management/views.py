@@ -16,16 +16,16 @@ def accesslevel_view(request):
 
 
 #Shows the signup/login for Church Admin
-def churchAdminClick_view(request):
+def church_admin_click_view(request):
     # if request.user.is_authenticated:
     #     return HttpResponseRedirect('afterlogin')
     return render(request, 'records_management/admin_login_signup.html')
 
-#Shows the signup/login page for Church Executive
+#Shows the signup/login page for Church leader
 def leader_click_view(request):
     # if request.user.is_authenticated:
     #     return HttpResponseRedirect('afterlogin')
-    return render(request, 'records_management/churchexec-click.html')
+    return render(request, 'records_management/church-leader-click.html')
 
 
 #shows the credentials-entry page
@@ -50,31 +50,35 @@ def church_admin_signup_view(request):
 
 
 def leader_signup_view(request):
+    userForm = forms.LeaderUserForm()
+    leaderForm = forms.LeaderForm()
+    context = {
+        'userForm': userForm, 
+        'leaderForm': leaderForm
+    }
     if request.method == 'POST':
-        userForm = forms.ExecutiveUserForm(request.POST)
-        executiveForm = forms.ExecutiveForm(request.POST, request.FILES)
-        if userForm.is_valid() and executiveForm.is_valid():
-            exec_user = userForm.save()
-            exec_user.set_password(exec_user.password)
-            exec_user.save()
+        userForm = forms.LeaderUserForm(request.POST)
+        leaderForm = forms.LeaderForm(request.POST, request.FILES)
+        if userForm.is_valid() and leaderForm.is_valid():
+            leader_user = userForm.save()
+            leader_user.set_password(leader_user.password)
+            leader_user.save()
 
-            executive = executiveForm.save(commit=False)
-            executive.user = exec_user
-            executive = executive.save()
-            my_executive_group = Group.objects.get_or_create(name='LEADERS')
-            my_executive_group[0].user_set.add(exec_user)
-
-    else:
-        userForm = forms.ExecutiveUserForm()
-        executiveForm = forms.ExecutiveForm()
-    # context = {'userForm': 'userForm', 'executiveForm': 'executiveForm'}
-    return render(request, 'records_management/execsignup.html', {'userForm': 'userForm', 'executiveForm': 'executiveForm'})
+            leader = leaderForm.save(commit=False)
+            leader.user = leader_user
+            leader = leader.save()
+            my_leader_group = Group.objects.get_or_create(name='LEADERS')
+            my_leader_group[0].user_set.add(leader_user)
+    return render(request, 'records_management/leader_signup.html', context)
 
 
 def member_signup_view(request):
     userForm = forms.ChurchMemberUserForm()
     churchmemberForm = forms.ChurchMemberForm()
-    context={'userForm':userForm, 'churchmemberForm':churchmemberForm}
+    context={
+        'userForm':userForm, 
+        'churchmemberForm':churchmemberForm
+    }
     if request.method == 'POST':
         userForm = forms.ChurchMemberUserForm(request.POST)
         churchmemberForm = forms.ChurchMemberForm(request.POST, request.FILES)
@@ -88,7 +92,7 @@ def member_signup_view(request):
             churchmember = churchmember.save()
             my_churchmember_group = Group.objects.get_or_create(name='MEMBERS')
             my_churchmember_group[0].user_set.add(user)
-        return HttpResponseRedirect('memberlogin')
+        return redirect('member-login')
 
     return render(request, 'records_management/churchmember_signup.html', context)
 
@@ -97,7 +101,7 @@ def member_signup_view(request):
 def customize_churchadmin_login_view(user):
     pass
 
-# checks if user is an admin or a church executive
+# checks if user is an admin or a church leader
 def is_churchadmin(user):
     return user.groups.filter(name='ADMIN').exists()
 
@@ -108,7 +112,7 @@ def is_churchmember(user):
     return user.groups.filter(name='MEMBERS').exists()
 
 
-#------- AFTER ENTERING CREDENTIALS, CHECK IF USERNAME & PASSWORD IS THAT OF CHURCH ADMIN OR EXECUTIVE
+#------- AFTER ENTERING CREDENTIALS, CHECK IF USERNAME & PASSWORD IS THAT OF CHURCH ADMIN OR leader
 def afterloginview(request):
     print("-------------afterloginview hit-----------")
     print("******* proceeding to verify if user is admin ******")
@@ -121,6 +125,8 @@ def afterloginview(request):
             return redirect('leader-dashboard')
         else:
             return render(request, 'records_management/exec_await_approval.html')
+    else:
+        return render(request, 'records_management/unknown-user.html')
 
 
 #<-----------------Views For Church Admin Only----------->
@@ -152,7 +158,7 @@ def churchadmin_dashboard_view(request):
         'li_members': li_members,
         'total_members':total_members,
 
-        # 'executive':models.ChurchLeader.objects.get(user_id=request.user.id)
+        # 'leader':models.ChurchLeader.objects.get(user_id=request.user.id)
         #for profile picture of admin in the sidebar
     }
     return render(request, 'records_management/admin_dashboard.html', context)
@@ -197,7 +203,7 @@ def admin_add_member_view(request):
 
             member_group = Group.objects.get_or_create(name="MEMBERS")
             member_group[0].user_set.add(user)
-
+        messages.success(request, "Success: New Church Member Added!")
         return redirect('admin-list-members')
     return render(request, 'records_management/admin-add-member.html', context)
     
@@ -208,8 +214,10 @@ def admin_add_member_view(request):
 def admin_delete_member_view(request, pk):
     member = models.ChurchMember.objects.get(id=pk)
     user = models.User.objects.get(id=member.user_id)
+    messages.warning(request, "This action is irreversible!")
     member.delete()
     user.delete()
+    messages.success(request, "Success: Church Member Deleted!")
     return redirect('admin-list-members')
 
 
@@ -237,6 +245,7 @@ def admin_update_member_view(request, pk):
             member = memberForm.save(commit=False)
             member.status = True
             member.save()
+        messages.success(request, "Success: Church Member Updated!")
         return redirect('admin-list-members')
 
     return render(request, 'records_management/admin-update-member.html', context)
@@ -269,20 +278,20 @@ def reject_member_view(request, pk):
     return redirect('pending-member')
 
 
-#<-----------------Views For Church Executive/Leader Only----------->
+#<-----------------Views For Church Leader Only----------->
 @login_required(login_url='execlogin')
 @user_passes_test(is_churchleader)
 def leader_dashboard_view(request):
     #to create three cards 
     count_church_members = models.ChurchMember.objects.all().count()
-    count_executives = models.ChurchLeader.objects.all().filter().count()
-    total_members = count_church_members + count_executives
+    count_leaders = models.ChurchLeader.objects.all().filter().count()
+    total_members = count_church_members + count_leaders
     context = {
         'count_church_members':count_church_members,
-        'count_executives':count_executives,
+        'count_leaders':count_leaders,
         'total_members':total_members,
-        'executive':models.ChurchLeader.objects.get(user_id=request.user.id)
-        #for profile picture of church executive in the sidebar
+        'leader':models.ChurchLeader.objects.get(user_id=request.user.id)
+        #for profile picture of church leader in the sidebar
     }
     return render(request, 'records_management/exec_dashboard.html', context)
 

@@ -1,0 +1,18 @@
+input {
+	background-color: #eee;
+	border-radius: 0.5rem;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+select{
+    width: 80%;
+    padding: .8rem;
+    top: 8px;
+    position: relative;
+    border-radius: 0.5rem;
+}
+#id_status{
+    width: 5%;
+}
