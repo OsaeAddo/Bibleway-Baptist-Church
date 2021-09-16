@@ -27,6 +27,26 @@
                 <li class=""><a href="{% url 'home-page' %}">About</a></li>
             </ul>
         </div>
-      </nav>
+    </nav>
+    <main>
+        <div class="flex flex-col items-center justify-center p-4">
+            <span class="text-gray-800 uppercase m-4">Church leader login</span>
+            <form
+                class="flex flex-col items-center justify-center bg-gray-300 py-8 px-4 rounded-xl text-gray-900 sm:w-full md:w-2/5 h-1/2 shadow-lg"
+                action="." method="post">
+                {% csrf_token %}
+                <div class="p-4">
+                    {{form.username|as_crispy_field}}
+                </div>
+                <div class="p-4">
+                    {{form.password|as_crispy_field}}
+                </div>
+
+                <div class="mt-4 mb-1 text-gray-50">
+                    <button class="w-20 bg-gray-700 rounded-full px-2 py-1" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </main>
 </body>
 </html>
