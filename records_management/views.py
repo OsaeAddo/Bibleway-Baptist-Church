@@ -201,7 +201,7 @@ def admin_add_member_view(request):
 
             member_group = Group.objects.get_or_create(name="MEMBERS")
             member_group[0].user_set.add(user)
-
+        messages.success(request, "Success: New Church Member Added!")
         return redirect('admin-list-members')
     return render(request, 'records_management/admin-add-member.html', context)
     
