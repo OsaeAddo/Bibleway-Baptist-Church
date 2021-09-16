@@ -212,6 +212,7 @@ def admin_add_member_view(request):
 def admin_delete_member_view(request, pk):
     member = models.ChurchMember.objects.get(id=pk)
     user = models.User.objects.get(id=member.user_id)
+    messages.warning(request, "This action is irreversible!")
     member.delete()
     user.delete()
     return redirect('admin-list-members')
