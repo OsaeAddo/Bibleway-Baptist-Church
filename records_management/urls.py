@@ -25,7 +25,8 @@ urlpatterns = [
 
     #<-----AfterLogin Related------>
     path('afterlogin/', views.afterloginview, name='afterlogin'),
-    path('logout/', LogoutView.as_view(template_name='records_management/home.html'), name="logout"),
+    #<--------- Logout Related ------------>
+    path('logout/', LogoutView.as_view(template_name='records_management/home.html'), name="admin-logout"),
 
     #<-------------Dashboard Related------------>
     #-----------Admin Dashboard-----------------
