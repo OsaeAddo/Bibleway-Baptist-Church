@@ -139,6 +139,7 @@ def churchadmin_dashboard_view(request):
     members = models.ChurchMember.objects.all().order_by('-id')
     count_church_members = models.ChurchMember.objects.all().filter(status=True).count()
     pending_members_count = models.ChurchMember.objects.all().filter(status=False).count()
+    paginator = Paginator(members, 2)
     page = request.GET.get('page', 2)
     paginator = Paginator(members, 2)
     try:
