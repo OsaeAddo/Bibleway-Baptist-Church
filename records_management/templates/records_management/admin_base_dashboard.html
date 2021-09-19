@@ -239,7 +239,32 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <script src="{% static 'js/toggle-sidemenu.js' %}"></script>
-
+  <script>
+    {% for msg in messages %}
+          
+        {% if msg.tags == "warning" %}
+          swal({
+            title: "Are you sure?",
+            text: 'Once deleted, this action is irreversible!',
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              swal("{{msg}}!", {
+                icon: "success",
+              });
+            } else {
+              swal("No action taken!");
+            }
+        }); 
+        {% elif msg.tags == "success" %}
+          swal("{{msg}}")
+        {% endif %}
+    
+    {% endfor %}
+  </script>
 </body>
 
 </html>
