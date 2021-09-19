@@ -32,13 +32,10 @@
         </td>
       {% endif %}
       <!-- Action -->
-      <td class="px-3 py-3 text-xs font-semibold">
-        <div class="flex items-center">
-          <button class="mr-2 px-2 py-1 text-blue-100 bg-blue-600 rounded-full">View</button>
-          <a href="#" class="mr-2 px-2 py-1 text-green-100 bg-green-600 rounded-full">Update</a>
-          <button class="px-2 py-1 text-red-100 bg-red-700 rounded-full">Delete</button>
-        </div>
-      </td>
+      {% block actions %}
+        {% include 'records_management/dashboard-actions.html' %}
+      {% endblock actions %}
+      
 
 
     </tr>
