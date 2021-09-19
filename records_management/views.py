@@ -33,22 +33,6 @@ def member_click_view(request):
     return render(request, 'records_management/churchmember-click.html')
 
 
-def church_admin_signup_view(request):
-    if request.method == "POST":
-        form = forms.AdminSignupForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            user.set_password(user.password)
-            user.save()
-            my_admin_group = Group.objects.get_or_create(name="ADMIN")
-            my_admin_group[0].user_set.add(user)
-            messages.success(request, "Success: Admin created!")
-            return redirect('admin-click')
-    else:
-        form = forms.AdminSignupForm()
-    return render(request, 'records_management/admin_login_signup.html', {'form': form})
-
-
 def leader_signup_view(request):
     userForm = forms.LeaderUserForm()
     leaderForm = forms.LeaderForm()
