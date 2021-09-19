@@ -25,7 +25,7 @@
     <div class="flex w-full py-4 pr-9 justify-center">
       <img src="{% static 'images/os1.jpg' %}" alt="profilepic" class="h-12 w-12 rounded-lg">
       <div class="flex flex-col pl-2 py-1 text-base font-semibold place-content-center">
-        <div class="flex-1">Osae Addo</div>
+        <div class="flex-1"><span>Osae</span> <span>Addo</span></div>
         <div class="text-xs">Admin</div>
       </div>
     </div>
@@ -160,20 +160,12 @@
       <!-- Search section -->
       <!-- Build later -->
       <section class="flex justify-center py-3 m-4">
-        <!-- <div class=" flex rounded-full bg-gray-50">
-          <div class="flex items-center justify-center inset-y-0 pl-2">
-            <i class="fas fa-search text-gray-800"></i>
-          </div>
-          <div class="flex items-center justify-center">
-            <input
-              class="py-3 pl-8 pr-4 text-sm text-gray-700 placeholder-gray-700 focus:outline-none focus:shadow-outline-purple"
-              type="text" placeholder="Search for Church Members, Leaders..." aria-label="Search">
-          </div>
-        </div> -->
+        
       </section>
       <!-- Tables -->
       <section class="w-full overflow-hidden rounded-lg shadow-xs">
         <!-- Members table -->
+        <!-- {% include 'records_management/messages.html' %} -->
         <div class="flex items-center justify-center py-4"><span class="text-gray-200 uppercase font-semibold">Church Members
             List</span></div>
         <div class="overflow-x-auto w-full">
@@ -274,20 +266,3 @@
 </html>
 
 <!-- Built by Osae -->
-
-<!-- <div class="card-items leaders-card">
-    <h3>{{count_leaders}}</h3>
-    <div class="card-data total-label">Total Church Leaders</div>
-    <div class="card-data required">Approvals Required : </div>
-    
-  </div>
-  <div class="card-items members-card">
-    <h3>{{count_church_members}}</h3>
-    <div class="card-data total-label">Total Church Members</div>
-    <div class="card-data required">Approvals Required: {{pending_members_count}}</div>
-    
-  </div>
-  <div class="card-items total-congregation">
-    <h3>{{count_all}}</h3>
-    <div class="card-data total-label">Total Church</div>
-    <div class="card-data required">Total Approval Required : {{total_members}}</div> -->
