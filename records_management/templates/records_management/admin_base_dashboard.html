@@ -187,6 +187,7 @@
                 <th class="px-3 py-3">Action</th>
               </tr>
             </thead>
+
             <tbody class="bg-gray-800 divide-gray-700">
               {% block memberlist %}{% endblock memberlist %}
             </tbody>
@@ -196,6 +197,7 @@
         <div class="bg-gray-800 divide-gray-700" aria-label="Page navigation" >
           {% if li_members.has_other_pages %}
             <ul class="flex p-4 space-x-4 items-center justify-center">
+
               {% if li_members.has_previous %}
                 <li>
                   <a class="font-bold text-2xl pr-12" href="?page={{ li_members.previous_page_number }}">&laquo;</a>
@@ -205,18 +207,20 @@
                   <a class="text-2xl" href="?page={{ li_members.previous_page_number }}" aria-disabled="true">&laquo;</a>
                 </li>
               {% endif %}
+
               {% for p in li_members.paginator.page_range %}
                 {% if li_members.number == p %}
                   <li class="px-2 bg-blue-800 active:bg-blue-500">
                     <span>{{ p }}</span>
                     <span class="sr-only">(current)</span>
                   </li>
-                {% else %}
+                {% elif p > li_members.number|add:'-3' and p < li_members.number|add:'3' %}
                   <li>
                     <a href="?page={{ p }}">{{ p }}</a>
                   </li>
                 {% endif %}
               {% endfor %}
+
               {% if li_members.has_next %}
                 <li><a class="font-bold text-2xl pl-12" href="?page={{ li_members.next_page_number }}">&raquo;</a></li>
               {% else %}
