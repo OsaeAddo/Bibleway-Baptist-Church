@@ -24,7 +24,7 @@ def church_admin_click_view(request):
 #Shows the signup/login page for Church leader
 def leader_click_view(request):
     # if request.user.is_authenticated:
-    #     return HttpResponseRedirect('afterlogin')
+    #     return redirect('afterlogin')
     return render(request, 'records_management/church-leader-click.html')
 
 
