@@ -117,7 +117,6 @@ def churchadmin_dashboard_view(request):
     pending_members_count = models.ChurchMember.objects.all().filter(status=False).count()
     paginator = Paginator(members, 2)
     page = request.GET.get('page', 2)
-    paginator = Paginator(members, 2)
     try:
         li_members = paginator.page(page)
     except PageNotAnInteger:
@@ -134,9 +133,6 @@ def churchadmin_dashboard_view(request):
         'count_church_members':count_church_members,
         'li_members': li_members,
         'total_members':total_members,
-
-        # 'leader':models.ChurchLeader.objects.get(user_id=request.user.id)
-        #for profile picture of admin in the sidebar
     }
     return render(request, 'records_management/admin_dashboard.html', context)
 
