@@ -63,19 +63,19 @@
 
       <tbody class="bg-gray-800 divide-gray-700">
         {% block leaderlist %}
-        {% for leader in leaders %}
-        <tr>
-          <td> {{leader.get_name}}</td>
-          <td>{{leader.leadershiptype}}</td>
-          <td>{{leader.mobile}}</td>
-          {% if leader.status %}
-            <td><span class="label label-primary">Approved</span></td>
-          {% else %}
-            <td><span class="label label-success">Pending</span></td>
-          {% endif %}
-    
-        </tr>
-      {% endfor %}
+          {% for leader in leaders %}
+            <tr>
+              <td> {{leader.get_name}}</td>
+              <td>{{leader.leadershiptype}}</td>
+              <td>{{leader.mobile}}</td>
+              {% if leader.status %}
+                <td><span class="label label-primary">Approved</span></td>
+              {% else %}
+                <td><span class="label label-success">Pending</span></td>
+              {% endif %}
+        
+            </tr>
+          {% endfor %}
         {% endblock leaderlist %}
       </tbody>
     </table>
