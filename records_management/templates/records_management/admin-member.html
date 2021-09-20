@@ -1,33 +1,16 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
-    <title>Add Member | Bible Way Baptist Church</title>
-</head>
-<body>
-    <div class="flex m-8 p-8 justify-center items-center space-x-4">
-        <!-- View Members Card -->
-        <div class="flex items-center justify-center p-4 md:p-3 rounded-lg shadow bg-gray-800">
-            <a class="p-6 text-center" href="{% url 'admin-list-members' %}">
-                <p class="text-lg font-semibold text-gray-200">View Members</p>
-            </a>
-        </div>
-        <!-- Add Member Card -->
-        <div class="flex items-center justify-center p-4 md:p-3 rounded-lg shadow bg-gray-800">
-            <a class="p-6 text-center" href="{% url 'admin-add-member' %}">
-                <p class="text-lg font-semibold text-gray-200">Add Member</p>
-            </a>
-        </div>
-        <!-- Approve Member Card -->
-        <div class="flex items-center justify-center p-4 md:p-3 rounded-lg shadow bg-gray-800">
-            <a class="p-6 text-center" href="{% url 'pending-member' %}">
-                <p class="text-lg font-semibold text-gray-200">Approve Member</p>
-            </a>
-        </div>
-    </div>
-</body>
-</html>
+<title>Admin View Member | Bible Way Baptist Church</title>
+{% extends 'records_management/base-admin-view.html' %}
+
+
+{% block view-user-type %}
+    View Members
+{% endblock view-user-type %}
+
+{% block add-user-type %}
+    Add Member
+{% endblock add-user-type %}
+
+{% block approve-user-type %}
+    Approve Member
+{% endblock approve-user-type %}
