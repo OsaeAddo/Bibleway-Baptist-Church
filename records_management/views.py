@@ -140,6 +140,7 @@ def churchadmin_dashboard_view(request):
         'pending_members_count':pending_members_count,
         'count_church_members':count_church_members,
         'li_members': li_members,
+        'li_leaders': li_leaders,
         'total_members':total_members,
     }
     return render(request, 'records_management/admin_dashboard.html', context)
