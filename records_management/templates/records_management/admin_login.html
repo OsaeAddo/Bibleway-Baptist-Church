@@ -12,4 +12,7 @@
       <button type="submit">Log In</button>
   </form>
 {% endblock loginform %}
+{% block no-account-text %}
+  <span class="pt-4 font-base">Don't have an account? <a class="text-blue-600 font-semibold" href="{% url 'adminlogin' %}">Contact Management</a> </span>
+{% endblock no-account-text %}
 
