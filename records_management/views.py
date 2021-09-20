@@ -257,6 +257,16 @@ def reject_member_view(request, pk):
 def admin_leaders_view(request):
     return render(request, 'records_management/admin-leader.html')
 
+
+# List/Table of all members(approved)
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_list_leaders_view(request):
+    leaders = models.ChurchLeader.objects.all().filter(status=True)
+    context = {"leaders": leaders}
+    return render(request, 'records_management/admin-list-leaders.html', context)
+
+
 #<-----------------Views For Church Leader Only----------->
 @login_required(login_url='execlogin')
 @user_passes_test(is_churchleader)
