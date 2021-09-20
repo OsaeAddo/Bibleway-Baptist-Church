@@ -31,7 +31,7 @@
 				{% block loginform %}{% endblock loginform %}
 			</div>
 		</div>
-		<span class="pt-4 font-base">Don't have an account? <a class="text-blue-600 font-semibold" href="{% url 'adminlogin' %}">Signup here</a> </span>
+		{% block no-account-text %}{% endblock no-account-text %}
 	</div> 
 	<script  src="{% static 'records_management/base_signup_login.js' %}"></script>
 </body>
