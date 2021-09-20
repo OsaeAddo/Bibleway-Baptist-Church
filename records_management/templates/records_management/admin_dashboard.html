@@ -80,18 +80,7 @@
         </li>
       {% endif %}
 
-      {% for p in li_members.paginator.page_range %}
-        {% if li_members.number == p %}
-          <li class="px-2 bg-blue-800 active:bg-blue-500">
-            <span>{{ p }}</span>
-            <span class="sr-only">(current)</span>
-          </li>
-        {% elif p > li_members.number|add:'-3' and p < li_members.number|add:'3' %}
-          <li>
-            <a href="?page={{ p }}">{{ p }}</a>
-          </li>
-        {% endif %}
-      {% endfor %}
+      <span class="font-semibold text-gray-100">Page {{li_members.number}} of {{li_members.paginator.num_pages}}</span>
 
       {% if li_members.has_next %}
         <li><a class="font-bold text-2xl pl-6" href="?page={{ li_members.next_page_number }}">&raquo;</a></li>
