@@ -39,6 +39,7 @@ urlpatterns = [
     path('reject-member/<int:pk>', views.reject_member_view, name='reject-member'),
 
     path('admin-leader/', views.admin_leaders_view, name='admin-leader'),
+    path('list-members/', views.admin_list_leaders_view, name='admin-list-leaders'),
 
     #-----------Leader Dashboard--------------
     path('church-leader-dashboard/', views.leader_dashboard_view, name='leader-dashboard'),
