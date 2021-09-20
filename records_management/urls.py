@@ -38,6 +38,8 @@ urlpatterns = [
     path('approve-member/<int:pk>', views.admin_approve_member_view, name='approve-member'),
     path('reject-member/<int:pk>', views.reject_member_view, name='reject-member'),
 
+    path('admin-leader/', views.admin_leaders_view, name='admin-leader'),
+
     #-----------Leader Dashboard--------------
     path('church-leader-dashboard/', views.leader_dashboard_view, name='leader-dashboard'),
 
