@@ -166,20 +166,9 @@
       <section class="w-full overflow-hidden rounded-lg shadow-xs">
         <!-- Members table -->
         <!-- {% include 'records_management/messages.html' %} -->
-        <div class="flex items-center justify-center py-4"><span class="text-gray-200 uppercase font-semibold">Church Members
-            List</span></div>
-        <div class="overflow-x-auto w-full">
-          <table class="w-full whitespace-nowrap">
-            <thead>
-              <tr class="text-xs font-semibold tracking-wide text-left text-gray-400 bg-gray-800 uppercase border-b">
-                <th class="px-3 py-3">Name</th>
-                <th class="px-3 py-3">Mobile</th>
-                <th class="px-3 py-3">Address</th>
-                <th class="px-3 py-3">Status</th>
-                <th class="px-3 py-3">Action</th>
-              </tr>
-            </thead>
-
+        {% block members-table %}
+        {% endblock members-table %}
+        
             <tbody class="bg-gray-800 divide-gray-700">
               {% block memberlist %}{% endblock memberlist %}
             </tbody>
