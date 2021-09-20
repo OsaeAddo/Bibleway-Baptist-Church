@@ -251,6 +251,12 @@ def reject_member_view(request, pk):
     return redirect('pending-member')
 
 
+# <------Admin Leaders Section ------>
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_leaders_view(request):
+    return render(request, 'records_management/admin-leader.html')
+
 #<-----------------Views For Church Leader Only----------->
 @login_required(login_url='execlogin')
 @user_passes_test(is_churchleader)
