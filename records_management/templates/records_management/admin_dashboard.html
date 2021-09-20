@@ -41,27 +41,27 @@
       <td class="px-1 py-3 text-sm">
         <span class="px-2 py-1 font-semibold leading-tight text-gray-400">
           {{member.mobile}}
-        </span>  
-      </td>
-      <td class="px-3 py-3 text-sm">{{member.residential_address}}</td>
-      {% if member.status %}
-        <td class="px-3 py-3 text-xs">
-          <span class="px-2 py-1 font-semibold leading-tight text-green-100 bg-green-700 rounded-full">Approved</span>
-        </td>
-      {% else %}
-        <td class="px-3 py-3 text-xs">
-          <span class="px-2 py-1 font-semibold leading-tight text-green-100 bg-yellow-500 rounded-full">Pending</span>
-        </td>
-      {% endif %}
-      <!-- Action -->
-      {% block actions %}
-        {% include 'records_management/dashboard-actions.html' %}
-      {% endblock actions %}
-
-
-    </tr>
-  {% endfor %}
-{% endblock memberlist %}
+              </span>  
+            </td>
+            <td class="px-3 py-3 text-sm">{{member.residential_address}}</td>
+            {% if member.status %}
+              <td class="px-3 py-3 text-xs">
+                <span class="px-2 py-1 font-semibold leading-tight text-green-100 bg-green-700 rounded-full">Approved</span>
+              </td>
+            {% else %}
+              <td class="px-3 py-3 text-xs">
+                <span class="px-2 py-1 font-semibold leading-tight text-green-100 bg-yellow-500 rounded-full">Pending</span>
+              </td>
+            {% endif %}
+            <!-- Action -->
+            {% block actions %}
+              {% include 'records_management/dashboard-actions.html' %}
+            {% endblock actions %}
+      
+      
+          </tr>
+        {% endfor %}
+      {% endblock memberlist %}
     </tbody>
   </table>
   </div>
