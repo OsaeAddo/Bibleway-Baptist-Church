@@ -197,9 +197,11 @@ def admin_delete_member_view(request, pk):
     member = models.ChurchMember.objects.get(id=pk)
     user = models.User.objects.get(id=member.user_id)
     messages.warning(request, "This action is irreversible!")
+    print("******** Delete button clicked ********")
     member.delete()
     user.delete()
-    messages.success(request, "Success: Church Member Deleted!")
+    print("********* Member deleted *****")
+    messages.success(request, f"Success: {request.user} is Deleted!")
     return redirect('admin-list-members')
 
 
