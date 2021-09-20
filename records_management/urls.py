@@ -29,7 +29,7 @@ urlpatterns = [
     #<-------------Dashboard Related------------>
     #-----------Admin Dashboard-----------------
     path('churchadmin-dashboard/', views.churchadmin_dashboard_view, name='churchadmin-dashboard'),
-    path('admin-member/', views.admin_members_view, name='adminmember'),
+    path('admin-member/', views.admin_members_view, name='admin-member'),
     path('list-members/', views.admin_list_members_view, name='admin-list-members'),
     path('add-member/', views.admin_add_member_view, name='admin-add-member'),
     path('delete-member/<int:pk>', views.admin_delete_member_view, name='admin-delete-member'),
