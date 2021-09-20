@@ -122,9 +122,15 @@ def churchadmin_dashboard_view(request):
     except EmptyPage:
         li_members = paginator_member.page(paginator_member.num_pages)
     except PageNotAnInteger:
-        li_members = paginator.page(1)
+        li_members = paginator_member.page(1)
+
+    paginator_leader = Paginator(leaders, 3)
+    try:
+        li_leaders = paginator_leader.page(page)
     except EmptyPage:
-        li_members = paginator.page(paginator.num_pages)
+        li_leaders = paginator_leader.page(paginator_leader.num_pages)
+    except PageNotAnInteger:
+        li_leaders = paginator_leader.page(1)
     total_members = count_church_members + count_leaders
     context = {
         'leaders':leaders,
