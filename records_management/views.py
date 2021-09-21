@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect
-from django.db.models import Q #for more sophisticated/realistic queries
 from . import models, forms
 from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
@@ -15,38 +13,16 @@ def accesslevel_view(request):
     return render(request, 'records_management/access-level-page.html')
 
 
-#Shows the signup/login for Church Admin
-def church_admin_click_view(request):
-    # if request.user.is_authenticated:
-    #     return HttpResponseRedirect('afterlogin')
-    return render(request, 'records_management/admin_login_signup.html')
-
 #Shows the signup/login page for Church leader
 def leader_click_view(request):
     # if request.user.is_authenticated:
-    #     return HttpResponseRedirect('afterlogin')
+    #     return redirect('afterlogin')
     return render(request, 'records_management/church-leader-click.html')
 
 
 #shows the credentials-entry page
 def member_click_view(request):
     return render(request, 'records_management/churchmember-click.html')
-
-
-def church_admin_signup_view(request):
-    if request.method == "POST":
-        form = forms.AdminSignupForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            user.set_password(user.password)
-            user.save()
-            my_admin_group = Group.objects.get_or_create(name="ADMIN")
-            my_admin_group[0].user_set.add(user)
-            messages.success(request, "Success: Admin created!")
-            return redirect('admin-click')
-    else:
-        form = forms.AdminSignupForm()
-    return render(request, 'records_management/admin_login_signup.html', {'form': form})
 
 
 def leader_signup_view(request):
@@ -139,14 +115,22 @@ def churchadmin_dashboard_view(request):
     members = models.ChurchMember.objects.all().order_by('-id')
     count_church_members = models.ChurchMember.objects.all().filter(status=True).count()
     pending_members_count = models.ChurchMember.objects.all().filter(status=False).count()
+    paginator_member = Paginator(members, 3)
     page = request.GET.get('page', 2)
-    paginator = Paginator(members, 2)
     try:
-        li_members = paginator.page(page)
-    except PageNotAnInteger:
-        li_members = paginator.page(1)
+        li_members = paginator_member.page(page)
     except EmptyPage:
-        li_members = paginator.page(paginator.num_pages)
+        li_members = paginator_member.page(paginator_member.num_pages)
+    except PageNotAnInteger:
+        li_members = paginator_member.page(1)
+
+    paginator_leader = Paginator(leaders, 3)
+    try:
+        li_leaders = paginator_leader.page(page)
+    except EmptyPage:
+        li_leaders = paginator_leader.page(paginator_leader.num_pages)
+    except PageNotAnInteger:
+        li_leaders = paginator_leader.page(1)
     total_members = count_church_members + count_leaders
     context = {
         'leaders':leaders,
@@ -156,10 +140,8 @@ def churchadmin_dashboard_view(request):
         'pending_members_count':pending_members_count,
         'count_church_members':count_church_members,
         'li_members': li_members,
+        'li_leaders': li_leaders,
         'total_members':total_members,
-
-        # 'leader':models.ChurchLeader.objects.get(user_id=request.user.id)
-        #for profile picture of admin in the sidebar
     }
     return render(request, 'records_management/admin_dashboard.html', context)
 
@@ -215,9 +197,11 @@ def admin_delete_member_view(request, pk):
     member = models.ChurchMember.objects.get(id=pk)
     user = models.User.objects.get(id=member.user_id)
     messages.warning(request, "This action is irreversible!")
+    print("******** Delete button clicked ********")
     member.delete()
     user.delete()
-    messages.success(request, "Success: Church Member Deleted!")
+    print("********* Member deleted *****")
+    messages.success(request, f"Success: {request.user} is Deleted!")
     return redirect('admin-list-members')
 
 
@@ -276,6 +260,22 @@ def reject_member_view(request, pk):
     member.delete()
     user.delete()
     return redirect('pending-member')
+
+
+# <------Admin Leaders Section ------>
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_leaders_view(request):
+    return render(request, 'records_management/admin-leader.html')
+
+
+# List/Table of all members(approved)
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_list_leaders_view(request):
+    leaders = models.ChurchLeader.objects.all().filter(status=True)
+    context = {"leaders": leaders}
+    return render(request, 'records_management/admin-list-leaders.html', context)
 
 
 #<-----------------Views For Church Leader Only----------->

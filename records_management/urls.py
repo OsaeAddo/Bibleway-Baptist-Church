@@ -9,28 +9,27 @@ urlpatterns = [
     path('access-level/',views.accesslevel_view, name='access-level'),
 
     #<-------------Click Related----------->
-    path('church-admin-click/', views.church_admin_signup_view, name='admin-click'),
     path('church-exec-click/', views.leader_click_view, name='exec-click'),
     path('church-member-click/', views.member_click_view, name='member-click'),
 
     #<-------------SignUp Related----------->
-    path('church-admin-signup/', views.church_admin_signup_view, name='adminsignup'),
     path('church-leader-signup/', views.leader_signup_view, name='leader-signup'),
     path('church-member-signup/', views.member_signup_view, name='member-signup'),
 
     #<-------------LogIn Related----------->
-    path('church-admin-login/', LoginView.as_view(template_name='records_management/admin_login_signup.html'), name='adminlogin'),
+    path('church-admin-login/', LoginView.as_view(template_name='records_management/admin_login.html'), name='adminlogin'),
     path('church-leader-login/', LoginView.as_view(template_name='records_management/leader_login.html'), name='leader-login'),
     path('church-member-login/', LoginView.as_view(template_name='records_management/member_login.html'), name='member-login'),
 
     #<-----AfterLogin Related------>
     path('afterlogin/', views.afterloginview, name='afterlogin'),
-    path('logout/', LogoutView.as_view(template_name='records_management/home.html'), name="logout"),
+    #<--------- Logout Related ------------>
+    path('logout/', LogoutView.as_view(template_name='records_management/home.html'), name="admin-logout"),
 
     #<-------------Dashboard Related------------>
     #-----------Admin Dashboard-----------------
     path('churchadmin-dashboard/', views.churchadmin_dashboard_view, name='churchadmin-dashboard'),
-    path('admin-member/', views.admin_members_view, name='adminmember'),
+    path('admin-member/', views.admin_members_view, name='admin-member'),
     path('list-members/', views.admin_list_members_view, name='admin-list-members'),
     path('add-member/', views.admin_add_member_view, name='admin-add-member'),
     path('delete-member/<int:pk>', views.admin_delete_member_view, name='admin-delete-member'),
@@ -38,6 +37,9 @@ urlpatterns = [
     path('member-pending-approvals/', views.admin_pending_approvals_member_view, name='pending-member'),
     path('approve-member/<int:pk>', views.admin_approve_member_view, name='approve-member'),
     path('reject-member/<int:pk>', views.reject_member_view, name='reject-member'),
+
+    path('admin-leader/', views.admin_leaders_view, name='admin-leader'),
+    path('list-members/', views.admin_list_leaders_view, name='admin-list-leaders'),
 
     #-----------Leader Dashboard--------------
     path('church-leader-dashboard/', views.leader_dashboard_view, name='leader-dashboard'),

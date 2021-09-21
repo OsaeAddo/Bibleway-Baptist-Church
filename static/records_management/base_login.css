@@ -1,0 +1,50 @@
+body {
+	background: #f6f5f7;
+	font-family: 'Montserrat', sans-serif;
+}
+form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+button {
+	border-radius: 20px;
+	border: 1px solid #47553c;
+	background-color:  #47553c;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 24px 12px 24px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	min-width: 70%;
+}
+#id_password{
+	placeholder: "Password";
+}
+.container {
+	background-color: #fff;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+}

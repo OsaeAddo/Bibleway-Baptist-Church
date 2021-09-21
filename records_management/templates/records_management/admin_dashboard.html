@@ -5,63 +5,94 @@
   {% include 'records_management/admin_dashboard_cards.html' %}
 {% endblock cards %}
 
-{% block memberlist %}
-  {% for member in members %}
-    <tr class="text-gray-300">
-      <td class="px-2 py-3"> 
-        <div class="flex items-center text-sm">
-          <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-            <img class="object-cover w-full h-full rounded-full" src="{{member.profile_pic.url}}" alt="profile">
-            <div class="absolutute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-          </div>
-          <div>
-            <p class="font-semibold">{{member.get_name}}</p>
-            <p class="text-xs text-gray-400">{{member.member_role}}</p>
-          </div>
-        </div>
-      </td>
-      <td class="px-1 py-3 text-sm">
-        <span class="px-2 py-1 font-semibold leading-tight text-gray-400">
-          {{member.mobile}}
-        </span>  
-      </td>
-      <td class="px-3 py-3 text-sm">{{member.residential_address}}</td>
-      {% if member.status %}
-        <td class="px-3 py-3 text-xs">
-          <span class="px-2 py-1 font-semibold leading-tight text-green-100 bg-green-700 rounded-full">Approved</span>
-        </td>
+
+<!-- Members Section -->
+{% block members-table %}
+  <div class="flex items-center justify-center py-4"><span class="text-gray-200 uppercase font-semibold">Church Members
+    List</span></div>
+  <div class="overflow-x-auto w-full">
+  <table class="w-full whitespace-nowrap">
+    <thead>
+      <tr class="text-xs font-semibold tracking-wide text-left text-gray-400 bg-gray-800 uppercase border-b">
+        <th class="px-3 py-3">Name</th>
+        <th class="px-3 py-3">Mobile</th>
+        <th class="px-3 py-3">Address</th>
+        <th class="px-3 py-3">Status</th>
+        <th class="px-3 py-3">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody class="bg-gray-800 divide-gray-700">
+      {% block memberlist %}
+        {% for member in li_members %}
+          <tr class="text-gray-300">
+            <td class="px-2 py-3"> 
+              <div class="flex items-center text-sm">
+                <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                  <img class="object-cover w-full h-full rounded-full" src="{{member.profile_pic.url}}" alt="profile">
+                  <div class="absolutute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                </div>
+                <div>
+                  <p class="font-semibold">{{member.user.username}}</p>
+                  <p class="text-xs text-gray-400">{{member.member_role}}</p>
+                </div>
+              </div>
+            </td>
+            <td class="px-1 py-3 text-sm">
+              <span class="px-2 py-1 font-semibold leading-tight text-gray-400">
+                {{member.mobile}}
+              </span>  
+            </td>
+            <td class="px-3 py-3 text-sm">{{member.residential_address}}</td>
+            {% if member.status %}
+              <td class="px-3 py-3 text-xs">
+                <span class="px-2 py-1 font-semibold leading-tight text-green-100 bg-green-700 rounded-full">Approved</span>
+              </td>
+            {% else %}
+              <td class="px-3 py-3 text-xs">
+                <span class="px-2 py-1 font-semibold leading-tight text-green-100 bg-yellow-500 rounded-full">Pending</span>
+              </td>
+            {% endif %}
+            <!-- Action -->
+            {% block actions %}
+              {% include 'records_management/dashboard-actions.html' %}
+            {% endblock actions %}
+      
+      
+          </tr>
+        {% endfor %}
+      {% endblock memberlist %}
+    </tbody>
+  </table>
+  </div>
+  <!-- Pagination -->
+  <div class="bg-gray-800 divide-gray-700" aria-label="Page navigation" >
+  {% if li_members.has_other_pages %}
+    <ul class="flex p-4 space-x-4 items-center justify-center">
+
+      {% if li_members.has_previous %}
+        <li>
+          <a class="font-bold text-2xl pr-6" href="?page={{ li_members.previous_page_number }}">&laquo;</a>
+        </li>
       {% else %}
-        <td class="px-3 py-3 text-xs">
-          <span class="px-2 py-1 font-semibold leading-tight text-green-100 bg-yellow-500 rounded-full">Pending</span>
-        </td>
+        <li class="disabled">
+          <a class="text-2xl pr-6" href="?page={{ li_members.previous_page_number }}" aria-disabled="true">&laquo;</a>
+        </li>
       {% endif %}
-      <!-- Action -->
-      <td class="px-3 py-3 text-xs font-semibold">
-        <div class="flex items-center">
-          <button class="mr-2 px-2 py-1 text-blue-100 bg-blue-600 rounded-full">View</button>   <!-- To Do: Make it a modal to pop up extra details of member -->
-          <a href="{% url 'admin-update-member' member.id %}" class="mr-2 px-2 py-1 text-green-100 bg-green-600 rounded-full">Update</a>
-          <a href="{% url 'admin-delete-member' member.id %}"><button class="px-2 py-1 text-red-100 bg-red-700 rounded-full">Delete</button></a>
-        </div>
-      </td>
 
+      <span class="font-semibold text-gray-100">Page {{li_members.number}} of {{li_members.paginator.num_pages}}</span>
 
-    </tr>
-  {% endfor %}
-{% endblock memberlist %}
-
-
-{% block leaderlist %}
-  {% for leader in leaders %}
-    <tr>
-      <td> {{leader.get_name}}</td>
-      <td>{{leader.leadershiptype}}</td>
-      <td>{{leader.mobile}}</td>
-      {% if leader.status %}
-        <td><span class="label label-primary">Approved</span></td>
+      {% if li_members.has_next %}
+        <li><a class="font-bold text-2xl pl-6" href="?page={{ li_members.next_page_number }}">&raquo;</a></li>
       {% else %}
-        <td><span class="label label-success">Pending</span></td>
+        <li class="disabled"><span class="text-2xl pl-6">&raquo;</span></li>
       {% endif %}
+    </ul>
+  {% endif %}
+  </div>
+{% endblock members-table %}
 
-    </tr>
-  {% endfor %}
-{% endblock leaderlist %}
+
+<!-- Leaders Section -->
+{% block leaders-table %}
+{% endblock leaders-table %}

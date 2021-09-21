@@ -25,7 +25,7 @@
     <div class="flex w-full py-4 pr-9 justify-center">
       <img src="{% static 'images/os1.jpg' %}" alt="profilepic" class="h-12 w-12 rounded-lg">
       <div class="flex flex-col pl-2 py-1 text-base font-semibold place-content-center">
-        <div class="flex-1">Osae Addo</div>
+        <div class="flex-1"><span>Osae</span> <span>Addo</span></div>
         <div class="text-xs">Admin</div>
       </div>
     </div>
@@ -43,13 +43,13 @@
         </a>
       </li>
       <li class="my-6 w-full">
-        <a class="flex items-center ml-8" href="">
+        <a class="flex items-center ml-8" href="{% url 'admin-leader' %}">
           <i class="far fa-id-badge"></i>
           <span class="flex justify-center ml-6">Leaders</span>
         </a>
       </li>
       <li class="my-6 w-full">
-        <a class="flex items-center ml-8" href="{% url 'adminmember' %}">
+        <a class="flex items-center ml-8" href="{% url 'admin-member' %}">
           <i class="far fa-address-card"></i>
           <span class="flex justify-center ml-4">Members</span>
         </a>
@@ -111,13 +111,13 @@
         </a>
       </li>
       <li class="my-8 md:my-6 w-full">
-        <a class="flex items-center ml-8" href="">
+        <a class="flex items-center ml-8" href="{% url 'admin-leader' %}">
           <i class="fas fa-id-badge"></i>
           <span class="flex justify-center ml-7">Leaders</span>
         </a>
       </li>
       <li class="my-8 md:my-6 w-full">
-        <a class="flex items-center ml-8" href="{% url 'adminmember' %}">
+        <a class="flex items-center ml-8" href="{% url 'admin-member' %}">
           <i class="fas fa-address-card"></i>
           <span class="flex justify-center ml-5">Members</span>
         </a>
@@ -146,7 +146,7 @@
           <i class="fas fa-bars"></i>
         </button>
         <span class="px-4 md:pl-8 lg:ml-96 lg:px-0 md:font-semibold md:uppercase">Admin Dashboard Panel</span>
-        <a href="">
+        <a href="{% url 'admin-logout' %}">
           <span class="rounded-full py-0.5 px-3 bg-gray-900">Logout <i class="fas fa-sign-out-alt pl-1"></i></span>
         </a>
       </div>
@@ -160,74 +160,19 @@
       <!-- Search section -->
       <!-- Build later -->
       <section class="flex justify-center py-3 m-4">
-        <!-- <div class=" flex rounded-full bg-gray-50">
-          <div class="flex items-center justify-center inset-y-0 pl-2">
-            <i class="fas fa-search text-gray-800"></i>
-          </div>
-          <div class="flex items-center justify-center">
-            <input
-              class="py-3 pl-8 pr-4 text-sm text-gray-700 placeholder-gray-700 focus:outline-none focus:shadow-outline-purple"
-              type="text" placeholder="Search for Church Members, Leaders..." aria-label="Search">
-          </div>
-        </div> -->
+        
       </section>
       <!-- Tables -->
       <section class="w-full overflow-hidden rounded-lg shadow-xs">
         <!-- Members table -->
-        <div class="flex items-center justify-center py-4"><span class="text-gray-200 uppercase font-semibold">Church Members
-            List</span></div>
-        <div class="overflow-x-auto w-full">
-          <table class="w-full whitespace-nowrap">
-            <thead>
-              <tr class="text-xs font-semibold tracking-wide text-left text-gray-400 bg-gray-800 uppercase border-b">
-                <th class="px-3 py-3">Name</th>
-                <th class="px-3 py-3">Mobile</th>
-                <th class="px-3 py-3">Address</th>
-                <th class="px-3 py-3">Status</th>
-                <th class="px-3 py-3">Action</th>
-              </tr>
-            </thead>
-            <tbody class="bg-gray-800 divide-gray-700">
-              {% block memberlist %}{% endblock memberlist %}
-            </tbody>
-          </table>
-        </div>
-        <!-- Pagination -->
-        <div class="bg-gray-800 divide-gray-700" aria-label="Page navigation" >
-          {% if li_members.has_other_pages %}
-            <ul class="flex p-4 space-x-4 items-center justify-center">
-              {% if li_members.has_previous %}
-                <li>
-                  <a class="font-bold text-2xl pr-12" href="?page={{ li_members.previous_page_number }}">&laquo;</a>
-                </li>
-              {% else %}
-                <li class="disabled">
-                  <a class="text-2xl" href="?page={{ li_members.previous_page_number }}" aria-disabled="true">&laquo;</a>
-                </li>
-              {% endif %}
-              {% for p in li_members.paginator.page_range %}
-                {% if li_members.number == p %}
-                  <li class="px-2 bg-blue-800 active:bg-blue-500">
-                    <span>{{ p }}</span>
-                    <span class="sr-only">(current)</span>
-                  </li>
-                {% else %}
-                  <li>
-                    <a href="?page={{ p }}">{{ p }}</a>
-                  </li>
-                {% endif %}
-              {% endfor %}
-              {% if li_members.has_next %}
-                <li><a class="font-bold text-2xl pl-12" href="?page={{ li_members.next_page_number }}">&raquo;</a></li>
-              {% else %}
-                <li class="disabled"><span class="text-2xl pl-12">&raquo;</span></li>
-              {% endif %}
-            </ul>
-          {% endif %}
-        </div>
+        <!-- {% include 'records_management/messages.html' %} -->
+        {% block members-table %}
+        {% endblock members-table %}
+        
         <!-- Leaders table -->
-        <div class="members-table">
-
+        {% block leaders-table %}
+        {% endblock leaders-table %}
+        
         </div>
       </section>
     </main>
@@ -236,27 +181,37 @@
 
   </footer>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <script src="{% static 'js/toggle-sidemenu.js' %}"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+  <script src="{% static 'js/toggle-sidemenu.js' %}"></script>
+  <script>
+    {% for msg in messages %}  
+
+      {% if msg.tags == "warning" %}
+        swal({
+          title: "Are you sure?",
+          text: 'Once deleted, this action is irreversible!',
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            swal("{{msg}}!", {
+              icon: "success",
+            });
+          } else {
+            swal("No action taken!");
+          }
+        });   
+      {% elif msg.tags == "success" %}
+        swal("{{msg}}")
+      {% endif %}
+    
+    {% endfor %}
+  </script>
 </body>
 
 </html>
 
 <!-- Built by Osae -->
-
-<!-- <div class="card-items leaders-card">
-    <h3>{{count_leaders}}</h3>
-    <div class="card-data total-label">Total Church Leaders</div>
-    <div class="card-data required">Approvals Required : </div>
-    
-  </div>
-  <div class="card-items members-card">
-    <h3>{{count_church_members}}</h3>
-    <div class="card-data total-label">Total Church Members</div>
-    <div class="card-data required">Approvals Required: {{pending_members_count}}</div>
-    
-  </div>
-  <div class="card-items total-congregation">
-    <h3>{{count_all}}</h3>
-    <div class="card-data total-label">Total Church</div>
-    <div class="card-data required">Total Approval Required : {{total_members}}</div> -->

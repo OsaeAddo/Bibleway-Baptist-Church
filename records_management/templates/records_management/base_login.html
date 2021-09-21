@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Bible Way Baptist Church</title>
+
+  <link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'>
+  <link rel="stylesheet" href="{% static 'records_management/base_login.css' %}">
+  
+</head>
+<body>
+	<nav class="mb-4" style="background: linear-gradient(to right,rgb(29, 95, 29), rgb(26, 24, 46));">
+		<div class="flex justify-between p-2">
+			<a href="/"><img class="rounded-full w-12 p-0.5" src="{% static 'images/logo2.png' %}"
+					alt="Logo | Bible Way Baptist Church"></a>
+			<ul class="justify-self-end flex space-x-4 justify-center items-center text-gray-50 font-semibold pr-4">
+				<li class=""><a href="{% url 'home-page' %}">Home</a></li>
+				<li class=""><a href="{% url 'home-page' %}">Location</a></li>
+				<li class=""><a href="{% url 'home-page' %}">Worship</a></li>
+				<li class=""><a href="{% url 'home-page' %}">About</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="flex flex-col items-center justify-center mt-8 px-2">
+		<div class="p-4 rounded-xl sm:w-full md:w-2/5 container">
+			<div class="form-container sign-in-container">
+				{% block loginform %}{% endblock loginform %}
+			</div>
+		</div>
+		{% block no-account-text %}{% endblock no-account-text %}
+	</div> 
+	<script  src="{% static 'records_management/base_signup_login.js' %}"></script>
+</body>
+</html>

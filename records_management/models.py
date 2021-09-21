@@ -57,9 +57,9 @@ class ChurchMember(models.Model):
     date_of_baptism = models.DateField(default=timezone.now)
     status = models.BooleanField(default=False)
 
-    @property
-    def get_name(self):
-        return f"{self.user.first_name} {self.user.last_name}"
+    # @property
+    # def get_name(self):
+    #     return f"{self.user.first_name} {self.user.last_name}"
 
     @property
     def get_id(self):
