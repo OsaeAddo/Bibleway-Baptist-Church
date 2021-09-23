@@ -1,2 +1,16 @@
 version: '3.4'
 
+services:
+  web-bibleway:
+    image: bibleway-baptistchurch
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: >
+      sh -c "python manage.py makemigrations && 
+            python manage.py migrate && 
+            python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/BibleWay-BaptistChurch
+    ports:
+      - "8000:8000"
