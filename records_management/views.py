@@ -316,6 +316,16 @@ def admin_pending_approvals_leader_view(request):
     return render(request, 'records_management/pending_approvals_leader.html', context)
 
 
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_approve_leader_view(request, pk):
+    leaders = models.ChurchLeader.objects.get(id=pk)
+    leaders.status = True
+    leaders.save()
+    messages.success(request, f"Leader Successfully Approved")
+    return redirect('pending-leader')
+
+
 
 #<-----------------Views For Church Leader Only----------->
 @login_required(login_url='execlogin')
