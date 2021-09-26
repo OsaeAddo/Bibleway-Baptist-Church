@@ -308,6 +308,14 @@ def admin_add_leader_view(request):
     return render(request, 'records_management/admin-add-leader.html', context)
 
 
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_pending_approvals_leader_view(request):
+    leaders_pending = models.ChurchMember.objects.all().filter(status=False)
+    context = {'leaders_pending': leaders_pending}
+    return render(request, 'records_management/pending_approvals_leader.html', context)
+
+
 
 #<-----------------Views For Church Leader Only----------->
 @login_required(login_url='execlogin')
