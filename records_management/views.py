@@ -68,7 +68,8 @@ def member_signup_view(request):
             churchmember = churchmember.save()
             my_churchmember_group = Group.objects.get_or_create(name='MEMBERS')
             my_churchmember_group[0].user_set.add(user)
-        return redirect('member-login')
+        messages.success(request, f"Your Details were successfully submitted")
+        return redirect('home-page')
 
     return render(request, 'records_management/churchmember_signup.html', context)
 
