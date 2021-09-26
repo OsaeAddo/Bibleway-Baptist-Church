@@ -326,6 +326,18 @@ def admin_approve_leader_view(request, pk):
     return redirect('pending-leader')
 
 
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def reject_leader_view(request, pk):
+    leader = models.ChurchLeader.objects.get(id=pk)
+    user = models.User.objects.get(id=leader.user_id)
+    leader.delete()
+    user.delete()
+    messages.success(request, f"{leader.username} was Rejected!")
+    return redirect('pending-leader')
+
+
+
 
 #<-----------------Views For Church Leader Only----------->
 @login_required(login_url='execlogin')
