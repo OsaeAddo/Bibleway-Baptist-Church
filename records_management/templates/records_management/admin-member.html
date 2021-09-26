@@ -14,7 +14,11 @@
 {% endblock view-user-type %}
 
 {% block add-user-type %}
-    Add Member
+    <div class="flex items-center justify-center p-4 md:p-3 rounded-lg shadow bg-gray-800">
+        <a class="p-6 text-center" href="{% url 'admin-add-member' %}">
+            <p class="text-lg font-semibold text-gray-200">Add Members</p>
+        </a>
+    </div>
 {% endblock add-user-type %}
 
 {% block approve-user-type %}
