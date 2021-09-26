@@ -40,6 +40,8 @@ urlpatterns = [
 
     path('admin-leader/', views.admin_leaders_view, name='admin-leader'),
     path('list-members/', views.admin_list_leaders_view, name='admin-list-leaders'),
+    path('add-leader/', views.admin_add_leader_view, name='admin-add-leader'),
+
 
     #-----------Leader Dashboard--------------
     path('church-leader-dashboard/', views.leader_dashboard_view, name='leader-dashboard'),
