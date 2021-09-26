@@ -278,6 +278,37 @@ def admin_list_leaders_view(request):
     return render(request, 'records_management/admin-list-leaders.html', context)
 
 
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_add_leader_view(request):
+    userForm = forms.LeaderUserForm()
+    leaderForm = forms.LeaderForm()
+    context = {
+        "userForm": userForm,
+        "leaderForm": leaderForm
+    }
+    if request.method == "POST":
+        userForm = forms.ChurchMemberUserForm(request.POST)
+        leaderForm = forms.ChurchMemberForm(request.POST, request.FILES)
+        if userForm.is_valid() and leaderForm.is_valid():
+            user = userForm.save()
+            user.set_password(user.password)
+            user.save()
+
+            leader = leaderForm.save(commit=False)
+            leader.user = user
+            leader.status = True
+            leader.save()
+
+            leader_group = Group.objects.get_or_create(name="LEADERS")
+            leader_group[0].user_set.add(user)
+        messages.success(request, "Success: New Church Leader Added!")
+        return redirect('admin-list-leaders')
+    return render(request, 'records_management/admin-add-leader.html', context)
+
+
+
 #<-----------------Views For Church Leader Only----------->
 @login_required(login_url='execlogin')
 @user_passes_test(is_churchleader)
