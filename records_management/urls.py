@@ -43,6 +43,7 @@ urlpatterns = [
     path('add-leader/', views.admin_add_leader_view, name='admin-add-leader'),
     path('leader-pending-approvals/', views.admin_pending_approvals_leader_view, name='pending-leader'),
     path('approve-leader/<int:pk>', views.admin_approve_leader_view, name='approve-leader'),
+    path('reject-leader/<int:pk>', views.reject_leader_view, name='reject-leader'),
 
 
     #-----------Leader Dashboard--------------
