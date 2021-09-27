@@ -88,7 +88,7 @@ DATABASES = {
         'USER': 'churchrecords_user',
         'PASSWORD': '3Myosae*sql',
         'HOST': 'localhost',
-        'PORT': '4404',
+        'PORT': '',
     }
 }
 
