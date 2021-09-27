@@ -42,6 +42,7 @@ urlpatterns = [
     path('list-members/', views.admin_list_leaders_view, name='admin-list-leaders'),
     path('add-leader/', views.admin_add_leader_view, name='admin-add-leader'),
     path('leader-pending-approvals/', views.admin_pending_approvals_leader_view, name='pending-leader'),
+    path('approve-leader/<int:pk>', views.admin_approve_leader_view, name='approve-leader'),
 
 
     #-----------Leader Dashboard--------------
