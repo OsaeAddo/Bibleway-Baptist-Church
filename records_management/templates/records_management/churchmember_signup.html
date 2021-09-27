@@ -35,7 +35,18 @@
           <div class="p-2 grid grid-cols-2 gap-3 placeholder-gray-900">
             <div class="p-2 rounded-xl focus:border-blue-800 placeholder-gray-900" aria-placeholder="First name">{{ userForm.first_name|as_crispy_field }}</div>
             <div class="p-2 rounded-xl">{{userForm.last_name|as_crispy_field}}</div>
-            <div class="p-2 rounded-xl">{{userForm.username}}</div>
+
+            <!-- Username -->
+            <div>
+              <label for="{{userForm.username.id_for_label}}">
+                {{userForm.username.label}}
+              </label>
+              <input 
+                class="text-black" name="{{userForm.username.name}}" id="{{userForm.username.id_for_label}}"  
+                type="text" placeholder="Enter username" autocomplete="name"
+              >
+            </div>
+
             <div class="p-2 rounded-xl">{{userForm.password}}</div>
             <div class="p-2 rounded-xl">{{churchmemberForm.profile_pic|as_crispy_field}}</div>
             <div class="p-2 rounded-xl">{{churchmemberForm.member_role|as_crispy_field}}</div>
