@@ -97,7 +97,9 @@ class ChurchMemberUserForm(forms.ModelForm):
         ]
         widgets = {
             'first_name': forms.TextInput(attrs={'placeholder':"First name"}),
-            'username': forms.TextInput(attrs={'placeholder':"Username"}),
+            'username': forms.TextInput(attrs={
+                'label': "User Name*"
+            }),
             'last_name': forms.TextInput(attrs={'placeholder':"Last name"}),
             'password': forms.PasswordInput(attrs={'placeholder':"Password"}),
         }
