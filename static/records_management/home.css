@@ -149,6 +149,11 @@ html.sr .section-side-img{
 /* End Cards section */
 
 /* Location Section */
+#section-location{
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
 #section-location .location{
     display: flex;
     justify-content: center;
