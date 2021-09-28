@@ -96,6 +96,12 @@ img{
 /* End Message section */
 
 /* Side image section */
+html.sr .section-side-img{
+    visibility: hidden;
+}
+#section-side-img{
+    padding-bottom: 2rem;
+}
 #section-side-img .img-wrapper img{
     width: 90%;
 }
