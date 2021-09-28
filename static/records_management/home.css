@@ -311,6 +311,12 @@ html.sr .section-side-img{
     }
 }
 @media(min-width: 810px){
+    .main-nav .hlogo img{
+        width: 45px;
+        border-radius: 50%;
+        padding: 5px;
+        border: 2px solid #0c570c;
+    }
     #cards-about{
         display: grid;
         grid-gap: 1rem;
