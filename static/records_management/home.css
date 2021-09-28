@@ -12,7 +12,6 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.1rem;
     background: var(--light);
-    margin: 10px 6px 0 6px;
     scroll-behavior: smooth;
 }
 
@@ -324,7 +323,6 @@ html.sr .section-side-img{
         grid-template-areas: 
         "cards cards cards about"
         "cards cards cards about";
-        padding-top: 2rem;
     }
     #section-cards{
         grid-area: cards;
