@@ -89,6 +89,7 @@ img{
 }
 #section-msg .msg-down{
     font-size: smaller;
+    font-weight: 500;
     color: #2a2a2a;
     width: 65%;
 }
