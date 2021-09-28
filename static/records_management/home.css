@@ -222,6 +222,7 @@ html.sr .section-side-img{
     }
     .main-nav .hlogo{
         justify-self: start;
+        padding-left: 3rem;
     }
     .menu{
         justify-self: end;
