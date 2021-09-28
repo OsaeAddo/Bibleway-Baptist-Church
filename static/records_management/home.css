@@ -239,12 +239,9 @@ html.sr .section-side-img{
         font-weight: bolder;
     }
     .top-section{
-        display: grid;
-        grid-gap: 1rem;
-        grid-template-areas: 
-        "txt txt s-img s-img"
-        "txt txt s-img s-img";
-        padding-top: 1.3rem;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 6rem;
     }
     .txt-section{
         grid-area: txt;
