@@ -281,7 +281,8 @@ html.sr .section-side-img{
     #section-location{
         display: grid;
         grid-template-columns: 1fr;
-        padding-bottom: 1rem;
+        padding-top: 4rem;
+        padding-bottom: 3rem;
     }
     #section-location .location{
         width: 40%;
