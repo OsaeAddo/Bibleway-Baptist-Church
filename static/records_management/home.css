@@ -216,6 +216,10 @@ html.sr .section-side-img{
 
 /* Media Queries */
 @media(min-width: 700px){
+    .main-nav{
+        grid-gap: 10px;
+        padding-right: 9rem;
+    }
     .main-nav .hlogo{
         justify-self: start;
     }
