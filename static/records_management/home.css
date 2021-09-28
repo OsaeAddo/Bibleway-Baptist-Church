@@ -31,7 +31,7 @@ img{
     display: grid;
     grid-template-areas: 
     "logo menu menu";
-    background: var(--gradient);
+    background: var(--light);
     font-size: .93rem;
     grid-gap: 6px;
 }
