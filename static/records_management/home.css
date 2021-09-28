@@ -258,6 +258,9 @@ html.sr .section-side-img{
         height: 100%;
     }
     /* Cards */
+    #cards-about{
+        padding-top: 6rem;
+    }
     #section-cards{
         padding: 2rem;
     }
