@@ -234,6 +234,10 @@ html.sr .section-side-img{
         align-self: center;
 
     }
+    .nav-item a{
+        font-size: larger;
+        font-weight: bolder;
+    }
     .top-section{
         display: grid;
         grid-gap: 1rem;
