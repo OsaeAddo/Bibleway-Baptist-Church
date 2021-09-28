@@ -70,6 +70,10 @@ img{
 /* End Sliding text section */
 
 /* Message section */
+#section-msg{
+    padding-bottom: 2rem;
+}
+
 #section-msg .msg-wrapper{
     text-align: center;
     text-align: center;
