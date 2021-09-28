@@ -162,7 +162,6 @@ html.sr .section-side-img{
     margin: 12px 4px auto 0;
     box-shadow: var(--shadow);
     width: 80%;
-    /* max-width: 100%; */
     padding: 8px;
 }
 /* End Location Section */
