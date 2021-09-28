@@ -247,7 +247,7 @@ html.sr .section-side-img{
         grid-area: txt;
     }
     #section-side-img{
-        grid-area: s-img;
+        width: 50%;
     }
     #section-side-img .img-wrapper{
         height: 95%;
