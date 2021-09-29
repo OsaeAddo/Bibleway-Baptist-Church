@@ -51,8 +51,9 @@ img{
     justify-items: center;
     align-items: center;
 }
-.navlist{
-    font-weight: 600;
+.nav-item a{
+    color: var(--dark);
+    cursor: pointer;
 }
 /* End Nav section */
 
