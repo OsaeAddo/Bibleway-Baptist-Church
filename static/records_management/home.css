@@ -209,6 +209,9 @@ html.sr .section-side-img{
     color: var(--light);
     padding: 6px;
 }
+.ftr-socials ul li a img{
+    width: 35px;
+}
 /* End Footer section */
 
 
