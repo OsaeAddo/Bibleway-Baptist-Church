@@ -1,5 +1,7 @@
-.ftr-socials ul li{
+.ftr-socials ul{
     list-style: none;
-    display: inline;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 8px;
 }
