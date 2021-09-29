@@ -12,10 +12,9 @@
     padding-bottom: 0.5rem;
     border-bottom: 2px solid green;
 }
-.options ul li{
-    list-style: none;
-    display: inline;
-    padding: 8px;
+.nav-link:hover{
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid green;
 }
 
 .hsocials{
