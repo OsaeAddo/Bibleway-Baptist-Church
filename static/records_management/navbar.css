@@ -8,13 +8,9 @@
     border-radius: 50%;
     padding: 6px;
 }
-
-
-.options{
-    grid-area: options;
-    align-self: stretch;
-    color: mintcream;
-    justify-self: center;
+.active{
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid green;
 }
 .options ul li{
     list-style: none;
