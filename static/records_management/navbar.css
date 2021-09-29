@@ -17,12 +17,7 @@
     border-bottom: 2px solid green;
 }
 
-.hsocials{
-    grid-area: socials;
-    align-self: stretch;
-}
-.hsocials ul li{
-    list-style: none;
-    display: inline;
-    padding: 8px;
+.nav-link:hover::after{
+    padding-bottom: 1rem;
+    border-bottom: 2px solid green;
 }
