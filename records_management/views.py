@@ -135,6 +135,7 @@ def churchadmin_dashboard_view(request):
     total_members = count_church_members + count_leaders
     context = {
         'leaders':leaders,
+        'members':members,
         'count_leaders':count_leaders,
         'count_church_members':count_church_members,
         'pending_leaders_count':pending_leaders_count,
