@@ -1,8 +1,21 @@
 version: '3.4'
 
 services:
-  web-bibleway:
-    image: bibleway-baptistchurch
+  db:
+    image: mysql:8.0.26
+    restart: always
+    environment: 
+      MYSQL_DATABASE: churchrecords_db
+      MYSQL_USER: churchrecords_user
+      MYSQL_PASSWORD: 3Myosae*sql
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - .dbdata:/var/lib/mysql
+    ports:
+      - 4404:3306
+
+
+  web:
     build:
       context: .
       dockerfile: ./Dockerfile
