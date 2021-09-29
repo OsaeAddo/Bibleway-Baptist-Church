@@ -136,6 +136,7 @@ def churchadmin_dashboard_view(request):
     context = {
         'leaders':leaders,
         'count_leaders':count_leaders,
+        'count_church_members':count_church_members,
         'pending_leaders_count':pending_leaders_count,
         'members':members,
         'pending_members_count':pending_members_count,
