@@ -139,6 +139,7 @@ def churchadmin_dashboard_view(request):
         'pending_leaders_count':pending_leaders_count,
         'members':members,
         'pending_members_count':pending_members_count,
+        'members':members,
         'count_church_members':count_church_members,
         'li_members': li_members,
         'li_leaders': li_leaders,
