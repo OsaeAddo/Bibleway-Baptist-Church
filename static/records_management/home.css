@@ -140,9 +140,7 @@ html.sr .section-side-img{
 .cards-container .admin-card{
     background: url('../images/admin-h.svg');
 }
-.cards-container .executive-card{
-    background: url('../images/exec-h.svg');
-}
+
 .cards-container .member-card{
     background: var(--card) url('../images/member-h.svg');
 }
