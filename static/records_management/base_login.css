@@ -98,6 +98,53 @@ form div input{
     height: 2.5rem;
     border-radius: 0.5rem;
     outline: none;
+    border: 2px solid #c4c4c4;
+    padding: 0 30px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+form div{
+    position: relative;
+    margin-bottom: 0.945rem;
+}
+input:focus{
+    border: 2px solid #f2796e;
+}
+form div i{
+    position: absolute;
+    padding: 10px;
+}
+
+/* Error section */
+.failure-icon, .error{
+    color: red;
+}
+.success-icon{
+    color: green;
+}
+.failure-icon, .success-icon{
+    right: 0;
+    opacity: 0;
+}
+.error{
+    font-size: 14.5px;
+    margin-top: 5px;
+}
+/* Submit section */
+button{
+    margin-top: 15px;
+    width: 100%;
+    height: 45px;
+    background-color:  var(--secondary);
+    border: 2px solid  var(--secondary);
+    border-radius: 0.5rem;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.1s ease;
+}
+button:hover{
+    opacity: 0.8;
 }
 
 input {
