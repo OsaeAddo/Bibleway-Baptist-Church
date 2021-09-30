@@ -56,6 +56,8 @@ ul{
 }
 .text{
     text-align: center;
+    color: white;
+    max-width: none;
 }
 
 button {
