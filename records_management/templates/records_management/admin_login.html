@@ -39,8 +39,39 @@
             <label for="email">Email</label>
             <i class="far fa-envelope"></i>
 
-{% block loginform %}
-  <form class="" method="post" action="{% url 'adminlogin' %}" enctype="multipart/form-data">
+            <input type="email" name="email" id="email" placeholder="e.g name@gmail.com">
+
+            <i class="fas fa-exclamation-circle failure-icon"></i>
+            <i class="far fa-check-circle success-icon"></i>
+
+            <!-- Inject errors from Js into this tag -->
+            <div class="error"></div> 
+        </div>
+
+        <!-- Password Section -->
+        <div>
+            <label for="email">Password</label>
+            <i class="fas fa-lock"></i>
+
+            <input type="password" name="password" id="password" placeholder="Password here">
+
+            <i class="fas fa-exclamation-circle failure-icon"></i>
+            <i class="far fa-check-circle success-icon"></i>
+
+            <!-- Inject errors from Js into this tag -->
+            <div class="error"></div>
+        </div>
+
+        <button id="btn" type="submit">Submit</button>
+    </form>
+  </div>
+{% endblock loginform %}
+
+
+
+
+
+  <!-- <form class="" method="post" action="{% url 'adminlogin' %}" enctype="multipart/form-data">
     {% csrf_token %}
       <h1 class="font-bold">Admin Log In</h1>
       <div class="md:w-1/2 pb-4"><span>{{form.username.label_tag}}</span>{{form.username}}</div>
