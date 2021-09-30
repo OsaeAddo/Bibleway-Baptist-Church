@@ -35,6 +35,10 @@ ul{
     display: flex;
     flex-direction: row;
 	justify-content: center;
+}
+/* Content section */
+.content{
+    display: flex;
 	flex-direction: column;
 	padding: 0 50px;
 	height: 100%;
