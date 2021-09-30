@@ -1,7 +1,27 @@
 {% extends 'records_management/base_admin_dashboard.html' %}
 {% load static %}
 
+
 {% block leaders-table %}
+<div class="flex items-center justify-center py-4">
+  <span class="text-gray-200 uppercase font-semibold">
+    Church leaders List
+  </span>
+</div>
+<div class="overflow-x-auto w-full">
+  <table class="w-full whitespace-nowrap">
+    <thead>
+      <tr class="text-xs font-semibold tracking-wide text-left text-gray-400 bg-gray-800 uppercase border-b">
+        <th class="px-3 py-3">Name</th>
+        <th class="px-3 py-3">Mobile</th>
+        <th class="px-3 py-3">Address</th>
+        <th class="px-3 py-3">Status</th>
+        <th class="px-3 py-3">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody class="bg-gray-800 divide-gray-700">
+      {% block leaderlist %}
 {% for leader in leaders %}
     <tr class="text-gray-300">
       <td class="px-2 py-3"> 
