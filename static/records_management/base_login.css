@@ -92,8 +92,12 @@ label{
     margin-bottom: .125rem;
 }
 
-button:focus {
-	outline: none;
+/* Input section */
+form div input{
+    width: 100%;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    outline: none;
 }
 
 input {
