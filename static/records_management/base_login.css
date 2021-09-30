@@ -40,9 +40,22 @@ ul{
 .content{
     display: flex;
 	flex-direction: column;
-	padding: 0 50px;
-	height: 100%;
-	text-align: center;
+    justify-content: space-around;
+    background-color:  var(--primary);
+    width: 40%;
+    min-height: 100vh;
+    padding: 10px 20px;
+}
+.image{
+    background-image: url("../images/acct.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    /* border: 2px solid black; */
+    height: 65%;
+}
+.text{
+    text-align: center;
 }
 
 button {
