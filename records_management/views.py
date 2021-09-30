@@ -116,22 +116,6 @@ def churchadmin_dashboard_view(request):
     members = models.ChurchMember.objects.all().order_by('-id')
     count_church_members = models.ChurchMember.objects.all().filter(status=True).count()
     pending_members_count = models.ChurchMember.objects.all().filter(status=False).count()
-    paginator_member = Paginator(members, 3)
-    page = request.GET.get('page', 2)
-    try:
-        li_members = paginator_member.page(page)
-    except EmptyPage:
-        li_members = paginator_member.page(paginator_member.num_pages)
-    except PageNotAnInteger:
-        li_members = paginator_member.page(1)
-
-    paginator_leader = Paginator(leaders, 3)
-    try:
-        li_leaders = paginator_leader.page(page)
-    except EmptyPage:
-        li_leaders = paginator_leader.page(paginator_leader.num_pages)
-    except PageNotAnInteger:
-        li_leaders = paginator_leader.page(1)
     total_members = count_church_members + count_leaders
     context = {
         'leaders':leaders,
