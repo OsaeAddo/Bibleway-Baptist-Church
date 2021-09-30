@@ -59,14 +59,30 @@ ul{
     color: white;
     max-width: none;
 }
+/* Social section */
 
-button {
-	border-radius: 20px;
-	border: 1px solid #47553c;
-	background-color:  #47553c;
-	color: #FFFFFF;
-	font-size: 12px;
-	font-weight: bold;
+.question{
+    font-size: 15px;
+}
+span {
+    color: var(--secondary);
+    cursor: pointer;
+}
+/* Form Section */
+form{
+    width: 45%;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 3.125rem;
+}
+
+/* Title Section */
+.title{
+    font-size: 1.55rem;
+    font-weight: bold;
 	padding: 12px 24px 12px 24px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
