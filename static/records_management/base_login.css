@@ -173,9 +173,9 @@ button:hover{
     .content{
         min-height: 75vh;
     }
-#id_password{
-	placeholder: "Password";
-}
+    .image{
+        height: 40vh;
+    }
 .container {
 	background-color: #fff;
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
