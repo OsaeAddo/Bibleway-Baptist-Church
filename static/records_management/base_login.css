@@ -39,7 +39,7 @@ ul{
 /* Content section */
 .content{
     display: flex;
-	flex-direction: column;
+    flex-direction: column;
     justify-content: space-around;
     background-color:  var(--primary);
     width: 40%;
