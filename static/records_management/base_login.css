@@ -147,13 +147,32 @@ button:hover{
     opacity: 0.8;
 }
 
-input {
-	background-color: #eee;
-	border: none;
-	padding: 12px 15px;
-	margin: 8px 0;
-	min-width: 70%;
+/* Responsive */
+@media (max-width: 900px){
+    .container-main{
+        flex-direction: column;
+    }
+    .content{
+        min-height: 100vh;
+    }
+    form, .content{
+        width: 100%;
+    }
+    .btn{
+        flex-direction: column;
+    }
+    .image{
+        height: 70vh;
+    }
 }
+
+@media (max-width: 425px){
+    form{
+        padding: 20px;
+    }
+    .content{
+        min-height: 75vh;
+    }
 #id_password{
 	placeholder: "Password";
 }
