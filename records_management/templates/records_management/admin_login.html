@@ -11,58 +11,66 @@
         </div>
     </div>
     <form id="form">
-        <div class="social">
-            <div class="title">Get Started</div>
-            <div class="question">
+      {% csrf_token %}
+      <div class="social">
+          <div class="title">Admin Login</div>
+          <div class="question">
               Don't Have an Account?<br>
               <span>Sign In</span>
           </div>
           
 
-        </div>
-        <!-- Username Section -->
-        <div>
-            <label for="username">User Name</label>
-            <i class="fas fa-user"></i>
+      </div>
+      <!-- Username Section -->
+      <div>
+          <label for="{{ form.username.id_for_label }}">User Name</label>
+          <i class="fas fa-user"></i>
 
-            <input type="text" name="username" id="username" placeholder="enter username">
+          <input 
+          id="{{form.username.id_for_label}}" type="text" 
+          name="username" placeholder="enter username"
+          autofocus
+          autocapitalize="none"
+          autocomplete="username"
+          >
 
-            <i class="fas fa-exclamation-circle failure-icon"></i>
-            <i class="far fa-check-circle success-icon"></i>
+          <i class="fas fa-exclamation-circle failure-icon"></i>
+          <i class="far fa-check-circle success-icon"></i>
 
-            <!-- Inject errors from Js into this tag -->
-            <div class="error"></div>
-        </div>
+          <!-- Inject errors from Js into this tag -->
+          <div class="error"></div>
+      </div>
 
-        <!-- Email Section -->
-        <div>
-            <label for="email">Email</label>
-            <i class="far fa-envelope"></i>
+    
 
-            <input type="email" name="email" id="email" placeholder="e.g name@gmail.com">
+      <!-- Password Section -->
+      <div>
+          <label class="" for="{{form.password.id_for_label}}">Password</label>
+          <i class="fas fa-lock"></i>
 
-            <i class="fas fa-exclamation-circle failure-icon"></i>
-            <i class="far fa-check-circle success-icon"></i>
+          <input type="password" 
+          name="{{form.password.name}}" id="{{form.password.id_for_label}}" 
+          autofocus
+          autocapitalize="none"
+          autocomplete="current-password"
+          required
+          placeholder="Password here"
+          >
+          <i class="fas fa-exclamation-circle failure-icon"></i>
+          <i class="far fa-check-circle success-icon"></i>
 
-            <!-- Inject errors from Js into this tag -->
-            <div class="error"></div> 
-        </div>
+          <div class="flex items-center">
+            <input class="w-4" type="checkbox" name="showPassword" 
+            id="showPassword" 
+            >
+            <span class="pl-1">show password</span>
+          </div>
 
-        <!-- Password Section -->
-        <div>
-            <label for="email">Password</label>
-            <i class="fas fa-lock"></i>
+          <!-- Inject errors from Js into this tag -->
+          <div class="error"></div>
+      </div>
 
-            <input type="password" name="password" id="password" placeholder="Password here">
-
-            <i class="fas fa-exclamation-circle failure-icon"></i>
-            <i class="far fa-check-circle success-icon"></i>
-
-            <!-- Inject errors from Js into this tag -->
-            <div class="error"></div>
-        </div>
-
-        <button id="btn" type="submit">Submit</button>
+      <button id="btn" type="submit">Submit</button>
     </form>
   </div>
 {% endblock loginform %}
