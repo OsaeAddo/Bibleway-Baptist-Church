@@ -1,7 +1,7 @@
 // return all classes and ids
 let id = (id) => document.getElementById(id);
 let classes = (classes) => document.getElementsByClassName(classes);
-let username = id('username'),
+let username = id('id_username'),
     password = id('password'),
     form = id('form'),
     
