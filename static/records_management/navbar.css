@@ -1,3 +1,32 @@
+.main-nav{
+    display: grid;
+    grid-template-areas: 
+    "logo menu menu";
+    background: var(--light);
+    font-size: .93rem;
+    grid-gap: 6px;
+}
+.main-nav .hlogo{
+    grid-area: logo;
+    align-self: start;
+}
+.main-nav .menu{
+    grid-area: menu;
+    align-self: center;
+}
+.main-nav .menu ul{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 8px;
+    padding: 0;
+    margin: 0;
+    justify-items: center;
+    align-items: center;
+}
+.nav-item a{
+    color: var(--dark);
+    cursor: pointer;
+}
 .hlogo{
     grid-area: hlogo;
     align-self: end;
