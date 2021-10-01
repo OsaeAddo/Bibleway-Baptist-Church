@@ -2,7 +2,7 @@
 let id = (id) => document.getElementById(id);
 let classes = (classes) => document.getElementsByClassName(classes);
 let username = id('id_username'),
-    password = id('password'),
+    password = id('id_password'),
     form = id('form'),
     
     errorMsg = classes('error'),
