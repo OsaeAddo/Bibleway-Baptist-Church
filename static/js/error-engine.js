@@ -18,3 +18,26 @@ form.addEventListener("submit", (e) => {
     engine(password, 2, "Password cannot be blank");
 })
 
+// engine is for form validation
+// id gets errors on 'id'
+// serial gets errors on the 'classes'
+// message prints a message inside the error class
+let engine = (id, serial, message) => {
+    // remove extra whitespace in user input
+    if (id.value.trim() === ""){
+        errorMsg[serial].innerHTML = message;  // print error message in class if blank form is submitted
+        id.style.border = "2px solid red";
+
+        // icons
+        failureIcon[serial].style.opacity = "1"; // highlight failure icons if blank form is submitted
+        successIcon[serial].style.opacity = "0";
+    }
+    else {
+        errorMsg[serial].innerHTML = "";
+        id.style.border = "2px solid green";
+
+        // icons
+        failureIcon[serial].style.opacity = "0";
+        successIcon[serial].style.opacity = "1"; // highlight success icons if all inputs are filled
+    }
+}
