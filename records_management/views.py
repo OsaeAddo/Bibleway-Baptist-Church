@@ -36,12 +36,12 @@ def leader_signup_view(request):
         userForm = forms.LeaderUserForm(request.POST)
         leaderForm = forms.LeaderForm(request.POST, request.FILES)
         if userForm.is_valid() and leaderForm.is_valid():
-            leader_user = userForm.save()
-            leader_user.set_password(leader_user.password)
-            leader_user.save()
+            user = userForm.save()
+            user.set_password(user.password)
+            user.save()
 
             leader = leaderForm.save(commit=False)
-            leader.user = leader_user
+            leader.user = user
             leader = leader.save()
             my_leader_group = Group.objects.get_or_create(name='LEADERS')
             my_leader_group[0].user_set.add(leader_user)
