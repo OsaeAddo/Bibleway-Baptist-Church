@@ -44,7 +44,11 @@ def leader_signup_view(request):
             leader.user = user
             leader = leader.save()
             my_leader_group = Group.objects.get_or_create(name='LEADERS')
-            my_leader_group[0].user_set.add(leader_user)
+            my_leader_group[0].user_set.add(user)
+            print("******* Valid Leader Forms ******")
+        print("***** Before redirecting ******")
+        return redirect('leader-login')
+
     return render(request, 'records_management/leader_signup.html', context)
 
 
