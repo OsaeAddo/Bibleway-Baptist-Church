@@ -10,8 +10,7 @@ let username = id('id_username'),
     failureIcon = classes('failure-icon');
 
 // add event listener to the form's submit button
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
+btn.addEventListener("click", (e) => {
     
     // implement form validation engine
     engine(username, 0, "Username cannot be blank");
