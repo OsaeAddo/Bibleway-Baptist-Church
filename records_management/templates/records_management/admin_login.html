@@ -10,7 +10,7 @@
             attractive offers today !
         </div>
     </div>
-    <form id="form">
+    <form id="form" method="post" action="{% url 'adminlogin' %}" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="social">
           <div class="title">Admin Login</div>
@@ -49,7 +49,8 @@
           <i class="fas fa-lock"></i>
 
           <input type="password" 
-          name="{{form.password.name}}" id="{{form.password.id_for_label}}" 
+          name="{{form.password.name}}" 
+          id="{{form.password.id_for_label}}" 
           autofocus
           autocapitalize="none"
           autocomplete="current-password"
@@ -59,15 +60,15 @@
           <i class="fas fa-exclamation-circle failure-icon"></i>
           <i class="far fa-check-circle success-icon"></i>
 
+          <!-- Inject errors from Js into this tag -->
+          <div class="error"></div>
           <div class="flex items-center">
             <input class="w-4" type="checkbox" name="showPassword" 
             id="showPassword" 
             >
-            <span class="pl-1">show password</span>
+            <span id="toggleText" class="pl-1">show password</span>
           </div>
 
-          <!-- Inject errors from Js into this tag -->
-          <div class="error"></div>
       </div>
 
       <button id="btn" type="submit">Submit</button>
@@ -75,20 +76,4 @@
   </div>
 {% endblock loginform %}
 
-
-
-
-
-  <!-- <form class="" method="post" action="{% url 'adminlogin' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-      <h1 class="font-bold">Admin Log In</h1>
-      <div class="md:w-1/2 pb-4"><span>{{form.username.label_tag}}</span>{{form.username}}</div>
-
-      <div class="md:w-1/2"><span>{{form.password.label_tag}}</span>{{form.password}}</div>
-      <a class="text-gray-800 pb-1" href="#">Forgot your password?</a>
-      <button type="submit">Log In</button>
-  </form> -->
-{% block no-account-text %}
-  <span class="pt-4 font-base">Don't have an account? <a class="text-blue-600 font-semibold" href="{% url 'adminlogin' %}">Contact Management</a> </span>
-{% endblock no-account-text %}
 
