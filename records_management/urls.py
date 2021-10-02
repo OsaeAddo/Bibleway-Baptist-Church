@@ -9,7 +9,7 @@ urlpatterns = [
     path('access-level/',views.accesslevel_view, name='access-level'),
 
     #<-------------Click Related----------->
-    path('church-exec-click/', views.leader_click_view, name='exec-click'),
+    path('church-leader-click/', views.leader_click_view, name='exec-click'),
     path('church-member-click/', views.member_click_view, name='member-click'),
 
     #<-------------SignUp Related----------->
