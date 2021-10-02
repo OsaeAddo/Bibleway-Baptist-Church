@@ -1,4 +1,5 @@
-let password = document.querySelector('{{form.password.id_for_label}}');
+const passwordU = document.getElementById('id_password');
+const togglePassword = document.getElementById('showPassword');
 
 togglePassword.addEventListener('change', (e) => {
     if (togglePassword.checked){
