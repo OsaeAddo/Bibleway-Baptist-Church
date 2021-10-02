@@ -14,7 +14,7 @@ btn.addEventListener("click", (e) => {
     
     // implement form validation engine
     engine(username, 0, "Username cannot be blank");
-    engine(password, 2, "Password cannot be blank");
+    engine(password, 1, "Password cannot be blank");
 })
 
 // engine is for form validation
