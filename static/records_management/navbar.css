@@ -29,6 +29,7 @@
     font-size: larger;
     font-weight: bolder;
 }
+
 .hlogo{
     grid-area: hlogo;
     align-self: end;
