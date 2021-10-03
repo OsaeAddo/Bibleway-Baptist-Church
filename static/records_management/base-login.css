@@ -51,7 +51,6 @@ ul{
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    /* border: 2px solid black; */
     height: 65%;
 }
 .text{
@@ -76,7 +75,7 @@ form{
     flex-direction: column;
     justify-content: center;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 3.125rem;
+    padding: 1rem 2.125rem 2.125rem 2.125rem;
 }
 
 /* Title Section */
