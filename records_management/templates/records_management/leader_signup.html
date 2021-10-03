@@ -15,17 +15,8 @@
   <title>Leader SignUp | Bible Way Baptist Church</title>
 </head>
 <body style="font-family: 'Lexend Deca', sans-serif;">
-  <nav class="mb-4" style="background: linear-gradient(to right,rgb(29, 95, 29), rgb(26, 24, 46));">
-    <div class="flex justify-between p-2">
-        <a href="/"><img class="rounded-full w-12 p-0.5" src="{% static 'images/logo2.png' %}"
-                alt="Logo | Bible Way Baptist Church"></a>
-        <ul class="justify-self-end flex space-x-4 justify-center items-center text-gray-50 font-semibold pr-4">
-            <li class=""><a href="{% url 'home-page' %}">Home</a></li>
-            <li class=""><a href="{% url 'home-page' %}">Location</a></li>
-            <li class=""><a href="{% url 'home-page' %}">Worship</a></li>
-            <li class=""><a href="{% url 'home-page' %}">About</a></li>
-        </ul>
-    </div>
+  <nav class="py-4 main-nav" style="font-family: sans-serif;">
+    {% include 'records_management/navbar.html' %}
   </nav>
   <main>
     <div class="flex flex-col justify-center items-center p-4">
