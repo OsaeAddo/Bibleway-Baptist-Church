@@ -26,6 +26,8 @@
 .nav-item a{
     color: var(--dark);
     cursor: pointer;
+    font-size: larger;
+    font-weight: bolder;
 }
 .hlogo{
     grid-area: hlogo;
