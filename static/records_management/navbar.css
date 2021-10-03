@@ -64,6 +64,10 @@
         justify-self: start;
         padding-left: 3rem;
     }
+    .nav-item a{
+        font-size: larger;
+        font-weight: bolder;
+    }
 }
 @media(min-width: 810px){
     .main-nav .hlogo img {
