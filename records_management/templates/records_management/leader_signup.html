@@ -29,7 +29,7 @@
           </a>
         </div>
 
-        <form class="flex flex-col text-gray-800 bg-gray-300 rounded-xl shadow-xl p-2" method="post" enctype="multipart/form-data">
+        <form class="flex flex-col text-gray-800 bg-gray-300 rounded-xl shadow-xl p-2" action="{% url 'leader-signup' %}" method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="p-2 grid grid-cols-2 gap-3 placeholder-gray-900">
             <div class="p-2 rounded-xl focus:border-blue-800 placeholder-gray-900" aria-placeholder="First name">{{ userForm.first_name|as_crispy_field }}</div>
