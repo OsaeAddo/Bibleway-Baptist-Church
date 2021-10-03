@@ -26,8 +26,7 @@
 .nav-item a{
     color: var(--dark);
     cursor: pointer;
-    font-size: larger;
-    font-weight: bolder;
+    font-weight: 600;
 }
 
 .hlogo{
