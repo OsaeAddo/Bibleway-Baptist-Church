@@ -36,6 +36,7 @@ def leader_signup_view(request):
         userForm = forms.LeaderUserForm(request.POST)
         leaderForm = forms.LeaderForm(request.POST, request.FILES)
         if userForm.is_valid() and leaderForm.is_valid():
+            print("******* Valid Leader Forms ******")
             user = userForm.save()
             user.set_password(user.password)
             user.save()
@@ -43,9 +44,10 @@ def leader_signup_view(request):
             leader = leaderForm.save(commit=False)
             leader.user = user
             leader = leader.save()
+            print("**** Leader Forms saved! ******")
             my_leader_group = Group.objects.get_or_create(name='LEADERS')
             my_leader_group[0].user_set.add(user)
-            print("******* Valid Leader Forms ******")
+            print("****  Leader added to Group!  ****")
         print("***** Before redirecting ******")
         return redirect('leader-login')
 
