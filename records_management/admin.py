@@ -1,6 +1,6 @@
 from django.contrib import admin
-from . import models
+from .models import ChurchMember, ChurchLeader
 
 # Register your models here.
-admin.site.register(models.ChurchLeader)
-admin.site.register(models.ChurchMember)
+admin.site.register(ChurchMember)
+admin.site.register(ChurchLeader)
