@@ -13,8 +13,17 @@
             </div>
         </section>
         <!-- Access Cards -->
-        <section class="flex flex-col items-center justify-center p-8 md:w-2/5">
-            <div class="flex justify-between">
+        <section class="flex flex-col items-center justify-center p-4 md:w-2/5">
+            <div class="flex flex-col items-start justify-start">
+                <span class="text-xl text-black font-extrabold pb-6" >
+                    Hello, Church Leader
+                </span>
+                <span class="text-base text-gray-800 font-bold pb-4">
+                    You can access exclusive features <br>
+                    after Login/SignUp
+                </span>
+            </div>
+            <div class="flex justify-between text-gray-50">
                 <a class="p-4" href="{% url 'leader-signup' %}" role="button">
                     <div class="rounded-lg bg-gray-700 p-4">SignUp</div>
                 </a>
