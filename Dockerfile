@@ -15,7 +15,6 @@ COPY Pipfile Pipfile.lock /BibleWay-BaptistChurch/
 RUN pip install pipenv
 RUN pipenv install --dev --system --deploy
 
-EXPOSE 8000
 
 # Copy all files in local root directory to root of docker image
 COPY . /Lechateau-resort/
