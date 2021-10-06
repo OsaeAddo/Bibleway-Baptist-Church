@@ -122,6 +122,8 @@ def churchadmin_dashboard_view(request):
     count_church_members = models.ChurchMember.objects.all().filter(status=True).count()
     pending_members_count = models.ChurchMember.objects.all().filter(status=False).count()
     total_members = count_church_members + count_leaders
+
+    admin_username = request.user
     context = {
         'leaders':leaders,
         'members':members,
