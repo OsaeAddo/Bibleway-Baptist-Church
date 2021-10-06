@@ -106,7 +106,7 @@ def afterloginview(request):
         if accountapproval:
             return redirect('leader-dashboard')
         else:
-            return render(request, 'records_management/exec_await_approval.html')
+            return render(request, 'records_management/leader_await_approval.html')
     else:
         return render(request, 'records_management/unknown-user.html')
 
