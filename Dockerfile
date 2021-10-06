@@ -17,4 +17,4 @@ RUN pipenv install --dev --system --deploy
 
 
 # Copy all files in local root directory to root of docker image
-COPY . /Lechateau-resort/
+COPY . /BibleWay-BaptistChurch/
