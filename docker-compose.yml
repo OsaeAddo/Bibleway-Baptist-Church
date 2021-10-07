@@ -24,8 +24,8 @@ services:
             python manage.py runserver 0.0.0.0:8001"
     volumes:
       - .:/BibleWay-BaptistChurch
-    expose:
-      - 8001
+    ports:
+      - '8001:8001'
     depends_on:
       - db
     # restart: on-failure
