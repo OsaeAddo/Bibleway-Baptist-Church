@@ -83,12 +83,12 @@ WSGI_APPLICATION = 'ChurchRecords.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'churchrecords_db',
-        'USER': 'churchrecords_user',
-        'PASSWORD': '3Myosae*sql',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
         'HOST': 'db',
-        'PORT': '3306',
+        'PORT': 5432,
     }
 }
 
