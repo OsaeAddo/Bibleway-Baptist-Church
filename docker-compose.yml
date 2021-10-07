@@ -32,5 +32,4 @@ services:
     
 
 volumes:
-  mysql:
-  mysql_config:
+  dbdata:
