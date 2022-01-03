@@ -10,3 +10,5 @@ __pycache__/
 
 #Uploaded files
 media/
+
+node_modules/
