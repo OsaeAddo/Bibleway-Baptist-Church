@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #My Apps
     'testapp.apps.TestappConfig',
+    'recordsManagement.apps.recordsManagement',
     'records_management.apps.RecordsManagementConfig',
 ]
 
