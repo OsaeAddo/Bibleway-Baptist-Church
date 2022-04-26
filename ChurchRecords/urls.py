@@ -22,7 +22,6 @@ from . import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('recordsManagement.urls')),
-    path('oldapp/', include('records_management.urls')),
     path('testapp/', include('testapp.urls')),
 ]
 

@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     #My Apps
     'testapp.apps.TestappConfig',
     'recordsManagement.apps.RecordsmanagementConfig',
-    'records_management.apps.RecordsManagementConfig',
 ]
 
 
