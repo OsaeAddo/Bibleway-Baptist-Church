@@ -1,9 +1,0 @@
-{% block actions %}
-    <td class="px-3 py-3 text-xs font-semibold">
-        <div class="flex items-center">
-        <button class="mr-2 px-2 py-1 text-blue-100 bg-blue-600 rounded-full">View</button>   <!-- To Do: Make it a modal to pop up extra details of member -->
-        <a href="{% url 'admin-update-member' member.id %}" class="mr-2 px-2 py-1 text-green-100 bg-green-600 rounded-full">Update</a>
-        <a href="{% url 'admin-delete-member' member.id %}"><button class="px-2 py-1 text-red-100 bg-red-700 rounded-full font-semibold">Delete</button></a>
-        </div>
-    </td> 
-{% endblock actions %}
