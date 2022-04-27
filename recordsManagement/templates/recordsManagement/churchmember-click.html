@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
+    <title>Bible Way Baptist Church | Church Member</title>
+</head>
+
+<body>
+    <div class="h-full px-1">
+        <nav style="background: linear-gradient(to right,rgb(29, 95, 29), rgb(26, 24, 46));">
+            <div class="flex justify-between p-2">
+                <a href="/"><img class="rounded-full w-12 p-0.5" src="{% static 'images/logo2.png' %}"
+                        alt="Logo | Bible Way Baptist Church"></a>
+                <ul class="justify-self-end flex space-x-4 justify-center items-center text-gray-50 font-semibold pr-4">
+                    <li class=""><a href="{% url 'home-page' %}">Home</a></li>
+                    <li class=""><a href="{% url 'home-page' %}">Location</a></li>
+                    <li class=""><a href="{% url 'home-page' %}">Worship</a></li>
+                    <li class=""><a href="{% url 'home-page' %}">About</a></li>
+                </ul>
+            </div>
+        </nav>
+        <main class="h-screen flex justify-center items-center">
+            <div class="flex flex-col justify-center items-center text-gray-800">
+                <div class="flex justify-between">
+                    <span class="font-bold text-xl p-4 uppercase">
+                        Hello, Member
+                    </span>
+                    <span class="text-base font-bold p-4">Welcome to Church Management System.</span>
+                </div>
+                <span class="text-sm font-bold p-4">Join our spiritual journey by adding your details, and be a part our christian family.</span>
+                <div class="flex justify-between text-gray-200 p-4">
+                    <a class="p-4" href="{% url 'member-signup' %}" role="button">
+                        <div class="rounded-lg bg-gray-700 p-4">Join Us</div>
+                    </a>
+                    <!-- <a class="p-4" href="{% url 'member-login' %}" role="button">
+                        <div class="rounded-lg bg-gray-700 p-4">Login</div>
+                    </a> -->
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <div class="p-4" style="background: linear-gradient(to right,rgb(29, 95, 29), rgb(26, 24, 46));">
+            <span class="flex justify-center items-center space-x-4 text-gray-50">
+                <span></span> &copy; Bible Way Baptist Church
+                <script>
+                    n = new Date();
+                    y = n.getFullYear();
+                    document.getElementById("copyright").innerHTML = y;
+                </script>
+            </span>
+        </div>
+    </footer>
+</body>
+
+</html>

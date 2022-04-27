@@ -1,0 +1,36 @@
+{% extends "records_management/base-click.html" %}
+{% load static %}
+{% block title %}
+    <title>Church Leader Click | Bible Way Baptist Church</title>
+{% endblock title %}
+
+{% block content %}
+    <main class="flex flex-col md:flex-row items-center py-12 px-6 shadow-lg">
+        <!-- Side Svg -->
+        <section class="flex flex-col md:w-3/5 p-6 shadow-lg" style="background: var(--primary);">
+            <div>
+                <img class="" src="{% static 'images/auth.svg' %}" alt="Leader click | Bible Way Baptist Church">
+            </div>
+        </section>
+        <!-- Access Cards -->
+        <section class="flex flex-col items-center justify-center p-4 md:w-2/5">
+            <div class="flex flex-col items-start justify-start">
+                <span class="text-xl text-black font-extrabold pb-6" >
+                    Hello, Church Leader
+                </span>
+                <span class="text-base text-gray-800 font-bold pb-4">
+                    You can access exclusive features <br>
+                    after Login/SignUp
+                </span>
+            </div>
+            <div class="flex justify-between text-gray-50">
+                <a class="p-4" href="{% url 'leader-signup' %}" role="button">
+                    <div class="btn rounded-full bg-gray-700 px-4 py-2">SignUp</div>
+                </a>
+                <a class="p-4" href="{% url 'leader-login' %}" role="button">
+                    <div class="btn rounded-full bg-gray-700 px-4 py-2">Login</div>
+                </a>
+            </div>
+        </section>
+    </main>
+{% endblock content %}

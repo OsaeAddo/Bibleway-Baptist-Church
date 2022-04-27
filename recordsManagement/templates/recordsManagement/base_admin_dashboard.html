@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE html>
+<html x-data="data()" lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
+  <link rel="icon" href="{% static 'favicon.ico' %}">
+
+  <title> Admin Dashboard | Bible Way Baptist Church </title>
+</head>
+
+<body class="flex h-screen text-gray-200 bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
+  <!-- SideBar section -->
+
+  <!-- Desktop Sidebar -->
+  <aside class="hidden z-20 h-screen flex-shrink-0 w-60 bg-gray-800 text-gray-300 md:block">
+    <div class="flex w-full  py-2 px-1 justify-center">
+      <img class="h-12 w-12 rounded-full" src="{% static 'images/logo2.png' %}" alt="church logo">
+      <div class="flex flex-col px-1 justify-center text-base font-semibold">
+        <div>Bible Way Baptist Church</div>
+      </div>
+    </div>
+    <div class="flex w-full py-4 pr-9 justify-center">
+      <img src="{% static 'images/os1.jpg' %}" alt="profilepic" class="h-12 w-12 rounded-lg">
+      <div class="flex flex-col pl-2 py-1 text-base font-semibold place-content-center">
+        <div class="flex-1 capitalize"><span>{{admin_username}}</span></div>
+        <div class="text-xs">Admin</div>
+      </div>
+    </div>
+    <ul class="flex flex-col justify-center text-lg mb-0 pb-0 font-semibold">
+      <li class="my-6 w-full">
+        <a class="flex items-center ml-8" href="{% url 'churchadmin-dashboard' %}">
+          <i class="fas fa-home"></i>
+          <span class="flex justify-center ml-5">Dashboard</span>
+        </a>
+      </li>
+      <li class="my-6 w-full">
+        <a class="flex items-center ml-8" href="">
+          <i class="far fa-envelope"></i>
+          <span class="flex justify-center ml-5">Messages</span>
+        </a>
+      </li>
+      <li class="my-6 w-full">
+        <a class="flex items-center ml-8" href="{% url 'admin-leader' %}">
+          <i class="far fa-id-badge"></i>
+          <span class="flex justify-center ml-6">Leaders</span>
+        </a>
+      </li>
+      <li class="my-6 w-full">
+        <a class="flex items-center ml-8" href="{% url 'admin-member' %}">
+          <i class="far fa-address-card"></i>
+          <span class="flex justify-center ml-4">Members</span>
+        </a>
+      </li>
+      <li class="my-6 w-full">
+        <a class="flex items-center ml-8" href="{% url 'pending-member' %}">
+          <i class="fas fa-clipboard"></i>
+          <span class="flex justify-center ml-6">Pending Approvals</span>
+        </a>
+      </li>
+      <li class="mt-4 w-full">
+        <a href="" class="flex items-center ml-8">
+          <i class="fas fa-cog"></i>
+          <span class="flex justify-center ml-5">Settings</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Mobile sidebar -->
+  <!-- Backdrop -->
+  <div x-show="isSideMenuOpen" x-transition:enter="transition ease-in-out duration-150"
+    x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in-out duration-150" x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"></div>
+
+  <aside class="fixed inset-y-0 z-20 flex-shrink w-60 mt-16 bg-gray-800 text-gray-300 overflow-y-auto md:hidden"
+    x-show="isSideMenuOpen" x-transition:enter="transition ease-in-out duration-150"
+    x-transition:enter-start="opacity-0 transform -translate-x-20" x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in-out duration-150" x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0 transform -translate-x-20" @click.away="closeSideMenu"
+    @keydown.escape="closeSideMenu">
+    <div class="flex w-full  py-4 px-2 justify-center">
+      <img class="h-12 w-12 rounded-full" src="{% static 'images/logo.jpg' %}" alt="church logo">
+      <div class="flex flex-col px-1 justify-center text-base font-semibold">
+        <div>Bible Way</div>
+        <div>Baptist Church</div>
+      </div>
+    </div>
+    <div class="flex w-full py-4 pr-9 justify-center">
+      <img src="{% static 'images/os1.jpg' %}" alt="profilepic" class="h-12 w-12 rounded-lg">
+      <div class="flex flex-col pl-1 py-1 text-base font-semibold place-content-center">
+        <div class="flex-1">Osae Addo</div>
+        <div class="text-xs">Admin</div>
+      </div>
+    </div>
+    <ul class="flex flex-col justify-center text-lg mb-0 pb-0 font-semibold">
+      <li class="my-8 md:my-6 w-full">
+        <a class="flex items-center ml-8" href="#dashboard">
+          <i class="fas fa-home"></i>
+          <span class="flex justify-center ml-7">Dashboard</span>
+        </a>
+      </li>
+      <li class="my-8 md:my-6 w-full">
+        <a class="flex items-center ml-8" href="">
+          <i class="fas fa-envelope"></i>
+          <span class="flex justify-center ml-7">Messages</span>
+        </a>
+      </li>
+      <li class="my-8 md:my-6 w-full">
+        <a class="flex items-center ml-8" href="{% url 'admin-leader' %}">
+          <i class="fas fa-id-badge"></i>
+          <span class="flex justify-center ml-7">Leaders</span>
+        </a>
+      </li>
+      <li class="my-8 md:my-6 w-full">
+        <a class="flex items-center ml-8" href="{% url 'admin-member' %}">
+          <i class="fas fa-address-card"></i>
+          <span class="flex justify-center ml-5">Members</span>
+        </a>
+      </li>
+      <li class="my-8 md:my-6 w-full">
+        <a class="flex items-center ml-8" href="">
+          <i class="fas fa-clipboard"></i>
+          <span class="flex justify-center ml-6">Pending Approvals</span>
+        </a>
+      </li>
+      <li class="mt-4 w-full">
+        <a href="" class="flex items-center ml-8">
+          <i class="fas fa-cog"></i>
+          <span class="flex justify-center ml-5">Settings</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Main Content Section -->
+  <div class="flex flex-col flex-1 w-full" id="dashboard">
+    <header class="z-10 py-4 bg-gray-800 shadow-md">
+      <div class="container flex mx-auto px-4 justify-between items-center">
+        <button class="p-1 md:hidden focus:outline-none focus:shadow-outline-purple" @click="toggleSideMenu"
+          aria-label="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <span class="px-4 md:pl-8 lg:ml-96 lg:px-0 md:font-semibold md:uppercase">Admin Dashboard Panel</span>
+        <a href="{% url 'admin-logout' %}">
+          <span class="rounded-full py-0.5 px-3 bg-gray-900">Logout <i class="fas fa-sign-out-alt pl-1"></i></span>
+        </a>
+      </div>
+    </header>
+    <main class="h-full overflow-y-auto m-2 p-2">
+      <!-- Cards section -->
+      <section class="grid md:pt-12 gap-3 mb-8 md:grid-cols-2 lg:grid-cols-3">
+        {% block cards %}
+        {% endblock cards %}
+      </section>
+      <!-- Search section -->
+      <!-- Build later -->
+      <section class="flex justify-center py-3 m-4">
+        
+      </section>
+      <!-- Tables -->
+      <section class="w-full overflow-hidden rounded-lg shadow-xs">
+        <!-- Members table -->
+        <!-- {% include 'records_management/messages.html' %} -->
+        {% block members-table %}
+        {% endblock members-table %}
+        
+        <!-- Leaders table -->
+        {% block leaders-table %}
+        {% endblock leaders-table %}
+        
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer>
+
+  </footer>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <script src="{% static 'js/toggle-sidemenu.js' %}"></script>
+  <script>
+    {% for msg in messages %}  
+
+      {% if msg.tags == "warning" %}
+        swal({
+          title: "Are you sure?",
+          text: 'Once deleted, this action is irreversible!',
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            swal("{{msg}}!", {
+              icon: "success",
+            });
+          } else {
+            swal("No action taken!");
+          }
+        });   
+      {% elif msg.tags == "success" %}
+        swal("{{msg}}")
+      {% endif %}
+    
+    {% endfor %}
+  </script>
+</body>
+
+</html>
+
+<!-- Built by Osae -->

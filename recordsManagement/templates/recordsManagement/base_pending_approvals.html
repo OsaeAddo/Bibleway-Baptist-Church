@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
+    {% block title %}{% endblock title %}
+</head>
+<body class="bg-gray-100">
+    {% block pending-header %}{% endblock pending-header %}
+    
+    <div class="overflow-x-auto w-full py-9 px-8">
+        <table class="w-full whitespace-nowrap">
+            <thead>
+                <tr class="text-xs font-semibold tracking-wide text-left text-gray-400 bg-gray-800 uppercase border-b">
+                    <th class="px-3 py-3">Name</th>
+                    <th class="px-3 py-3">Mobile</th>
+                    <th class="px-3 py-3">Address</th>
+                    <th class="px-3 py-3">Status</th>
+                    <th class="px-3 py-3">Action</th>
+                </tr>
+            </thead>
+            <tbody class="bg-gray-800 divide-gray-700">
+                {% block user-type-pending %}{% endblock user-type-pending %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

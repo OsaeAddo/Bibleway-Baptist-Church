@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+
+    {% block title %}{% endblock title %}
+</head>
+<body>
+    <div class="flex m-8 p-8 justify-center items-center space-x-4">
+        <!-- View User-type Card -->
+        {% block view-user-type %}{% endblock view-user-type %}
+
+        <!-- Add User-type Card -->
+        {% block add-user-type %}{% endblock add-user-type %}
+
+        <!-- Approve User-type Card -->
+        {% block approve-user-type %}{% endblock approve-user-type %}
+    </div>
+</body>
+</html>
