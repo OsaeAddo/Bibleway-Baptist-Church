@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
-from . import models
+
+from recordsManagement import models
 
 #for church leaders to create an account
 #combine with ChurchLeader model in views to create a user form
