@@ -18,14 +18,14 @@ urlpatterns = [
     path('church-member-signup/', views.member_signup_view, name='member-signup'),
 
     #<-------------LogIn Related----------->
-    path('church-admin-login/', LoginView.as_view(template_name='records_management/admin_login.html'), name='adminlogin'),
-    path('church-leader-login/', LoginView.as_view(template_name='records_management/leader_login.html'), name='leader-login'),
-    # path('church-member-login/', LoginView.as_view(template_name='records_management/member_login.html'), name='member-login'),
+    path('church-admin-login/', LoginView.as_view(template_name='recordsManagement/admin_login.html'), name='adminlogin'),
+    path('church-leader-login/', LoginView.as_view(template_name='recordsManagement/leader_login.html'), name='leader-login'),
+    # path('church-member-login/', LoginView.as_view(template_name='recordsManagement/member_login.html'), name='member-login'),
 
     #<-----AfterLogin Related------>
     path('afterlogin/', views.afterloginview, name='afterlogin'),
     #<--------- Logout Related ------------>
-    path('logout/', LogoutView.as_view(template_name='records_management/home.html'), name="admin-logout"),
+    path('logout/', LogoutView.as_view(template_name='recordsManagement/home.html'), name="admin-logout"),
 
     #<-------------Dashboard Related------------>
     #-----------Admin Dashboard-----------------

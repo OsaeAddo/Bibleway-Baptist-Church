@@ -9,22 +9,22 @@ from recordsManagement import models, forms
 
 # Create your views here.
 def home(request):
-    return render(request, 'records_management/home.html')
+    return render(request, 'recordsManagement/home.html')
 
 def accesslevel_view(request):
-    return render(request, 'records_management/access-level-page.html')
+    return render(request, 'recordsManagement/access-level-page.html')
 
 
 #Shows the signup/login page for Church leader
 def leader_click_view(request):
     # if request.user.is_authenticated:
     #     return redirect('afterlogin')
-    return render(request, 'records_management/church-leader-click.html')
+    return render(request, 'recordsManagement/church-leader-click.html')
 
 
 #shows the credentials-entry page
 def member_click_view(request):
-    return render(request, 'records_management/churchmember-click.html')
+    return render(request, 'recordsManagement/churchmember-click.html')
 
 
 def leader_signup_view(request):
@@ -58,7 +58,7 @@ def leader_signup_view(request):
         print("***** Before redirecting ******")
         return redirect('leader-login')
 
-    return render(request, 'records_management/leader_signup.html', context)
+    return render(request, 'recordsManagement/leader_signup.html', context)
 
 
 def member_signup_view(request):
@@ -85,7 +85,7 @@ def member_signup_view(request):
             my_churchmember_group[0].user_set.add(user)
         return redirect('home-page')
 
-    return render(request, 'records_management/churchmember_signup.html', context)
+    return render(request, 'recordsManagement/churchmember_signup.html', context)
 
 
 #To Do later
@@ -114,9 +114,9 @@ def afterloginview(request):
         if accountapproval:
             return redirect('leader-dashboard')
         else:
-            return render(request, 'records_management/leader_await_approval.html')
+            return render(request, 'recordsManagement/leader_await_approval.html')
     else:
-        return render(request, 'records_management/unknown-user.html')
+        return render(request, 'recordsManagement/unknown-user.html')
 
 
 #<-----------------Views For Church Admin Only----------->
@@ -142,13 +142,13 @@ def churchadmin_dashboard_view(request):
         'total_members':total_members,
         'admin_username': admin_username,
     }
-    return render(request, 'records_management/admin_dashboard.html', context)
+    return render(request, 'recordsManagement/admin_dashboard.html', context)
 
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
 def admin_members_view(request):
-    return render(request, 'records_management/admin-member.html')
+    return render(request, 'recordsManagement/admin-member.html')
 
 
 # List/Table of all members(approved)
@@ -157,7 +157,7 @@ def admin_members_view(request):
 def admin_list_members_view(request):
     members = models.ChurchMember.objects.all().filter(status=True)
     context = {"members": members}
-    return render(request, 'records_management/admin-list-members.html', context)
+    return render(request, 'recordsManagement/admin-list-members.html', context)
 
 
 @login_required(login_url='adminlogin')
@@ -186,7 +186,7 @@ def admin_add_member_view(request):
             member_group[0].user_set.add(user)
         messages.success(request, "Success: New Church Member Added!")
         return redirect('admin-list-members')
-    return render(request, 'records_management/admin-add-member.html', context)
+    return render(request, 'recordsManagement/admin-add-member.html', context)
     
 
 
@@ -231,7 +231,7 @@ def admin_update_member_view(request, pk):
         messages.success(request, "Success: Church Member Updated!")
         return redirect('admin-list-members')
 
-    return render(request, 'records_management/admin-update-member.html', context)
+    return render(request, 'recordsManagement/admin-update-member.html', context)
 
 
 @login_required(login_url='adminlogin')
@@ -239,7 +239,7 @@ def admin_update_member_view(request, pk):
 def admin_pending_approvals_member_view(request):
     members_pending = models.ChurchMember.objects.all().filter(status=False)
     context = {'members_pending': members_pending}
-    return render(request, 'records_management/pending_approvals_member.html', context)
+    return render(request, 'recordsManagement/pending_approvals_member.html', context)
 
 
 @login_required(login_url='adminlogin')
@@ -265,7 +265,7 @@ def reject_member_view(request, pk):
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
 def admin_leaders_view(request):
-    return render(request, 'records_management/admin-leader.html')
+    return render(request, 'recordsManagement/admin-leader.html')
 
 
 # List/Table of all members(approved)
@@ -274,7 +274,7 @@ def admin_leaders_view(request):
 def admin_list_leaders_view(request):
     leaders = models.ChurchLeader.objects.all().filter(status=True)
     context = {"leaders": leaders}
-    return render(request, 'records_management/admin-list-leaders.html', context)
+    return render(request, 'recordsManagement/admin-list-leaders.html', context)
 
 
 
@@ -304,7 +304,7 @@ def admin_add_leader_view(request):
             leader_group[0].user_set.add(user)
         messages.success(request, "Success: New Church Leader Added!")
         return redirect('admin-list-leaders')
-    return render(request, 'records_management/admin-add-leader.html', context)
+    return render(request, 'recordsManagement/admin-add-leader.html', context)
 
 
 @login_required(login_url='adminlogin')
@@ -312,7 +312,7 @@ def admin_add_leader_view(request):
 def admin_pending_approvals_leader_view(request):
     leaders_pending = models.ChurchLeader.objects.all().filter(status=False)
     context = {'leaders_pending': leaders_pending}
-    return render(request, 'records_management/pending_approvals_leader.html', context)
+    return render(request, 'recordsManagement/pending_approvals_leader.html', context)
 
 
 @login_required(login_url='adminlogin')
@@ -353,7 +353,7 @@ def leader_dashboard_view(request):
         'leader':models.ChurchLeader.objects.get(user_id=request.user.id)
         #for profile picture of church leader in the sidebar
     }
-    return render(request, 'records_management/exec_dashboard.html', context)
+    return render(request, 'recordsManagement/exec_dashboard.html', context)
 
 
 #<----------Views to Search for Church Members--------->
