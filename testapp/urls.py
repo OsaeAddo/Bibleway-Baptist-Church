@@ -1,8 +1,8 @@
 from django.urls import path
 from django.views.generic import TemplateView
 
-from testapp import views
+from testapp.views import home_testapp
 
 urlpatterns = [
-    path('', views.home_testapp, name="test app home")
+    path('', home_testapp, name="test app home")
 ]
