@@ -1,5 +1,5 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# Create your views here.
-def home_testapp(request):
-    return render(request, 'testapp/home.html')
+
+class HomeTestApp(TemplateView):
+    template_name="testapp/home.html"
