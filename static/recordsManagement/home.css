@@ -107,13 +107,7 @@ html.sr .section-side-img{
     background-size: cover;
     width: 100%;
 }
-.cards-container .admin-card{
-    background: url('../images/admin-h.svg');
-}
 
-.cards-container .member-card{
-    background: var(--card) url('../images/member-h.svg');
-}
 /* End Cards section */
 
 /* Location Section */
