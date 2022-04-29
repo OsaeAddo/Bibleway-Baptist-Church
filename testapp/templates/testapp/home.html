@@ -19,7 +19,6 @@
 
 <body class="bg-gray-200">
     <nav class="main-nav">
-        {% include 'recordsManagement/navbar.html' %}
     </nav>
     <main id="main">
         <div class="top-section">
@@ -48,7 +47,7 @@
         <div id="cards-about">
             <!-- User access cards section -->
             <section id="section-cards" class="grid">
-                <a href="{% url 'adminlogin' %}">
+                <a href="{% url 'home' %}">
                     <div class="admin-card cards"></div>
                     <div class="cards-container">
                         <div class="cards-header">   
@@ -56,7 +55,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="{% url 'exec-click' %}">
+                <a href="{% url 'home' %}">
                     <div class="cards-container">
                         <div class="executive-card cards"></div>
                         <div class="cards-header">
@@ -64,7 +63,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="{% url 'member-signup' %}">
+                <a href="{% url 'home' %}">
                     <div class="cards-container">
                         <div class="member-card cards"></div>
                         <div class="cards-header">
@@ -110,7 +109,6 @@
         </section>
     </main>
     <footer id="main-footer">
-        {% include 'recordsManagement/footer.html' %}
     </footer>
     
     <script src="{% static 'js/scroll-to-reveal.js' %}"></script>
