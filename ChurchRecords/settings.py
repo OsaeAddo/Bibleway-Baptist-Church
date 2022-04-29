@@ -28,8 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-3ijz%tjd)vrqs
 # SECURITY WARNING: don't run with debug turned on in production!
 ALLOWED_HOSTS = []
 
-# DEBUG = 'RENDER' not in os.environ
-DEBUG = True
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
 
@@ -139,10 +138,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
-# if not DEBUG:
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     
-#     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 
