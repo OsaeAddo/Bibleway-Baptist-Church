@@ -7,12 +7,14 @@
     --card: linear-gradient(to bottom, rgb(38, 94, 38), rgb(26, 24, 46));
     --gradient: linear-gradient(to right,rgb(29, 95, 29), rgb(26, 24, 46));
 }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.1rem;
     background: var(--light);
-    scroll-behavior: smooth;
 }
 
 a{
