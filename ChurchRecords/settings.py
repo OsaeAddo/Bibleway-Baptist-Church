@@ -50,6 +50,9 @@ INSTALLED_APPS = [
     #My Apps
     'testapp.apps.TestappConfig',
     'recordsManagement.apps.RecordsmanagementConfig',
+    
+    #3rd party
+    'crispy_forms',
 ]
 
 
