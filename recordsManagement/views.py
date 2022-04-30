@@ -33,13 +33,13 @@ def leader_signup_view(request):
         'leaderForm': leaderForm
     }
     if request.method == 'POST':
-        print("**** Leader Form method is POST ****")
         userForm = forms.LeaderUserForm(request.POST)
         leaderForm = forms.LeaderForm(request.POST, request.FILES)
-        print("**** Member Forms initiated! ****")
-        print(f"**** {leaderForm.is_valid()} ****")
-        print(f"**** {userForm.errors} ****")
-        print(f"**** {leaderForm.errors} ****")
+        print("**** Leader Forms initiated! ****")
+        print(f"**** Valid leaderForm: {leaderForm.is_valid()} ****")
+        print(f"**** Valid userForm: {userForm.is_valid()} ****")
+        print(f"**** UserForm errors: {userForm.errors} ****")
+        print(f"**** LeaderForm errors: {leaderForm.errors} ****")
         if userForm.is_valid() and leaderForm.is_valid():
             print("******* Valid Leader Forms ******")
             user = userForm.save()
