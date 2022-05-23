@@ -10,5 +10,6 @@ __pycache__/
 
 #Uploaded files
 media/
+profile_pic/
 
 node_modules/

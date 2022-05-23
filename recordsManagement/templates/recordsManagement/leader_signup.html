@@ -58,6 +58,16 @@
             <div class="p-2">{{leaderForm.region}}</div>
           </div>
           <div class="p-2 rounded-xl ">{{leaderForm.residential_address}}</div>
+
+          {% if leaderForm.errors %}
+            {% for field in leaderForm %}
+              {% for error in field.errors %}
+                <div class="">
+                  <strong>{{ error|escape }}</strong>
+                </div>
+              {% endfor %}
+            {% endfor %}
+          {% endif %}
           <div class="bg-blue-600 shadow-xl text-gray-50 rounded-lg w-20 ml-1">
             <button type="submit" class="p-2 text-center font-extrabold" >Submit</button>
           </div>
