@@ -96,7 +96,7 @@ class ChurchLeader(models.Model):
     region = models.CharField(max_length=60, null=True, blank=True,)
     residential_address = models.CharField(max_length=60, null=True, blank=True,)
     date_of_baptism = models.DateField(default=timezone.now, null=True, blank=True)
-    status = models.BooleanField(default=True)
+    status = models.BooleanField(default=False)
 
     @property
     def get_name(self):

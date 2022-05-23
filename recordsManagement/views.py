@@ -104,7 +104,7 @@ def is_churchmember(user):
 #------- AFTER ENTERING CREDENTIALS, CHECK IF USERNAME & PASSWORD IS THAT OF CHURCH ADMIN OR leader
 def afterloginview(request):
     print("-------------afterloginview hit-----------")
-    print("******* proceeding to verify if user is admin ******")
+    print("******* proceeding to verify if user is authorized ******")
     if is_churchadmin(request.user):
         return redirect("churchadmin-dashboard")
     elif is_churchleader(request.user):
