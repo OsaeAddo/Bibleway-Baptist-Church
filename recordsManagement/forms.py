@@ -38,7 +38,7 @@ class LeaderUserForm(forms.ModelForm):
 class LeaderForm(forms.ModelForm):
     class Meta:
         model = models.ChurchLeader
-        fields = '__all__'
+        exclude = ('user',)
         widgets = {
             # 'leadershiptype': forms.Input(attrs={
             #     'placholder': "Select Role",
@@ -58,10 +58,12 @@ class LeaderForm(forms.ModelForm):
             'date_of_birth': forms.DateInput(attrs={
                 'class': "w-4/5 placeholder-gray-500",
                 'placeholder': "Date of Birth",
+                'type': 'date',
             }),
             'date_of_baptism': forms.DateInput(attrs={
                 'class': "w-4/5 placeholder-gray-500", 
                 'placeholder': "Date of Baptism",
+                'type': 'date',
             }),
             'name_of_father': forms.TextInput(attrs={
                 'placeholder': "Enter father's name",
@@ -109,7 +111,8 @@ class ChurchMemberUserForm(forms.ModelForm):
 class ChurchMemberForm(forms.ModelForm):
     class Meta:
         model = models.ChurchMember
-        fields = '__all__'
+        exclude = ('user',)
+
         widgets = {
             'mobile': forms.TextInput(attrs={
                 'placeholder': "Enter phone number",
@@ -125,10 +128,12 @@ class ChurchMemberForm(forms.ModelForm):
             'date_of_birth': forms.DateInput(attrs={
                 'class': "w-4/5 placeholder-gray-500",
                 'placeholder': "Date of Birth",
+                'type': 'date',
             }),
             'date_of_baptism': forms.DateInput(attrs={
                 'class': "w-4/5 placeholder-gray-500", 
                 'placeholder': "Date of Baptism",
+                'type': 'date',
             }),
             'name_of_father': forms.TextInput(attrs={
                 'placeholder': "Enter father's name",
