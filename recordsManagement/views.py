@@ -1,5 +1,7 @@
-from django.shortcuts import render, redirect
 from . import models, forms
+
+
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -26,20 +28,14 @@ def member_click_view(request):
 
 
 def leader_signup_view(request):
-    userForm = forms.LeaderUserForm()
-    leaderForm = forms.LeaderForm()
-    context = {
-        'userForm': userForm, 
-        'leaderForm': leaderForm
-    }
+
     if request.method == 'POST':
         userForm = forms.LeaderUserForm(request.POST)
         leaderForm = forms.LeaderForm(request.POST, request.FILES)
-        print("**** Leader Forms initiated! ****")
         print(f"**** Valid leaderForm: {leaderForm.is_valid()} ****")
         print(f"**** Valid userForm: {userForm.is_valid()} ****")
-        print(f"**** UserForm errors: {userForm.errors} ****")
-        print(f"**** LeaderForm errors: {leaderForm.errors} ****")
+        print(f"**** UserForm errors: {userForm.errors.as_data()} ****")
+        print(f"**** LeaderForm errors: {leaderForm.errors.as_data()} ****")
         if userForm.is_valid() and leaderForm.is_valid():
             print("******* Valid Leader Forms ******")
             user = userForm.save()
@@ -55,7 +51,15 @@ def leader_signup_view(request):
             print("****  Leader added to Group!  ****")
         print("***** Before redirecting ******")
         return redirect('leader-login')
-
+    
+    else:
+        userForm = forms.LeaderUserForm()
+        leaderForm = forms.LeaderForm()
+        
+    context = {
+        'userForm': userForm, 
+        'leaderForm': leaderForm
+    }
     return render(request, 'recordsManagement/leader_signup.html', context)
 
 
