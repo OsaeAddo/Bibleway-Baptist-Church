@@ -11,3 +11,7 @@ label{
     text-align: center;
     font-weight: 600;
 }
+
+#showPassword {
+    box-shadow: none;
+}

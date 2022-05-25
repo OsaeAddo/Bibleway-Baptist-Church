@@ -5,6 +5,8 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="{% static 'js/toggle-sidemenu.js' %}"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
@@ -179,39 +181,10 @@
       </section>
     </main>
   </div>
-  <footer>
+  <footer></footer>
+  
+  
 
-  </footer>
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-  <script src="{% static 'js/toggle-sidemenu.js' %}"></script>
-  <script>
-    {% for msg in messages %}  
-
-      {% if msg.tags == "warning" %}
-        swal({
-          title: "Are you sure?",
-          text: 'Once deleted, this action is irreversible!',
-          icon: "warning",
-          buttons: true,
-          dangerMode: true,
-        })
-        .then((willDelete) => {
-          if (willDelete) {
-            swal("{{msg}}!", {
-              icon: "success",
-            });
-          } else {
-            swal("No action taken!");
-          }
-        });   
-      {% elif msg.tags == "success" %}
-        swal("{{msg}}")
-      {% endif %}
-    
-    {% endfor %}
-  </script>
 </body>
 
 </html>

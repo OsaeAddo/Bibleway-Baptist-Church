@@ -11,72 +11,123 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@200&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'recordsManagement/preloader.css' %}">
+    
+  <script src="{% static 'js/preloader.js' %}"></script>
 
   <title>Leader SignUp | Bible Way Baptist Church</title>
 </head>
 <body style="font-family: 'Lexend Deca', sans-serif;">
-  <nav class="py-4 main-nav" style="font-family: sans-serif;">
-    {% include 'recordsManagement/navbar.html' %}
-  </nav>
-  <main>
-    <div class="flex flex-col justify-center items-center p-4">
-      <span class="text-black font-extrabold text-xl text-center p-8" style="font-family: sans-serif;">Church Leader SignUp</span>
-      <div class="rounded-lg border-solid box-border border-blue-700">
-        <div class="text-center font-semibold text-base text-gray-900" style="font-family: sans-serif;">
-          Already have an account? 
-          <a class="text-blue-600 font-semibold" href="{% url 'leader-login' %}">
-            Login here
-          </a>
+  <div id="loader"></div>
+  <div id="content">
+    <nav class="py-4 main-nav" style="font-family: sans-serif;">
+      {% include 'recordsManagement/navbar.html' %}
+    </nav>
+    <main>
+      <div class="flex flex-col justify-center items-center p-4">
+        <span class="text-black font-extrabold text-xl text-center p-8" style="font-family: sans-serif;">Church Leader Signup</span>
+        <div class="rounded-lg border-solid box-border border-blue-700">
+          <div class="text-center font-semibold text-base text-gray-900" style="font-family: sans-serif;">
+            Already have an account? 
+            <a class="text-blue-600 font-semibold" href="{% url 'leader-login' %}">
+              Login here
+            </a>
+          </div>
+  
+          <form class="flex flex-col text-gray-800 bg-gray-300 rounded-xl shadow-xl p-2" action="{% url 'leader-signup' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+              {% if messages %}
+                {% for message in messages %}
+                  <strong>{{ message }}</strong>
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="p-2 grid sm:grid-cols-1 md:grid-cols-2 md:gap-3 placeholder-gray-900 ">
+              <div class="p-2 rounded-xl focus:border-blue-800 placeholder-gray-900" aria-placeholder="First name">{{ userForm.first_name|as_crispy_field }}</div>
+              <div class="p-2 rounded-xl">{{userForm.last_name|as_crispy_field}}</div>
+              <div class="p-2 rounded-xl">
+                <label for="id_username" aria-required="true">Username*</label>
+                {{userForm.username}}
+              </div>
+              <div class="p-2 rounded-xl">
+                <label for="id_password" 
+                required
+                >Password*
+                </label>
+                {{userForm.password}}
+              </div>
+              <div class="p-2 rounded-xl">{{leaderForm.profile_pic|as_crispy_field}}</div>
+              <div class="p-2 rounded-xl">{{leaderForm.leadershiptype|as_crispy_field}}</div>
+              <div class="p-2 rounded-xl">{{leaderForm.gender|as_crispy_field}}</div>
+              <div class="p-2 rounded-xl">{{leaderForm.date_of_birth|as_crispy_field}}</div>
+              <div class="p-2 rounded-xl">{{leaderForm.marital_status|as_crispy_field}}</div>
+              <div class="p-2 rounded-xl">{{leaderForm.date_of_baptism|as_crispy_field}}</div>
+              <div class="p-2 rounded-xl">{{leaderForm.mobile|as_crispy_field}}</div>
+              <div class="p-2 rounded-xl">{{leaderForm.emergency_contact|as_crispy_field}}</div>
+            </div>
+            <div class="p-2">
+              <div class="p-2 w-3/5">
+                {{leaderForm.name_of_father|as_crispy_field}}
+              </div>
+              <div class="p-2 w-3/5">
+                {{leaderForm.name_of_mother|as_crispy_field}}
+              </div>
+            </div>
+            <div class="p-2 grid grid-cols-2 gap-3">
+              <div class="p-2">{{leaderForm.hometown}}</div>
+              <div class="p-2">{{leaderForm.region}}</div>
+            </div>
+            <div class="p-2 rounded-xl ">{{leaderForm.residential_address}}</div>
+  
+            <div class="errors-container">
+              {% if leaderForm.errors %}
+                {% for field in leaderForm %}
+                  {% for error in field.errors %}
+                    <div class="">
+                      <strong>{{ error|escape }}</strong>
+                    </div>
+                  {% endfor %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="errors-container">
+              {% if userForm.errors %}
+                {% for field in userForm %}
+                  {% for error in field.errors %}
+                    <div class="">
+                      <strong>{{ error }}</strong>
+                    </div>
+                  {% endfor %}
+                {% endfor %}
+  
+                {% for error in userForm.non_field_errors %}
+                  <div class="">
+                      <strong>{{ error }}</strong>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="bg-blue-600 shadow-xl text-gray-50 rounded-lg w-20 ml-1">
+              <button type="submit" class="p-2 text-center font-extrabold trigger" >Submit</button>
+            </div>
+          </form>
         </div>
-
-        <form class="flex flex-col text-gray-800 bg-gray-300 rounded-xl shadow-xl p-2" action="{% url 'leader-signup' %}" method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          <div class="p-2 grid grid-cols-2 gap-3 placeholder-gray-900">
-            <div class="p-2 rounded-xl focus:border-blue-800 placeholder-gray-900" aria-placeholder="First name">{{ userForm.first_name|as_crispy_field }}</div>
-            <div class="p-2 rounded-xl">{{userForm.last_name|as_crispy_field}}</div>
-            <div class="p-2 rounded-xl">{{userForm.username}}</div>
-            <div class="p-2 rounded-xl">{{userForm.password}}</div>
-            <div class="p-2 rounded-xl">{{leaderForm.profile_pic|as_crispy_field}}</div>
-            <div class="p-2 rounded-xl">{{leaderForm.leadershiptype|as_crispy_field}}</div>
-            <div class="p-2 rounded-xl">{{leaderForm.gender|as_crispy_field}}</div>
-            <div class="p-2 rounded-xl">{{leaderForm.date_of_birth|as_crispy_field}}</div>
-            <div class="p-2 rounded-xl">{{leaderForm.marital_status|as_crispy_field}}</div>
-            <div class="p-2 rounded-xl">{{leaderForm.date_of_baptism|as_crispy_field}}</div>
-            <div class="p-2 rounded-xl">{{leaderForm.mobile|as_crispy_field}}</div>
-            <div class="p-2 rounded-xl">{{leaderForm.emergency_contact|as_crispy_field}}</div>
-          </div>
-          <div class="p-2">
-            <div class="p-2 w-3/5">
-              {{leaderForm.name_of_father|as_crispy_field}}
-            </div>
-            <div class="p-2 w-3/5">
-              {{leaderForm.name_of_mother|as_crispy_field}}
-            </div>
-          </div>
-          <div class="p-2 grid grid-cols-2 gap-3">
-            <div class="p-2">{{leaderForm.hometown}}</div>
-            <div class="p-2">{{leaderForm.region}}</div>
-          </div>
-          <div class="p-2 rounded-xl ">{{leaderForm.residential_address}}</div>
-
-          {% if leaderForm.errors %}
-            {% for field in leaderForm %}
-              {% for error in field.errors %}
-                <div class="">
-                  <strong>{{ error|escape }}</strong>
-                </div>
-              {% endfor %}
-            {% endfor %}
-          {% endif %}
-          <div class="bg-blue-600 shadow-xl text-gray-50 rounded-lg w-20 ml-1">
-            <button type="submit" class="p-2 text-center font-extrabold" >Submit</button>
-          </div>
-        </form>
+        <div class="text-center font-semibold text-base text-gray-900 pt-8">
+          Already have an account? 
+          <a class="text-blue-600 font-semibold" href="{% url 'leader-login' %}">Login here</a>
+        </div>
       </div>
-      <div class="text-center font-semibold text-base text-gray-900 pt-8">Already have an account? <a class="text-blue-600 font-semibold" href="{% url 'leader-login' %}">Login here</a></div>
-    </div>
-  </main>
-
+  
+      <section>
+        <div class="modal">
+  
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="{% static 'js/popup-signup.js' %}"></script>
 
 </body>
 

@@ -1,6 +1,6 @@
 body {
 	background: #f6f5f7;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Poppins', 'sans-serif';
 }
 :root{
     --primary: #3cd86b;
@@ -25,10 +25,6 @@ ul{
 		border: 2px solid #0c570c;
 	}
 }
-
-
-
-
 
 /* main container */
 .container-main{
@@ -144,6 +140,10 @@ button{
 }
 button:hover{
     opacity: 0.8;
+}
+
+#showPassword {
+    box-shadow: none;
 }
 
 /* Responsive */
