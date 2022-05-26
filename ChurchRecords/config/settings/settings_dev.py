@@ -21,6 +21,7 @@ DATABASES = {
     }
 }
 
+SMS_BACKEND = 'sms.backends.console.SmsBackend'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static'

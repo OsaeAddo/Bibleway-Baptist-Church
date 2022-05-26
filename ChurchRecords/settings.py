@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #My Apps
-    'testapp.apps.TestappConfig',
     'recordsManagement.apps.RecordsmanagementConfig',
     
     #3rd party
