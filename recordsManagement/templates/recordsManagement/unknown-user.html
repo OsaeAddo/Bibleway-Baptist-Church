@@ -5,13 +5,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
+    <link rel="stylesheet" href="{% static 'recordsManagement/navbar.css' %}">
     <title>Unknown User | Bible Way Baptist Church</title>
 </head>
 <body>
-    <div class="flex items-center justify-center font-bold uppercase text-gray-900">
-        You do not have a user group assigned or it does not exist, and as a result can't login.
-        Kindly contact admin
-    </div>
+    <nav class="main-nav">
+        {% include 'recordsManagement/navbar.html' %}
+    </nav>
+    <main style="min-height: 100vh;">
+        <div class="flex bg-red-500 items-center justify-center font-bold text-white m-4 p-2 rounded" style="position: relative; bottom: -15rem;">
+            <p>
+                You DO NOT have a user group assigned or <br> it does not exist, and as a result can't login. <br>
+                Kindly contact Admin.
+            </p>
+        </div>
+    </main>
 </body>
 </html>

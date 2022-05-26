@@ -47,17 +47,7 @@
             <div class="p-2 grid sm:grid-cols-1 md:grid-cols-2 md:gap-3 placeholder-gray-900 ">
               <div class="p-2 rounded-xl focus:border-blue-800 placeholder-gray-900" aria-placeholder="First name">{{ userForm.first_name|as_crispy_field }}</div>
               <div class="p-2 rounded-xl">{{userForm.last_name|as_crispy_field}}</div>
-              <div class="p-2 rounded-xl">
-                <label for="id_username" aria-required="true">Username*</label>
-                {{userForm.username}}
-              </div>
-              <div class="p-2 rounded-xl">
-                <label for="id_password" 
-                required
-                >Password*
-                </label>
-                {{userForm.password}}
-              </div>
+              
               <div class="p-2 rounded-xl">{{leaderForm.profile_pic|as_crispy_field}}</div>
               <div class="p-2 rounded-xl">{{leaderForm.leadershiptype|as_crispy_field}}</div>
               <div class="p-2 rounded-xl">{{leaderForm.gender|as_crispy_field}}</div>
@@ -68,18 +58,24 @@
               <div class="p-2 rounded-xl">{{leaderForm.emergency_contact|as_crispy_field}}</div>
             </div>
             <div class="p-2">
-              <div class="p-2 w-3/5">
+              <div class="p-2 md:w-3/5">
                 {{leaderForm.name_of_father|as_crispy_field}}
               </div>
-              <div class="p-2 w-3/5">
+              <div class="p-2 md:w-3/5">
                 {{leaderForm.name_of_mother|as_crispy_field}}
               </div>
             </div>
-            <div class="p-2 grid grid-cols-2 gap-3">
+            <div class="p-2 grid grid-cols-2 md:gap-3">
               <div class="p-2">{{leaderForm.hometown}}</div>
               <div class="p-2">{{leaderForm.region}}</div>
             </div>
-            <div class="p-2 rounded-xl ">{{leaderForm.residential_address}}</div>
+            <div class="flex flex-col p-2">
+              <label 
+                for="{{ leaderForm.residential_address.id_for_label }}"
+              >Address
+              </label>
+              <div class="rounded-xl ">{{leaderForm.residential_address}}</div>
+            </div>
   
             <div class="errors-container">
               {% if leaderForm.errors %}
@@ -109,7 +105,42 @@
                 {% endfor %}
               {% endif %}
             </div>
-            <div class="bg-blue-600 shadow-xl text-gray-50 rounded-lg w-20 ml-1">
+
+            <div class="flex flex-col p-2 rounded-xl">
+              <label 
+                class=""
+                for="{{ userForm.username.id_for_label }}" 
+              >Username*
+              </label>
+              <input 
+                id="{{ userForm.username.id_for_label }}"
+                autocomplete="username"
+                class="placeholder-gray-500 md:w-1/2" 
+                maxlength="150" 
+                name="username" 
+                placeholder="Username" 
+                required
+                type="text" 
+              >
+            </div>
+
+            <div class="flex flex-col p-2 rounded-xl">
+              <label 
+                for="id_password" 
+                required
+              >Password*
+              </label>
+              <input 
+                id="{{ userForm.password.id_for_label }}"
+                autocomplete="current-password"
+                class="placeholder-gray-500 md:w-1/2"
+                name="{{ userForm.password.name }}"
+                placeholder="Password"
+                required 
+                type="password" 
+              >
+            </div>
+            <div class="bg-blue-600 shadow-xl text-gray-50 rounded-lg w-32 ml-1 text-center mb-4">
               <button type="submit" class="p-2 text-center font-extrabold trigger" >Submit</button>
             </div>
           </form>

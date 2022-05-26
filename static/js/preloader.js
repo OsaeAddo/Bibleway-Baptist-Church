@@ -9,7 +9,7 @@ let loadNow = (opacity)=> {
         window.setTimeout(
             function() {
                 loadNow(opacity - 0.01)
-            }, 85
+            }, 70
         )
     }
 }

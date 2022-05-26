@@ -8,3 +8,12 @@
 .ftr-socials ul li{
     padding: 0.5rem;
 }
+
+@media (min-width:700px){
+    .ftr-socials ul {
+        flex-direction: column;
+    }
+    .ftr-socials ul li a img {
+        width: 29px;
+    }
+}

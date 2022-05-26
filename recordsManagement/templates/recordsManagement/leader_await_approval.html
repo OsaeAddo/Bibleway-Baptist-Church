@@ -1,12 +1,26 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
+    <link rel="stylesheet" href="{% static 'recordsManagement/navbar.css' %}">
     <title>Leader Await Approval | Bible Way Baptist Church</title>
 </head>
 <body>
-    <h2>Please await approval of your account</h2>
+    <nav class="main-nav">
+        {% include 'recordsManagement/navbar.html' %}
+    </nav>
+    <main style="min-height: 100vh;">
+        <div 
+            class="grid items-center bg-red-400 items-center justify-center font-bold uppercase text-white md:w-1/2 md:ml-48 rounded p-3 m-1" 
+            style="position: relative; bottom: -15rem;"
+        >
+            <h2>Please await approval of your account</h2>
+        </div>
+    </main>
 </body>
 </html>

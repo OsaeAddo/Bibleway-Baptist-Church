@@ -15,6 +15,8 @@ body {
     font-family: 'Poppins', 'sans-serif';
     font-size: 1.1rem;
     background: var(--light);
+    margin-left: 0;
+    margin-right: 0;
 }
 
 a{
@@ -73,6 +75,8 @@ html.sr .section-side-img{
 }
 #section-side-img{
     padding-bottom: 2rem;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 #section-side-img .img-wrapper img{
     width: 90%;
@@ -81,6 +85,12 @@ html.sr .section-side-img{
     text-align: center;
 }
 /* End side image section */
+
+#cards-about {
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 3rem;
+}
 
 /* Cards section */
 #section-cards{
@@ -116,6 +126,7 @@ html.sr .section-side-img{
 #section-location{
     padding-top: 2rem;
     padding-bottom: 3rem;
+    margin-left: 8px;
 }
 
 #section-location .location{
@@ -144,13 +155,30 @@ html.sr .section-side-img{
     background:var(--gradient);
     margin: 4px 0 0 0;
     color: var(--light);
+    margin-top: 2rem;
+}
+#section-info-socials h3{
+    letter-spacing: .05px;
 }
 #section-info-socials .box p{
     font-weight: 600;
     padding: .7rem;
 }
-#section-info-socials .info{
+#section-info-socials .more{
     text-align: center;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+#section-info-socials .church {
+    text-align: center;
+}
+.more ul, 
+.church ul {
+    padding: 0;
+}
+.more li, 
+.church li {
+    color: hsl(257deg 15% 83%);
 }
 #section-info-socials .ftr-socials ul,
 .ftr-socials p{
@@ -261,18 +289,23 @@ html.sr .section-side-img{
         font-family: 'Poppins', 'sans-serif';
         display: grid;
         grid-gap: 1rem;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         grid-template-areas: 
-        "info socials";
+        "more church socials";
+        padding: 21px;
     }
-    #section-info-socials .info{
-        grid-area: info;
-        padding: 1rem;
+    #section-info-socials .more{
+        grid-area: more;
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+    
+    #section-info-socials .church {
+        grid-area: church; 
     }
     
     #section-info-socials .ftr-socials{
         grid-area: socials;
-        padding-top: 2rem;
     }
     #section-info-socials .ftr-socials p{
         padding-bottom: .5rem;
