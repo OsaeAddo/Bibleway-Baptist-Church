@@ -345,15 +345,34 @@ def reject_leader_view(request, pk):
 @user_passes_test(is_churchleader)
 def leader_dashboard_view(request):
     #to create three cards 
-    count_church_members = models.ChurchMember.objects.all().count()
-    count_leaders = models.ChurchLeader.objects.all().filter().count()
+    # count_church_members = models.ChurchMember.objects.all().count()
+    # count_leaders = models.ChurchLeader.objects.all().filter().count()
+    # total_members = count_church_members + count_leaders
+    # context = {
+    #     'count_church_members':count_church_members,
+    #     'count_leaders':count_leaders,
+    #     'total_members':total_members,
+    #     'leader':models.ChurchLeader.objects.get(user_id=request.user.id)
+    #     #for profile picture of church leader in the sidebar
+    # }
+    leaders = models.ChurchLeader.objects.all().order_by('-id')
+    count_leaders = models.ChurchLeader.objects.all().filter(status= True).count()
+    pending_leaders_count = models.ChurchLeader.objects.all().filter(status=False).count()
+    members = models.ChurchMember.objects.all().order_by('-id')
+    count_church_members = models.ChurchMember.objects.all().filter(status=True).count()
+    pending_members_count = models.ChurchMember.objects.all().filter(status=False).count()
     total_members = count_church_members + count_leaders
+
+    admin_username = request.user
     context = {
-        'count_church_members':count_church_members,
+        'leaders':leaders,
+        'members':members,
         'count_leaders':count_leaders,
+        'count_church_members':count_church_members,
+        'pending_leaders_count':pending_leaders_count,
+        'pending_members_count':pending_members_count,
         'total_members':total_members,
-        'leader':models.ChurchLeader.objects.get(user_id=request.user.id)
-        #for profile picture of church leader in the sidebar
+        'admin_username': admin_username,
     }
     return render(request, 'recordsManagement/exec_dashboard.html', context)
 
