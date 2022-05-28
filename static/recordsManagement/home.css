@@ -142,10 +142,20 @@ html.sr .section-side-img{
 /* End Location Section */
 
 /* About section */
-#section-about h2,
-#section-about h4{
+#section-about {
+    padding-top: 3rem;
+}
+#section-about h1 {
     text-align: center;
-    padding: 5px;
+}
+#section-about p {
+    color: #2a2a2a;
+    text-align: center;
+}
+#section-about .revrnd{
+    color: #000;
+    font-weight: 600;
+    font-size: 18px;
     
 }
 /* End About section */
