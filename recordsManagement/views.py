@@ -7,6 +7,17 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+
+from twilio.rest import Client
+
+account_sid = "ACf7c91b1069ec15b5e13eac3f20cd7862"
+auth_token = "3d287ad897acc2ac320af07f43d26f36"
+client = Client(account_sid, auth_token)
+sender = '+19403405520'
+recipient = '+233550125552'
+
+
+
 # Create your views here.
 def home(request):
     return render(request, 'recordsManagement/home.html')
@@ -28,7 +39,7 @@ def member_click_view(request):
 
 
 def leader_signup_view(request):
-
+    
     if request.method == 'POST':
         userForm = forms.LeaderUserForm(request.POST)
         leaderForm = forms.LeaderForm(request.POST, request.FILES)
@@ -49,6 +60,14 @@ def leader_signup_view(request):
             my_leader_group = Group.objects.get_or_create(name='LEADERS')
             my_leader_group[0].user_set.add(user)
             print("****  Leader added to Group!  ****")
+            
+        # send sms when a leader signs up
+        message = client.messages \
+                        .create(
+                            body = "Hello admin, a church leader account was just initiated on the website of Bibleway Baptist Church! Kindly verify & approve.",
+                            from_=sender,
+                            to=recipient
+                        )
         print("***** Before redirecting ******")
         return redirect('leader-login')
     
@@ -87,6 +106,13 @@ def member_signup_view(request):
             my_churchmember_group[0].user_set.add(user)
         return redirect('home-page')
 
+        # send sms when a member signs up
+        message = client.messages \
+                        .create(
+                            body = "Hello admin, a church member account was just initiated on the website of Bibleway Baptist Church! Kindly verify & approve.",
+                            from_=sender,
+                            to=recipient
+                        )
     return render(request, 'recordsManagement/churchmember_signup.html', context)
 
 
