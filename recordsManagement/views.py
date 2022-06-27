@@ -177,6 +177,20 @@ def churchadmin_dashboard_view(request):
     return render(request, 'recordsManagement/admin_dashboard.html', context)
 
 
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_pending_approvals_all_view(request):
+    members_pending = models.ChurchMember.objects.all().filter(status=False)
+    leaders_pending = models.ChurchLeader.objects.all().filter(status=False)
+    context = {
+        'members_pending': members_pending,
+        'leaders_pending': leaders_pending
+        }
+    return render(request, 'recordsManagement/pending_approvals_all.html', context)
+
+
+
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
 def admin_members_view(request):
@@ -272,6 +286,9 @@ def admin_pending_approvals_member_view(request):
     members_pending = models.ChurchMember.objects.all().filter(status=False)
     context = {'members_pending': members_pending}
     return render(request, 'recordsManagement/pending_approvals_member.html', context)
+
+
+
 
 
 
