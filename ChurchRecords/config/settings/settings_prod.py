@@ -1,5 +1,6 @@
 from .base_settings import *
 
+import dj_database_url
 
 
 SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-3ijz%tjd)vrqs9%z1nefr^i@sgprp9p&mp7f&$yt-we*@ig-p3')
