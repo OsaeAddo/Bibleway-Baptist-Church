@@ -28,6 +28,8 @@ urlpatterns = [
     #<-------------Dashboard Related------------>
     #-----------Admin Dashboard-----------------
     path('churchadmin-dashboard/', views.churchadmin_dashboard_view, name='churchadmin-dashboard'),
+    path('all-pending-approvals/', views.admin_pending_approvals_all_view, name='pending-all'),
+
     path('admin-member/', views.admin_members_view, name='admin-member'),
     path('list-members/', views.admin_list_members_view, name='admin-list-members'),
     path('add-member/', views.admin_add_member_view, name='admin-add-member'),
