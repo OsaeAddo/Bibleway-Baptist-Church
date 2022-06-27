@@ -1,6 +1,6 @@
 from . import models, forms
 
-
+# for search functionality
 from django.db.models import Q
 from django.views.generic.list import ListView
 
@@ -274,6 +274,7 @@ def admin_pending_approvals_member_view(request):
     return render(request, 'recordsManagement/pending_approvals_member.html', context)
 
 
+
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
 def admin_approve_member_view(request, pk):
@@ -281,6 +282,7 @@ def admin_approve_member_view(request, pk):
     members.status = True
     members.save()
     return redirect('pending-member')
+
 
 
 @login_required(login_url='adminlogin')
@@ -293,6 +295,8 @@ def reject_member_view(request, pk):
     return redirect('pending-member')
 
 
+
+
 # <------Admin Leaders Section ------>
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
@@ -300,7 +304,7 @@ def admin_leaders_view(request):
     return render(request, 'recordsManagement/admin-leader.html')
 
 
-# List/Table of all members(approved)
+# List/Table of all leaders(approved)
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
 def admin_list_leaders_view(request):
@@ -337,6 +341,22 @@ def admin_add_leader_view(request):
         messages.success(request, "Success: New Church Leader Added!")
         return redirect('admin-list-leaders')
     return render(request, 'recordsManagement/admin-add-leader.html', context)
+
+
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_delete_leader_view(request, pk):
+    leader = models.ChurchLeader.objects.get(id=pk)
+    user = models.User.objects.get(id=leader.user_id)
+    messages.warning(request, "This action is irreversible!")
+    print("******** Delete button clicked ********")
+    leader.delete()
+    user.delete()
+    print("********* leader deleted *****")
+    messages.success(request, f"Success: {request.user} is Deleted!")
+    return redirect('admin-list-leaders')
+
 
 
 @login_required(login_url='adminlogin')

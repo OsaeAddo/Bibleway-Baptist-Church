@@ -40,6 +40,7 @@ urlpatterns = [
     path('admin-leader/', views.admin_leaders_view, name='admin-leader'),
     path('list-leaders/', views.admin_list_leaders_view, name='admin-list-leaders'),
     path('add-leader/', views.admin_add_leader_view, name='admin-add-leader'),
+    path('delete-leader/<int:pk>', views.admin_delete_leader_view, name='admin-delete-leader'),
     path('update-leader/<int:pk>', views.admin_update_leader_view, name='admin-update-leader'),
     path('leader-pending-approvals/', views.admin_pending_approvals_leader_view, name='pending-leader'),
     path('approve-leader/<int:pk>', views.admin_approve_leader_view, name='approve-leader'),
