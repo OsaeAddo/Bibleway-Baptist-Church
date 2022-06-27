@@ -450,17 +450,6 @@ class SearchMembersView(ListView):
             Q(user__icontains=query) | Q(member_role__icontains=query)
         )
 
-def search_members(request):
-    if request.method == "POST":
-        searched = request.POST['searched']
-        members = models.ChurchMember.objects.filter(member_role=searched)
-        context = {
-            'searched': searched,
-            'members': members
-        }
-        return render(request, 'RecordsManagement/searchresults_member.html', context)
-    else:
-        return render(request, 'RecordsManagement/searchresults_member.html')
 
 
 def list_members(request):
