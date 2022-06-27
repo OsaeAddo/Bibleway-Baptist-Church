@@ -1,6 +1,10 @@
 from . import models, forms
 
 
+from django.db.models import Q
+from django.views.generic.list import ListView
+
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import Group
@@ -305,7 +309,7 @@ def admin_list_leaders_view(request):
     return render(request, 'recordsManagement/admin-list-leaders.html', context)
 
 
-
+# Admin actions on Church Leader views
 @login_required(login_url='adminlogin')
 @user_passes_test(is_churchadmin)
 def admin_add_leader_view(request):
@@ -333,6 +337,37 @@ def admin_add_leader_view(request):
         messages.success(request, "Success: New Church Leader Added!")
         return redirect('admin-list-leaders')
     return render(request, 'recordsManagement/admin-add-leader.html', context)
+
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_churchadmin)
+def admin_update_leader_view(request, pk):
+    leader = models.ChurchLeader.objects.get(id=pk)
+    user = models.User.objects.get(id=leader.user_id)
+
+    leaderForm = forms.LeaderForm(request.FILES, instance=leader)
+    userForm = forms.LeaderUserForm(instance=user)
+    context = {
+        'leaderForm': leaderForm,
+        'userForm': userForm
+    }
+    if request.method == 'POST':
+        leaderForm = forms.LeaderForm(request.POST, request.FILES, instance=leader)
+        userForm = forms.LeaderUserForm(request.POST, instance=user)
+        if userForm.is_valid() and leaderForm.is_valid():
+            user = userForm.save()
+            user.set_password(user.password)
+            user.save()
+
+            leader = leaderForm.save(commit=False)
+            leader.status = True
+            leader.save()
+        messages.success(request, "Success: Church Leader Updated!")
+        return redirect('admin-list-leaders')
+
+    return render(request, 'recordsManagement/admin-update-leader.html', context)
+
+
 
 
 @login_required(login_url='adminlogin')
@@ -404,6 +439,17 @@ def leader_dashboard_view(request):
 
 
 #<----------Views to Search for Church Members--------->
+class SearchMembersView(ListView):
+    model = models.ChurchMember
+    context_object_name = "member_list"
+    template_name = "RecordsManagement/searchresults_member.html"
+    
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        return models.ChurchMember.objects.filter(
+            Q(user__icontains=query) | Q(member_role__icontains=query)
+        )
+
 def search_members(request):
     if request.method == "POST":
         searched = request.POST['searched']
