@@ -36,6 +36,15 @@ img{
     margin: 0;
     padding: 0;
 }
+.alert-success {
+    width: 100%;
+    padding: 15px 22px;
+    background-color: #4ae359;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+}
 /* Sliding text section */
 /* Add text slider later */
 #section-upcoming h4{
