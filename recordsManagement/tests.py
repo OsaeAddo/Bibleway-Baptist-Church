@@ -20,4 +20,10 @@ class HomePageTests(SimpleTestCase):
         self.assertTemplateUsed(self.response, 'recordsManagement/home.html')
         
         
-# Create your tests here.
+        
+    def test_homepage_url_resolves_homepageview(self):
+        view = resolve('/')
+        self.assertEqual(
+            view.func.__name__,
+            home.__name__
+        )
