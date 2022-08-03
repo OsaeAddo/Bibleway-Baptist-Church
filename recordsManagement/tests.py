@@ -4,8 +4,8 @@ from django.contrib.auth import get_user_model
 
 
 
-from .views import home, leader_signup_view
-from .forms import LeaderForm, LeaderUserForm
+from .views import home, leader_signup_view, member_signup_view
+from .forms import LeaderForm, ChurchMemberForm
 
 
 
