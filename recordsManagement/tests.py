@@ -1,9 +1,13 @@
 from urllib import response
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
+from django.contrib.auth import get_user_model
 
 
-from .views import home
+
+from .views import home, leader_signup_view
+from .forms import LeaderForm, LeaderUserForm
+
 
 
 class HomePageTests(SimpleTestCase):
