@@ -1,5 +1,4 @@
-from urllib import response
-from django.test import SimpleTestCase
+from django.test import SimpleTestCase, TestCase
 from django.urls import reverse, resolve
 from django.contrib.auth import get_user_model
 
