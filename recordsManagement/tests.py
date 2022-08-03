@@ -56,3 +56,32 @@ class LeaderSignupPageTests(TestCase):
             view.func.__name__,
             leader_signup_view.__name__
         )
+        
+        
+class MemberSignupPageTests(TestCase):
+    
+    def setUp(self):
+        url = reverse('member-signup')
+        self.response = self.client.get(url)
+    
+    def test_member_signup_template(self):
+        self.assertEqual(self.response.status_code, 200)
+        self.assertTemplateUsed(self.response, 'recordsManagement/churchmember_signup.html')
+        self.assertContains(self.response, 'Church Member Signup')
+        
+        
+    def test_member_signup_form(self):
+        form = self.response.context.get('churchmemberForm')
+        self.assertIsInstance(form, ChurchMemberForm)
+        self.assertContains(self.response, 'csrfmiddlewaretoken')
+        
+    
+    def test_member_signup_view(self):
+        view = resolve('/church-member-signup/')
+        self.assertEqual(
+            view.func.__name__,
+            member_signup_view.__name__
+        )
+        
+        
+ 
