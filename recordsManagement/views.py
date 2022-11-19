@@ -461,7 +461,7 @@ def leader_dashboard_view(request):
     pending_members_count = models.ChurchMember.objects.all().filter(status=False).count()
     total_members = count_church_members + count_leaders
 
-    admin_username = request.user
+    leader_username = request.user
     context = {
         'leaders':leaders,
         'members':members,
@@ -470,10 +470,15 @@ def leader_dashboard_view(request):
         'pending_leaders_count':pending_leaders_count,
         'pending_members_count':pending_members_count,
         'total_members':total_members,
-        'admin_username': admin_username,
+        'leader_username': leader_username,
     }
     return render(request, 'recordsManagement/exec_dashboard.html', context)
 
+
+@login_required(login_url='execlogin')
+@user_passes_test(is_churchleader)
+def leader_settings(request):
+    pass
 
 #<----------Views to Search for Church Members--------->
 class SearchMembersView(ListView):
