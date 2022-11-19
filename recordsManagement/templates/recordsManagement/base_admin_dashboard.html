@@ -88,16 +88,16 @@
     x-transition:leave-end="opacity-0 transform -translate-x-20" @click.away="closeSideMenu"
     @keydown.escape="closeSideMenu">
     <div class="flex w-full  py-4 px-2 justify-center">
-      <img class="h-12 w-12 rounded-full" src="{% static 'images/logo.jpg' %}" alt="church logo">
+      <img class="h-12 w-12 rounded-full" src="{% static 'images/logo2.png' %}" alt="church logo">
       <div class="flex flex-col px-1 justify-center text-base font-semibold">
         <div>Bible Way</div>
         <div>Baptist Church</div>
       </div>
     </div>
     <div class="flex w-full py-4 pr-9 justify-center">
-      <img src="{% static 'images/os1.jpg' %}" alt="profilepic" class="h-12 w-12 rounded-lg">
+      <img src="{% static 'images/businessman1.svg' %}" alt="profilepic" class="h-12 w-12 rounded-lg">
       <div class="flex flex-col pl-1 py-1 text-base font-semibold place-content-center">
-        <div class="flex-1">Osae Addo</div>
+        <div class="flex-1">{{admin_username}}</div>
         <div class="text-xs">Admin</div>
       </div>
     </div>
