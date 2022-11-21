@@ -1,0 +1,145 @@
+{% extends 'recordsManagement/base_leader_dashboard.html' %}
+
+
+{% block others %}
+    <div class="pb-12">
+        <h2 class="font-bold ">Account Creation</h2>
+        <p class="text-xs text-gray-400">{{ user.date_joined }}</p>
+    </div>
+    <div>
+        <h2 class="text-2xl text-center font-bold">Settings</h2>
+        <h3 class="text-center font-bold py-8">Account Information</h3>
+        <form action="">
+            {% csrf_token %}
+            <div class="flex flex-col p-2 rounded-xl">
+                <label 
+                    class=""
+                    for="{{ userForm.username.id_for_label }}" 
+                >Username
+                </label>
+                <input 
+                    id="{{ userForm.username.id_for_label }}"
+                    autocomplete="username"
+                    class="
+                        placeholder:italic placeholder:text-gray-800  
+                        md:w-1/2 p-1 rounded-sm
+                        block  shadow-sm 
+                        focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1
+                    " 
+                    maxlength="150" 
+                    name="username" 
+                    placeholder="Username" 
+                    required
+                    type="text" 
+                >
+            </div>
+
+            <div class="flex flex-col p-2 rounded-xl">
+                <label 
+                    class=""
+                    for="{{ userForm.first_name.id_for_label }}" 
+                >Firstname
+                </label>
+                <input 
+                    id="{{ userForm.first_name.id_for_label }}"
+                    autocomplete="given-name"
+                    class="
+                        placeholder:italic placeholder:text-blue-800 
+                        text-sky-600 
+                        md:w-1/2 p-1 rounded-sm
+                        block  shadow-sm 
+                        focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1
+                    " 
+                    maxlength="150" 
+                    name="{{ userForm.first_name.name }}" 
+                    placeholder="Firstname" 
+                    type="text" 
+                >
+            </div>
+
+            <div class="flex flex-col p-2 rounded-xl">
+                <label 
+                    class=""
+                    for="{{ userForm.last_name.id_for_label }}" 
+                >Lastname
+                </label>
+                <input 
+                    id="{{ userForm.last_name.id_for_label }}"
+                    autocomplete="family-name"
+                    class="
+                        placeholder:italic placeholder:text-sky-800  
+                        md:w-1/2 p-1 rounded-sm
+                        block bg-white shadow-sm 
+                        focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1
+                    " 
+                    maxlength="150" 
+                    name="{{ userForm.last_name.name }}" 
+                    placeholder="Lastname" 
+                    type="text" 
+                >
+            </div>
+
+            <div class="flex flex-col p-2 rounded-xl">
+                <label 
+                    class=""
+                    for="{{ userForm.email.id_for_label }}" 
+                >Email
+                </label>
+                <input 
+                    id="{{ userForm.email.id_for_label }}"
+                    autocomplete="email"
+                    class="
+                        placeholder:italic placeholder:text-sky-800  
+                        md:w-1/2 p-1 rounded-sm
+                        block bg-white shadow-sm 
+                        focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1
+                    " 
+                    maxlength="150" 
+                    name="{{ userForm.email.name }}" 
+                    placeholder="Email" 
+                    type="email" 
+                >
+            </div>
+
+            <div class="flex flex-col p-2 rounded-xl">
+                <label 
+                    for="id_password" 
+                    required
+                >Password
+                </label>
+                <input 
+                    id="{{ userForm.password.id_for_label }}"
+                    autocomplete="current-password"
+                    class="
+                        placeholder:italic placeholder:text-sky-800  
+                        md:w-1/2 p-1 rounded-sm
+                        block bg-white shadow-sm 
+                        focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1
+                    "
+                    name="{{ userForm.password.name }}"
+                    placeholder="Password"
+                    required 
+                    type="password" 
+                >
+            </div>
+
+            <div class="bg-blue-600 shadow-xl text-gray-50 rounded-lg w-32 ml-1 text-center mb-4">
+                <button type="submit" class="p-2 text-center font-extrabold trigger" >Update</button>
+            </div>
+        </form>
+
+        
+    </div>
+{% endblock others %}
+
+
+<!-- 
+
+    username
+    firstname
+    lastname
+    email
+    mobile
+    password(later)
+
+ -->
