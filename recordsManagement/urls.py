@@ -51,6 +51,8 @@ urlpatterns = [
 
     #-----------Leader Dashboard--------------
     path('church-leader-dashboard/', views.leader_dashboard_view, name='leader-dashboard'),
+    path('church-leader-settings/', views.leader_settings_view, name='leader-settings'),
+    
 
     #<------------Search related --------->
     #search church members
