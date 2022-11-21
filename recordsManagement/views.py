@@ -21,7 +21,7 @@ client = Client(account_sid, auth_token)
 sender = '+19403405520'
 recipient = '+233550125552'
 
-j
+
 
 # Create your views here.
 def home(request):
