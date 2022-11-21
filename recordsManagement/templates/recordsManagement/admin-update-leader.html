@@ -95,41 +95,41 @@
                 </div>
 
                 <div class="flex flex-col p-2 rounded-xl">
-                <label 
-                    class=""
-                    for="{{ userForm.username.id_for_label }}" 
-                >Username*
-                </label>
-                <input 
-                    id="{{ userForm.username.id_for_label }}"
-                    autocomplete="username"
-                    class="placeholder-gray-500 md:w-1/2" 
-                    maxlength="150" 
-                    name="username" 
-                    placeholder="Username" 
-                    required
-                    type="text" 
-                >
+                    <label 
+                        class=""
+                        for="{{ userForm.username.id_for_label }}" 
+                    >Username*
+                    </label>
+                    <input 
+                        id="{{ userForm.username.id_for_label }}"
+                        autocomplete="username"
+                        class="placeholder-gray-500 md:w-1/2" 
+                        maxlength="150" 
+                        name="username" 
+                        placeholder="Username" 
+                        required
+                        type="text" 
+                    >
                 </div>
 
                 <div class="flex flex-col p-2 rounded-xl">
-                <label 
-                    for="id_password" 
-                    required
-                >Password*
-                </label>
-                <input 
-                    id="{{ userForm.password.id_for_label }}"
-                    autocomplete="current-password"
-                    class="placeholder-gray-500 md:w-1/2"
-                    name="{{ userForm.password.name }}"
-                    placeholder="Password"
-                    required 
-                    type="password" 
-                >
+                    <label 
+                        for="id_password" 
+                        required
+                    >Password*
+                    </label>
+                    <input 
+                        id="{{ userForm.password.id_for_label }}"
+                        autocomplete="current-password"
+                        class="placeholder-gray-500 md:w-1/2"
+                        name="{{ userForm.password.name }}"
+                        placeholder="Password"
+                        required 
+                        type="password" 
+                    >
                 </div>
                 <div class="bg-blue-600 shadow-xl text-gray-50 rounded-lg w-32 ml-1 text-center mb-4">
-                <button type="submit" class="p-2 text-center font-extrabold trigger" >Submit</button>
+                    <button type="submit" class="p-2 text-center font-extrabold trigger" >Submit</button>
                 </div>
           </form>
         </div>
