@@ -4,6 +4,7 @@ from . import models, forms
 from django.db.models import Q
 from django.views.generic.list import ListView
 
+from django.contrib.auth.models import User
 
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -20,7 +21,7 @@ client = Client(account_sid, auth_token)
 sender = '+19403405520'
 recipient = '+233550125552'
 
-
+j
 
 # Create your views here.
 def home(request):
@@ -477,8 +478,38 @@ def leader_dashboard_view(request):
 
 @login_required(login_url='execlogin')
 @user_passes_test(is_churchleader)
-def leader_settings(request):
-    pass
+def leader_settings_view(request):
+    
+    user = User.objects.get(username=request.user)
+    leader = models.ChurchLeader.objects.get(user=user)
+    
+    leaderForm = forms.LeaderForm(request.FILES, instance=leader)
+    userForm = forms.LeaderUserForm(instance=user)
+    context = {
+        'leaderForm': leaderForm,
+        'userForm': userForm,
+        'user': user
+    }
+    if request.method == 'POST':
+        leaderForm = forms.LeaderForm(request.POST, request.FILES, instance=leader)
+        userForm = forms.LeaderUserForm(request.POST, instance=user)
+        if userForm.is_valid() and leaderForm.is_valid():
+            user = userForm.save()
+            user.set_password(user.password)
+            user.save()
+
+            leader = leaderForm.save(commit=False)
+            leader.status = True
+            leader.save()
+        messages.success(request, "Success: Church Leader Updated!")
+        return redirect('leader-settings')
+    
+    print("leader of user: ", leader)
+    print(user.is_authenticated)
+    return render(request, 'recordsManagement/leader_settings.html', context)
+
+
+
 
 #<----------Views to Search for Church Members--------->
 class SearchMembersView(ListView):
