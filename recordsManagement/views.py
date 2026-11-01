@@ -3,6 +3,7 @@ from . import models, forms
 # for search functionality
 from django.db.models import Q
 from django.views.generic.list import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from django.contrib.auth.models import User
 
@@ -13,13 +14,28 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
+import logging
+import os
+
 from twilio.rest import Client
 
-account_sid = "ACf7c91b1069ec15b5e13eac3f20cd7862"
-auth_token = "3d287ad897acc2ac320af07f43d26f36"
-client = Client(account_sid, auth_token)
-sender = '+19403405520'
-recipient = '+233550125552'
+logger = logging.getLogger(__name__)
+
+
+def send_admin_sms(body):
+    """Text the church admin. Credentials come from environment variables;
+    if they are missing, or Twilio fails, signup still works and the problem is logged."""
+    account_sid = os.environ.get('TWILIO_ACCOUNT_SID')
+    auth_token = os.environ.get('TWILIO_AUTH_TOKEN')
+    sender = os.environ.get('TWILIO_FROM_NUMBER')
+    recipient = os.environ.get('ADMIN_PHONE_NUMBER')
+    if not all([account_sid, auth_token, sender, recipient]):
+        logger.warning("Twilio is not configured; skipping admin SMS.")
+        return
+    try:
+        Client(account_sid, auth_token).messages.create(body=body, from_=sender, to=recipient)
+    except Exception:
+        logger.exception("Failed to send admin SMS")
 
 
 
@@ -65,14 +81,9 @@ def leader_signup_view(request):
             my_leader_group = Group.objects.get_or_create(name='LEADERS')
             my_leader_group[0].user_set.add(user)
             print("****  Leader added to Group!  ****")
+
+            send_admin_sms("Hello admin, a church leader account was just initiated on the website of Bibleway Baptist Church! Kindly verify & approve.")
             
-        # send sms when a leader signs up
-        message = client.messages \
-                        .create(
-                            body = "Hello admin, a church leader account was just initiated on the website of Bibleway Baptist Church! Kindly verify & approve.",
-                            from_=sender,
-                            to=recipient
-                        )
         print("***** Before redirecting ******")
         return redirect('leader-login')
     
@@ -109,15 +120,9 @@ def member_signup_view(request):
             churchmember = churchmember.save()
             my_churchmember_group = Group.objects.get_or_create(name='MEMBERS')
             my_churchmember_group[0].user_set.add(user)
-        return redirect('home-page')
 
-        # send sms when a member signs up
-        message = client.messages \
-                        .create(
-                            body = "Hello admin, a church member account was just initiated on the website of Bibleway Baptist Church! Kindly verify & approve.",
-                            from_=sender,
-                            to=recipient
-                        )
+            send_admin_sms("Hello admin, a church member account was just initiated on the website of Bibleway Baptist Church! Kindly verify & approve.")
+        return redirect('home-page')
     return render(request, 'recordsManagement/churchmember_signup.html', context)
 
 
@@ -512,21 +517,41 @@ def leader_settings_view(request):
 
 
 #<----------Views to Search for Church Members--------->
-class SearchMembersView(ListView):
+class SearchMembersView(LoginRequiredMixin, UserPassesTestMixin, ListView):
+    """Search church members by name or role. Admins and approved leaders only."""
     model = models.ChurchMember
     context_object_name = "member_list"
-    template_name = "RecordsManagement/searchresults_member.html"
-    
-    def get_queryset(self):
-        query = self.request.GET.get('q')
-        return models.ChurchMember.objects.filter(
-            Q(user__icontains=query) | Q(member_role__icontains=query)
+    template_name = "recordsManagement/searchresults_member.html"
+    login_url = 'adminlogin'
+
+    def test_func(self):
+        user = self.request.user
+        if is_churchadmin(user):
+            return True
+        return (
+            is_churchleader(user)
+            and models.ChurchLeader.objects.filter(user=user, status=True).exists()
         )
 
+    def get_search_term(self):
+        return self.request.GET.get('q', '').strip()
 
+    def get_queryset(self):
+        query = self.get_search_term()
+        if not query:
+            return models.ChurchMember.objects.none()
 
-def list_members(request):
-    pass
+        members = models.ChurchMember.objects.select_related('user').filter(
+            Q(user__first_name__icontains=query)
+            | Q(user__last_name__icontains=query)
+            | Q(member_role__icontains=query)
+        )
+        # Leaders only see approved members; admins see everyone, including pending.
+        if not is_churchadmin(self.request.user):
+            members = members.filter(status=True)
+        return members.order_by('user__first_name', 'user__last_name')
 
-def show_member(request):
-    pass
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['searched'] = self.get_search_term()
+        return context
