@@ -5,21 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Results | NWBC</title>
+    <title>Search Results | Bibleway Baptist Church</title>
 </head>
 <body>
     <center>
+        {% include 'recordsManagement/search_bar.html' %}
         {% if searched %}
-            <h1>You entered {{ searched }}</h1>
+            <h1>Results for "{{ searched }}"</h1>
             <br>
-            {% for member in members %}
-                <a href="{% url 'show-member' %}">
-                    {{ member.member_role|default:"Enter a valid Query" }}
-                </a>
-                <br>
+            {% for member in member_list %}
+                <p>
+                    {{ member.get_name }} &middot;
+                    {{ member.member_role|default:"No role" }} &middot;
+                    {{ member.mobile|default:"No phone number" }}
+                </p>
+            {% empty %}
+                <p>No members found.</p>
             {% endfor %}
         {% else %}
-            <h1>Please enter a valid request!</h1>
+            <h1>Please enter a name or role to search.</h1>
         {% endif %}
     </center>
 </body>
