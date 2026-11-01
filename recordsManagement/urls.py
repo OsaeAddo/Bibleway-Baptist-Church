@@ -57,8 +57,4 @@ urlpatterns = [
     #<------------Search related --------->
     #search church members
     path('search-members/', views.SearchMembersView.as_view(), name='search-members'),
-    #list church members
-    path('list-members/', views.list_members, name='list-members'),
-    #show church member
-    path('show-member/', views.show_member, name='show-member'),
 ]
