@@ -1,10 +1,8 @@
-
 <div class="search-box">
-    <form action="{% url 'search-members' %}" method="POST">
-        {% csrf_token %}
-        <input class="search-txt" type="text" placeholder="Search a Member" name="searched">
-        <a href="{% url 'search-members' %}" class="search-btn">
+    <form action="{% url 'search-members' %}" method="GET">
+        <input class="search-txt" type="text" placeholder="Search a Member" name="q" value="{{ searched|default:'' }}">
+        <button type="submit" class="search-btn" aria-label="Search">
             <i class="fas fa-search"></i>
-        </a>
+        </button>
     </form>
 </div>
